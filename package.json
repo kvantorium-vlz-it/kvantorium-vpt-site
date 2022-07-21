@@ -4,10 +4,14 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "tailwind-viewer": "tailwind-config-viewer -o -p 3030"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.6"
+    "@nuxtjs/tailwindcss": "^5.3.0",
+    "nuxt": "3.0.0-rc.6",
+    "tailwind-config-viewer": "^1.7.1",
+    "tailwindcss": "^3.1.6"
   },
   "dependencies": {
     "@nuxtjs/sanity": "^1.2.3",
