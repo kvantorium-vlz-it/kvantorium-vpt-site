@@ -1,28 +1,69 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
-
 ## Setup
 
 Make sure to install the dependencies:
 
+### site
+
 ```bash
+
 # yarn
 yarn install
 
 # npm
 npm install
+```
 
-# pnpm
-pnpm install --shamefully-hoist
+### cms-panel
+```bash
+cd cms_panel
+```
+
+```bash
+
+#yarn
+yarn install
+
+#npm
+npm install
 ```
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+Start the nuxt development server on http://localhost:3000
 
 ```bash
+
+#npm
 npm run dev
+
+#yarn
+yarn run dev
+```
+
+Start the tailwind-viewer server on http://localhost:3030
+
+```bash
+
+#npm
+npm run tailwind-viewer
+
+#yarn
+yarn run tailwind-viewer
+```
+
+Start the sanity-studio server on http://localhost:3333
+
+```bash
+cd cms_panel
+```
+
+```bash
+
+#npm
+npm run start
+
+#yarn
+yarn run start
 ```
 
 ## Production
