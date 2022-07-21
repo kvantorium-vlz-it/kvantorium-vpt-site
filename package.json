@@ -10,6 +10,7 @@
     "nuxt": "3.0.0-rc.6"
   },
   "dependencies": {
+    "@nuxtjs/sanity": "^1.2.3",
     "@pinia/nuxt": "^0.3.0",
     "pinia": "^2.0.16"
   }

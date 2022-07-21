@@ -508,6 +508,20 @@
     vite-node "^0.18.1"
     vite-plugin-checker "^0.4.9"
 
+"@nuxtjs/sanity@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sanity/-/sanity-1.2.3.tgz#f30ad69239743966fd28270a00e628dc9d619d6c"
+  integrity sha512-nmig8CKG5F/BVyBM40OilMFPvEkn2LSVEaIqOyl3+lMC/q4Scrv+q+H2GTyewsOiEAHvWluRcJbbwHaUaYHkdQ==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.4"
+    "@portabletext/types" "^1.0.3"
+    chalk "^5.0.1"
+    defu "^6.0.0"
+    fs-extra "^10.1.0"
+    knitwork "^0.1.2"
+    ohash "^0.1.0"
+    pathe "^0.3.0"
+
 "@pinia/nuxt@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.3.0.tgz#3ee83b5562efb8a726b763054fa5e6e99b15e855"
@@ -515,6 +529,11 @@
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.4"
     pinia ">=2.0.14"
+
+"@portabletext/types@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-1.0.3.tgz#b23f832ae5331c1d864195a95eba34abf340597e"
+  integrity sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==
 
 "@rollup/plugin-alias@^3.1.9":
   version "3.1.9"
