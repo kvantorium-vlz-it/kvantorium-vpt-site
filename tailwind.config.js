@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /**
  * @type { import('tailwindcss').Config }
  */
@@ -38,5 +40,16 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents, theme }) => {
+      addComponents({
+        '.header-gradient': {
+          '@apply bg-gradient-to-t from-primary to-primary-800': {}
+        },
+        '.kvantum-card-gradient': {
+          '@apply bg-gradient-to-t from-white to-primary-300': {},
+        },
+      })
+    })
+  ],
 }
