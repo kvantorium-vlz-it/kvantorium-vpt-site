@@ -6,6 +6,10 @@ export default defineNuxtConfig({
 
   srcDir: 'site/',
 
+  css: [
+    '@/assets/scss/main.css',
+  ],
+
   sanity: {
     ...api
   },
