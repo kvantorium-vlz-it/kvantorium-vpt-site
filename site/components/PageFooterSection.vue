@@ -29,7 +29,7 @@ defineProps<{
         @apply border-b border-b-primary-400;
     }
     &__body {
-        @apply pr-2;
+        @apply pr-2 pt-1;
     }
 }
 </style>
