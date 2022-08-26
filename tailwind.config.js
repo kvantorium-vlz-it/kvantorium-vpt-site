@@ -50,6 +50,12 @@ module.exports = {
           '@apply bg-gradient-to-t from-white to-primary-300': {},
         },
       })
+
+      addComponents({
+        '.page-section': {
+          '@apply px-4 py-3': {}
+        }
+      })
     })
   ],
 }
