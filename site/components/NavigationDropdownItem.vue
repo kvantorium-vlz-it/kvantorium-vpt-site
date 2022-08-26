@@ -69,7 +69,6 @@ const details = ref<HTMLDetailsElement>()
 <style module lang="postcss">
 .Group {
     &__summary {
-        @apply mb-3;
         @apply flex justify-between items-center;
 
         @apply list-none;
@@ -90,7 +89,7 @@ const details = ref<HTMLDetailsElement>()
 
     &__items {
         @apply flex flex-col gap-1;
-        @apply pl-4 border-l border-primary-300;
+        @apply pl-4 mt-2 border-l border-primary-300;
     }
 
     &[open] > &__summary > &__icon {

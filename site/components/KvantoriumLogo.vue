@@ -1,3 +1,4 @@
+<!-- Site logo component -->
 <template>
 <img
     src="/logo.png"
