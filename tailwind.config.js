@@ -38,7 +38,14 @@ module.exports = {
       heading40: ['2.5rem', 1.5],
       heading64: ['4rem', 1.5],
     },
-    extend: {},
+    extend: {
+      borderWidth: {
+        16: '4rem',
+      },
+      boxShadow: {
+        overlay: '12px 0px 24px rgba(0, 0, 0, 0.25)',
+      }
+    },
   },
   plugins: [
     plugin(({ addComponents, theme }) => {

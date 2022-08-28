@@ -1,16 +1,15 @@
-<!-- Component for header links organization -->
 <template>
 <nav :class="$style.Navigation">
-    <navigation-item text="Главная" to="/" />
-    <navigation-dropdown-item
-        group-name="Новости"
+    <vertical-navigation-item text="Главная" to="/" />
+    <vertical-navigation-group-item
+        label="Новости"
         :items="[
             { text: 'События' },
             { text: 'Мероприятия' },
         ]"
     />
-    <navigation-dropdown-item
-        group-name="Квантумы"
+    <vertical-navigation-group-item
+        label="Квантумы"
         :items="[
             { text: 'Промдизайн-квантум' },
             { text: 'Промробо-квантум' },
@@ -24,8 +23,8 @@
             { text: 'квантошахматы' },
         ]"
     />
-    <navigation-dropdown-item
-        group-name="О нас"
+    <vertical-navigation-group-item
+        label="О нас"
         :items="[
             { text: 'Общаяя информация' },
             { text: 'Сотрудники' },
@@ -38,6 +37,6 @@
 
 <style module lang="postcss">
 .Navigation {
-    @apply flex flex-col gap-4;
+    @apply flex flex-col gap-2;
 }
 </style>
