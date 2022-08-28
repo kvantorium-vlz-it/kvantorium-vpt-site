@@ -1,6 +1,8 @@
 <template>
 <header :class="$style.Header">
-    <kvantorium-logo />
+    <nuxt-link to="/">
+        <kvantorium-logo />
+    </nuxt-link>
     <the-header-menu-button @click="handleMenuButtonClick"/>
 </header>
 </template>
@@ -16,6 +18,6 @@ const handleMenuButtonClick = (event: PointerEvent) => emit('menuButtonClick', e
 <style module lang="postcss">
 .Header {
     @apply bg-primary-800 page-section;
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-between gap-2;
 }
 </style>
