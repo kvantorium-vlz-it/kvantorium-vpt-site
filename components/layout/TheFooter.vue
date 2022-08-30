@@ -1,47 +1,47 @@
 <template>
 <footer :class="$style.Footer">
     <div :class="$style.Footer__sections">
-        <page-footer-section name="Контакты">
-            <page-footer-contacts>
-                <page-footer-contacts-item
+        <the-footer-section name="Контакты">
+            <the-footer-contacts>
+                <the-footer-contacts-item
                     label="email"
                     value="kvantroiumvlz@volpt.ru"
                     href="mailto:kvantroiumvlz@volpt.ru"
                 />
-                <page-footer-contacts-item
+                <the-footer-contacts-item
                     label="телефон"
                     value="+79023835024"
                     href="tel: +79023835024"
                 />
-            </page-footer-contacts>
-        </page-footer-section>
+            </the-footer-contacts>
+        </the-footer-section>
 
-        <page-footer-section name="Навигация">
-            <page-footer-navigation>
-                <page-footer-navigation-item
+        <the-footer-section name="Навигация">
+            <the-footer-navigation>
+                <the-footer-navigation-item
                     text="Главная"
                     to="/"
                 />
-                <page-footer-navigation-item
+                <the-footer-navigation-item
                     text="Квантумы"
                 />
-                <page-footer-navigation-item
+                <the-footer-navigation-item
                     text="О нас"
                 />
-            </page-footer-navigation>
-        </page-footer-section>
+            </the-footer-navigation>
+        </the-footer-section>
 
-        <page-footer-section name="Соцсети">
-            <page-footer-socials>
-                <page-footer-socials-item
+        <the-footer-section name="Соцсети">
+            <the-footer-socials>
+                <the-footer-socials-item
                     href="https://www.vk.com"
                     :icon="VKIcon"
                 />
-            </page-footer-socials>
-        </page-footer-section>
+            </the-footer-socials>
+        </the-footer-section>
     </div>
 
-    <page-footer-copyright />
+    <the-footer-copyright />
 </footer>
 </template>
 
