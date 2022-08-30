@@ -9,8 +9,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
   ],
 
-  srcDir: 'site/',
-
   css: [
     '@/assets/scss/main.css',
   ],
