@@ -1,7 +1,7 @@
 <!-- Styled button with menu icon -->
 <template>
 <button>
-    <icons-menu-icon
+    <menu-icon
         :class="$style.Button__icon"
     />
 </button>

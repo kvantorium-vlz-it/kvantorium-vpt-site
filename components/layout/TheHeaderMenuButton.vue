@@ -1,6 +1,6 @@
 <template>
 <button :class="$style.Button">
-    <icons-menu-icon :class="$style.Button__icon" />
+    <menu-icon :class="$style.Button__icon" />
 </button>
 </template>
 

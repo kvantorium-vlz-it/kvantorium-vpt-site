@@ -13,6 +13,12 @@ export default defineNuxtConfig({
     '@/assets/scss/main.css',
   ],
 
+  components: {
+    dirs: [
+      { path: '@/components', pathPrefix: false }
+    ]
+  },
+
   sanity: {
     ...api
   },
