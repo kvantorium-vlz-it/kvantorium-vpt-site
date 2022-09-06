@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   ],
 
   css: [
-    '@/assets/scss/main.css',
     'modern-normalize/modern-normalize.css',
+    '@/assets/css/main.css',
   ],
 
   components: {
