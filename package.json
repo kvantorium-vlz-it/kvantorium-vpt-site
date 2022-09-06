@@ -4,21 +4,17 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "tailwind-viewer": "tailwind-config-viewer -o -p 3030"
+    "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^5.3.0",
     "@vueuse/core": "^9.1.1",
     "@vueuse/nuxt": "^9.1.1",
-    "nuxt": "3.0.0-rc.6",
-    "tailwind-config-viewer": "^1.7.1",
-    "tailwindcss": "^3.1.6"
+    "modern-normalize": "^1.1.0",
+    "nuxt": "3.0.0-rc.6"
   },
   "dependencies": {
     "@nuxtjs/sanity": "^1.2.3",
     "@pinia/nuxt": "^0.3.0",
-    "pinia": "^2.0.16",
-    "sass": "^1.54.5"
+    "pinia": "^2.0.16"
   }
 }

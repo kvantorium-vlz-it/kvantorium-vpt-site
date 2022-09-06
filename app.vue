@@ -1,8 +1,5 @@
 <template>
-<div :class="$style.App">
-    <the-overlay />
-    <NuxtPage :class="$style.App__page"/>
-    <the-footer />
+<div>
 </div>
 </template>
 
@@ -13,12 +10,3 @@ useHead({
     ]
 })
 </script>
-
-<style module lang="postcss">
-.App {
-    @apply flex flex-col min-h-screen;
-    &__page {
-        @apply flex-1;
-    }
-}
-</style>
