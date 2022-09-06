@@ -45,7 +45,7 @@ onMounted(() => {
 
 <style module lang="postcss">
 .Overlay {
-    @apply sticky top-0;
+    @apply sticky top-0 z-50;
 
     &__header {
         @apply sticky top-0 w-full;

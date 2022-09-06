@@ -9,11 +9,15 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
   ],
 
-  srcDir: 'site/',
-
   css: [
     '@/assets/scss/main.css',
   ],
+
+  components: {
+    dirs: [
+      { path: '@/components', pathPrefix: false }
+    ]
+  },
 
   sanity: {
     ...api

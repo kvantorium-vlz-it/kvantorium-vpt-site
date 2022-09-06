@@ -2,7 +2,7 @@
 <div :class="$style.App">
     <the-overlay />
     <NuxtPage :class="$style.App__page"/>
-    <page-footer />
+    <the-footer />
 </div>
 </template>
 

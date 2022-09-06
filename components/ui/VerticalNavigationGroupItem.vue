@@ -4,7 +4,7 @@
         <h4>
             {{ label }}
         </h4>
-        <icons-chevron-icon :class="$style.Group__icon"/>
+        <chevron-icon :class="$style.Group__icon"/>
     </summary>
     <ul :class="$style.Group__items">
         <li
