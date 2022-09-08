@@ -14,6 +14,8 @@ const props = defineProps<{
     icon: icon;
 }>()
 
+const iconName = toRef(props, 'icon')
+
 /**
  * Raw icon svg
  */
@@ -22,8 +24,8 @@ const rawIcon = ref<string>()
 /**
  * Fetching raw svg
  */
-watch(props, async () => {
-    rawIcon.value = (await import(`/assets/icons/${props.icon}.svg?raw`)).default
+watch(iconName, async () => {
+    rawIcon.value = (await import(  /* @vite-ignore */ `/assets/icons/${iconName.value}.svg?raw`)).default
 }, {
     immediate: true
 })
@@ -35,5 +37,11 @@ const icon = computed(() => rawIcon.value)
 </script>
 
 <template>
-<div v-html="icon"></div>
+<div
+    v-if="icon"
+    v-html="icon"
+></div>
+<div v-else>
+    {{ iconName }}
+</div>
 </template>
