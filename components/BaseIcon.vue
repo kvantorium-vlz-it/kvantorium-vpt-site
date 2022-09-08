@@ -5,7 +5,9 @@
 export type icon = 'chevron' |
     'menu' |
     'document' |
-    'vk'
+    'vk' |
+    'logo_multicolor' |
+    'logo_monocolor'
 
 const props = defineProps<{
     /**
