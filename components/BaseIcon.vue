@@ -42,8 +42,17 @@ const icon = computed(() => rawIcon.value)
 <div
     v-if="icon"
     v-html="icon"
+    :class="$style.Icon"
 ></div>
 <div v-else>
     {{ iconName }}
 </div>
 </template>
+
+<style module>
+.Icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
