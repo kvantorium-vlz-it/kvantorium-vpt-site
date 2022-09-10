@@ -100,22 +100,21 @@
 /* ================= */
 :root {
     /* Font sizes */
-    --fs-h1: 2.625rem;
-    --fs-h2: 2rem;
-    --fs-h3: 1.5rem;
-    --fs-h4: 1.25rem;
-    --fs-h5: 1rem;
-    --fs-h6: 0.75rem;
-
-    --fs-body1: 0.75rem;
-    --fs-body2: 0.625rem;
+    --fs-logo-top: 1.5rem;
+    --fs-logo-bottom: 1rem;
+    --fs-h1: 2.5rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.75rem;
+    --fs-body-1: 1.25rem;
+    --fs-body-2: 1rem;
+    --fs-body-3: 0.75rem;
 
     /* Font weights */
     --fw-bold: 700;
     --fw-regular: 400;
 
     /* Default values */
-    --fs: var(--fs-body1);
+    --fs: var(--fs-body-1);
     --fw: var(--fw-regular);
 }
 
@@ -159,14 +158,13 @@
     /* ================= */
     :root {
         /* Font sizes */
+        --fs-logo-top: 2rem;
+        --fs-logo-bottom: 1.25rem;
         --fs-h1: 4rem;
         --fs-h2: 3rem;
-        --fs-h3: 2.5rem;
-        --fs-h4: 2rem;
-        --fs-h5: 1.5rem;
-        --fs-h6: 1.25rem;
-    
-        --fs-body1: 1.25rem;
-        --fs-body2: 1rem;
+        --fs-h3: 2rem;
+        --fs-body-1: 1.5rem;
+        --fs-body-2: 1.25rem;
+        --fs-body-3: 1rem;
     }
 }
