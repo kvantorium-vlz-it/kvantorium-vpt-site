@@ -1,6 +1,6 @@
 <template>
 <div :class="$style.Logo">
-    <base-icon :class="$style.Logo__icon" icon="logo_monocolor" />
+    <nuxt-icon :class="$style.Logo__icon" name="logo_monocolor" />
     <div :class="$style.Logo__details">
         <span :class="$style.Logo__top">кванториум</span>
         <br>
@@ -19,6 +19,13 @@
     align-items: center;
     gap: var(--gap);
 
+    &__icon {
+        font-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
+        line-height: 1;
+        & > * {
+            margin: 0 !important;
+        }
+    }
     &__icon,
     &__details {
         color: var(--white);

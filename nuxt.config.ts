@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/sanity',
     '@vueuse/nuxt',
+    'nuxt-icons',
   ],
 
   css: [
