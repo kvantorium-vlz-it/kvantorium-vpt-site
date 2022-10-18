@@ -22,4 +22,15 @@ export default defineNuxtConfig({
   sanity: {
     ...api
   },
+
+  postcss: {
+    plugins: {
+      "postcss-nested": {},
+      "postcss-advanced-variables": {},
+      "postcss-import": {},
+      "postcss-url": {},
+      "autoprefixer": {},
+      "cssnano": true
+    }
+  },
 })
