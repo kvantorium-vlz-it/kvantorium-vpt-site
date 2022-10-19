@@ -1,17 +1,40 @@
 <script setup lang="ts">
 const navigation = ref<HTMLElement>(null)
 
-onClickOutside(navigation, (_event) => {
-    isOpen.value = false
+withDefaults(defineProps<{
+    isOpen: boolean;
+}>(), {
+    isOpen: false,
 })
 
-const isOpen = ref<boolean>(false)
+const emit = defineEmits<{
+    (e: 'close'): void;
+    (e: 'open'): void;
+}>()
 
+onClickOutside(navigation, (_event) => {
+    emit('close')
+})
+
+const swipeStartX = ref<number>(null)
 useSwipe(navigation, {
-    onSwipeEnd: (_event, direction) => {
-        if (direction === 'LEFT') {
-            isOpen.value = false
+    onSwipeEnd: (event, direction) => {
+        const swipeEndX = event.changedTouches.item(0).clientX
+        const deltaX = Math.abs(swipeStartX.value - swipeEndX)
+
+        const sideBarWidth = parseFloat(getComputedStyle(navigation.value).width)
+
+        const allowedDeltaToCloseSidebar = sideBarWidth / 4
+
+        if (direction === 'RIGHT' || deltaX < allowedDeltaToCloseSidebar) {
+            return
         }
+
+        emit('close')
+        swipeStartX.value = null
+    },
+    onSwipeStart: (event) => {
+        swipeStartX.value = event.touches.item(0).clientX
     }
 })
 </script>
@@ -82,6 +105,21 @@ $mobile-sidebar-width: 16rem;
 
         & > * {
             width: 100%;
+        }
+
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
+            aspect-ratio: 1;
+            box-sizing: content-box;
+            border-radius: 100vw;
+            border: 3rem solid rgba(var(--c-secondary-200), 0.2);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: translate(25%, 25%);
         }
 
         &.open {
