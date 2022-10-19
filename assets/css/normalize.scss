@@ -9,14 +9,15 @@ body {
 
 /* Project variables */
 :root {
-    --bg: var(--white);
-    --bg-header: var(--primary-900);
-    --bg-footer: var(--primary-900);
-    --bg-sidebar: var(--primary-vertical);
+    --bg: var(--c-white);
+    --bg-header: var(--c-primary-900);
+    --bg-footer: var(--c-primary-900);
+    --bg-sidebar: var(--g-primary-vertical);
 
-    --text-white: var(--white);
-    --text-heading: var(--primary-600);
-    --text-subheading: var(--primary-600);
-    --text-body: var(--primary-500);
-    --text-body-light: var(--secondary-700);
+    --text-white: var(--c-white);
+    --text-heading: var(--c-primary-600);
+    --text-heading-dark: var(--c-primary-800);
+    --text-subheading: var(--c-primary-600);
+    --text-body: var(--c-primary-500);
+    --text-body-light: var(--c-secondary-700);
 }
