@@ -1,16 +1,16 @@
 <template>
-<div :class="$style.Logo">
-    <nuxt-icon :class="$style.Logo__icon" name="logo_monocolor" />
-    <div :class="$style.Logo__details">
-        <span :class="$style.Logo__top">кванториум</span>
+<div :class="$style.logo">
+    <nuxt-icon :class="$style.logo__icon" name="logo_monocolor" />
+    <div :class="$style.logo__details">
+        <span :class="$style.logo__top">кванториум</span>
         <br>
-        <span :class="$style.Logo__bottom">волжский политех</span>
+        <span :class="$style.logo__bottom">волжский политех</span>
     </div>
 </div>
 </template>
 
 <style module lang="scss">
-.Logo {
+.logo {
     --gap: 0.5rem;
     --icon-width: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
 
