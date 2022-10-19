@@ -68,7 +68,7 @@ useSwipe(navigation, {
             </template>
         </the-header-navigation-provider>
 
-        <the-header-navigation-decoration />
+        <the-header-navigation-decoration :class="$style.navigation__decoration" />
     </nav>
 </template>
 
@@ -119,6 +119,10 @@ useSwipe(navigation, {
     .navigation {
         display: flex;
         gap: 0.5rem;
+
+        &__decoration {
+            display: none;
+        }
     }
 }
 </style>
