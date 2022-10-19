@@ -89,6 +89,7 @@ onClickOutside(group, () => {
     &__chevron {
         transition: ease-out 0.5s;
         transition-property: rotate transform;
+        pointer-events: none;
     }
     // List element
     &__list {
@@ -103,6 +104,9 @@ onClickOutside(group, () => {
 
         list-style: none;
         border-left: 2px solid rgb(var(--c-secondary-100));
+    }
+    &:not(&[open]) &__list {
+        display: none;
     }
     // ListItem element
     &__list-item {}

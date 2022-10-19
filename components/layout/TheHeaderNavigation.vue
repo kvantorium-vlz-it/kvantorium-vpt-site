@@ -67,6 +67,8 @@ useSwipe(navigation, {
                 </the-header-navigation-item>
             </template>
         </the-header-navigation-provider>
+
+        <the-header-navigation-decoration />
     </nav>
 </template>
 
@@ -81,6 +83,7 @@ useSwipe(navigation, {
         @include page-section;
 
         position: fixed;
+        max-height: 100vh;
         top: 0;
         left: 0;
         bottom: 0;
@@ -90,34 +93,20 @@ useSwipe(navigation, {
         flex-direction: column;
         gap: 0.25rem;
 
+        overflow: auto;
+
         background: var(--bg-sidebar);
 
         border-top-right-radius: var(--br);
         border-bottom-right-radius: var(--br);
 
         translate: calc(var(--w-mobile-sidebar-width) * -1);
-        // transform: translateX(calc(var(--w-mobile-sidebar-width) * -1));
 
         transition-property: transform;
         transition: ease-out 0.5s;
 
         & > * {
             width: 100%;
-        }
-
-        overflow: hidden;
-
-        &::after {
-            content: '';
-            width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
-            aspect-ratio: 1;
-            box-sizing: content-box;
-            border-radius: 100vw;
-            border: 3rem solid rgba(var(--c-secondary-200), 0.2);
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            transform: translate(25%, 25%);
         }
 
         &.open {
