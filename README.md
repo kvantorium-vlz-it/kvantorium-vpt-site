@@ -1,72 +1,45 @@
-## Setup
+# Kvantorium site
 
-Make sure to install the dependencies:
+Site for volzhsky kvantorium organization.
 
-### site
+- [Site](https://www.kvantoriumvlz.ru/)
+- [Figma design](https://www.figma.com/file/yjWZKtPlfDRIWbchSTia3m/kvantorium?node-id=315%3A1261)
 
+## Install deps
+
+---
+
+### site:
 ```bash
-
-# yarn
-yarn install
-
-# npm
-npm install
+yarn
 ```
 
-### cms-panel
+### cms
 ```bash
 cd cms_panel
-```
-
-```bash
-
-#yarn
-yarn install
-
-#npm
-npm install
+yarn
 ```
 
 ## Development Server
 
-Start the nuxt development server on http://localhost:3000
+---
+
+nuxt: http://localhost:3000  
 
 ```bash
-
-#npm
-npm run dev
-
-#yarn
 yarn run dev
 ```
 
-Start the tailwind-viewer server on http://localhost:3030
-
-```bash
-
-#npm
-npm run tailwind-viewer
-
-#yarn
-yarn run tailwind-viewer
-```
-
-Start the sanity-studio server on http://localhost:3333
+sanity-studio: http://localhost:3333
 
 ```bash
 cd cms_panel
-```
-
-```bash
-
-#npm
-npm run start
-
-#yarn
 yarn run start
 ```
 
 ## Production
+
+---
 
 Build the application for production:
 
@@ -79,5 +52,3 @@ Locally preview production build:
 ```bash
 npm run preview
 ```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.

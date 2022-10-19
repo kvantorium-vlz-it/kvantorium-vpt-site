@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "*.postcss": "tailwindcss"
+        "*.postcss": "scss",
     },
+    "cssVariables.lookupFiles": [
+        "assets/css/variables.css"
+    ],
 }

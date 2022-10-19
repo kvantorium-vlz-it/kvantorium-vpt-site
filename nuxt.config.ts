@@ -5,12 +5,13 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/sanity',
-    '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
+    'nuxt-icons',
   ],
 
   css: [
-    '@/assets/scss/main.css',
+    'modern-normalize/modern-normalize.css',
+    '@/assets/css/main.scss',
   ],
 
   components: {
@@ -23,10 +24,13 @@ export default defineNuxtConfig({
     ...api
   },
 
-  /**
-   * return "true" when nuxt 3 fix issue with "_tailwind" route
-   */
-  tailwindcss: {
-    viewer: false
-  }
+  postcss: {
+    plugins: {
+      "postcss-import": {},
+      "postcss-url": {},
+      "postcss-nested": {},
+      "autoprefixer": {},
+      "cssnano": true
+    }
+  },
 })
