@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sanity',
     '@vueuse/nuxt',
     'nuxt-icons',
+    '@vueuse/nuxt',
   ],
 
   css: [
