@@ -6,18 +6,3 @@ html {
 body {
     font-family: var(--ff);
 }
-
-/* Project variables */
-:root {
-    --bg: var(--c-white);
-    --bg-header: var(--c-primary-900);
-    --bg-footer: var(--c-primary-900);
-    --bg-sidebar: var(--g-primary-vertical);
-
-    --text-white: var(--c-white);
-    --text-heading: var(--c-primary-600);
-    --text-heading-dark: var(--c-primary-800);
-    --text-subheading: var(--c-primary-600);
-    --text-body: var(--c-primary-500);
-    --text-body-light: var(--c-secondary-700);
-}

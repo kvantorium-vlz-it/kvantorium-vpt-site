@@ -94,8 +94,8 @@ $max-bp-mobile: $min-bp-desktop - 0.5px;
 /* Gradients         */
 /* ================= */
 :root {
-    --g-primary-vertical: linear-gradient(var(--primary-800), var(--primary-500));
-    --g-promo-vertical: linear-gradient(var(--secondary-300), var(--secondary-100));
+    --g-primary-vertical: linear-gradient(to bottom, rgba(var(--c-primary-800), 1), rgba(var(--c-primary-500), 1));
+    --g-promo-vertical: linear-gradient(to bottom, rgba(var(--c-secondary-100), 1), rgba(var(--c-secondary-300), 1));
 }
 
 /* ================= */
@@ -170,4 +170,22 @@ $max-bp-mobile: $min-bp-desktop - 0.5px;
         --fs-body-2: 1.25rem;
         --fs-body-3: 1rem;
     }
+}
+
+/* Project variables */
+
+:root {
+    --bg: var(--c-white);
+    --bg-header: var(--c-primary-900);
+    --bg-footer: var(--c-primary-900);
+    --bg-sidebar: var(--g-primary-vertical);
+
+    --text-white: var(--c-white);
+    --text-heading: var(--c-primary-600);
+    --text-heading-dark: var(--c-primary-800);
+    --text-subheading: var(--c-primary-600);
+    --text-body: var(--c-primary-500);
+    --text-body-light: var(--c-secondary-700);
+
+    --w-mobile-sidebar-width: 16rem;
 }
