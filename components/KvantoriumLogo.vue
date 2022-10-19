@@ -9,7 +9,7 @@
 </div>
 </template>
 
-<style module lang="postcss">
+<style module lang="scss">
 .Logo {
     --gap: 0.5rem;
     --icon-width: calc(var(--fs-logo-top) + var(--fs-logo-bottom));

@@ -1,7 +1,6 @@
 {
     "files.associations": {
         "*.postcss": "scss",
-        "*.css": "scss",
     },
     "cssVariables.lookupFiles": [
         "assets/css/variables.css"

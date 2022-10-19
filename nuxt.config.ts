@@ -26,10 +26,9 @@ export default defineNuxtConfig({
 
   postcss: {
     plugins: {
-      "postcss-nested": {},
-      "postcss-advanced-variables": {},
       "postcss-import": {},
       "postcss-url": {},
+      "postcss-nested": {},
       "autoprefixer": {},
       "cssnano": true
     }

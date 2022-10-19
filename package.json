@@ -13,7 +13,6 @@
     "nuxt": "^3.0.0-rc.12",
     "nuxt-icons": "^2.0.2",
     "postcss": "^8.4.18",
-    "postcss-advanced-variables": "^3.0.1",
     "postcss-nested": "^6.0.0",
     "sass": "^1.54.9"
   },
