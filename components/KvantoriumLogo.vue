@@ -28,7 +28,7 @@
     }
     &__icon,
     &__details {
-        color: var(--white);
+        color: rgb(var(--c-white));
         font-weight: var(--fw-bold);
         word-wrap: unset;
         white-space: nowrap;
