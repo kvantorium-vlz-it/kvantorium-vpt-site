@@ -3,7 +3,7 @@ const group = ref<HTMLDetailsElement>()
 
 const props = defineProps<{
     name: string;
-    items: { to?: string; label: string; }[]
+    items: { to?: string; label: string; }[];
 }>()
 
 const isActiveGroup = computed<boolean>(() => {
@@ -52,6 +52,8 @@ onClickOutside(group, () => {
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/variables' as *;
+
 .group {
     --p-y: 0.25rem;
     --p-x: 0.75rem;
@@ -74,6 +76,7 @@ onClickOutside(group, () => {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 0.5rem;
 
         padding: var(--p-y) var(--p-x);
         border-radius: var(--br);
@@ -107,6 +110,37 @@ onClickOutside(group, () => {
     // Change chevron rotating on open/close details
     &[open] &__chevron {
         rotate: 180deg;
+    }
+
+    @media (min-width: $min-bp-desktop) {
+        position: relative;
+
+        // Name(summary) element if desktop and open
+        &[open] &__name {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        // List element if desktop
+        &__list {
+            position: absolute;
+            top: 100%;
+            right: 0;
+
+            background: var(--g-primary-vertical);
+
+            max-width: 200%;
+            width: max-content;
+
+            padding: 0;
+            margin: 0;
+            padding: 0.25rem;
+            border-radius: var(--br);
+            border-left: none;
+        }
+        // List element if open and have active item
+        &[open].active &__list {
+            border-top-right-radius: 0;
+        }
     }
 }
 </style>

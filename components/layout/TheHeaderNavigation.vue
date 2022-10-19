@@ -74,8 +74,6 @@ useSwipe(navigation, {
 @use '@/assets/css/variables' as *;
 @use '@/assets/css/mixins' as *;
 
-$mobile-sidebar-width: 16rem;
-
 @media (max-width: $max-bp-mobile) {
     .navigation {
         --br: var(--br-m);
@@ -126,6 +124,12 @@ $mobile-sidebar-width: 16rem;
             translate: 0;
             box-shadow: var(--bs-sidebar);
         }
+    }
+}
+@media (min-width: $min-bp-desktop) {
+    .navigation {
+        display: flex;
+        gap: 0.5rem;
     }
 }
 </style>
