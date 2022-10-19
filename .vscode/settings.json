@@ -3,6 +3,6 @@
         "*.postcss": "scss",
     },
     "cssVariables.lookupFiles": [
-        "assets/css/variables.css"
+        "assets/css/variables.scss"
     ],
 }
