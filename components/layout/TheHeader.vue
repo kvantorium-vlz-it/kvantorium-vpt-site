@@ -38,6 +38,9 @@ const isMobileNavigationOpen = ref<boolean>(false)
 .header {
     @include page-section;
 
+    position: relative;
+    z-index: 1;
+
     background-color: rgb(var(--bg-header));
 
     display: flex;
