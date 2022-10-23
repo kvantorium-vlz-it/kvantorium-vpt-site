@@ -1,5 +1,7 @@
 <template>
-<div>
+<div style="min-height: 100vh;">
+    <the-header />
+    <the-footer />
 </div>
 </template>
 
