@@ -23,6 +23,8 @@ defineProps<{
         font-weight: var(--fw-bold);
         color: rgb(var(--c-white));
         border-bottom: 1px solid rgb(var(--c-primary-100));
+
+        margin: 0;
         margin-bottom: 0.25rem;
     }
     &__wrapper {
