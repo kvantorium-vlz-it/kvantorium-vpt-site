@@ -9,3 +9,13 @@
     $em: calc($px / $base-font-size) + em;
     @return $em;
 }
+
+@function breakpointMin($px) {
+    $min: $px;
+    @return $min;
+}
+
+@function breakpointMax($px) {
+    $max: $px - 0.5px;
+    @return $max;
+}
