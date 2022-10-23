@@ -1,2 +1,3 @@
 <template>
+    <the-hero />
 </template>
