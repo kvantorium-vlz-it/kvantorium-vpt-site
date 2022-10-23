@@ -1,6 +1,7 @@
 <template>
 <div style="min-height: 100vh;">
     <the-header />
+    <nuxt-page />
     <the-footer />
 </div>
 </template>
