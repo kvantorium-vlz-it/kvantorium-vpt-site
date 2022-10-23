@@ -1,0 +1,6 @@
+@use '@/assets/css/functions' as *;
+
+$bp-mobile-desktop: 1024px;
+
+$bp-min-desktop: pxToBreakpoint($bp-mobile-desktop);
+$bp-max-mobile: pxToBreakpoint($bp-mobile-desktop - 0.5px);

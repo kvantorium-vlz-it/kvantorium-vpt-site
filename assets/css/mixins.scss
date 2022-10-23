@@ -1,3 +1,30 @@
+@use '@/assets/css/breakpoints' as *;
+
 @mixin page-section {
     padding: 0.75rem 1rem;
+}
+
+/* ========================== */
+/* Mixins for media queries   */
+/* ========================== */
+@mixin mobile {
+    @content;
+}
+
+@mixin mobile-only {
+    @media (max-width: $bp-max-mobile) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $bp-min-desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-only {
+    @include desktop(){
+        @content
+    }
 }
