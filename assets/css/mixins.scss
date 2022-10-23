@@ -7,7 +7,7 @@
 /* ========================== */
 /* Mixins for media queries   */
 /* ========================== */
-@mixin mobile {
+@mixin from-mobile {
     @content;
 }
 
@@ -17,14 +17,14 @@
     }
 }
 
-@mixin desktop {
+@mixin from-desktop {
     @media (min-width: $bp-min-desktop) {
         @content;
     }
 }
 
 @mixin desktop-only {
-    @include desktop(){
+    @include from-desktop(){
         @content
     }
 }
