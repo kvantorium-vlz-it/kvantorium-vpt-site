@@ -18,6 +18,10 @@
     &__list {
         padding: 0;
         list-style: none;
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
     }
 }
 </style>
