@@ -4,17 +4,7 @@ interface INavigationItem {
     to?: string;
 }
 
-const navigation = ref<INavigationItem[]>([
-    {
-        label: 'hgjwag',
-    },
-    {
-        label: 'hgjwag',
-    },
-    {
-        label: 'hgjwag',
-    }
-])
+const navigation = ref<INavigationItem[]>([])
 </script>
 
 <template>
