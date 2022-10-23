@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
     <a :href="link">
-        <nuxt-icon :name="icon" />
+        <nuxt-icon :name="icon" fill />
     </a>
 </template>
 
