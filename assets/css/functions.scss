@@ -1,12 +1,12 @@
-@use '@/assets/css/variables' as *;
+@use '@/assets/css/base-variables' as *;
 
 @function pxToRem($px) {
-    $rem: calc($px / $base-font-size) + rem;
+    $rem: calc($px / $root-font-size) + rem;
     @return $rem;
 }
 
 @function pxToBreakpoint($px) {
-    $em: calc($px / $base-font-size) + em;
+    $em: calc($px / $root-font-size) + em;
     @return $em;
 }
 
