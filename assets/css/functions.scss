@@ -4,3 +4,8 @@
     $rem: ($px / $base-font-size) + rem;
     @return $rem;
 }
+
+@function pxToBreakpoint($px) {
+    $em: ($px / $base-font-size) + em;
+    @return $em;
+}
