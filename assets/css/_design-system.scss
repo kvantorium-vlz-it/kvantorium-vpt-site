@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 // Module for declaring design system
 // Table of content:
 // |-- Design system variables
@@ -9,9 +10,9 @@
 
 // Design system variables
 @include from-mobile {
-    /* ================= */
-    /* Colors            */
-    /* ================= */
+    // =================
+    // Colors
+    // =================
     :root {
         /* Primary colors */
         --c-primary-100: 211, 226, 249;
@@ -92,17 +93,17 @@
         --c-gray: var(--c-gray-500);
     }
 
-    /* ================= */
-    /* Gradients         */
-    /* ================= */
+    // =================
+    // Gradients
+    // =================
     :root {
-        --g-primary-vertical: linear-gradient(to bottom, rgba(var(--c-primary-800), 1), rgba(var(--c-primary-500), 1));
-        --g-promo-vertical: linear-gradient(to bottom, rgba(var(--c-secondary-100), 1), rgba(var(--c-secondary-300), 1));
+        --g-primary-vertical: linear-gradient(to bottom, rgb(var(--c-primary-800)), rgb(var(--c-primary-500)));
+        --g-promo-vertical: linear-gradient(to bottom, rgb(var(--c-secondary-100)), rgb(var(--c-secondary-300)));
     }
 
-    /* ================= */
-    /* Typography        */
-    /* ================= */
+    // =================
+    // Typography
+    // =================
     :root {
         /* Font sizes */
         --fs-logo-top: 1.625rem;
@@ -125,27 +126,35 @@
 
     /* Font family */
     :root {
-        --ff: "Roboto", system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+        --ff:
+            'Roboto',
+            system-ui,
+            -apple-system,
+            'Segoe UI',
+            helvetica,
+            arial,
+            sans-serif,
+            'Apple Color Emoji',
+            'Segoe UI Emoji';
     }
 
-    /* ================= */
-    /* Effects           */
-    /* ================= */
+    // =================
+    // Effects
+    // =================
     :root {
         /* Shadows */
-        --bs-4: 0rem 0rem 0.25rem rgba(0, 0, 0, 0.25);
-        --bs-8: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.25);
-        --bs-16: 0rem 0rem 1rem rgba(0, 0, 0, 0.25);
-        --bs-sidebar: 0.75rem 0rem 1.5rem rgba(0, 0, 0, 0.25);
-        --bs-page-section: 0rem 0rem 4rem rgba(0, 0, 0, 0.5);
-        --bs-promo: inset 0rem -4rem 4rem rgba(0, 0, 0, 0.5);
-
+        --bs-4: 0 0 0.25rem rgb(0 0 0 / 25%);
+        --bs-8: 0 0 0.5rem rgb(0 0 0 / 25%);
+        --bs-16: 0 0 1rem rgb(0 0 0 / 25%);
+        --bs-sidebar: 0.75rem 0 1.5rem rgb(0 0 0 / 25%);
+        --bs-page-section: 0 0 4rem rgb(0 0 0 / 50%);
+        --bs-promo: inset 0 -4rem 4rem rgb(0 0 0 / 50%);
         --blur-promo: blur(0.25rem);
     }
 
-    /* ================= */
-    /* Border radius     */
-    /* ================= */
+    // =================
+    // Border radius
+    // =================
     :root {
         --br-full: 100vh;
         --br-s: 0.5rem;
@@ -156,9 +165,9 @@
 }
 
 @include from-desktop {
-    /* ================= */
-    /* Typography        */
-    /* ================= */
+    // =================
+    // Typography
+    // =================
 
     :root {
         /* Font sizes */
@@ -180,14 +189,12 @@
         --bg-header: var(--c-primary-900);
         --bg-footer: var(--c-primary-900);
         --bg-sidebar: var(--g-primary-vertical);
-
         --text-white: var(--c-white);
         --text-heading: var(--c-primary-600);
         --text-heading-dark: var(--c-primary-800);
         --text-subheading: var(--c-primary-600);
         --text-body: var(--c-primary-500);
         --text-body-light: var(--c-secondary-700);
-
         --w-mobile-sidebar-width: 16rem;
     }
 }
