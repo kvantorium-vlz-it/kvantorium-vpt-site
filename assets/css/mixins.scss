@@ -1,4 +1,5 @@
 // Module for declaring mixins
+
 @use '@/assets/css/breakpoints' as *;
 
 @mixin page-section {
@@ -8,6 +9,7 @@
 // ==========================
 // Mixins for media queries
 // ==========================
+
 @mixin from-mobile {
     @content;
 }
@@ -35,6 +37,7 @@
 /* Mixins for typography      */
 
 /* ========================== */
+
 @mixin typo-normal {
     font-style: normal;
 }

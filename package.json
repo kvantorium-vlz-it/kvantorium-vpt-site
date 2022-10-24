@@ -16,9 +16,11 @@
     "postcss-nested": "^6.0.0",
     "sass": "^1.54.9",
     "stylelint": "^14.14.0",
+    "stylelint-config-clean-order": "^1.0.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended-vue": "^1.4.0",
-    "stylelint-config-standard-scss": "^5.0.0"
+    "stylelint-config-standard-scss": "^5.0.0",
+    "stylelint-order": "^5.0.0"
   },
   "dependencies": {
     "@nuxtjs/sanity": "^1.2.3",

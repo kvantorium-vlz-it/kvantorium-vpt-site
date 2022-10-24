@@ -80,33 +80,39 @@ useSwipe(navigation, {
     .navigation {
         --br: var(--br-m);
 
-        @include page-section;
-
         position: fixed;
-        max-height: 100vh;
         top: 0;
-        left: 0;
         bottom: 0;
-        width: var(--w-mobile-sidebar-width);
+        left: 0;
+
+        overflow: auto;
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
-        overflow: auto;
+
+        width: var(--w-mobile-sidebar-width);
+        max-height: 100vh;
+
         background: var(--bg-sidebar);
         border-top-right-radius: var(--br);
         border-bottom-right-radius: var(--br);
-        translate: calc(var(--w-mobile-sidebar-width) * -1);
+
         transition: ease-out 0.5s;
         transition-property: transform;
+
+        translate: calc(var(--w-mobile-sidebar-width) * -1);
 
         & > * {
             width: 100%;
         }
 
         &.open {
-            translate: 0;
             box-shadow: var(--bs-sidebar);
+
+            translate: 0;
         }
+
+        @include page-section;
     }
 }
 

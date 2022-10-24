@@ -5,27 +5,32 @@
 
 <style module lang="scss">
 .decoration {
+    pointer-events: none;
+
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+
     overflow: hidden;
-    pointer-events: none;
     flex-shrink: 0;
 
     &::after {
-        z-index: 5;
         content: '';
-        width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
-        aspect-ratio: 1;
-        box-sizing: content-box;
-        border-radius: 100vw;
-        border: 3rem solid rgb(var(--c-secondary-200) 0.05);
+
         position: absolute;
-        bottom: 0;
+        z-index: 5;
         right: 0;
+        bottom: 0;
         transform: translate(25%, 25%);
+
+        box-sizing: content-box;
+        aspect-ratio: 1;
+        width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
+
+        border: 3rem solid rgb(var(--c-secondary-200) 0.05);
+        border-radius: 100vw;
     }
 }
 </style>

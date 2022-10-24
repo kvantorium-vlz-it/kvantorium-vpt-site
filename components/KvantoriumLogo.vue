@@ -18,8 +18,8 @@
 
     display: inline-grid;
     grid-template-columns: minmax(0, var(--icon-width)) minmax(0, 1fr);
-    align-items: center;
     gap: var(--gap);
+    align-items: center;
 
     &__icon {
         font-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
@@ -32,8 +32,8 @@
 
     &__icon,
     &__details {
-        color: rgb(var(--c-white));
         font-weight: var(--fw-bold);
+        color: rgb(var(--c-white));
         word-wrap: unset;
         white-space: nowrap;
     }

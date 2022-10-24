@@ -24,20 +24,17 @@ withDefaults(defineProps<{
 @use '@/assets/css/mixins' as *;
 
 .button {
-    padding: 0.25rem 1rem;
     cursor: pointer;
-    border-width: 1px;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-color: rgb(var(--bg-color));
-    background-color: rgb(var(--bg-color));
+
+    padding: 0.25rem 1rem;
+
     color: rgb(var(--color));
 
-    @include typo-body-2;
-
-    @include from-desktop {
-        padding: 0.5rem 2rem;
-    }
+    background-color: rgb(var(--bg-color));
+    border-color: rgb(var(--bg-color));
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5rem;
 
     &:hover {
         animation-name: on-hover;
@@ -61,6 +58,12 @@ withDefaults(defineProps<{
     &.light {
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
+    }
+
+    @include typo-body-2;
+
+    @include from-desktop {
+        padding: 0.5rem 2rem;
     }
 }
 

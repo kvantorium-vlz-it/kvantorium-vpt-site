@@ -36,18 +36,20 @@ const isMobileNavigationOpen = ref<boolean>(false)
 @use '@/assets/css/variables' as *;
 
 .header {
-    @include page-section;
-
     position: relative;
     z-index: 1;
-    background-color: rgb(var(--bg-header));
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(var(--bg-header));
 
     &__link {
         text-decoration: none;
     }
+
+    @include page-section;
 
     @include from-desktop {
         &__navigationMenuButton {

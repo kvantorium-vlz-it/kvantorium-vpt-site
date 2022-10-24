@@ -9,13 +9,14 @@
 
 <style module lang="scss">
 .button {
-    background: none;
-    border: none;
     cursor: pointer;
 
+    background: none;
+    border: none;
+
     &__icon {
-        color: rgb(var(--c-white));
         font-size: 1.5rem;
+        color: rgb(var(--c-white));
     }
 }
 </style>

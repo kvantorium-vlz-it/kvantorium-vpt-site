@@ -21,12 +21,14 @@ defineProps<{
 
 .section {
     &__name {
-        @include typo-body-1-bold;
-
-        color: rgb(var(--c-white));
-        border-bottom: 1px solid rgb(var(--c-primary-100));
         margin: 0;
         margin-bottom: 0.25rem;
+
+        color: rgb(var(--c-white));
+
+        border-bottom: 1px solid rgb(var(--c-primary-100));
+
+        @include typo-body-1-bold;
     }
 
     &__wrapper {

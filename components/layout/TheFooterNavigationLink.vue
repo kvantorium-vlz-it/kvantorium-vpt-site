@@ -20,13 +20,13 @@ defineProps<{
     color: rgb(var(--c-primary-100));
     text-decoration: none;
 
-    @include typo-body-2;
-
     transition: color ease-out 0.3s;
 
     &:hover {
         color: rgb(var(--c-primary-300));
         text-decoration: underline;
     }
+
+    @include typo-body-2;
 }
 </style>

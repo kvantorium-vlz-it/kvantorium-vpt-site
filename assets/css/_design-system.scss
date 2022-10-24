@@ -5,10 +5,12 @@
 // |   |-- declaring css variables
 // |   |-- declaring|changing css variables
 // |-- Specific variables
+
 @use '@/assets/css/breakpoints' as *;
 @use '@/assets/css/mixins' as *;
 
 // Design system variables
+
 @include from-mobile {
     // =================
     // Colors
@@ -183,6 +185,7 @@
 }
 
 // Specific variables
+
 @include from-mobile {
     :root {
         --bg: var(--c-white);

@@ -62,8 +62,6 @@ onClickOutside(group, () => {
 
     color: rgb(var(--c-secondary-100));
 
-    @include typo-body-1;
-
     // Item element
     &__item {
         width: 100%;
@@ -71,24 +69,28 @@ onClickOutside(group, () => {
 
     // Name(summary) element
     &__name {
+        cursor: pointer;
+
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         gap: 0.5rem;
+        align-items: center;
+        justify-content: space-between;
+
         padding: var(--p-y) var(--p-x);
-        border-radius: var(--br);
-        color: rgb(var(--c-white));
+
         font-weight: var(--fw-bold);
+        color: rgb(var(--c-white));
+
+        border-radius: var(--br);
 
         @include typo-body-1-bold;
-
-        cursor: pointer;
     }
 
     &__chevron {
+        pointer-events: none;
+
         transition: ease-out 0.5s;
         transition-property: rotate transform;
-        pointer-events: none;
     }
 
     // List element
@@ -96,11 +98,14 @@ onClickOutside(group, () => {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
+
         margin: 0;
         margin-top: 0.25rem;
         margin-left: var(--p-x);
         padding-left: 0.5rem;
+
         list-style: none;
+
         border-left: 2px solid rgb(var(--c-secondary-100));
     }
 
@@ -118,6 +123,8 @@ onClickOutside(group, () => {
         background-color: rgb(var(--c-white) 0.1);
     }
 
+    @include typo-body-1;
+
     @media (min-width: $min-bp-desktop) {
         position: relative;
 
@@ -132,13 +139,15 @@ onClickOutside(group, () => {
             position: absolute;
             top: 100%;
             right: 0;
-            background: var(--g-primary-vertical);
-            max-width: 200%;
+
             width: max-content;
+            max-width: 200%;
             margin: 0;
             padding: 0.25rem;
-            border-radius: var(--br);
+
+            background: var(--g-primary-vertical);
             border-left: none;
+            border-radius: var(--br);
         }
 
         // List element if open and have active item

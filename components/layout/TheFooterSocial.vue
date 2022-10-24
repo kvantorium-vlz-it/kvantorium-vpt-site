@@ -15,8 +15,8 @@ defineProps<{
 $size: 1.5rem;
 
 .social {
+    aspect-ratio: 1;
     width: $size;
     height: $size;
-    aspect-ratio: 1;
 }
 </style>

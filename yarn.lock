@@ -4955,6 +4955,11 @@ postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.4, postcss-selecto
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
 
+postcss-sorting@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-7.0.1.tgz#923b5268451cf2d93ebf8835e17a6537757049a5"
+  integrity sha512-iLBFYz6VRYyLJEJsBJ8M3TCqNcckVzz4wFounSc5Oez35ogE/X+aoC5fFu103Ot7NyvjU3/xqIXn93Gp3kJk4g==
+
 postcss-svgo@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-5.1.0.tgz#0a317400ced789f233a28826e77523f15857d80d"
@@ -5004,7 +5009,7 @@ postcss@^8.1.10, postcss@^8.4.16:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-postcss@^8.4.17, postcss@^8.4.18:
+postcss@^8.3.11, postcss@^8.4.17, postcss@^8.4.18:
   version "8.4.18"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.18.tgz#6d50046ea7d3d66a85e0e782074e7203bc7fbca2"
   integrity sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==
@@ -5822,6 +5827,13 @@ stylehacks@^5.1.0:
     browserslist "^4.16.6"
     postcss-selector-parser "^6.0.4"
 
+stylelint-config-clean-order@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-clean-order/-/stylelint-config-clean-order-1.0.0.tgz#b43c53045b44ae0a8646d424f05f492dd7f9b669"
+  integrity sha512-5y1AI9k+hHrtDHpSuVYILChgztp5+6w83f/F6XLUfDaGT2tj8IFHjcSBtFyx1G8eTI6a+JcLBUmmEW4H635r1A==
+  dependencies:
+    stylelint-order "^5.0.0"
+
 stylelint-config-html@>=1.0.0, stylelint-config-html@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-html/-/stylelint-config-html-1.1.0.tgz#999db19aea713b7ff6dde92ada76e4c1bd812b66"
@@ -5869,6 +5881,14 @@ stylelint-config-standard@^26.0.0:
   integrity sha512-hUuB7LaaqM8abvkOO84wh5oYSkpXgTzHu2Zza6e7mY+aOmpNTjoFBRxSLlzY0uAOMWEFx0OMKzr+reG1BUtcqQ==
   dependencies:
     stylelint-config-recommended "^8.0.0"
+
+stylelint-order@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-5.0.0.tgz#abd20f6b85ac640774cbe40e70d3fe9c6fdf4400"
+  integrity sha512-OWQ7pmicXufDw5BlRqzdz3fkGKJPgLyDwD1rFY3AIEfIH/LQY38Vu/85v8/up0I+VPiuGRwbc2Hg3zLAsJaiyw==
+  dependencies:
+    postcss "^8.3.11"
+    postcss-sorting "^7.0.1"
 
 stylelint-scss@^4.0.0:
   version "4.3.0"

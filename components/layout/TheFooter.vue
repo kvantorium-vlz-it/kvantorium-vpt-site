@@ -35,8 +35,6 @@
 @use '@/assets/css/variables' as *;
 
 .footer {
-    @include page-section;
-
     background-color: rgb(var(--bg-footer));
 
     &__sections {
@@ -55,17 +53,21 @@
 
     &__separator {
         margin-top: 0.5rem;
-        border: 1px solid rgb(var(--c-primary-100));
         margin-bottom: 0.25rem;
+
+        border: 1px solid rgb(var(--c-primary-100));
     }
 
     &__copyright {
         margin: 0;
-        text-align: center;
+
         color: rgb(var(--c-white));
+        text-align: center;
 
         @include typo-body-2;
     }
+
+    @include page-section;
 }
 
 @include from-desktop {

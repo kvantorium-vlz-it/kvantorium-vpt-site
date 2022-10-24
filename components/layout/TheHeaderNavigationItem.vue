@@ -22,13 +22,14 @@ defineProps<{
     --p-x: 0.75rem;
     --br: var(--br-s);
 
-    padding: var(--p-y) var(--p-x);
-    border-radius: var(--br);
     display: inline-block;
-    text-decoration: none;
-    color: rgb(var(--c-white));
 
-    @include typo-body-1;
+    padding: var(--p-y) var(--p-x);
+
+    color: rgb(var(--c-white));
+    text-decoration: none;
+
+    border-radius: var(--br);
 
     // Cursor styles
     &[href] {
@@ -50,5 +51,7 @@ defineProps<{
     &:hover:not(.current) {
         background-color: rgb(var(--c-white) 0.1);
     }
+
+    @include typo-body-1;
 }
 </style>
