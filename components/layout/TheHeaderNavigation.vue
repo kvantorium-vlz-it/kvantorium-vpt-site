@@ -88,22 +88,16 @@ useSwipe(navigation, {
         left: 0;
         bottom: 0;
         width: var(--w-mobile-sidebar-width);
-
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
-
         overflow: auto;
-
         background: var(--bg-sidebar);
-
         border-top-right-radius: var(--br);
         border-bottom-right-radius: var(--br);
-
         translate: calc(var(--w-mobile-sidebar-width) * -1);
-
-        transition-property: transform;
         transition: ease-out 0.5s;
+        transition-property: transform;
 
         & > * {
             width: 100%;
@@ -115,6 +109,7 @@ useSwipe(navigation, {
         }
     }
 }
+
 @media (min-width: $min-bp-desktop) {
     .navigation {
         display: flex;

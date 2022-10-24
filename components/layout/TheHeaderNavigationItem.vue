@@ -24,29 +24,31 @@ defineProps<{
 
     padding: var(--p-y) var(--p-x);
     border-radius: var(--br);
-
     display: inline-block;
     text-decoration: none;
-
     color: rgb(var(--c-white));
+
     @include typo-body-1;
 
     // Cursor styles
     &[href] {
         cursor: pointer;
     }
+
     &:not(&[href]) {
         cursor: not-allowed;
     }
 
     // Current modifier
     &.current {
-        background-color: rgba(var(--c-white), 0.2);
+        background-color: rgb(var(--c-white) 0.2);
+
         @include typo-body-1-bold;
     }
+
     // Hover effect
     &:hover:not(.current) {
-        background-color: rgba(var(--c-white), 0.1);
+        background-color: rgb(var(--c-white) 0.1);
     }
 }
 </style>

@@ -19,6 +19,7 @@ defineProps<{
 .link {
     color: rgb(var(--c-primary-100));
     text-decoration: none;
+
     @include typo-body-2;
 
     transition: color ease-out 0.3s;

@@ -40,9 +40,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
 
     position: relative;
     z-index: 1;
-
     background-color: rgb(var(--bg-header));
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,9 +49,6 @@ const isMobileNavigationOpen = ref<boolean>(false)
         text-decoration: none;
     }
 
-    &__navigation {
-
-    }
     @include from-desktop {
         &__navigationMenuButton {
             display: none;

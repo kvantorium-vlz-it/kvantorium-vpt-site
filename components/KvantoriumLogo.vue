@@ -24,10 +24,12 @@
     &__icon {
         font-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
         line-height: 1;
+
         & > * {
             margin: 0 !important;
         }
     }
+
     &__icon,
     &__details {
         color: rgb(var(--c-white));
@@ -39,6 +41,7 @@
     &__top {
         @include typo-logo-top;
     }
+
     &__bottom {
         @include typo-logo-bottom;
     }

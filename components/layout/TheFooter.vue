@@ -43,11 +43,11 @@
         --gap: 0.5rem;
 
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
         gap: var(--gap);
         justify-content: space-between;
     }
+
     &__section {
         width: calc((100% / 2) - var(--gap) / 2);
         max-width: calc((100% / 2) - var(--gap) / 2);
@@ -61,9 +61,9 @@
 
     &__copyright {
         margin: 0;
-
         text-align: center;
         color: rgb(var(--c-white));
+
         @include typo-body-2;
     }
 }

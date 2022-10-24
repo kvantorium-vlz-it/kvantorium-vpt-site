@@ -22,13 +22,16 @@ defineProps<{
 .contact {
     &__name {
         color: rgb(var(--c-primary-200));
+
         @include typo-body-3;
 
         margin: 0;
     }
+
     &__link {
         color: rgb(var(--c-primary-100));
         text-decoration: none;
+
         @include typo-body-2;
 
         &:hover {

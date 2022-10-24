@@ -61,61 +61,61 @@ onClickOutside(group, () => {
     --br: var(--br-s);
 
     color: rgb(var(--c-secondary-100));
-    @include typo-body-1;
 
-    // Active modifier
-    &.active &__name {
-        background-color: rgba(var(--c-white), 0.1);
-    }
+    @include typo-body-1;
 
     // Item element
     &__item {
         width: 100%;
     }
+
     // Name(summary) element
     &__name {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 0.5rem;
-
         padding: var(--p-y) var(--p-x);
         border-radius: var(--br);
-
         color: rgb(var(--c-white));
         font-weight: var(--fw-bold);
+
         @include typo-body-1-bold;
 
         cursor: pointer;
     }
+
     &__chevron {
         transition: ease-out 0.5s;
         transition-property: rotate transform;
         pointer-events: none;
     }
+
     // List element
     &__list {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
-
         margin: 0;
         margin-top: 0.25rem;
         margin-left: var(--p-x);
         padding-left: 0.5rem;
-
         list-style: none;
         border-left: 2px solid rgb(var(--c-secondary-100));
     }
+
     &:not(&[open]) &__list {
         display: none;
     }
-    // ListItem element
-    &__list-item {}
 
     // Change chevron rotating on open/close details
     &[open] &__chevron {
         rotate: 180deg;
+    }
+
+    // Active modifier
+    &.active &__name {
+        background-color: rgb(var(--c-white) 0.1);
     }
 
     @media (min-width: $min-bp-desktop) {
@@ -126,23 +126,21 @@ onClickOutside(group, () => {
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
+
         // List element if desktop
         &__list {
             position: absolute;
             top: 100%;
             right: 0;
-
             background: var(--g-primary-vertical);
-
             max-width: 200%;
             width: max-content;
-
-            padding: 0;
             margin: 0;
             padding: 0.25rem;
             border-radius: var(--br);
             border-left: none;
         }
+
         // List element if open and have active item
         &[open].active &__list {
             border-top-right-radius: 0;

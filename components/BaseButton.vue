@@ -25,14 +25,11 @@ withDefaults(defineProps<{
 
 .button {
     padding: 0.25rem 1rem;
-
     cursor: pointer;
-
     border-width: 1px;
     border-radius: 0.5rem;
     border-style: solid;
     border-color: rgb(var(--bg-color));
-
     background-color: rgb(var(--bg-color));
     color: rgb(var(--color));
 
@@ -43,14 +40,14 @@ withDefaults(defineProps<{
     }
 
     &:hover {
-        animation-name: onHover;
+        animation-name: on-hover;
         animation-duration: 0.1s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
     }
 
     &:active {
-        animation-name: onActive;
+        animation-name: on-active;
         animation-duration: 0.3s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
@@ -60,21 +57,22 @@ withDefaults(defineProps<{
         --bg-color: var(--c-primary-600);
         --color: var(--c-white);
     }
+
     &.light {
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
     }
 }
 
-@keyframes onHover {
+@keyframes on-hover {
     100% {
-        color: rgba(var(--color), 50%);
+        color: rgb(var(--color) 50%);
     }
 }
 
-@keyframes onActive {
+@keyframes on-active {
     100% {
-        background-color: rgba(var(--bg-color), 90%);
+        background-color: rgb(var(--bg-color) 90%);
     }
 }
 </style>
