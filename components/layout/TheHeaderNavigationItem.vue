@@ -29,8 +29,7 @@ defineProps<{
     text-decoration: none;
 
     color: rgb(var(--c-white));
-    font-size: var(--fs-body-1);
-    font-weight: var(--fw);
+    @include typo-body-1;
 
     // Cursor styles
     &[href] {
@@ -43,7 +42,7 @@ defineProps<{
     // Current modifier
     &.current {
         background-color: rgba(var(--c-white), 0.2);
-        font-weight: var(--fw-bold);
+        @include typo-body-1-bold;
     }
     // Hover effect
     &:hover:not(.current) {

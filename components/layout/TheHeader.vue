@@ -54,7 +54,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
     &__navigation {
 
     }
-    @media (min-width: $min-bp-desktop) {
+    @include from-desktop {
         &__navigationMenuButton {
             display: none;
         }

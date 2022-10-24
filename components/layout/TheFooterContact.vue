@@ -17,21 +17,19 @@ defineProps<{
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .contact {
     &__name {
         color: rgb(var(--c-primary-200));
-        font-style: normal;
-        font-size: var(--fs-body-3);
-        font-weight: var(--fw-regular);
+        @include typo-body-3;
 
         margin: 0;
     }
     &__link {
         color: rgb(var(--c-primary-100));
-        font-size: var(--fs-body-2);
-        font-style: normal;
-        font-weight: var(--fw);
         text-decoration: none;
+        @include typo-body-2;
 
         &:hover {
             text-decoration: underline;

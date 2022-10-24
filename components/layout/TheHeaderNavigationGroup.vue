@@ -53,6 +53,7 @@ onClickOutside(group, () => {
 
 <style module lang="scss">
 @use '@/assets/css/variables' as *;
+@use '@/assets/css/mixins' as *;
 
 .group {
     --p-y: 0.25rem;
@@ -60,7 +61,7 @@ onClickOutside(group, () => {
     --br: var(--br-s);
 
     color: rgb(var(--c-secondary-100));
-    font-size: var(--fs);
+    @include typo-body-1;
 
     // Active modifier
     &.active &__name {
@@ -83,6 +84,7 @@ onClickOutside(group, () => {
 
         color: rgb(var(--c-white));
         font-weight: var(--fw-bold);
+        @include typo-body-1-bold;
 
         cursor: pointer;
     }

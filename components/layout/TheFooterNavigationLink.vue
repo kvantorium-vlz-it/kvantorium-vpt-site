@@ -14,10 +14,12 @@ defineProps<{
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .link {
-    font-size: var(--fs-body-2);
     color: rgb(var(--c-primary-100));
     text-decoration: none;
+    @include typo-body-2;
 
     transition: color ease-out 0.3s;
 

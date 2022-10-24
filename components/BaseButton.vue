@@ -21,6 +21,8 @@ withDefaults(defineProps<{
 
 <style module lang="scss">
 @use '@/assets/css/variables' as *;
+@use '@/assets/css/mixins' as *;
+
 .button {
     padding: 0.25rem 1rem;
 
@@ -34,7 +36,11 @@ withDefaults(defineProps<{
     background-color: rgb(var(--bg-color));
     color: rgb(var(--color));
 
-    font-size: var(--fs-body-2);
+    @include typo-body-2;
+
+    @include from-desktop {
+        padding: 0.5rem 2rem;
+    }
 
     &:hover {
         animation-name: onHover;
@@ -57,12 +63,6 @@ withDefaults(defineProps<{
     &.light {
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
-    }
-}
-
-@media (min-width: $min-bp-desktop) {
-    .button {
-        padding: 0.5rem 2rem;
     }
 }
 

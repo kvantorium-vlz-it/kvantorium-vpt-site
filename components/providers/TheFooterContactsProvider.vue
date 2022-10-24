@@ -47,7 +47,14 @@ class Contact {
     }
 }
 
-const rawContacts = ref<IContact[]>([])
+const rawContacts = ref<IContact[]>([
+    {
+        label: 'gjwka',
+        link: 'gjkwagaw',
+        name: 'gawgwa',
+        type: 'geo'
+    }
+])
 
 const contacts = ref<Contact[]>(rawContacts.value
     .map(contact => new Contact(contact))

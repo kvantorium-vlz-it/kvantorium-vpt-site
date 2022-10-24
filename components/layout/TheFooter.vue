@@ -64,11 +64,11 @@
 
         text-align: center;
         color: rgb(var(--c-white));
-        font-size: var(--fs-body-2);
+        @include typo-body-2;
     }
 }
 
-@media (min-width: $min-bp-desktop) {
+@include from-desktop {
     .footer {
         &__section {
             width: auto;

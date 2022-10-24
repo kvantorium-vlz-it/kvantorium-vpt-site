@@ -10,6 +10,8 @@
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .logo {
     --gap: 0.5rem;
     --icon-width: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
@@ -35,10 +37,10 @@
     }
 
     &__top {
-        font-size: var(--fs-logo-top);
+        @include typo-logo-top;
     }
     &__bottom {
-        font-size: var(--fs-logo-bottom);
+        @include typo-logo-bottom;
     }
 }
 </style>
