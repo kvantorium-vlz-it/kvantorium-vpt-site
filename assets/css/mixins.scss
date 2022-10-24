@@ -26,6 +26,59 @@
 
 @mixin desktop-only {
     @include from-desktop(){
-        @content
+        @content;
     }
+}
+
+/* ========================== */
+/* Mixins for typography      */
+/* ========================== */
+@mixin typo-logo-top {
+    font-size: var(--fs-logo-top);
+    font-weight: var(--fw-bold);
+}
+
+@mixin typo-logo-bottom {
+    font-size: var(--fs-logo-bottom);
+    font-weight: var(--fw-bold);
+}
+
+@mixin typo-h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-bold);
+}
+
+@mixin typo-h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+}
+
+@mixin typo-h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+}
+
+@mixin body-1-regular {
+    font-size: var(--fs-body-1);
+    font-weight: var(--fw-regular);
+}
+
+@mixin body-1-bold {
+    font-size: var(--fs-body-1);
+    font-weight: var(--fw-bold);
+}
+
+@mixin body-2-regular {
+    font-size: var(--fs-body-2);
+    font-weight: var(--fw-regular);
+}
+
+@mixin body-2-bold {
+    font-size: var(--fs-body-2);
+    font-weight: var(--fw-bold);
+}
+
+@mixin body-3-regular {
+    font-size: var(--fs-body-3);
+    font-weight: var(--fw-regular);
 }
