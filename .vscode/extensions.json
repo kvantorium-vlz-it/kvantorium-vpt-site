@@ -3,5 +3,6 @@
         "Vue.volar",
         "cpylua.language-postcss",
         "vunguyentuan.vscode-css-variables",
+        "stylelint.vscode-stylelint"
     ],
 }
