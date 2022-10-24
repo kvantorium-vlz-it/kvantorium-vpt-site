@@ -33,52 +33,76 @@
 /* ========================== */
 /* Mixins for typography      */
 /* ========================== */
+@mixin typo-normal {
+    font-style: normal;
+}
+
 @mixin typo-logo-top {
     font-size: var(--fs-logo-top);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-logo-bottom {
     font-size: var(--fs-logo-bottom);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-h1 {
     font-size: var(--fs-h1);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-h2 {
     font-size: var(--fs-h2);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-h3 {
     font-size: var(--fs-h3);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-body-1 {
     font-size: var(--fs-body-1);
     font-weight: var(--fw-regular);
+
+    @include typo-normal;
 }
 
 @mixin typo-body-1-bold {
     font-size: var(--fs-body-1);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-body-2 {
     font-size: var(--fs-body-2);
     font-weight: var(--fw-regular);
+
+    @include typo-normal;
 }
 
 @mixin typo-body-2-bold {
     font-size: var(--fs-body-2);
     font-weight: var(--fw-bold);
+
+    @include typo-normal;
 }
 
 @mixin typo-body-3 {
     font-size: var(--fs-body-3);
     font-weight: var(--fw-regular);
+
+    @include typo-normal;
 }
