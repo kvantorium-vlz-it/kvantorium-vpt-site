@@ -4,12 +4,12 @@ const navigation = ref<HTMLElement>(null)
 withDefaults(defineProps<{
     isOpen: boolean;
 }>(), {
-    isOpen: false,
+    isOpen: false
 })
 
 const emit = defineEmits<{
-    (e: 'close'): void;
-    (e: 'open'): void;
+    (_e: 'close'): void,
+    (_e: 'open'): void,
 }>()
 
 onClickOutside(navigation, (_event) => {
@@ -41,11 +41,11 @@ useSwipe(navigation, {
 
 <template>
     <nav
+        ref="navigation"
         :class="{
             [$style.navigation]: true,
             [$style.open]: isOpen,
         }"
-        ref="navigation"
     >
         <the-header-navigation-provider
             #="{ navigation, isGroup, isItem }"

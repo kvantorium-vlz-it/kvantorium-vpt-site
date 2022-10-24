@@ -14,13 +14,13 @@ type Navigation = (INavigationGroup | INavigationItem)[]
 const navigation: Navigation = [
     {
         label: 'Главная',
-        to: '/',
+        to: '/'
     },
     {
         name: 'Новости',
         items: [
             { label: 'События' },
-            { label: 'Мероприятия' },
+            { label: 'Мероприятия' }
         ]
     },
     {
@@ -35,7 +35,7 @@ const navigation: Navigation = [
             { label: 'хайтек' },
             { label: 'математика' },
             { label: 'технический английский' },
-            { label: 'квантошахматы' },
+            { label: 'квантошахматы' }
         ]
     },
     {
@@ -44,9 +44,9 @@ const navigation: Navigation = [
             { label: 'Общаяя информация' },
             { label: 'Сотрудники' },
             { label: 'Сведения об организации' },
-            { label: 'Документы' },
+            { label: 'Документы' }
         ]
-    },
+    }
 ]
 
 const isGroup = (item: any): item is INavigationGroup => 'name' in item
@@ -56,8 +56,7 @@ const isItem = (item: any): item is INavigationItem => 'label' in item
 <template>
     <slot
         :navigation="navigation"
-        :isGroup="isGroup"
-        :isItem="isItem"
-    >
-    </slot>
+        :is-group="isGroup"
+        :is-item="isItem"
+    />
 </template>

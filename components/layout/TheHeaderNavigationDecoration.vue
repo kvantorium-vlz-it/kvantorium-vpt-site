@@ -1,6 +1,6 @@
 <!-- Circle cutted by overflow if height more than vh -->
 <template>
-    <div :class="$style.decoration"></div>
+    <div :class="$style.decoration" />
 </template>
 
 <style module lang="scss">

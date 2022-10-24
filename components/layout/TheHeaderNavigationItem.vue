@@ -10,7 +10,7 @@ defineProps<{
         :class="$style.item"
         :exact-active-class="$style.current"
     >
-        <slot></slot>
+        <slot />
     </nuxt-link>
 </template>
 

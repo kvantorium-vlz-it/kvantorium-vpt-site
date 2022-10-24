@@ -9,7 +9,7 @@ defineProps<{
         :to="to"
         :class="$style.link"
     >
-        <slot></slot>
+        <slot />
     </nuxt-link>
 </template>
 

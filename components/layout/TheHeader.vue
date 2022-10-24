@@ -13,22 +13,22 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </script>
 
 <template>
-<header :class="$style.header">
-    <nuxt-link to="/" :class="$style.header__link">
-        <kvantorium-logo />
-    </nuxt-link>
+    <header :class="$style.header">
+        <nuxt-link to="/" :class="$style.header__link">
+            <kvantorium-logo />
+        </nuxt-link>
 
-    <the-header-navigation
-        :is-open="isMobileNavigationOpen"
-        @close="handleCloseMobileMenu"
-    />
+        <the-header-navigation
+            :is-open="isMobileNavigationOpen"
+            @close="handleCloseMobileMenu"
+        />
 
-    <the-header-navigation-menu-button
-        ref="menuToggleButton"
-        :class="$style.header__navigationMenuButton"
-        @click="toggleMobileMenu"
-    />
-</header>
+        <the-header-navigation-menu-button
+            ref="menuToggleButton"
+            :class="$style.header__navigationMenuButton"
+            @click="toggleMobileMenu"
+        />
+    </header>
 </template>
 
 <style module lang="scss">

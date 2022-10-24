@@ -10,8 +10,11 @@ defineProps<{
         <h4 :class="$style.contact__name">
             {{ name }}:
         </h4>
-        <a :href="link" :class="$style.contact__link">
-            <slot></slot>
+        <a
+            :href="link"
+            :class="$style.contact__link"
+        >
+            <slot />
         </a>
     </div>
 </template>

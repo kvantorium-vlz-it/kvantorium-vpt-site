@@ -11,7 +11,7 @@ defineProps<{
         </h3>
 
         <div :class="$style.section__wrapper">
-            <slot></slot>
+            <slot />
         </div>
     </section>
 </template>

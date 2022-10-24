@@ -19,11 +19,11 @@ onClickOutside(group, () => {
 
 <template>
     <details
+        ref="group"
         :class="{
             [$style.group]: true,
             [$style.active]: isActiveGroup,
         }"
-        ref="group"
     >
         <summary :class="$style.group__name">
             {{ name }}

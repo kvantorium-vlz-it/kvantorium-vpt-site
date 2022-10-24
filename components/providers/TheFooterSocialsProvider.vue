@@ -4,14 +4,9 @@ interface ISocial {
     link: string;
 }
 
-const socials = ref<ISocial[]>([
-    {
-        icon: 'vk',
-        link: 'gjkwagw'
-    }
-])
+const socials = ref<ISocial[]>([])
 </script>
 
 <template>
-    <slot :socials="socials"></slot>
+    <slot :socials="socials" />
 </template>

@@ -12,6 +12,11 @@
     "postcss",
     "vue"
   ],
+  "eslint.enable": true,
+  "eslint.validate": [
+    "vue",
+    "typescript",
+  ],
   "[scss]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": true,

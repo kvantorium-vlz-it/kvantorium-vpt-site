@@ -1,12 +1,12 @@
 <template>
-<div :class="$style.logo">
-    <nuxt-icon :class="$style.logo__icon" name="logo_monocolor" />
-    <div :class="$style.logo__details">
-        <span :class="$style.logo__top">кванториум</span>
-        <br>
-        <span :class="$style.logo__bottom">волжский политех</span>
+    <div :class="$style.logo">
+        <nuxt-icon :class="$style.logo__icon" name="logo_monocolor" />
+        <div :class="$style.logo__details">
+            <span :class="$style.logo__top">кванториум</span>
+            <br>
+            <span :class="$style.logo__bottom">волжский политех</span>
+        </div>
     </div>
-</div>
 </template>
 
 <style module lang="scss">

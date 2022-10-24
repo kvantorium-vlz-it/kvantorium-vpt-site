@@ -4,7 +4,7 @@ type theme = 'dark' | 'light'
 withDefaults(defineProps<{
     theme?: theme;
 }>(), {
-    theme: 'dark',
+    theme: 'dark'
 })
 </script>
 
@@ -15,7 +15,7 @@ withDefaults(defineProps<{
             $style[theme],
         ]"
     >
-        <slot></slot>
+        <slot />
     </button>
 </template>
 
