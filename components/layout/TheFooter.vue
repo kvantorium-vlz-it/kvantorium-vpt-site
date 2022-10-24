@@ -32,7 +32,6 @@
 
 <style module lang="scss">
 @use '@/assets/css/mixins' as *;
-@use '@/assets/css/variables' as *;
 
 .footer {
     background-color: rgb(var(--bg-footer));

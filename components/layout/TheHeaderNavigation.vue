@@ -84,6 +84,7 @@ useSwipe(navigation, {
         top: 0;
         bottom: 0;
         left: 0;
+        transform: translateX(calc(var(--w-mobile-sidebar-width) * -1));
 
         overflow: auto;
         display: flex;
@@ -100,16 +101,14 @@ useSwipe(navigation, {
         transition: ease-out 0.5s;
         transition-property: transform;
 
-        translate: calc(var(--w-mobile-sidebar-width) * -1);
-
         & > * {
             width: 100%;
         }
 
         &.open {
-            box-shadow: var(--bs-sidebar);
+            transform: translateX(0);
 
-            translate: 0;
+            box-shadow: var(--bs-sidebar);
         }
 
         @include page-section;

@@ -29,7 +29,7 @@
         aspect-ratio: 1;
         width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
 
-        border: 3rem solid rgb(var(--c-secondary-200) 0.05);
+        border: 3rem solid rgb(var(--c-secondary-200) / 5%);
         border-radius: 100vw;
     }
 }

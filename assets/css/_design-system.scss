@@ -17,74 +17,74 @@
     // =================
     :root {
         /* Primary colors */
-        --c-primary-100: 211, 226, 249;
-        --c-primary-200: 169, 196, 244;
-        --c-primary-300: 120, 154, 222;
-        --c-primary-400: 81, 114, 190;
-        --c-primary-500: 35, 66, 147;
-        --c-primary-600: 25, 50, 126;
-        --c-primary-700: 17, 37, 105;
-        --c-primary-800: 11, 25, 85;
-        --c-primary-900: 6, 17, 70;
+        --c-primary-100: 211 226 249;
+        --c-primary-200: 169 196 244;
+        --c-primary-300: 120 154 222;
+        --c-primary-400: 81 114 190;
+        --c-primary-500: 35 66 147;
+        --c-primary-600: 25 50 126;
+        --c-primary-700: 17 37 105;
+        --c-primary-800: 11 25 85;
+        --c-primary-900: 6 17 70;
 
         /* Secondary colors */
-        --c-secondary-100: 250, 252, 255;
-        --c-secondary-200: 246, 249, 254;
-        --c-secondary-300: 232, 239, 249;
-        --c-secondary-400: 81, 114, 190;
-        --c-secondary-500: 35, 66, 147;
-        --c-secondary-600: 25, 50, 126;
-        --c-secondary-700: 17, 37, 105;
-        --c-secondary-800: 11, 25, 86;
-        --c-secondary-900: 6, 17, 70;
+        --c-secondary-100: 250 252 255;
+        --c-secondary-200: 246 249 254;
+        --c-secondary-300: 232 239 249;
+        --c-secondary-400: 81 114 190;
+        --c-secondary-500: 35 66 147;
+        --c-secondary-600: 25 50 126;
+        --c-secondary-700: 17 37 105;
+        --c-secondary-800: 11 2, 86;
+        --c-secondary-900: 6 1, 70;
 
         /* Success colors */
-        --c-success-100: 218, 250, 209;
-        --c-success-200: 175, 245, 165;
-        --c-success-300: 118, 225, 116;
-        --c-success-400: 77, 196, 85;
-        --c-success-500: 30, 158, 51;
-        --c-success-600: 21, 135, 51;
-        --c-success-700: 15, 113, 49;
-        --c-success-800: 9, 91, 46;
-        --c-success-900: 5, 75, 43;
+        --c-success-100: 218 250 209;
+        --c-success-200: 175 245 165;
+        --c-success-300: 118 225 116;
+        --c-success-400: 77 196 85;
+        --c-success-500: 30 158 51;
+        --c-success-600: 21 135 51;
+        --c-success-700: 15 113 49;
+        --c-success-800: 9 91 46;
+        --c-success-900: 5 75 43;
 
         /* Warning colors */
-        --c-warning-100: 255, 246, 204;
-        --c-warning-200: 255, 233, 153;
-        --c-warning-300: 255, 218, 103;
-        --c-warning-400: 255, 203, 65;
-        --c-warning-500: 255, 179, 2;
-        --c-warning-600: 219, 147, 1;
-        --c-warning-700: 183, 117, 1;
-        --c-warning-800: 147, 89, 0;
-        --c-warning-900: 122, 70, 0;
+        --c-warning-100: 255 246 204;
+        --c-warning-200: 255 233 153;
+        --c-warning-300: 255 218 103;
+        --c-warning-400: 255 203 65;
+        --c-warning-500: 255 179 2;
+        --c-warning-600: 219 147 1;
+        --c-warning-700: 183 117 1;
+        --c-warning-800: 147 89 0;
+        --c-warning-900: 122 70 0;
 
         /* Error colors */
-        --c-error-100: 251, 223, 209;
-        --c-error-200: 248, 186, 164;
-        --c-error-300: 236, 136, 116;
-        --c-error-400: 217, 91, 78;
-        --c-error-500: 193, 29, 29;
-        --c-error-600: 165, 21, 33;
-        --c-error-700: 138, 14, 36;
-        --c-error-800: 111, 9, 35;
-        --c-error-900: 92, 5, 35;
+        --c-error-100: 251 223 209;
+        --c-error-200: 248 186 164;
+        --c-error-300: 236 136 116;
+        --c-error-400: 217 91 78;
+        --c-error-500: 193 29 29;
+        --c-error-600: 165 21 33;
+        --c-error-700: 138 14 36;
+        --c-error-800: 111 9 35;
+        --c-error-900: 92, 5 35;
 
         /* Gray colors */
-        --c-gray-100: 230, 230, 230;
-        --c-gray-200: 204, 204, 204;
-        --c-gray-300: 179, 179, 179;
-        --c-gray-400: 153, 153, 153;
-        --c-gray-500: 128, 128, 128;
-        --c-gray-600: 102, 102, 102;
-        --c-gray-700: 76, 76, 76;
-        --c-gray-800: 51, 51, 51;
-        --c-gray-900: 25, 25, 25;
+        --c-gray-100: 230 230 230;
+        --c-gray-200: 204 204 204;
+        --c-gray-300: 179 179 179;
+        --c-gray-400: 153 153 153;
+        --c-gray-500: 128 128 128;
+        --c-gray-600: 102 102 102;
+        --c-gray-700: 76 76 76;
+        --c-gray-800: 51 51 51;
+        --c-gray-900: 25 25 25;
 
         /* Specific colors */
-        --c-white: 250, 250, 250;
-        --c-black: 0, 0, 23;
+        --c-white: 250 250 250;
+        --c-black: 0 0 23;
 
         /* Default values */
         --c-primary: var(--c-primary-500);

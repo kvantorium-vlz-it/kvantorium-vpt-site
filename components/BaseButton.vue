@@ -69,13 +69,13 @@ withDefaults(defineProps<{
 
 @keyframes on-hover {
     100% {
-        color: rgb(var(--color) 50%);
+        color: rgb(var(--color) / 50%);
     }
 }
 
 @keyframes on-active {
     100% {
-        background-color: rgb(var(--bg-color) 90%);
+        background-color: rgb(var(--bg-color) / 90%);
     }
 }
 </style>

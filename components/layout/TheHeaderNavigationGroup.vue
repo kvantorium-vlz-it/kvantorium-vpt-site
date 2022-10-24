@@ -120,7 +120,7 @@ onClickOutside(group, () => {
 
     // Active modifier
     &.active &__name {
-        background-color: rgb(var(--c-white) 0.1);
+        background-color: rgb(var(--c-white) / 10%);
     }
 
     @include typo-body-1;

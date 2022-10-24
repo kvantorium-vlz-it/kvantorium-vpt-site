@@ -42,14 +42,14 @@ defineProps<{
 
     // Current modifier
     &.current {
-        background-color: rgb(var(--c-white) 0.2);
+        background-color: rgb(var(--c-white) / 20%);
 
         @include typo-body-1-bold;
     }
 
     // Hover effect
     &:hover:not(.current) {
-        background-color: rgb(var(--c-white) 0.1);
+        background-color: rgb(var(--c-white) / 10%);
     }
 
     @include typo-body-1;
