@@ -10,7 +10,8 @@
 @mixin use-page-section {
     --p-x: 1rem;
     --p-y: 0.75rem;
-    --w-desktop: #{$bp-min-desktop};
+    --w-desktop: #{px-to-rem(1200px)};
+    --shadow: var(--bs-page-section);
 }
 
 @mixin page-section {
@@ -19,7 +20,7 @@
     @include use-page-section;
 
     @include from-desktop {
-        // max-width: var(--w-desktop);
+        max-width: var(--w-desktop);
     }
 }
 

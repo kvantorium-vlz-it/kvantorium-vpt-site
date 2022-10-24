@@ -93,6 +93,7 @@ useSwipe(navigation, {
 
         width: var(--w-mobile-sidebar-width);
         max-height: 100vh;
+        padding: var(--p-y) var(--p-x);
 
         background: var(--bg-sidebar);
         border-top-right-radius: var(--br);
@@ -111,7 +112,7 @@ useSwipe(navigation, {
             box-shadow: var(--bs-sidebar);
         }
 
-        @include page-section;
+        @include use-page-section;
     }
 }
 
