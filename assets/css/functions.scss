@@ -1,0 +1,27 @@
+// Module for declaring functions
+
+@use '@/assets/css/base-variables' as *;
+
+@function px-to-rem($px) {
+    $rem: calc($px / $root-font-size) + rem;
+
+    @return $rem;
+}
+
+@function px-to-breakpoint($px) {
+    $em: calc($px / $root-font-size) + em;
+
+    @return $em;
+}
+
+@function breakpoint-min($px) {
+    $min: $px;
+
+    @return $min;
+}
+
+@function breakpoint-max($px) {
+    $max: $px - 0.5px;
+
+    @return $max;
+}

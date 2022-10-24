@@ -8,5 +8,5 @@ const socials = ref<ISocial[]>([])
 </script>
 
 <template>
-    <slot :socials="socials"></slot>
+    <slot :socials="socials" />
 </template>

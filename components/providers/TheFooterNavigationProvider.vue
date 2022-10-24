@@ -8,5 +8,5 @@ const navigation = ref<INavigationItem[]>([])
 </script>
 
 <template>
-    <slot :navigation="navigation"></slot>
+    <slot :navigation="navigation" />
 </template>

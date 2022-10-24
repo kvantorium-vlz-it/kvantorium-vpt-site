@@ -1,3 +1,129 @@
+// Module for declaring mixins
+
+@use '@/assets/css/breakpoints' as *;
+@use '@/assets/css/functions' as *;
+
+// ==========================
+// Mixins page section
+// ==========================
+
+@mixin use-page-section {
+    --p-x: 1rem;
+    --p-y: 0.75rem;
+    --w-desktop: #{px-to-rem(1200px)};
+    --shadow: var(--bs-page-section);
+}
+
 @mixin page-section {
-    padding: 0.75rem 1rem;
+    padding: var(--p-y) var(--p-x);
+
+    @include use-page-section;
+
+    @include from-desktop {
+        max-width: var(--w-desktop);
+    }
+}
+
+// ==========================
+// Mixins for media queries
+// ==========================
+
+@mixin from-mobile {
+    @content;
+}
+
+@mixin mobile-only {
+    @media (max-width: $bp-max-mobile) {
+        @content;
+    }
+}
+
+@mixin from-desktop {
+    @media (min-width: $bp-min-desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-only {
+    @include from-desktop {
+        @content;
+    }
+}
+
+// ==========================
+// Mixins for typography
+// ==========================
+
+@mixin typo-normal {
+    font-style: normal;
+}
+
+@mixin typo-logo-top {
+    font-size: var(--fs-logo-top);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-logo-bottom {
+    font-size: var(--fs-logo-bottom);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-h2 {
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-body-1 {
+    font-size: var(--fs-body-1);
+    font-weight: var(--fw-regular);
+
+    @include typo-normal;
+}
+
+@mixin typo-body-1-bold {
+    font-size: var(--fs-body-1);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-body-2 {
+    font-size: var(--fs-body-2);
+    font-weight: var(--fw-regular);
+
+    @include typo-normal;
+}
+
+@mixin typo-body-2-bold {
+    font-size: var(--fs-body-2);
+    font-weight: var(--fw-bold);
+
+    @include typo-normal;
+}
+
+@mixin typo-body-3 {
+    font-size: var(--fs-body-3);
+    font-weight: var(--fw-regular);
+
+    @include typo-normal;
 }

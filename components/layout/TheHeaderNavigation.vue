@@ -4,12 +4,12 @@ const navigation = ref<HTMLElement>(null)
 withDefaults(defineProps<{
     isOpen: boolean;
 }>(), {
-    isOpen: false,
+    isOpen: false
 })
 
 const emit = defineEmits<{
-    (e: 'close'): void;
-    (e: 'open'): void;
+    (_e: 'close'): void,
+    (_e: 'open'): void,
 }>()
 
 onClickOutside(navigation, (_event) => {
@@ -41,11 +41,11 @@ useSwipe(navigation, {
 
 <template>
     <nav
+        ref="navigation"
         :class="{
             [$style.navigation]: true,
             [$style.open]: isOpen,
         }"
-        ref="navigation"
     >
         <the-header-navigation-provider
             #="{ navigation, isGroup, isItem }"
@@ -80,41 +80,42 @@ useSwipe(navigation, {
     .navigation {
         --br: var(--br-m);
 
-        @include page-section;
-
         position: fixed;
-        max-height: 100vh;
         top: 0;
-        left: 0;
         bottom: 0;
-        width: var(--w-mobile-sidebar-width);
+        left: 0;
+        transform: translateX(calc(var(--w-mobile-sidebar-width) * -1));
 
+        overflow: auto;
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
 
-        overflow: auto;
+        width: var(--w-mobile-sidebar-width);
+        max-height: 100vh;
+        padding: var(--p-y) var(--p-x);
 
         background: var(--bg-sidebar);
-
         border-top-right-radius: var(--br);
         border-bottom-right-radius: var(--br);
 
-        translate: calc(var(--w-mobile-sidebar-width) * -1);
-
-        transition-property: transform;
         transition: ease-out 0.5s;
+        transition-property: transform;
 
         & > * {
             width: 100%;
         }
 
         &.open {
-            translate: 0;
+            transform: translateX(0);
+
             box-shadow: var(--bs-sidebar);
         }
+
+        @include use-page-section;
     }
 }
+
 @media (min-width: $min-bp-desktop) {
     .navigation {
         display: flex;

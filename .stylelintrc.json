@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "stylelint-order"
+  ],
+  "extends": [
+    "stylelint-config-html",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-vue/scss",
+    "stylelint-config-clean-order"
+  ],
+  "rules": {
+    "indentation": 4,
+    "string-quotes": "single",
+    "order/order": [
+      "custom-properties",
+			"dollar-variables",
+      "declarations",
+      "rules",
+      "at-rules"
+    ],
+    "color-function-notation": "modern"
+  }
+}

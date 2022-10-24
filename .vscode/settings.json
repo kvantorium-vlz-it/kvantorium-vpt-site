@@ -1,8 +1,30 @@
 {
-    "files.associations": {
-        "*.postcss": "scss",
-    },
-    "cssVariables.lookupFiles": [
-        "assets/css/variables.scss"
-    ],
+  "files.associations": {
+    "*.postcss": "scss",
+  },
+  "cssVariables.lookupFiles": [
+    "assets/css/variables.scss"
+  ],
+  "stylelint.enable": true,
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "postcss",
+    "vue"
+  ],
+  "eslint.enable": true,
+  "eslint.validate": [
+    "vue",
+    "typescript",
+  ],
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+    }
+  },
+  "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+    }
+  }
 }

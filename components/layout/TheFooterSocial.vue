@@ -6,8 +6,14 @@ defineProps<{
 </script>
 
 <template>
-    <a :href="link" target="_blank">
-        <nuxt-icon :name="icon" fill />
+    <a
+        :href="link"
+        target="_blank"
+    >
+        <nuxt-icon
+            :name="icon"
+            fill
+        />
     </a>
 </template>
 
@@ -15,8 +21,8 @@ defineProps<{
 $size: 1.5rem;
 
 .social {
+    aspect-ratio: 1;
     width: $size;
     height: $size;
-    aspect-ratio: 1;
 }
 </style>

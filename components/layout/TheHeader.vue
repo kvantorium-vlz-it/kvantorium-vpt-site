@@ -13,22 +13,22 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </script>
 
 <template>
-<header :class="$style.header">
-    <nuxt-link to="/" :class="$style.header__link">
-        <kvantorium-logo />
-    </nuxt-link>
+    <header :class="$style.header">
+        <nuxt-link to="/" :class="$style.header__link">
+            <kvantorium-logo />
+        </nuxt-link>
 
-    <the-header-navigation
-        :is-open="isMobileNavigationOpen"
-        @close="handleCloseMobileMenu"
-    />
+        <the-header-navigation
+            :is-open="isMobileNavigationOpen"
+            @close="handleCloseMobileMenu"
+        />
 
-    <the-header-navigation-menu-button
-        ref="menuToggleButton"
-        :class="$style.header__navigationMenuButton"
-        @click="toggleMobileMenu"
-    />
-</header>
+        <the-header-navigation-menu-button
+            ref="menuToggleButton"
+            :class="$style.header__navigationMenuButton"
+            @click="toggleMobileMenu"
+        />
+    </header>
 </template>
 
 <style module lang="scss">
@@ -36,25 +36,22 @@ const isMobileNavigationOpen = ref<boolean>(false)
 @use '@/assets/css/variables' as *;
 
 .header {
-    @include page-section;
-
     position: relative;
     z-index: 1;
 
-    background-color: rgb(var(--bg-header));
-
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    background-color: rgb(var(--bg-header));
 
     &__link {
         text-decoration: none;
     }
 
-    &__navigation {
+    @include page-section;
 
-    }
-    @media (min-width: $min-bp-desktop) {
+    @include from-desktop {
         &__navigationMenuButton {
             display: none;
         }

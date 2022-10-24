@@ -1,0 +1,203 @@
+/* stylelint-disable no-duplicate-selectors */
+// Module for declaring design system
+// Table of content:
+// |-- Design system variables
+// |   |-- declaring css variables
+// |   |-- declaring|changing css variables
+// |-- Specific variables
+
+@use '@/assets/css/breakpoints' as *;
+@use '@/assets/css/mixins' as *;
+
+// Design system variables
+
+@include from-mobile {
+    // =================
+    // Colors
+    // =================
+    :root {
+        /* Primary colors */
+        --c-primary-100: 211 226 249;
+        --c-primary-200: 169 196 244;
+        --c-primary-300: 120 154 222;
+        --c-primary-400: 81 114 190;
+        --c-primary-500: 35 66 147;
+        --c-primary-600: 25 50 126;
+        --c-primary-700: 17 37 105;
+        --c-primary-800: 11 25 85;
+        --c-primary-900: 6 17 70;
+
+        /* Secondary colors */
+        --c-secondary-100: 250 252 255;
+        --c-secondary-200: 246 249 254;
+        --c-secondary-300: 232 239 249;
+        --c-secondary-400: 81 114 190;
+        --c-secondary-500: 35 66 147;
+        --c-secondary-600: 25 50 126;
+        --c-secondary-700: 17 37 105;
+        --c-secondary-800: 11 2, 86;
+        --c-secondary-900: 6 1, 70;
+
+        /* Success colors */
+        --c-success-100: 218 250 209;
+        --c-success-200: 175 245 165;
+        --c-success-300: 118 225 116;
+        --c-success-400: 77 196 85;
+        --c-success-500: 30 158 51;
+        --c-success-600: 21 135 51;
+        --c-success-700: 15 113 49;
+        --c-success-800: 9 91 46;
+        --c-success-900: 5 75 43;
+
+        /* Warning colors */
+        --c-warning-100: 255 246 204;
+        --c-warning-200: 255 233 153;
+        --c-warning-300: 255 218 103;
+        --c-warning-400: 255 203 65;
+        --c-warning-500: 255 179 2;
+        --c-warning-600: 219 147 1;
+        --c-warning-700: 183 117 1;
+        --c-warning-800: 147 89 0;
+        --c-warning-900: 122 70 0;
+
+        /* Error colors */
+        --c-error-100: 251 223 209;
+        --c-error-200: 248 186 164;
+        --c-error-300: 236 136 116;
+        --c-error-400: 217 91 78;
+        --c-error-500: 193 29 29;
+        --c-error-600: 165 21 33;
+        --c-error-700: 138 14 36;
+        --c-error-800: 111 9 35;
+        --c-error-900: 92, 5 35;
+
+        /* Gray colors */
+        --c-gray-100: 230 230 230;
+        --c-gray-200: 204 204 204;
+        --c-gray-300: 179 179 179;
+        --c-gray-400: 153 153 153;
+        --c-gray-500: 128 128 128;
+        --c-gray-600: 102 102 102;
+        --c-gray-700: 76 76 76;
+        --c-gray-800: 51 51 51;
+        --c-gray-900: 25 25 25;
+
+        /* Specific colors */
+        --c-white: 250 250 250;
+        --c-black: 0 0 23;
+
+        /* Default values */
+        --c-primary: var(--c-primary-500);
+        --c-secondary: var(--c-secondary-500);
+        --c-success: var(--c-success-500);
+        --c-warning: var(--c-warning-500);
+        --c-error: var(--c-error-500);
+        --c-gray: var(--c-gray-500);
+    }
+
+    // =================
+    // Gradients
+    // =================
+    :root {
+        --g-primary-vertical: linear-gradient(to bottom, rgb(var(--c-primary-800)), rgb(var(--c-primary-500)));
+        --g-promo-vertical: linear-gradient(to bottom, rgb(var(--c-secondary-100)), rgb(var(--c-secondary-300)));
+    }
+
+    // =================
+    // Typography
+    // =================
+    :root {
+        /* Font sizes */
+        --fs-logo-top: 1.625rem;
+        --fs-logo-bottom: 1rem;
+        --fs-h1: 2.5rem;
+        --fs-h2: 2.25rem;
+        --fs-h3: 1.75rem;
+        --fs-body-1: 1.25rem;
+        --fs-body-2: 1rem;
+        --fs-body-3: 0.75rem;
+
+        /* Font weights */
+        --fw-bold: 700;
+        --fw-regular: 400;
+
+        /* Default values */
+        --fs: var(--fs-body-1);
+        --fw: var(--fw-regular);
+    }
+
+    /* Font family */
+    :root {
+        --ff:
+            'Roboto',
+            system-ui,
+            -apple-system,
+            'Segoe UI',
+            helvetica,
+            arial,
+            sans-serif,
+            'Apple Color Emoji',
+            'Segoe UI Emoji';
+    }
+
+    // =================
+    // Effects
+    // =================
+    :root {
+        /* Shadows */
+        --bs-4: 0 0 0.25rem rgb(0 0 0 / 25%);
+        --bs-8: 0 0 0.5rem rgb(0 0 0 / 25%);
+        --bs-16: 0 0 1rem rgb(0 0 0 / 25%);
+        --bs-sidebar: 0.75rem 0 1.5rem rgb(0 0 0 / 25%);
+        --bs-page-section: 0 0 4rem rgb(0 0 0 / 50%);
+        --bs-promo: inset 0 -4rem 4rem rgb(0 0 0 / 50%);
+        --blur-promo: blur(0.25rem);
+    }
+
+    // =================
+    // Border radius
+    // =================
+    :root {
+        --br-full: 100vh;
+        --br-s: 0.5rem;
+        --br-m: 0.75rem;
+        --br-l: 1rem;
+        --br-xl: 1.5rem;
+    }
+}
+
+@include from-desktop {
+    // =================
+    // Typography
+    // =================
+
+    :root {
+        /* Font sizes */
+        --fs-logo-top: 2rem;
+        --fs-logo-bottom: 1.25rem;
+        --fs-h1: 4rem;
+        --fs-h2: 3rem;
+        --fs-h3: 2rem;
+        --fs-body-1: 1.5rem;
+        --fs-body-2: 1.25rem;
+        --fs-body-3: 1rem;
+    }
+}
+
+// Specific variables
+
+@include from-mobile {
+    :root {
+        --bg: var(--c-white);
+        --bg-header: var(--c-primary-900);
+        --bg-footer: var(--c-primary-900);
+        --bg-sidebar: var(--g-primary-vertical);
+        --text-white: var(--c-white);
+        --text-heading: var(--c-primary-600);
+        --text-heading-dark: var(--c-primary-800);
+        --text-subheading: var(--c-primary-600);
+        --text-body: var(--c-primary-500);
+        --text-body-light: var(--c-secondary-700);
+        --w-mobile-sidebar-width: 16rem;
+    }
+}

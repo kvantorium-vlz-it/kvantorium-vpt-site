@@ -19,11 +19,11 @@ onClickOutside(group, () => {
 
 <template>
     <details
+        ref="group"
         :class="{
             [$style.group]: true,
             [$style.active]: isActiveGroup,
         }"
-        ref="group"
     >
         <summary :class="$style.group__name">
             {{ name }}
@@ -53,6 +53,7 @@ onClickOutside(group, () => {
 
 <style module lang="scss">
 @use '@/assets/css/variables' as *;
+@use '@/assets/css/mixins' as *;
 
 .group {
     --p-y: 0.25rem;
@@ -60,37 +61,38 @@ onClickOutside(group, () => {
     --br: var(--br-s);
 
     color: rgb(var(--c-secondary-100));
-    font-size: var(--fs);
-
-    // Active modifier
-    &.active &__name {
-        background-color: rgba(var(--c-white), 0.1);
-    }
 
     // Item element
     &__item {
         width: 100%;
     }
+
     // Name(summary) element
     &__name {
+        cursor: pointer;
+
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         gap: 0.5rem;
+        align-items: center;
+        justify-content: space-between;
 
         padding: var(--p-y) var(--p-x);
+
+        font-weight: var(--fw-bold);
+        color: rgb(var(--c-white));
+
         border-radius: var(--br);
 
-        color: rgb(var(--c-white));
-        font-weight: var(--fw-bold);
-
-        cursor: pointer;
+        @include typo-body-1-bold;
     }
+
     &__chevron {
+        pointer-events: none;
+
         transition: ease-out 0.5s;
         transition-property: rotate transform;
-        pointer-events: none;
     }
+
     // List element
     &__list {
         display: flex;
@@ -103,18 +105,25 @@ onClickOutside(group, () => {
         padding-left: 0.5rem;
 
         list-style: none;
+
         border-left: 2px solid rgb(var(--c-secondary-100));
     }
+
     &:not(&[open]) &__list {
         display: none;
     }
-    // ListItem element
-    &__list-item {}
 
     // Change chevron rotating on open/close details
     &[open] &__chevron {
         rotate: 180deg;
     }
+
+    // Active modifier
+    &.active &__name {
+        background-color: rgb(var(--c-white) / 10%);
+    }
+
+    @include typo-body-1;
 
     @media (min-width: $min-bp-desktop) {
         position: relative;
@@ -124,23 +133,23 @@ onClickOutside(group, () => {
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
+
         // List element if desktop
         &__list {
             position: absolute;
             top: 100%;
             right: 0;
 
-            background: var(--g-primary-vertical);
-
-            max-width: 200%;
             width: max-content;
-
-            padding: 0;
+            max-width: 200%;
             margin: 0;
             padding: 0.25rem;
-            border-radius: var(--br);
+
+            background: var(--g-primary-vertical);
             border-left: none;
+            border-radius: var(--br);
         }
+
         // List element if open and have active item
         &[open].active &__list {
             border-top-right-radius: 0;

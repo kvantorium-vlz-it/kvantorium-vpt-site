@@ -11,22 +11,26 @@ defineProps<{
         </h3>
 
         <div :class="$style.section__wrapper">
-            <slot></slot>
+            <slot />
         </div>
     </section>
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .section {
     &__name {
-        font-size: var(--fs-body-1);
-        font-weight: var(--fw-bold);
-        color: rgb(var(--c-white));
-        border-bottom: 1px solid rgb(var(--c-primary-100));
-
         margin: 0;
         margin-bottom: 0.25rem;
+
+        color: rgb(var(--c-white));
+
+        border-bottom: 1px solid rgb(var(--c-primary-100));
+
+        @include typo-body-1-bold;
     }
+
     &__wrapper {
         padding-left: 0.5rem;
     }

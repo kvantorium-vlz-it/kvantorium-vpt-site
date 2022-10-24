@@ -4,7 +4,7 @@ type theme = 'dark' | 'light'
 withDefaults(defineProps<{
     theme?: theme;
 }>(), {
-    theme: 'dark',
+    theme: 'dark'
 })
 </script>
 
@@ -15,36 +15,36 @@ withDefaults(defineProps<{
             $style[theme],
         ]"
     >
-        <slot></slot>
+        <slot />
     </button>
 </template>
 
 <style module lang="scss">
 @use '@/assets/css/variables' as *;
-.button {
-    padding: 0.25rem 1rem;
+@use '@/assets/css/mixins' as *;
 
+.button {
     cursor: pointer;
 
-    border-width: 1px;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-color: rgb(var(--bg-color));
+    padding: 0.25rem 1rem;
 
-    background-color: rgb(var(--bg-color));
     color: rgb(var(--color));
 
-    font-size: var(--fs-body-2);
+    background-color: rgb(var(--bg-color));
+    border-color: rgb(var(--bg-color));
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.5rem;
 
     &:hover {
-        animation-name: onHover;
+        animation-name: on-hover;
         animation-duration: 0.1s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
     }
 
     &:active {
-        animation-name: onActive;
+        animation-name: on-active;
         animation-duration: 0.3s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
@@ -54,27 +54,28 @@ withDefaults(defineProps<{
         --bg-color: var(--c-primary-600);
         --color: var(--c-white);
     }
+
     &.light {
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
     }
-}
 
-@media (min-width: $min-bp-desktop) {
-    .button {
+    @include typo-body-2;
+
+    @include from-desktop {
         padding: 0.5rem 2rem;
     }
 }
 
-@keyframes onHover {
+@keyframes on-hover {
     100% {
-        color: rgba(var(--color), 50%);
+        color: rgb(var(--color) / 50%);
     }
 }
 
-@keyframes onActive {
+@keyframes on-active {
     100% {
-        background-color: rgba(var(--bg-color), 90%);
+        background-color: rgb(var(--bg-color) / 90%);
     }
 }
 </style>

@@ -10,7 +10,7 @@ defineProps<{
         :class="$style.item"
         :exact-active-class="$style.current"
     >
-        <slot></slot>
+        <slot />
     </nuxt-link>
 </template>
 
@@ -22,32 +22,36 @@ defineProps<{
     --p-x: 0.75rem;
     --br: var(--br-s);
 
-    padding: var(--p-y) var(--p-x);
-    border-radius: var(--br);
-
     display: inline-block;
-    text-decoration: none;
+
+    padding: var(--p-y) var(--p-x);
 
     color: rgb(var(--c-white));
-    font-size: var(--fs-body-1);
-    font-weight: var(--fw);
+    text-decoration: none;
+
+    border-radius: var(--br);
 
     // Cursor styles
     &[href] {
         cursor: pointer;
     }
+
     &:not(&[href]) {
         cursor: not-allowed;
     }
 
     // Current modifier
     &.current {
-        background-color: rgba(var(--c-white), 0.2);
-        font-weight: var(--fw-bold);
+        background-color: rgb(var(--c-white) / 20%);
+
+        @include typo-body-1-bold;
     }
+
     // Hover effect
     &:hover:not(.current) {
-        background-color: rgba(var(--c-white), 0.1);
+        background-color: rgb(var(--c-white) / 10%);
     }
+
+    @include typo-body-1;
 }
 </style>

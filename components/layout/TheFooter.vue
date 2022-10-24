@@ -32,22 +32,19 @@
 
 <style module lang="scss">
 @use '@/assets/css/mixins' as *;
-@use '@/assets/css/variables' as *;
 
 .footer {
-    @include page-section;
-
     background-color: rgb(var(--bg-footer));
 
     &__sections {
         --gap: 0.5rem;
 
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
         gap: var(--gap);
         justify-content: space-between;
     }
+
     &__section {
         width: calc((100% / 2) - var(--gap) / 2);
         max-width: calc((100% / 2) - var(--gap) / 2);
@@ -55,20 +52,24 @@
 
     &__separator {
         margin-top: 0.5rem;
-        border: 1px solid rgb(var(--c-primary-100));
         margin-bottom: 0.25rem;
+
+        border: 1px solid rgb(var(--c-primary-100));
     }
 
     &__copyright {
         margin: 0;
 
-        text-align: center;
         color: rgb(var(--c-white));
-        font-size: var(--fs-body-2);
+        text-align: center;
+
+        @include typo-body-2;
     }
+
+    @include page-section;
 }
 
-@media (min-width: $min-bp-desktop) {
+@include from-desktop {
     .footer {
         &__section {
             width: auto;

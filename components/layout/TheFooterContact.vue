@@ -10,32 +10,36 @@ defineProps<{
         <h4 :class="$style.contact__name">
             {{ name }}:
         </h4>
-        <a :href="link" :class="$style.contact__link">
-            <slot></slot>
+        <a
+            :href="link"
+            :class="$style.contact__link"
+        >
+            <slot />
         </a>
     </div>
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .contact {
     &__name {
-        color: rgb(var(--c-primary-200));
-        font-style: normal;
-        font-size: var(--fs-body-3);
-        font-weight: var(--fw-regular);
-
         margin: 0;
+
+        color: rgb(var(--c-primary-200));
+
+        @include typo-body-3;
     }
+
     &__link {
         color: rgb(var(--c-primary-100));
-        font-size: var(--fs-body-2);
-        font-style: normal;
-        font-weight: var(--fw);
         text-decoration: none;
 
         &:hover {
             text-decoration: underline;
         }
+
+        @include typo-body-2;
     }
 }
 </style>

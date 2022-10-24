@@ -18,12 +18,13 @@
 <style module lang="scss">
 .contacts {
     &__list {
-        list-style: none;
-        padding: 0;
-
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+
+        padding: 0;
+
+        list-style: none;
     }
 }
 </style>

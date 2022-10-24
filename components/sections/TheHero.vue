@@ -38,33 +38,36 @@
     background-size: contain;
 
     &__wrapper {
-        // using page section mixin here cause image must be blurred
-        @include page-section;
-
         backdrop-filter: blur(var(--hero-image-blur));
+
+        // using page section mixin here cause image must be blurred
+
+        @include page-section;
     }
 
     &__info {
         width: min-content;
     }
+
     &__heading {
+        margin: 0;
+        margin-bottom: 1rem;
+
         font-size: var(--fs-h1);
         font-weight: var(--fw-bold);
-        margin: 0;
         color: rgb(var(--c-secondary-100));
-
-        margin-bottom: 1rem;
     }
 
     &__paragraph {
         font-size: var(--fs-body-1);
         color: rgb(var(--c-secondary-100));
     }
+
     &__buttons {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.5rem;
+        align-items: flex-start;
     }
 }
 

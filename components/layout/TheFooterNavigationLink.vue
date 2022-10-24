@@ -9,13 +9,14 @@ defineProps<{
         :to="to"
         :class="$style.link"
     >
-        <slot></slot>
+        <slot />
     </nuxt-link>
 </template>
 
 <style module lang="scss">
+@use '@/assets/css/mixins' as *;
+
 .link {
-    font-size: var(--fs-body-2);
     color: rgb(var(--c-primary-100));
     text-decoration: none;
 
@@ -25,5 +26,7 @@ defineProps<{
         color: rgb(var(--c-primary-300));
         text-decoration: underline;
     }
+
+    @include typo-body-2;
 }
 </style>
