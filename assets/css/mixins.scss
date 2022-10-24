@@ -58,27 +58,27 @@
     font-weight: var(--fw-bold);
 }
 
-@mixin body-1-regular {
+@mixin typo-body-1 {
     font-size: var(--fs-body-1);
     font-weight: var(--fw-regular);
 }
 
-@mixin body-1-bold {
+@mixin typo-body-1-bold {
     font-size: var(--fs-body-1);
     font-weight: var(--fw-bold);
 }
 
-@mixin body-2-regular {
+@mixin typo-body-2 {
     font-size: var(--fs-body-2);
     font-weight: var(--fw-regular);
 }
 
-@mixin body-2-bold {
+@mixin typo-body-2-bold {
     font-size: var(--fs-body-2);
     font-weight: var(--fw-bold);
 }
 
-@mixin body-3-regular {
+@mixin typo-body-3 {
     font-size: var(--fs-body-3);
     font-weight: var(--fw-regular);
 }
