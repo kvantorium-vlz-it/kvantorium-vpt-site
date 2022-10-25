@@ -1,0 +1,9 @@
+@use 'sass:color' as color;
+
+@function color-to-var($rgb) {
+    $red: color.red($rgb);
+    $green: color.green($rgb);
+    $blue: color.blue($rgb);
+
+    @return #{#{$red} #{$green} #{$blue}};
+}
