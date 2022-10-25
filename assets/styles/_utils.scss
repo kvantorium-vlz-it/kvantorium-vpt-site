@@ -1,5 +1,6 @@
 @use 'sass:color' as color;
 @use 'sass:map' as map;
+@use 'sass:list' as list;
 @use 'sass:string' as string;
 @use 'variables' as *;
 
@@ -40,7 +41,20 @@
 /// @param { number } px
 /// @return { rem } rem units
 @function px-to-rem($px) {
+    @if $px == 0 { @return 0; }
     @return '#{calc($px / $base-font-size)}rem';
+}
+
+/// Function that converts list of px to list of rem
+///
+/// @param { px[] } list of px
+/// @return { rem[] } list of rems
+@function list-px-to-rem($list) {
+    $result: ();
+    @each $value in $list {
+        $result: list.append($result, #{px-to-rem($value)});
+    }
+    @return $result;
 }
 
 /// Function that converts px to value for media query breakpoint

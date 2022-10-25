@@ -180,3 +180,35 @@ $border-radius: (
     l: 1rem,
     xl: 1.5rem,
 );
+$effects: (
+    box-shadow: (
+        4: (
+            values: (0 0 4px),
+            color: rgb(var(--c-black) / 25%),
+        ),
+        8: (
+            values: (0 0 8px),
+            color: rgb(var(--c-black) / 25%),
+        ),
+        16: (
+            values: 0 0 16px,
+            color: rgb(var(--c-black) / 25%),
+        ),
+        sidebar: (
+            values:8px 0 24px,
+            color: rgb(var(--c-black) / 25%),
+        ),
+        page-section: (
+            values: 0 0 64px,
+            color: rgb(var(--c-black) / 50%),
+        ),
+        promo: (
+            type: inset,
+            values: 0 -64px 64px,
+            color: rgb(var(--c-black) / 50%),
+        ),
+    ),
+    blur: (
+        hero: 4px,
+    )
+);

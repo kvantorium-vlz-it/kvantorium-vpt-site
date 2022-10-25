@@ -1,5 +1,6 @@
 @use 'sass:map' as map;
 @use 'sass:list' as list;
+@use 'sass:string' as string;
 @use '@styles/utils' as *;
 @use '@styles/variables' as *;
 
@@ -160,5 +161,40 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 @mixin register-gradients($gradients-map) {
     @each $name, $gradient in $gradients-map {
         @include register-gradient($gradient, $name);
+    }
+}
+
+/// Mixin for register box-shadow effect
+///
+/// @param { ( type?: string, values: px[], color: color ) } shadow
+/// @param { string } name
+@mixin register-box-shadow($shadow, $name) {
+    $var: '--bs-#{$name}';
+    $result-bs: '';
+    @if map.get($shadow, type) == 'inset' {
+        $result-bs: string.insert($result-bs, 'inset ', 0);
+    }
+
+    /* stylelint-disable-next-line order/order */
+    $result-bs: string.insert(
+        $result-bs,
+        '#{list-px-to-rem(map.get($shadow, values))} ',
+        string.length($result-bs + 1),
+    );
+    $result-bs: string.insert(
+        $result-bs,
+        map.get($shadow, color),
+        string.length($result-bs + 1)
+    );
+
+    #{$var}: #{$result-bs};
+}
+
+/// Mixin for register box-shadows effects
+///
+/// @param { shadow-map } map of shadows
+@mixin register-box-shadows($shadows-map) {
+    @each $name, $shadow in $shadows-map {
+        @include register-box-shadow($shadow, $name);
     }
 }
