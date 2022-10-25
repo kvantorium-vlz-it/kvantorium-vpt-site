@@ -18,6 +18,7 @@
       "rules",
       "at-rules"
     ],
-    "color-function-notation": "modern"
+    "color-function-notation": "modern",
+    "at-rule-empty-line-before": "never"
   }
 }

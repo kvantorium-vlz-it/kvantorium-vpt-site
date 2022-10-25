@@ -20,8 +20,7 @@ withDefaults(defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/variables' as *;
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .button {
     cursor: pointer;
@@ -59,20 +58,16 @@ withDefaults(defineProps<{
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
     }
-
-    @include typo-body-2;
-
+    @include typo(body-2-normal);
     @include from-desktop {
         padding: 0.5rem 2rem;
     }
 }
-
 @keyframes on-hover {
     100% {
         color: rgb(var(--color) / 50%);
     }
 }
-
 @keyframes on-active {
     100% {
         background-color: rgb(var(--bg-color) / 90%);

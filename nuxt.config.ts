@@ -1,3 +1,4 @@
+import path from 'path'
 import { api } from './cms_panel/sanity.json'
 
 export default defineNuxtConfig({
@@ -11,13 +12,17 @@ export default defineNuxtConfig({
 
     css: [
         'modern-normalize/modern-normalize.css',
-        '@/assets/css/main.scss',
+        '@styles/main.scss',
     ],
 
     components: {
         dirs: [
             { path: '@/components', pathPrefix: false }
         ]
+    },
+
+    alias: {
+        '@styles': path.join(__dirname, 'assets', 'styles'),
     },
 
     sanity: {

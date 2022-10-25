@@ -20,15 +20,14 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .contact {
     &__name {
         margin: 0;
 
         color: rgb(var(--c-primary-200));
-
-        @include typo-body-3;
+        @include typo(body-3-normal);
     }
 
     &__link {
@@ -38,8 +37,7 @@ defineProps<{
         &:hover {
             text-decoration: underline;
         }
-
-        @include typo-body-2;
+        @include typo(body-2-normal);
     }
 }
 </style>

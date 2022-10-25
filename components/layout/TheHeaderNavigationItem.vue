@@ -15,7 +15,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .item {
     --p-y: 0.25rem;
@@ -43,15 +43,13 @@ defineProps<{
     // Current modifier
     &.current {
         background-color: rgb(var(--c-white) / 20%);
-
-        @include typo-body-1-bold;
+        @include typo(body-1-bold);
     }
 
     // Hover effect
     &:hover:not(.current) {
         background-color: rgb(var(--c-white) / 10%);
     }
-
-    @include typo-body-1;
+    @include typo(body-1-normal);
 }
 </style>

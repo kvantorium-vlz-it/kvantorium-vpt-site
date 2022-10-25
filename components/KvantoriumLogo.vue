@@ -10,7 +10,7 @@
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .logo {
     --gap: 0.5rem;
@@ -39,11 +39,11 @@
     }
 
     &__top {
-        @include typo-logo-top;
+        @include typo(logo-top-bold);
     }
 
     &__bottom {
-        @include typo-logo-bottom;
+        @include typo(logo-bottom-bold);
     }
 }
 </style>

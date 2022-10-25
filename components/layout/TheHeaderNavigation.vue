@@ -73,10 +73,8 @@ useSwipe(navigation, {
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/variables' as *;
-@use '@/assets/css/mixins' as *;
-
-@media (max-width: $max-bp-mobile) {
+@use '@styles/main' as *;
+@include only-mobile {
     .navigation {
         --br: var(--br-m);
 
@@ -111,12 +109,9 @@ useSwipe(navigation, {
 
             box-shadow: var(--bs-sidebar);
         }
-
-        @include use-page-section;
     }
 }
-
-@media (min-width: $min-bp-desktop) {
+@include from-desktop {
     .navigation {
         display: flex;
         gap: 0.5rem;

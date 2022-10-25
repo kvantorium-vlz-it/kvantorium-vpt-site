@@ -1,39 +1,43 @@
 <template>
     <footer :class="$style.footer">
-        <div :class="$style.footer__sections">
-            <the-footer-section
-                name="Навигация"
-                :class="$style.footer__section"
-            >
-                <the-footer-navigation />
-            </the-footer-section>
+        <div :class="$style.footer__wrapper">
+            <div :class="$style.footer__sections">
+                <the-footer-section
+                    name="Навигация"
+                    :class="$style.footer__section"
+                >
+                    <the-footer-navigation />
+                </the-footer-section>
 
-            <the-footer-section
-                name="Соц. сети"
-                :class="$style.footer__section"
-            >
-                <the-footer-socials />
-            </the-footer-section>
+                <the-footer-section
+                    name="Соц. сети"
+                    :class="$style.footer__section"
+                >
+                    <the-footer-socials />
+                </the-footer-section>
 
-            <the-footer-section
-                name="Контакты"
-                :class="$style.footer__section"
-            >
-                <the-footer-contacts />
-            </the-footer-section>
+                <the-footer-section
+                    name="Контакты"
+                    :class="$style.footer__section"
+                >
+                    <the-footer-contacts />
+                </the-footer-section>
+            </div>
+
+            <hr :class="$style.footer__separator">
+            <p :class="$style.footer__copyright">
+                &#169; {{ new Date().getFullYear() }} Кванториум ВОЛЖСКИЙ ПОЛИТЕХ
+            </p>
         </div>
-
-        <hr :class="$style.footer__separator">
-        <p :class="$style.footer__copyright">
-            &#169; {{ new Date().getFullYear() }} Кванториум ВОЛЖСКИЙ ПОЛИТЕХ
-        </p>
     </footer>
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .footer {
+    @include page-section;
+    /* stylelint-disable-next-line order/order */
     background-color: rgb(var(--bg-footer));
 
     &__sections {
@@ -62,13 +66,9 @@
 
         color: rgb(var(--c-white));
         text-align: center;
-
-        @include typo-body-2;
+        @include typo(body-2-normal);
     }
-
-    @include page-section;
 }
-
 @include from-desktop {
     .footer {
         &__section {
