@@ -1,0 +1,7 @@
+@use '@styles/functions' as *;
+
+@mixin register-colors($map, $color-name) {
+    @each $color-value, $color in $map {
+        --#{$color-name}-#{$color-value}: #{color-to-var($color)};
+    }
+}
