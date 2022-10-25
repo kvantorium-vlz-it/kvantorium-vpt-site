@@ -72,3 +72,12 @@
     $var: '--fw-#{$font-weight}';
     @return $var;
 }
+
+/// Function that gets css var name from name typography used font-size
+///
+/// @param { string } name typography name
+/// @return { css-var } css var name
+@function get-font-size-css-var($name) {
+    $var: '--fs-#{$name}';
+    @return $var;
+}

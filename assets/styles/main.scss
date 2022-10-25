@@ -15,4 +15,5 @@
 
 :root {
     @include register-font-weights($font-weight);
+    @include register-font-sizes($typography);
 }

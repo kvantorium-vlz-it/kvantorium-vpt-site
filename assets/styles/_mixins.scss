@@ -71,3 +71,39 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
         @include register-font-weight($weight);
     }
 }
+
+/// Mixin for register font-size based on typography name
+///
+/// @param { ( font-weight: weight, font-size:( mobile: px, desktop: px ) ) } typography
+@mixin register-font-size($typo, $name) {
+    $font-size: map.get($typo, font-size);
+    $mobile-font-size: px-to-rem(map.get($font-size, mobile));
+    $desktop-font-size: px-to-rem(map.get($font-size, desktop));
+    $css-var: get-font-size-css-var($name);
+    @include from-mobile {
+        #{$css-var}: $mobile-font-size;
+    }
+    @include from-desktop {
+        #{$css-var}: $desktop-font-size;
+    }
+}
+
+/// Mixin for register font-sizes from typography map
+///
+/// @param { typography-map } typography
+@mixin register-font-sizes($typography-map) {
+    @each $name, $typo in $typography-map {
+        @include register-font-size($typo, $name);
+    }
+}
+
+/// Mixin for apply typography using name
+///
+/// @param { string } typography-name
+@mixin typo($name) {
+    $typo: map.get($typography, $name);
+    $font-weight: map.get($typo, font-weight);
+
+    font-size: var(#{get-font-size-css-var($name)});
+    font-weight: var(#{get-font-weight-css-var($font-weight)});
+}
