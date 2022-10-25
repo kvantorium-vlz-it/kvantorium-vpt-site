@@ -102,6 +102,11 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 /// @param { string } typography-name
 @mixin typo($name) {
     $typo: map.get($typography, $name);
+    /* stylelint-disable-next-line scss/at-if-no-null */
+    @if $typo == null {
+        @error 'unknown typography';
+    }
+    /* stylelint-disable-next-line order/order */
     $font-weight: map.get($typo, font-weight);
 
     font-size: var(#{get-font-size-css-var($name)});
