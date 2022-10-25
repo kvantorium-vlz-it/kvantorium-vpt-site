@@ -53,3 +53,21 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
         @content;
     }
 }
+
+/// Mixin for register font weight
+///
+/// @param { weight } font-weight
+/// @param { string } name
+@mixin register-font-weight($font-weight, $name) {
+    $css-var-name: '--fw-#{$name}';
+    $css-var-name: $font-weight;
+}
+
+/// Mixin for register font weights from map
+///
+/// @param { ( name: weight ) } font-weight-map map wight weights
+@mixin register-font-weights($font-weight-map) {
+    @each $name, $weight in $font-weight-map {
+        --fw-#{$name}: #{$weight};
+    }
+}

@@ -1,3 +1,4 @@
+/* stylelint-disable no-duplicate-selectors */
 @import '@styles/functions';
 @import '@styles/mixins';
 @import '@styles/variables';
@@ -11,4 +12,8 @@
     @include register-colors(map-get($colors, gray), 'gray');
     @include register-color(map-get(map-get($colors, specific), white), 'white');
     @include register-color(map-get(map-get($colors, specific), black), 'black');
+}
+
+:root {
+    @include register-font-weights($font-weight);
 }
