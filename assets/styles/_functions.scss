@@ -1,9 +1,65 @@
 @use 'sass:color' as color;
+@use 'sass:map' as map;
+@use 'variables' as *;
 
-@function color-to-var($rgb) {
-    $red: color.red($rgb);
-    $green: color.green($rgb);
-    $blue: color.blue($rgb);
-
+/// Function that converts color into project var color style
+///
+/// @param { color } color
+/// @return { string } with schema "R G B"
+@function color-to-var($color) {
+    $red: color.red($color);
+    $green: color.green($color);
+    $blue: color.blue($color);
     @return #{#{$red} #{$green} #{$blue}};
+}
+
+/// Function that converts px to rem values
+///
+/// @param { number } px
+/// @return { rem } rem units
+@function px-to-rem($px) {
+    @return '#{calc($px / $base-font-size)}rem';
+}
+
+/// Function that converts px to value for media query breakpoint
+///
+/// @param { number } px
+/// @return { em } em units for media query
+@function px-to-breakpoint($px) {
+    @return '#{calc($px / $base-font-size)}em';
+}
+
+/// Function that calculate breakpoint `bounds` from px value
+///
+/// @param { number } px between media queries
+/// @return { (start: number, end: number) } bounds of media queries in px units
+@function breakpoint-px-bounds($px) {
+    @return (start: $px, end: $px - 0.5px);
+}
+
+/// Function that gets `start` key from `breakpoint`
+///
+/// @param { (start: number, end: number) } bounds
+/// @return { number } start of next from px media query
+@function breakpoint-start-bound($bounds) {
+    @return map.get($bounds, start);
+}
+
+/// Function that gets `end` key from `breakpoint`
+///
+/// @param { (start: number, end: number) } bounds
+/// @return { number } end pf previos from px media query
+@function breakpoint-end-bound($bounds) {
+    @return map.get($bounds, end);
+}
+
+/// Function that calculate breakpoint `bounds` from px value
+///
+/// @param { number } px between media queries
+/// @return { (start: number, end: number) } bounds of media queries in em units
+@function breakpoint-bounds($px) {
+    $bounds: breakpoint-px-bounds($px);
+    $start: px-to-breakpoint(breakpoint-start-bound($bounds));
+    $end: px-to-breakpoint(breakpoint-end-bound($bounds));
+    @return (start: $start, end: $end);
 }
