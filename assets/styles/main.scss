@@ -22,6 +22,7 @@
     @include register-border-radiuses($border-radius);
     @include register-gradients($gradients);
     @include register-box-shadows(map-get($effects, box-shadow));
+    @include register-blurs(map-get($effects, blurs));
 }
 
 body {

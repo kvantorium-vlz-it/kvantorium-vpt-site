@@ -198,3 +198,22 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
         @include register-box-shadow($shadow, $name);
     }
 }
+
+/// Mixin for register blur effect
+///
+/// @param { px } blur
+/// @param { string } name
+@mixin register-blur($blur, $name) {
+    $var: '--b-#{$name}';
+
+    #{$var}: #{px-to-rem($blur)};
+}
+
+/// Mixin for register blurs effects
+///
+/// @param { px() } blurs map
+@mixin register-blurs($blurs-map) {
+    @each $name, $blur in $blurs-map {
+        @include register-blur($blur, $name);
+    }
+}
