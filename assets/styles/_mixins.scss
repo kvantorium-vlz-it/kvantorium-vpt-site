@@ -1,5 +1,5 @@
 @use 'sass:map' as map;
-@use '@styles/functions' as *;
+@use '@styles/utils' as *;
 @use '@styles/variables' as *;
 
 /// Mixin for generate record for css color var
@@ -56,11 +56,11 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 
 /// Mixin for register font weight
 ///
-/// @param { weight } font-weight
-/// @param { string } name
-@mixin register-font-weight($font-weight, $name) {
-    $css-var-name: '--fw-#{$name}';
-    $css-var-name: $font-weight;
+/// @param { weight } font-weight string value font-weight
+@mixin register-font-weight($font-weight) {
+    $var: get-font-weight-css-var($font-weight);
+
+    #{$var}: $font-weight;
 }
 
 /// Mixin for register font weights from map
@@ -68,6 +68,6 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 /// @param { ( name: weight ) } font-weight-map map wight weights
 @mixin register-font-weights($font-weight-map) {
     @each $name, $weight in $font-weight-map {
-        --fw-#{$name}: #{$weight};
+        @include register-font-weight($weight);
     }
 }

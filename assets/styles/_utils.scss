@@ -63,3 +63,12 @@
     $end: px-to-breakpoint(breakpoint-end-bound($bounds));
     @return (start: $start, end: $end);
 }
+
+/// Function that gets css var name from font-weight value
+///
+/// @param { font-weight } font-weight string value
+/// @return { css-var } css var name
+@function get-font-weight-css-var($font-weight) {
+    $var: '--fw-#{$font-weight}';
+    @return $var;
+}
