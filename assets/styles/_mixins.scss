@@ -1,13 +1,55 @@
+@use 'sass:map' as map;
 @use '@styles/functions' as *;
+@use '@styles/variables' as *;
 
+/// Mixin for generate record for css color var
+/// Injects in element var --c-name
+///
+/// @param { color } color
+/// @param { string } name
 @mixin register-color($color, $name) {
     --c-#{$name}: #{color-to-var($color)};
 }
 
+/// Mixin for generate recors for css color vars from colors map
+/// Injects in element vars --c-name-key
+///
+/// @param { color } color
+/// @param { string } name
 @mixin register-colors($map, $color-name) {
     @each $color-value, $color in $map {
         $name: '#{#{$color-name}-#{$color-value}}';
-
         @include register-color($color, $name);
+    }
+}
+
+/// Mobile to desktop bounds
+$mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop));
+
+/// Mixin for apply rules from mobile breakpoint
+@mixin from-mobile {
+    @content;
+}
+
+/// Mixin for apply rules only for mobile
+@mixin only-moblie {
+    $end: breakpoint-start-bound($mobile-desktop-bounds);
+    @media (max-width: $end) {
+        @content;
+    }
+}
+
+/// Mixin for apply rules from desktop breakpoint
+@mixin from-desktop {
+    $start: breakpoint-start-bound($mobile-desktop-bounds);
+    @media (min-width: $start) {
+        @content;
+    }
+}
+
+/// Mixin for apply rules only for desktop
+@mixin only-desktop {
+    @include from-desktop {
+        @content;
     }
 }
