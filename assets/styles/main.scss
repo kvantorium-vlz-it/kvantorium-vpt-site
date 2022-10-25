@@ -18,6 +18,10 @@
     @include register-font-sizes($typography);
 }
 
+:root {
+    @include register-border-radiuses($border-radius);
+}
+
 body {
     --ff: #{$font-family};
 }

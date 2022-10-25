@@ -112,3 +112,22 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
     font-size: var(#{get-font-size-css-var($name)});
     font-weight: var(#{get-font-weight-css-var($font-weight)});
 }
+
+/// Mixin for register border-radius
+///
+/// @param { radius } border-radius value
+/// @param { string } name
+@mixin register-border-radius($radius, $name) {
+    $var: '--br-#{$name}';
+
+    #{$var}: $radius;
+}
+
+/// Mixin for register border-radiuses from map
+///
+/// @param { ( $name: $radius ) } map
+@mixin register-border-radiuses($radius-map) {
+    @each $name, $radius in $radius-map {
+        @include register-border-radius($radius, $name);
+    }
+}
