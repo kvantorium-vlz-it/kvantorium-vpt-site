@@ -1,6 +1,8 @@
 $base-font-size: 16px;
 $font-weight-bold: bold;
 $font-weight-normal: normal;
+$desktop-page-section-max-width: 1024px;
+$page-section-shadow-width: 64px;
 
 // Design system
 $breakpoints: (
@@ -198,8 +200,14 @@ $effects: (
             values:8px 0 24px,
             color: rgb(var(--c-black) / 25%),
         ),
-        page-section: (
-            values: 0 0 64px,
+        page-section-left: (
+            type: inset,
+            values: (-$page-section-shadow-width) 0 $page-section-shadow-width (-$page-section-shadow-width),
+            color: rgb(var(--c-black) / 50%),
+        ),
+        page-section-right: (
+            type: inset,
+            values: $page-section-shadow-width 0 $page-section-shadow-width (-$page-section-shadow-width),
             color: rgb(var(--c-black) / 50%),
         ),
         promo: (

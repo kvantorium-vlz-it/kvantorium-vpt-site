@@ -1,23 +1,25 @@
 <template>
     <section :class="$style.hero">
         <div :class="$style.hero__wrapper">
-            <div :class="$style.hero__info">
-                <h1 :class="$style.hero__heading">
-                    «Кванториум»
-                </h1>
-                <p :class="$style.hero__paragraph">
-                    Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
-                </p>
-            </div>
+            <div :class="$style.hero__background">
+                <div :class="$style.hero__info">
+                    <h1 :class="$style.hero__heading">
+                        «Кванториум»
+                    </h1>
+                    <p :class="$style.hero__paragraph">
+                        Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
+                    </p>
+                </div>
 
-            <div :class="$style.hero__buttons">
-                <base-button>
-                    записаться
-                </base-button>
+                <div :class="$style.hero__buttons">
+                    <base-button>
+                        записаться
+                    </base-button>
 
-                <base-button theme="light">
-                    узнать больше
-                </base-button>
+                    <base-button theme="light">
+                        узнать больше
+                    </base-button>
+                </div>
             </div>
         </div>
     </section>
@@ -32,12 +34,17 @@
 .hero {
     --hero-image: url('@/assets/images/hero-closeup.webp');
     --hero-image-blur: 2px;
+    @include page-section;
+    /* stylelint-disable-next-line order/order */
+    background-color: rgb(var(--c-black));
 
-    background: url('@/assets/images/hero-closeup.webp') rgb(var(--c-black)) no-repeat bottom right;
-    background-size: contain;
+    &__background {
+        backdrop-filter: blur(var(--hero-image-blur));
+    }
 
     &__wrapper {
-        backdrop-filter: blur(var(--hero-image-blur));
+        background: url('@/assets/images/hero-closeup.webp') rgb(var(--c-black)) no-repeat bottom right;
+        background-size: contain;
 
         // using page section mixin here cause image must be blurred
     }

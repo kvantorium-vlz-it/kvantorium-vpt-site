@@ -14,20 +14,22 @@ const isMobileNavigationOpen = ref<boolean>(false)
 
 <template>
     <header :class="$style.header">
-        <nuxt-link to="/" :class="$style.header__link">
-            <kvantorium-logo />
-        </nuxt-link>
+        <div :class="$style.header__wrapper">
+            <nuxt-link to="/" :class="$style.header__link">
+                <kvantorium-logo />
+            </nuxt-link>
 
-        <the-header-navigation
-            :is-open="isMobileNavigationOpen"
-            @close="handleCloseMobileMenu"
-        />
+            <the-header-navigation
+                :is-open="isMobileNavigationOpen"
+                @close="handleCloseMobileMenu"
+            />
 
-        <the-header-navigation-menu-button
-            ref="menuToggleButton"
-            :class="$style.header__navigationMenuButton"
-            @click="toggleMobileMenu"
-        />
+            <the-header-navigation-menu-button
+                ref="menuToggleButton"
+                :class="$style.header__navigationMenuButton"
+                @click="toggleMobileMenu"
+            />
+        </div>
     </header>
 </template>
 
@@ -35,14 +37,18 @@ const isMobileNavigationOpen = ref<boolean>(false)
 @use '@styles/main' as *;
 
 .header {
-    position: relative;
-    z-index: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
+    @include page-section;
+    /* stylelint-disable-next-line order/order */
     background-color: rgb(var(--bg-header));
+
+    &__wrapper {
+        position: relative;
+        z-index: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     &__link {
         text-decoration: none;

@@ -218,7 +218,62 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
     }
 }
 
-/// mkmk
+/// Mixin for register page section padding on element
+/// Sets padding value by default. Can change behaviour by `is-set-padding` flag
+///
+/// @param { boolean } is-set-padding flag
+@mixin page-section-padding($is-set-padding: true) {
+    --p-x: #{px-to-rem(16px)};
+    --p-y: #{px-to-rem(12px)};
+    @if $is-set-padding == true {
+        padding: var(--p-y) var(--p-x);
+    }
+}
+
+/// Mixin for apply page-section rules on element:
+/// - `padding`
+/// - `max-width` for content side (from desktop)
+/// - `background-color` (white by default)
+///
+/// Creates wrapper class for content part of section
 @mixin page-section {
-    padding: 0;
+    --bg-color: var(--bg);
+
+    background-color: rgb(var(--bg-color));
+
+    &__wrapper {
+        $shadow-width: px-to-rem($page-section-shadow-width);
+
+        background-color: inherit;
+        @include page-section-padding;
+        @include from-desktop {
+            position: relative;
+
+            max-width: #{px-to-rem($desktop-page-section-max-width)};
+            margin: 0 auto;
+
+            &::after,
+            &::before {
+                content: '';
+
+                position: absolute;
+                top: 0;
+
+                width: #{$shadow-width};
+                height: 100%;
+            }
+
+            &::before {
+                left: -#{$shadow-width};
+
+                box-shadow: var(--bs-page-section-left);
+            }
+
+            &::after {
+                right: -#{$shadow-width};
+
+                box-shadow: var(--bs-page-section-right);
+            }
+        }
+    }
 }
