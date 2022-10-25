@@ -81,10 +81,10 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
     $desktop-font-size: px-to-rem(map.get($font-size, desktop));
     $css-var: get-font-size-css-var($name);
     @include from-mobile {
-        #{$css-var}: $mobile-font-size;
+        #{$css-var}: #{$mobile-font-size};
     }
     @include from-desktop {
-        #{$css-var}: $desktop-font-size;
+        #{$css-var}: #{$desktop-font-size};
     }
 }
 

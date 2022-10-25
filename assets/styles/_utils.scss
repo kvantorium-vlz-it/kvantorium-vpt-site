@@ -1,6 +1,28 @@
 @use 'sass:color' as color;
 @use 'sass:map' as map;
+@use 'sass:string' as string;
 @use 'variables' as *;
+
+/// Function that find last index of substring
+///
+/// @param { string } string
+/// @param { string } substring
+/// @return { number } last index
+@function string-last-index($string, $substring) {
+    $index: string.index($string, $substring);
+    $result: $index;
+    @if $index {
+        $string-length: string.length($string);
+        $substring-length: string.length($substring);
+        @for $i from $index + $substring-length through $string-length {
+            $substring-length: string.length($substring);
+            @if str-slice($string, $i, $i + $substring-length - 1) == $substring {
+                $result: $i;
+            }
+        }
+    }
+    @return $result;
+}
 
 /// Function that converts color into project var color style
 ///
@@ -78,6 +100,7 @@
 /// @param { string } name typography name
 /// @return { css-var } css var name
 @function get-font-size-css-var($name) {
-    $var: '--fs-#{$name}';
+    $name-without-weight: string.slice($name, 0, string-last-index($name, '-') - 1);
+    $var: '--fs-#{$name-without-weight}';
     @return $var;
 }
