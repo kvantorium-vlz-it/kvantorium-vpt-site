@@ -78,6 +78,16 @@ $colors: (
         black: #000017,
     ),
 );
+$gradients: (
+    primary: (
+        rgb(var(--c-primary-800)),
+        rgb(var(--c-primary-500)),
+    ),
+    promo: (
+        rgb(var(--c-secondary-100)),
+        rgb(var(--c-secondary-300)),
+    ),
+);
 $font-weight: (
     bold: $font-weight-bold,
     normal: $font-weight-normal,

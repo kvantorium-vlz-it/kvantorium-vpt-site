@@ -1,4 +1,5 @@
 @use 'sass:map' as map;
+@use 'sass:list' as list;
 @use '@styles/utils' as *;
 @use '@styles/variables' as *;
 
@@ -129,5 +130,35 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 @mixin register-border-radiuses($radius-map) {
     @each $name, $radius in $radius-map {
         @include register-border-radius($radius, $name);
+    }
+}
+
+/// Mixin for register vertical and horizontal gradient
+///
+/// @param { colors } gradient-colors
+/// @param { string } name
+@mixin register-gradient($gradient, $name) {
+    $var: '--g-#{$name}';
+    $var-vertical: '#{$var}-vertical';
+    $var-horizontal: '#{$var}-horizontal';
+
+    #{$var-vertical}:
+        linear-gradient(
+            to bottom,
+            $gradient,
+        );
+    #{$var-horizontal}:
+        linear-gradient(
+            to right,
+            $gradient,
+        );
+}
+
+/// Mixin for register gradients from map
+///
+/// @param { gradient } gradient map
+@mixin register-gradients($gradients-map) {
+    @each $name, $gradient in $gradients-map {
+        @include register-gradient($gradient, $name);
     }
 }
