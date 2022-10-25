@@ -1,7 +1,0 @@
-// Module for declaring allowed breakpoints
-
-@use '@/assets/css/functions' as *;
-
-$bp-mobile-desktop: 1024px;
-$bp-min-desktop: px-to-breakpoint(breakpoint-min($bp-mobile-desktop));
-$bp-max-mobile: px-to-breakpoint(breakpoint-max($bp-mobile-desktop));

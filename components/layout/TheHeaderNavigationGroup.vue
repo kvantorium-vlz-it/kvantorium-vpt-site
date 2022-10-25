@@ -52,8 +52,7 @@ onClickOutside(group, () => {
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/variables' as *;
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .group {
     --p-y: 0.25rem;
@@ -82,8 +81,7 @@ onClickOutside(group, () => {
         color: rgb(var(--c-white));
 
         border-radius: var(--br);
-
-        @include typo-body-1-bold;
+        @include typo(body-1-bold);
     }
 
     &__chevron {
@@ -122,10 +120,8 @@ onClickOutside(group, () => {
     &.active &__name {
         background-color: rgb(var(--c-white) / 10%);
     }
-
-    @include typo-body-1;
-
-    @media (min-width: $min-bp-desktop) {
+    @include typo(body-1-normal);
+    @include from-desktop {
         position: relative;
 
         // Name(summary) element if desktop and open

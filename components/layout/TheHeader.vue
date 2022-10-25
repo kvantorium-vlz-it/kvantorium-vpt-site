@@ -32,8 +32,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
-@use '@/assets/css/variables' as *;
+@use '@styles/main' as *;
 
 .header {
     position: relative;
@@ -48,9 +47,6 @@ const isMobileNavigationOpen = ref<boolean>(false)
     &__link {
         text-decoration: none;
     }
-
-    @include page-section;
-
     @include from-desktop {
         &__navigationMenuButton {
             display: none;

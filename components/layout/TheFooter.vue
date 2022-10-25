@@ -31,7 +31,7 @@
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .footer {
     background-color: rgb(var(--bg-footer));
@@ -62,13 +62,9 @@
 
         color: rgb(var(--c-white));
         text-align: center;
-
-        @include typo-body-2;
+        @include typo(body-2-normal);
     }
-
-    @include page-section;
 }
-
 @include from-desktop {
     .footer {
         &__section {

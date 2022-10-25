@@ -14,7 +14,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .link {
     color: rgb(var(--c-primary-100));
@@ -26,7 +26,6 @@ defineProps<{
         color: rgb(var(--c-primary-300));
         text-decoration: underline;
     }
-
-    @include typo-body-2;
+    @include typo(body-2-normal);
 }
 </style>

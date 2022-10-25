@@ -12,7 +12,6 @@ export default defineNuxtConfig({
 
     css: [
         'modern-normalize/modern-normalize.css',
-        '@/assets/css/main.scss',
         '@styles/main.scss',
     ],
 

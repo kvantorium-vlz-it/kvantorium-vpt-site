@@ -17,7 +17,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
+@use '@styles/main' as *;
 
 .section {
     &__name {
@@ -27,8 +27,7 @@ defineProps<{
         color: rgb(var(--c-white));
 
         border-bottom: 1px solid rgb(var(--c-primary-100));
-
-        @include typo-body-1-bold;
+        @include typo(body-1-bold);
     }
 
     &__wrapper {

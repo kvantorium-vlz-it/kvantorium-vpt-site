@@ -27,8 +27,7 @@
 </style>
 
 <style module lang="scss">
-@use '@/assets/css/mixins' as *;
-@use '@/assets/css/variables' as *;
+@use '@styles/main' as *;
 
 .hero {
     --hero-image: url('@/assets/images/hero-closeup.webp');
@@ -41,8 +40,6 @@
         backdrop-filter: blur(var(--hero-image-blur));
 
         // using page section mixin here cause image must be blurred
-
-        @include page-section;
     }
 
     &__info {
@@ -70,8 +67,7 @@
         align-items: flex-start;
     }
 }
-
-@media (min-width: $min-bp-desktop) {
+@include from-desktop {
     .hero {
         --hero-image: url('@/assets/images/hero-fullshot.webp');
         --hero-image-blur: 1px;

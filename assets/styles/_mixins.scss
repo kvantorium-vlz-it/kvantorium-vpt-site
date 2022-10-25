@@ -34,7 +34,7 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 }
 
 /// Mixin for apply rules only for mobile
-@mixin only-moblie {
+@mixin only-mobile {
     $end: breakpoint-start-bound($mobile-desktop-bounds);
     @media (max-width: $end) {
         @content;
@@ -216,4 +216,9 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
     @each $name, $blur in $blurs-map {
         @include register-blur($blur, $name);
     }
+}
+
+/// mkmk
+@mixin page-section {
+    padding: 0;
 }
