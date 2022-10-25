@@ -1,5 +1,7 @@
-@use '@styles/mixins' as *;
-
+$base-font-size: 16px;
+$breakpoints: (
+    mobile-desktop: 1024px
+);
 $colors: (
     primary: (
         100: #d3e2f9,
@@ -72,15 +74,3 @@ $colors: (
         black: #000017,
     ),
 );
-
-:root {
-    @include register-colors(map-get($colors, primary), 'primary');
-    @include register-colors(map-get($colors, secondary), 'secondary');
-    @include register-colors(map-get($colors, success), 'success');
-    @include register-colors(map-get($colors, warning), 'warning');
-    @include register-colors(map-get($colors, error), 'error');
-    @include register-colors(map-get($colors, gray), 'gray');
-
-    @include register-color(map-get(map-get($colors, specific), white), 'white');
-    @include register-color(map-get(map-get($colors, specific), black), 'black');
-}
