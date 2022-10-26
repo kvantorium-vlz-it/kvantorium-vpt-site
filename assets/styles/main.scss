@@ -5,6 +5,7 @@
 @use '@styles/variables' as *;
 @use '@styles/utils' as *;
 @use '@styles/mixins' as *;
+@import '@styles/reset-nuxt-icons';
 
 :root {
     @include register-colors(map.get($colors, primary), 'primary');

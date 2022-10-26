@@ -18,16 +18,11 @@
 
     display: inline-flex;
     gap: var(--gap);
-    align-items: center;
+    align-items: flex-end;
 
     &__icon {
         font-size: var(--icon-size);
         line-height: 1;
-
-        & > * {
-            // fix nuxt-icon margin
-            margin: 0 !important;
-        }
     }
 
     &__icon,
