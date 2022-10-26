@@ -28,7 +28,7 @@ class Contact {
             break
         }
         case 'link': {
-            this.link = `tel:${link}`
+            this.link = `${link}`
             break
         }
         case 'geo': {
