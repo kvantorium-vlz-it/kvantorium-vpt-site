@@ -13,32 +13,32 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </script>
 
 <template>
-    <header :class="$style.header">
-        <div :class="$style.header__wrapper">
-            <nuxt-link to="/" :class="$style.header__link">
-                <kvantorium-logo />
-            </nuxt-link>
+    <page-section
+        as="header"
+        :class="$style.header"
+        :wrapper-class="$style.header__wrapper"
+    >
+        <nuxt-link to="/" :class="$style.header__link">
+            <kvantorium-logo />
+        </nuxt-link>
 
-            <the-header-navigation
-                :is-open="isMobileNavigationOpen"
-                @close="handleCloseMobileMenu"
-            />
+        <the-header-navigation
+            :is-open="isMobileNavigationOpen"
+            @close="handleCloseMobileMenu"
+        />
 
-            <the-header-navigation-menu-button
-                ref="menuToggleButton"
-                :class="$style.header__navigationMenuButton"
-                @click="toggleMobileMenu"
-            />
-        </div>
-    </header>
+        <the-header-navigation-menu-button
+            ref="menuToggleButton"
+            :class="$style.header__navigationMenuButton"
+            @click="toggleMobileMenu"
+        />
+    </page-section>
 </template>
 
 <style module lang="scss">
 @use '@styles/functional' as *;
 
 .header {
-    @include page-section;
-    /* stylelint-disable-next-line order/order */
     background-color: rgb(var(--bg-header));
 
     &__wrapper {

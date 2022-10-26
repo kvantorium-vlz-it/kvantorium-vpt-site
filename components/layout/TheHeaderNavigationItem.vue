@@ -18,8 +18,8 @@ defineProps<{
 @use '@styles/functional' as *;
 
 .item {
-    --p-y: 0.25rem;
-    --p-x: 0.75rem;
+    --p-y: #{px-to-rem(4px)};
+    --p-x: #{px-to-rem(12px)};
     --br: var(--br-s);
 
     display: inline-block;
@@ -30,8 +30,10 @@ defineProps<{
     text-decoration: none;
 
     border-radius: var(--br);
+    @include typo(body-1-normal);
 
     // Cursor styles
+    /* stylelint-disable-next-line order/order */
     &[href] {
         cursor: pointer;
     }
@@ -47,9 +49,13 @@ defineProps<{
     }
 
     // Hover effect
+    /* stylelint-disable-next-line no-descending-specificity */
+    &:hover {
+        text-decoration: underline;
+    }
+
     &:hover:not(.current) {
         background-color: rgb(var(--c-white) / 10%);
     }
-    @include typo(body-1-normal);
 }
 </style>

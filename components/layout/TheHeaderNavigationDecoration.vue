@@ -4,6 +4,8 @@
 </template>
 
 <style module lang="scss">
+@use '@styles/functional' as *;
+
 .decoration {
     pointer-events: none;
 
@@ -15,6 +17,8 @@
 
     overflow: hidden;
     flex-shrink: 0;
+
+    border-radius: inherit;
 
     &::after {
         content: '';
@@ -29,7 +33,7 @@
         aspect-ratio: 1;
         width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
 
-        border: 3rem solid rgb(var(--c-secondary-200) / 5%);
+        border: #{px-to-rem(48px)} solid rgb(var(--c-secondary-200) / 5%);
         border-radius: 100vw;
     }
 }

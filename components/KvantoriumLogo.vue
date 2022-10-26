@@ -13,12 +13,12 @@
 @use '@styles/_functional.scss' as *;
 
 .logo {
-    --gap: 0.5rem;
+    --gap: #{px-to-rem(8px)};
     --icon-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
 
     display: inline-flex;
     gap: var(--gap);
-    align-items: flex-end;
+    align-items: center;
 
     &__icon {
         font-size: var(--icon-size);
