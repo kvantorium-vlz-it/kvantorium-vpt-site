@@ -53,6 +53,9 @@ $base-font-size: 16px;
 ///
 /// @param { number } px
 /// @return { rem } rem units
+///
+/// Using this function is hard:
+/// if you change parameter value in component app styles will not updated
 @function px-to-rem($px) {
     /* stylelint-disable-next-line length-zero-no-unit */
     @if $px == 0 { @return 0; }
@@ -63,6 +66,9 @@ $base-font-size: 16px;
 ///
 /// @param { px[] } list of px
 /// @return { rem[] } list of rems
+///
+/// Using this function is hard:
+/// if you change parameter value in component app styles will not updated
 @function list-px-to-rem($list) {
     $result: ();
     @each $value in $list {
@@ -75,6 +81,9 @@ $base-font-size: 16px;
 ///
 /// @param { number } px
 /// @return { em } em units for media query
+///
+/// Using this function is hard:
+/// if you change parameter value in component app styles will not updated
 @function px-to-breakpoint($px) {
     @if $px == 0 { @return 0; }
 
