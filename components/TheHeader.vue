@@ -42,9 +42,6 @@ const isMobileNavigationOpen = ref<boolean>(false)
     background-color: rgb(var(--bg-header));
 
     &__wrapper {
-        position: relative;
-        z-index: 1;
-
         display: flex;
         align-items: center;
         justify-content: space-between;

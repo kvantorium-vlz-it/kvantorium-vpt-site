@@ -229,3 +229,22 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
         padding: var(--p-y) var(--p-x);
     }
 }
+
+/// Mixin for register z-index
+///
+/// @param { number } index
+/// @param { string } name
+@mixin register-z-index($index, $name) {
+    $var: '--z-#{$name}';
+
+    #{$var}: $index;
+}
+
+/// Mixin for register z-indexes from map
+///
+/// @param { number() } blurs map
+@mixin register-z-indexes($indexes-map) {
+    @each $name, $index in $indexes-map {
+        @include register-z-index($index, $name);
+    }
+}

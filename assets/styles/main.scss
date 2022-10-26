@@ -30,6 +30,7 @@
     @include register-gradients($gradients);
     @include register-box-shadows(map.get($effects, box-shadow));
     @include register-blurs(map.get($effects, blurs));
+    @include register-z-indexes($z-indexes);
 }
 
 :root {

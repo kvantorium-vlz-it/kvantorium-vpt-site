@@ -24,7 +24,6 @@
         content: '';
 
         position: absolute;
-        z-index: 5;
         right: 0;
         bottom: 0;
         transform: translate(25%, 25%);

@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.app">
-        <the-header />
+        <the-header :class="$style.app__header" />
         <main :class="$style.app__main">
             <nuxt-page />
         </main>
@@ -28,6 +28,10 @@ useHead({
 
     &__main {
         flex: 1 0 0;
+    }
+
+    &__header {
+        z-index: var(--z-overlay);
     }
 }
 </style>
