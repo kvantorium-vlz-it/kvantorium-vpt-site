@@ -6,6 +6,7 @@
 @use '@styles/utils' as *;
 @use '@styles/mixins' as *;
 @import '@styles/reset-nuxt-icons';
+@import '@styles/fonts';
 
 :root {
     @include register-colors(map.get($colors, primary), 'primary');
@@ -52,5 +53,7 @@ html {
 }
 
 body {
-    --ff: #{$font-family};
+    --ff: #{$font-family} !important;
+
+    font-family: var(--ff);
 }
