@@ -45,6 +45,8 @@
     --text-body-light: var(--c-secondary-700);
 
     --w-mobile-sidebar-width: #{px-to-rem(256px)};
+
+    --ff: #{$font-family};
 }
 
 html {
@@ -53,7 +55,5 @@ html {
 }
 
 body {
-    --ff: #{$font-family} !important;
-
     font-family: var(--ff);
 }
