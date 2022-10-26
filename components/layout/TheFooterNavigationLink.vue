@@ -17,13 +17,10 @@ defineProps<{
 @use '@styles/functional' as *;
 
 .link {
-    color: rgb(var(--c-primary-100));
+    color: rgb(var(--c-white));
     text-decoration: none;
 
-    transition: color ease-out 0.3s;
-
     &:hover {
-        color: rgb(var(--c-primary-300));
         text-decoration: underline;
     }
     @include typo(body-2-normal);

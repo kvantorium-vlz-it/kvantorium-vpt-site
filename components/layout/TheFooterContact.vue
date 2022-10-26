@@ -6,13 +6,17 @@ defineProps<{
 </script>
 
 <template>
-    <div :class="$style.contact">
+    <div
+        :class="$style.contact"
+        :title="link"
+    >
         <h4 :class="$style.contact__name">
             {{ name }}:
         </h4>
         <a
             :href="link"
             :class="$style.contact__link"
+            target="blank"
         >
             <slot />
         </a>
@@ -26,12 +30,14 @@ defineProps<{
     &__name {
         margin: 0;
 
-        color: rgb(var(--c-primary-200));
-        @include typo(body-3-normal);
+        font-style: normal;
+        color: rgb(var(--c-white));
+        @include typo(body-2-bold);
     }
 
     &__link {
-        color: rgb(var(--c-primary-100));
+        font-style: normal;
+        color: rgb(var(--c-white));
         text-decoration: none;
 
         &:hover {

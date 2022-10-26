@@ -8,6 +8,8 @@ defineProps<{
 <template>
     <a
         :href="link"
+        :title="link"
+        :class="$style.social"
         target="_blank"
     >
         <nuxt-icon
@@ -18,11 +20,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-$size: 1.5rem;
-
 .social {
-    aspect-ratio: 1;
-    width: $size;
-    height: $size;
+    font-size: var(--fs-body-1);
 }
 </style>
