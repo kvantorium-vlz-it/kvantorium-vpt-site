@@ -1,28 +1,26 @@
 <template>
-    <section :class="$style.hero">
-        <div :class="$style.hero__wrapper">
-            <div :class="$style.hero__background">
-                <div :class="$style.hero__info">
-                    <h1 :class="$style.hero__heading">
-                        «Кванториум»
-                    </h1>
-                    <p :class="$style.hero__paragraph">
-                        Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
-                    </p>
-                </div>
+    <page-section :class="$style.hero" :wrapper-class="$style.hero__wrapper">
+        <div :class="$style.hero__content">
+            <div :class="$style.hero__info">
+                <h1 :class="$style.hero__heading">
+                    «Кванториум»
+                </h1>
+                <p :class="$style.hero__paragraph">
+                    Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
+                </p>
+            </div>
 
-                <div :class="$style.hero__buttons">
-                    <base-button>
-                        записаться
-                    </base-button>
+            <div :class="$style.hero__buttons">
+                <base-button>
+                    записаться
+                </base-button>
 
-                    <base-button theme="light">
-                        узнать больше
-                    </base-button>
-                </div>
+                <base-button variant="light">
+                    узнать больше
+                </base-button>
             </div>
         </div>
-    </section>
+    </page-section>
 </template>
 
 <style module lang="ts">
@@ -33,20 +31,21 @@
 
 .hero {
     --hero-image: url('@/assets/images/hero-closeup.webp');
-    --hero-image-blur: 2px;
-    @include page-section;
-    /* stylelint-disable-next-line order/order */
+    --hero-image-blur: var(--b-hero);
+
     background-color: rgb(var(--c-black));
 
-    &__background {
-        backdrop-filter: blur(var(--hero-image-blur));
-    }
-
     &__wrapper {
+        padding: 0;
+
         background: url('@/assets/images/hero-closeup.webp') rgb(var(--c-black)) no-repeat bottom right;
         background-size: contain;
+    }
 
-        // using page section mixin here cause image must be blurred
+    &__content {
+        padding: var(--p-y) var(--p-x);
+
+        backdrop-filter: blur(calc(var(--hero-image-blur) / 2));
     }
 
     &__info {
@@ -55,42 +54,38 @@
 
     &__heading {
         margin: 0;
-        margin-bottom: 1rem;
+        margin-bottom: #{px-to-rem(16px)};
 
-        font-size: var(--fs-h1);
-        font-weight: var(--fw-bold);
-        color: rgb(var(--c-secondary-100));
+        color: rgb(var(--c-white));
+        @include typo(h1-bold);
     }
 
     &__paragraph {
-        font-size: var(--fs-body-1);
-        color: rgb(var(--c-secondary-100));
+        color: rgb(var(--c-white));
+        @include typo(body-1-normal);
     }
 
     &__buttons {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: #{px-to-rem(8px)};
         align-items: flex-start;
     }
-}
-@include from-desktop {
-    .hero {
+    @include from-desktop {
         --hero-image: url('@/assets/images/hero-fullshot.webp');
-        --hero-image-blur: 1px;
 
         background-size: auto;
 
-        &__wrapper {
-            $padding-vertical: 6rem + 0.75rem;
+        &__content {
+            --desktop-p-y: calc(#{px-to-rem(96px)} + var(--p-y));
 
-            padding-top: $padding-vertical;
-            padding-bottom: $padding-vertical;
+            padding-top: var(--desktop-p-y);
+            padding-bottom: var(--desktop-p-y);
         }
 
         &__buttons {
             flex-direction: row;
-            gap: 3rem;
+            gap: #{px-to-rem(48px)};
         }
     }
 }
