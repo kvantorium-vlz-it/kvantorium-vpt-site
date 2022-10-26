@@ -10,7 +10,7 @@
 </template>
 
 <style module lang="scss">
-@use '@styles/_functional.scss' as *;
+@use '@styles/functional' as *;
 
 .logo {
     --gap: #{px-to-rem(8px)};
