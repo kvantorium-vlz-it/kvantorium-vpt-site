@@ -74,8 +74,9 @@ useSwipe(navigation, {
 
 <style module lang="scss">
 @use '@styles/functional' as *;
-@include only-mobile {
-    .navigation {
+
+.navigation {
+    @include only-mobile {
         --br: var(--br-m);
 
         position: fixed;
@@ -87,7 +88,7 @@ useSwipe(navigation, {
         overflow: auto;
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: #{px-to-rem(4px)};
 
         width: var(--w-mobile-sidebar-width);
         max-height: 100vh;
@@ -100,21 +101,15 @@ useSwipe(navigation, {
         transition: ease-out 0.5s;
         transition-property: transform;
 
-        & > * {
-            width: 100%;
-        }
-
         &.open {
             transform: translateX(0);
 
             box-shadow: var(--bs-sidebar);
         }
     }
-}
-@include from-desktop {
-    .navigation {
+    @include from-desktop {
         display: flex;
-        gap: 0.5rem;
+        gap: #{px-to-rem(8px)};
 
         &__decoration {
             display: none;

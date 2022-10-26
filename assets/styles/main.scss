@@ -5,6 +5,8 @@
 @use '@styles/variables' as *;
 @use '@styles/utils' as *;
 @use '@styles/mixins' as *;
+@import '@styles/reset-nuxt-icons';
+@import '@styles/fonts';
 
 :root {
     @include register-colors(map.get($colors, primary), 'primary');
@@ -28,6 +30,7 @@
     @include register-gradients($gradients);
     @include register-box-shadows(map.get($effects, box-shadow));
     @include register-blurs(map.get($effects, blurs));
+    @include register-z-indexes($z-indexes);
 }
 
 :root {
@@ -43,6 +46,8 @@
     --text-body-light: var(--c-secondary-700);
 
     --w-mobile-sidebar-width: #{px-to-rem(256px)};
+
+    --ff: #{$font-family};
 }
 
 html {
@@ -51,5 +56,5 @@ html {
 }
 
 body {
-    --ff: #{$font-family};
+    font-family: var(--ff);
 }

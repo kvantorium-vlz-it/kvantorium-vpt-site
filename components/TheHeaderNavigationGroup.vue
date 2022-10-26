@@ -55,11 +55,15 @@ onClickOutside(group, () => {
 @use '@styles/functional' as *;
 
 .group {
-    --p-y: 0.25rem;
-    --p-x: 0.75rem;
+    --p-y: #{px-to-rem(4px)};
+    --p-x: #{px-to-rem(12px)};
     --br: var(--br-s);
+    @include from-desktop {
+        display: inline-block;
+    }
 
-    color: rgb(var(--c-secondary-100));
+    /* stylelint-disable-next-line order/order */
+    color: rgb(var(--c-white));
 
     // Item element
     &__item {
@@ -71,17 +75,16 @@ onClickOutside(group, () => {
         cursor: pointer;
 
         display: flex;
-        gap: 0.5rem;
+        gap: #{px-to-rem(8px)};
         align-items: center;
         justify-content: space-between;
 
         padding: var(--p-y) var(--p-x);
 
-        font-weight: var(--fw-bold);
         color: rgb(var(--c-white));
 
         border-radius: var(--br);
-        @include typo(body-1-bold);
+        @include typo(body-1-normal);
     }
 
     &__chevron {
@@ -95,12 +98,12 @@ onClickOutside(group, () => {
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
+        gap: #{px-to-rem(4px)};
 
         margin: 0;
-        margin-top: 0.25rem;
+        margin-top: #{px-to-rem(4px)};
         margin-left: var(--p-x);
-        padding-left: 0.5rem;
+        padding-left: #{px-to-rem(8px)};
 
         list-style: none;
 
@@ -119,6 +122,7 @@ onClickOutside(group, () => {
     // Active modifier
     &.active &__name {
         background-color: rgb(var(--c-white) / 10%);
+        @include typo(body-1-bold);
     }
     @include typo(body-1-normal);
     @include from-desktop {
@@ -139,7 +143,7 @@ onClickOutside(group, () => {
             width: max-content;
             max-width: 200%;
             margin: 0;
-            padding: 0.25rem;
+            padding: #{px-to-rem(4px)};
 
             background: var(--g-primary-vertical);
             border-left: none;

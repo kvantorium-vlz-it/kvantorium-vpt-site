@@ -10,24 +10,19 @@
 </template>
 
 <style module lang="scss">
-@use '@styles/_functional.scss' as *;
+@use '@styles/functional' as *;
 
 .logo {
-    --gap: 0.5rem;
-    --icon-width: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
+    --gap: #{px-to-rem(8px)};
+    --icon-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
 
-    display: inline-grid;
-    grid-template-columns: minmax(0, var(--icon-width)) minmax(0, 1fr);
+    display: inline-flex;
     gap: var(--gap);
     align-items: center;
 
     &__icon {
-        font-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
+        font-size: var(--icon-size);
         line-height: 1;
-
-        & > * {
-            margin: 0 !important;
-        }
     }
 
     &__icon,

@@ -22,16 +22,16 @@ defineProps<{
 .section {
     &__name {
         margin: 0;
-        margin-bottom: 0.25rem;
+        margin-bottom: #{px-to-rem(4px)};
 
         color: rgb(var(--c-white));
 
-        border-bottom: 1px solid rgb(var(--c-primary-100));
+        border-bottom: 1px solid rgb(var(--c-white));
         @include typo(body-1-bold);
     }
 
     &__wrapper {
-        padding-left: 0.5rem;
+        padding-left: #{px-to-rem(8px)};
     }
 }
 </style>

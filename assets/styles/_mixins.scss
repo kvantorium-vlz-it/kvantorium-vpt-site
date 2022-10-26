@@ -230,50 +230,21 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
     }
 }
 
-/// Mixin for apply page-section rules on element:
-/// - `padding`
-/// - `max-width` for content side (from desktop)
-/// - `background-color` (white by default)
+/// Mixin for register z-index
 ///
-/// Creates wrapper class for content part of section
-@mixin page-section {
-    --bg-color: var(--bg);
+/// @param { number } index
+/// @param { string } name
+@mixin register-z-index($index, $name) {
+    $var: '--z-#{$name}';
 
-    background-color: rgb(var(--bg-color));
+    #{$var}: $index;
+}
 
-    &__wrapper {
-        $shadow-width: px-to-rem($page-section-shadow-width);
-
-        background-color: inherit;
-        @include page-section-padding;
-        @include from-desktop {
-            position: relative;
-
-            max-width: #{px-to-rem($desktop-page-section-max-width)};
-            margin: 0 auto;
-
-            &::after,
-            &::before {
-                content: '';
-
-                position: absolute;
-                top: 0;
-
-                width: #{$shadow-width};
-                height: 100%;
-            }
-
-            &::before {
-                left: -#{$shadow-width};
-
-                box-shadow: var(--bs-page-section-left);
-            }
-
-            &::after {
-                right: -#{$shadow-width};
-
-                box-shadow: var(--bs-page-section-right);
-            }
-        }
+/// Mixin for register z-indexes from map
+///
+/// @param { number() } blurs map
+@mixin register-z-indexes($indexes-map) {
+    @each $name, $index in $indexes-map {
+        @include register-z-index($index, $name);
     }
 }

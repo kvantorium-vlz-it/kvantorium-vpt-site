@@ -1,10 +1,10 @@
 <script setup lang="ts">
-type theme = 'dark' | 'light'
+type Variant = 'dark' | 'light'
 
 withDefaults(defineProps<{
-    theme?: theme;
+    variant?: Variant;
 }>(), {
-    theme: 'dark'
+    variant: 'dark'
 })
 </script>
 
@@ -12,7 +12,7 @@ withDefaults(defineProps<{
     <button
         :class="[
             $style.button,
-            $style[theme],
+            $style[variant],
         ]"
     >
         <slot />
@@ -23,30 +23,34 @@ withDefaults(defineProps<{
 @use '@styles/functional' as *;
 
 .button {
+    --p-x: #{px-to-rem(16px)};
+    --p-y: #{px-to-rem(4px)};
+
     cursor: pointer;
 
-    padding: 0.25rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--p-y) var(--p-x);
 
     color: rgb(var(--color));
 
     background-color: rgb(var(--bg-color));
-    border-color: rgb(var(--bg-color));
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid rgb(var(--bg-color));
     border-radius: 0.5rem;
 
     &:hover {
-        animation-name: on-hover;
-        animation-duration: 0.1s;
-        animation-timing-function: ease-out;
-        animation-fill-mode: forwards;
+        animation: on-hover 0.1s ease-out forwards;
     }
 
     &:active {
-        animation-name: on-active;
-        animation-duration: 0.3s;
-        animation-timing-function: ease-out;
-        animation-fill-mode: forwards;
+        animation: on-active 0.3s ease-out forwards;
+    }
+
+    &:focus-visible {
+        outline: 2px rgb(var(--bg-color)) auto;
+        outline-offset: 3px;
     }
 
     &.dark {
@@ -60,17 +64,20 @@ withDefaults(defineProps<{
     }
     @include typo(body-2-normal);
     @include from-desktop {
-        padding: 0.5rem 2rem;
+        --p-y: #{px-to-rem(8px)};
+        --p-x: #{px-to-rem(32px)};
     }
 }
 @keyframes on-hover {
     100% {
-        color: rgb(var(--color) / 50%);
+        color: rgb(var(--color) / 70%);
+
+        box-shadow: var(--bs-4);
     }
 }
 @keyframes on-active {
     100% {
-        background-color: rgb(var(--bg-color) / 90%);
+        color: rgb(var(--color) / 50%);
     }
 }
 </style>

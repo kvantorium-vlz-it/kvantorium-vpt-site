@@ -1,7 +1,7 @@
 <template>
-    <address :class="$style.contacts">
+    <address>
         <the-footer-contacts-provider #="{ contacts }">
-            <ul :class="$style.contacts__list">
+            <the-footer-section-list>
                 <li
                     v-for="(contact, index) in contacts"
                     :key="index"
@@ -10,21 +10,7 @@
                         {{ contact.label }}
                     </the-footer-contact>
                 </li>
-            </ul>
+            </the-footer-section-list>
         </the-footer-contacts-provider>
     </address>
 </template>
-
-<style module lang="scss">
-.contacts {
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        padding: 0;
-
-        list-style: none;
-    }
-}
-</style>
