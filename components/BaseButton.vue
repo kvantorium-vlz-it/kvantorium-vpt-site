@@ -48,7 +48,7 @@ withDefaults(defineProps<{
         animation: on-active 0.3s ease-out forwards;
     }
 
-    &:focus-within {
+    &:focus-visible {
         outline: 2px rgb(var(--bg-color)) auto;
         outline-offset: 3px;
     }
@@ -70,6 +70,8 @@ withDefaults(defineProps<{
 }
 @keyframes on-hover {
     100% {
+        color: rgb(var(--color) / 70%);
+
         box-shadow: var(--bs-4);
     }
 }
