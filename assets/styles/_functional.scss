@@ -3,3 +3,4 @@
 /// E.g. changing `base-font-size` in _variables.scss breaks import vue style module
 @forward '@styles/mixins';
 @forward '@styles/utils';
+@forward '@styles/variables';
