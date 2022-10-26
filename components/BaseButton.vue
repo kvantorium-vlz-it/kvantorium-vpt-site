@@ -23,8 +23,8 @@ withDefaults(defineProps<{
 @use '@styles/functional' as *;
 
 .button {
-    --p-x: 1rem;
-    --p-y: 0.25rem;
+    --p-x: #{px-to-rem(16px)};
+    --p-y: #{px-to-rem(4px)};
 
     cursor: pointer;
 
@@ -64,8 +64,8 @@ withDefaults(defineProps<{
     }
     @include typo(body-2-normal);
     @include from-desktop {
-        --p-y: 2rem;
-        --p-x: 0.5rem;
+        --p-y: #{px-to-rem(8px)};
+        --p-x: #{px-to-rem(32px)};
     }
 }
 @keyframes on-hover {
