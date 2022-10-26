@@ -185,19 +185,19 @@ $border-radius: (
 $effects: (
     box-shadow: (
         4: (
-            values: (0 0 4px),
+            values: (0 0 4px 2px),
             color: rgb(var(--c-black) / 25%),
         ),
         8: (
-            values: (0 0 8px),
+            values: (0 0 8px 4px),
             color: rgb(var(--c-black) / 25%),
         ),
         16: (
-            values: 0 0 16px,
+            values: 0 0 16px 8px,
             color: rgb(var(--c-black) / 25%),
         ),
         sidebar: (
-            values:8px 0 24px,
+            values:8px 0 24px 12px,
             color: rgb(var(--c-black) / 25%),
         ),
         page-section-left: (
