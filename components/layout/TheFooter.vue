@@ -33,7 +33,7 @@
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .footer {
     @include page-section;

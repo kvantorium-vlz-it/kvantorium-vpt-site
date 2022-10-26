@@ -73,7 +73,7 @@ useSwipe(navigation, {
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 @include only-mobile {
     .navigation {
         --br: var(--br-m);

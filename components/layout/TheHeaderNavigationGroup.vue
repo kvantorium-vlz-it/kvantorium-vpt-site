@@ -52,7 +52,7 @@ onClickOutside(group, () => {
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .group {
     --p-y: 0.25rem;

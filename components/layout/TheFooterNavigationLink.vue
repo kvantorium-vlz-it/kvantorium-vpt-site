@@ -14,7 +14,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .link {
     color: rgb(var(--c-primary-100));

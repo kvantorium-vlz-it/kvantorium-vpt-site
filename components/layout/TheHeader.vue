@@ -34,7 +34,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .header {
     @include page-section;

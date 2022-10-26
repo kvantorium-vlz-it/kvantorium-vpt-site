@@ -20,7 +20,7 @@ withDefaults(defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .button {
     cursor: pointer;
