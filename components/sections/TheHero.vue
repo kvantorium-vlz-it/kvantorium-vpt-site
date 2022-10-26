@@ -29,7 +29,7 @@
 </style>
 
 <style module lang="scss">
-@use '@styles/main' as *;
+@use '@styles/functional' as *;
 
 .hero {
     --hero-image: url('@/assets/images/hero-closeup.webp');

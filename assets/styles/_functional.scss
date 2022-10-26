@@ -1,0 +1,5 @@
+/// Module for export mixins and functions
+/// using main.scss in vue files breaks styles after changing scss files
+/// E.g. changing `base-font-size` in _variables.scss breaks import vue style module
+@forward '@styles/mixins';
+@forward '@styles/utils';
