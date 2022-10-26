@@ -36,13 +36,27 @@
     @return #{#{$red} #{$green} #{$blue}};
 }
 
+/// Base font for caclulating px-to-rem
+/// Changing base-font-size breaks styles in vue components and you shound
+/// reload app for force update styles
+$base-font-size: 16px;
+
+/// Function that calculate proportion px to base-font-size
+///
+/// @param { px } px
+/// @return { number } proportion
+@function px-to-base-font-size-proportion($px) {
+    @return calc($px / $base-font-size);
+}
+
 /// Function that converts px to rem values
 ///
 /// @param { number } px
 /// @return { rem } rem units
 @function px-to-rem($px) {
+    /* stylelint-disable-next-line length-zero-no-unit */
     @if $px == 0 { @return 0; }
-    @return '#{calc($px / $base-font-size)}rem';
+    @return '#{px-to-base-font-size-proportion($px)}rem';
 }
 
 /// Function that converts list of px to list of rem
@@ -62,7 +76,10 @@
 /// @param { number } px
 /// @return { em } em units for media query
 @function px-to-breakpoint($px) {
-    @return '#{calc($px / $base-font-size)}em';
+    @if $px == 0 { @return 0; }
+
+    /* stylelint-disable-next-line order/order */
+    @return '#{px-to-base-font-size-proportion($px)}em';
 }
 
 /// Function that calculate breakpoint `bounds` from px value
