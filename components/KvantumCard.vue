@@ -117,7 +117,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         color: rgb(var(--text-body));
         @include typo(body-2-normal);
     }
-    @include only-mobile {
+    @include from-desktop {
         $translate-percent: 70;
 
         &__image-wrapper {
@@ -142,7 +142,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
             margin-right: calc(var(--image-size) / 100 * #{$translate-percent} - var(--p));
         }
     }
-    @include from-desktop {
+    @include only-mobile {
         --image-size: #{px-to-rem(96px)};
         --gap-x: #{px-to-rem(12px)};
 
