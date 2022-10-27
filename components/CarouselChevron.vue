@@ -13,8 +13,12 @@
     padding: 0;
 
     font-size: #{px-to-rem(24px)};
+    color: rgb(var(--c-primary-600));
 
     background: none;
     border: none;
+    @include from-desktop {
+        font-size: #{px-to-rem(32px)};
+    }
 }
 </style>
