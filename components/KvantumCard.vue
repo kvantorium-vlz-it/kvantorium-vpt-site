@@ -6,9 +6,27 @@ interface kvantum {
     image: string;
 }
 
-defineProps<{
+const props = defineProps<{
     kvantum: kvantum;
 }>()
+
+const ALLOWED_LENGTH = 200
+
+const descriptionLength = computed(() => props.kvantum.description.length)
+const isMoreThanAllowed = computed(() => descriptionLength.value > ALLOWED_LENGTH)
+
+const isCanVisibleFullDescription = ref(!isMoreThanAllowed.value)
+
+const visibleDescription = computed(() => {
+    const description = props.kvantum.description
+    return isCanVisibleFullDescription.value
+        ? description
+        : description.slice(0, ALLOWED_LENGTH)
+})
+
+const showMore = () => {
+    isCanVisibleFullDescription.value = true
+}
 </script>
 
 <template>
@@ -22,7 +40,14 @@ defineProps<{
             {{ kvantum.name }}
         </h3>
         <p :class="$style.card__description">
-            {{ kvantum.description }}
+            {{ visibleDescription }}
+            <button
+                v-if="!isCanVisibleFullDescription"
+                :class="$style['card__more-button']"
+                @click="showMore"
+            >
+                ...
+            </button>
         </p>
         <base-button :class="$style.card__button">
             Подробнее
@@ -81,6 +106,17 @@ defineProps<{
         margin-bottom: #{px-to-rem(12px)};
 
         color: rgb(var(--text-body));
+        @include typo(body-2-normal);
+    }
+
+    &__more-button {
+        cursor: pointer;
+
+        padding: 0;
+
+        color: rgb(var(--text-body));
+
+        border: none;
         @include typo(body-2-normal);
     }
     @include only-mobile {
