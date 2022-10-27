@@ -12,7 +12,7 @@ withDefaults(defineProps<{
 
 <template>
     <component :is="as" :class="$style.section">
-        <div :class="[$style.section__wrapper, wrapperClass]">
+        <div :class="[$style.section__wrapper, wrapperClass]" v-bind="$attrs">
             <slot />
         </div>
     </component>

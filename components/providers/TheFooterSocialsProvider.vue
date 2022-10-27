@@ -4,7 +4,24 @@ interface ISocial {
     link: string;
 }
 
-const socials = ref<ISocial[]>([])
+const socials = ref<ISocial[]>([
+    {
+        icon: 'vk',
+        link: 'https://google.com'
+    },
+    {
+        icon: 'vk',
+        link: 'https://google.com'
+    },
+    {
+        icon: 'vk',
+        link: 'https://google.com'
+    },
+    {
+        icon: 'vk',
+        link: 'https://google.com'
+    }
+])
 </script>
 
 <template>

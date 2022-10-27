@@ -86,8 +86,8 @@ $gradients: (
         rgb(var(--c-primary-500)),
     ),
     promo: (
+        rgb(var(--c-secondary-400)),
         rgb(var(--c-secondary-100)),
-        rgb(var(--c-secondary-300)),
     ),
 );
 $font-weight: (
@@ -177,10 +177,10 @@ $font-family: 'Roboto',
     'Segoe UI Emoji';
 $border-radius: (
     full: 1000vh,
-    s: 0.5rem,
-    m: 0.75rem,
-    l: 1rem,
-    xl: 1.5rem,
+    s: 8px,
+    m: 12px,
+    l: 16px,
+    xl: 24px,
 );
 $effects: (
     box-shadow: (
@@ -221,6 +221,7 @@ $effects: (
     )
 );
 $z-indexes: (
+    underlay: -1,
     under-page: 0,
     page: 1,
     over-page: 2,

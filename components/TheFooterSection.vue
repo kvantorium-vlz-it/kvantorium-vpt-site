@@ -20,6 +20,8 @@ defineProps<{
 @use '@styles/functional' as *;
 
 .section {
+    min-width: 25%;
+
     &__name {
         margin: 0;
         margin-bottom: #{px-to-rem(4px)};

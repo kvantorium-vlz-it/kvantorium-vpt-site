@@ -121,8 +121,12 @@ $mobile-desktop-bounds: breakpoint-bounds(map.get($breakpoints, mobile-desktop))
 /// @param { string } name
 @mixin register-border-radius($radius, $name) {
     $var: '--br-#{$name}';
-
-    #{$var}: $radius;
+    /* stylelint-disable-next-line scss/at-if-no-null */
+    @if string.index('#{$radius}', 'px') == null {
+        #{$var}: $radius;
+    } @else {
+        #{$var}: #{px-to-rem($radius)};
+    }
 }
 
 /// Mixin for register border-radiuses from map
