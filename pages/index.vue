@@ -14,5 +14,15 @@
                 </kvantums-cards-provider>
             </page-section-content>
         </page-section>
+        <page-section>
+            <page-section-content>
+                <template #heading>
+                    Почему Кванториум?
+                </template>
+                <kvantorium-advantages-provider #="{ advantages }">
+                    <kvantorium-advantages-list :advantages="advantages" />
+                </kvantorium-advantages-provider>
+            </page-section-content>
+        </page-section>
     </main>
 </template>
