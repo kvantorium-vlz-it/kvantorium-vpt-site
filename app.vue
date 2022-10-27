@@ -11,7 +11,13 @@ useHead({
     link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
-    title: 'Кванториум ВПТ'
+    title: 'Кванториум ВПТ',
+    script: [
+        {
+            src: 'https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU',
+            type: 'text/javascript'
+        }
+    ]
 })
 </script>
 

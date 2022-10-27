@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div :class="$style.content__details">
+    <div :class="$style.content__details" v-bind="$attrs">
         <h2 :class="$style.content__heading">
             <slot name="heading" />
         </h2>

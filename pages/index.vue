@@ -24,5 +24,6 @@
                 </kvantorium-advantages-provider>
             </page-section-content>
         </page-section>
+        <the-kvantorium-address-map />
     </main>
 </template>
