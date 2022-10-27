@@ -19,6 +19,9 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
 <template>
     <article :class="$style.card">
+        <h3 :class="$style.card__name">
+            {{ kvantum.name }}
+        </h3>
         <div :class="$style['card__image-wrapper']">
             <img
                 :src="kvantum.image"
@@ -26,9 +29,6 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
                 :class="$style.card__image"
             >
         </div>
-        <h3 :class="$style.card__name">
-            {{ kvantum.name }}
-        </h3>
         <p :class="$style.card__description">
             <hideable-text
                 button-text="..."
@@ -49,7 +49,6 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 @use '@styles/functional' as *;
 
 .card {
-    --image-size: #{px-to-rem(84px)};
     --gap-x: #{px-to-rem(12px)};
     --p: #{px-to-rem(12px)};
     --p-t: #{px-to-rem(8px)};
@@ -117,7 +116,26 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         color: rgb(var(--text-body));
         @include typo(body-2-normal);
     }
+    @include only-mobile {
+        --image-size: #{px-to-rem(80px)};
+        --gap-x: #{px-to-rem(12px)};
+
+        &__image-wrapper {
+            float: left;
+
+            margin-right: var(--gap-x);
+            margin-bottom: #{px-to-rem(4px)};
+        }
+
+        &__button {
+            clear: both;
+
+            margin-left: auto;
+        }
+    }
     @include from-desktop {
+        --image-size: #{px-to-rem(96px)};
+
         $translate-percent: 70;
 
         &__image-wrapper {
@@ -140,27 +158,6 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
         &__name {
             margin-right: calc(var(--image-size) / 100 * #{$translate-percent} - var(--p));
-        }
-    }
-    @include only-mobile {
-        --image-size: #{px-to-rem(96px)};
-        --gap-x: #{px-to-rem(12px)};
-
-        &__image-wrapper {
-            float: left;
-
-            margin-right: var(--gap-x);
-            margin-bottom: #{px-to-rem(4px)};
-        }
-
-        &__name {
-            margin-left: calc(var(--image-size) + var(--gap-x));
-        }
-
-        &__button {
-            clear: both;
-
-            margin-left: auto;
         }
     }
 }
