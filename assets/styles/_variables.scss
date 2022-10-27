@@ -221,6 +221,7 @@ $effects: (
     )
 );
 $z-indexes: (
+    underlay: -1,
     under-page: 0,
     page: 1,
     over-page: 2,
