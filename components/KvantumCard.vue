@@ -15,11 +15,13 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
 <template>
     <article :class="$style.card">
-        <img
-            :src="kvantum.image"
-            :alt="kvantum.name"
-            :class="$style.card__image"
-        >
+        <div :class="$style['card__image-wrapper']">
+            <img
+                :src="kvantum.image"
+                :alt="kvantum.name"
+                :class="$style.card__image"
+            >
+        </div>
         <h3 :class="$style.card__name">
             {{ kvantum.name }}
         </h3>
@@ -38,16 +40,20 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 </template>
 
 <style module lang="scss">
+@use 'sass:string' as string;
 @use '@styles/functional' as *;
 
 .card {
     --image-size: #{px-to-rem(84px)};
+    --gap-x: #{px-to-rem(12px)};
+    --p: #{px-to-rem(12px)};
+    --p-t: #{px-to-rem(8px)};
 
     isolation: isolate;
     position: relative;
 
-    padding: #{px-to-rem(12px)};
-    padding-top: #{px-to-rem(8px)};
+    padding: var(--p);
+    padding-top: var(--p-t);
 
     text-align: right;
 
@@ -64,12 +70,29 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         z-index: -1;
     }
 
-    &__image {
+    /// Image wrapper element for make padding on image and not cut it by border-radius
+    &__image-wrapper {
         $size: var(--image-size);
+
+        position: relative;
+
+        overflow: hidden;
 
         aspect-ratio: 1;
         width: $size;
         height: $size;
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        padding: inherit;
     }
 
     &__name {
@@ -90,29 +113,35 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         @include typo(body-2-normal);
     }
     @include only-mobile {
-        &__image {
+        $translate-percent: 70;
+
+        &__image-wrapper {
             position: absolute;
             bottom: 100%;
             left: 100%;
-            transform: translate(-100%, 50%);
+            transform: translate((string.unquote('-#{$translate-percent}%')), 50%);
 
             box-sizing: content-box;
             padding: #{px-to-rem(16px)};
 
             background-color: rgb(var(--c-secondary-400));
-            border: 1px solid rgb(var(--c-secondary-700));
+            border: 2px solid rgb(var(--c-secondary-700));
             border-radius: var(--br-full);
         }
 
+        &__image {
+            object-fit: cover;
+        }
+
         &__name {
-            margin-right: var(--image-size);
+            margin-right: calc(var(--image-size) / 100 * #{$translate-percent} - var(--p));
         }
     }
     @include from-desktop {
         --image-size: #{px-to-rem(96px)};
         --gap-x: #{px-to-rem(12px)};
 
-        &__image {
+        &__image-wrapper {
             float: left;
 
             margin-right: var(--gap-x);

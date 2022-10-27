@@ -49,6 +49,7 @@ const showMore = () => {
 
         color: rgb(var(--text-body));
 
+        background: none;
         border: none;
         @include typo(body-2-normal);
     }
