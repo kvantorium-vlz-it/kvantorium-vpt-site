@@ -2,6 +2,8 @@
 import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
+import 'swiper/css'
+
 defineProps({
     kvantums: {
         type: Array,
@@ -20,9 +22,16 @@ const onSwiper = (swiperElement) => {
 
 const next = ref(null)
 const prev = ref(null)
-const swiper = ref()
+const swiper = ref(null)
 
 const modules = ref([Pagination, Navigation])
+
+const updateHeight = () => setTimeout(() => {
+    swiper.value.update()
+    swiper.value.updateSize(1000)
+}, 0)
+
+const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
 </script>
 
 <template>
@@ -37,7 +46,7 @@ const modules = ref([Pagination, Navigation])
             :class="$style.carousel__element"
             :space-between="90"
             :modules="modules"
-            :slides-per-view="isDesktop ? 2: 1"
+            :slides-per-view="slidesInRow"
             :navigation="{
                 prevEl: prev?.$el,
                 nextEl: next?.$el,
@@ -45,6 +54,7 @@ const modules = ref([Pagination, Navigation])
             }"
             :pagination="{
                 clickable: true,
+                bulletElement: 'button',
                 bulletClass: $style.carousel__bullet,
                 bulletActiveClass: $style.active,
                 horizontalClass: $style.carousel__pagination,
@@ -57,7 +67,10 @@ const modules = ref([Pagination, Navigation])
                 v-for="(card, index) in kvantums"
                 :key="index"
             >
-                <kvantum-card :kvantum="card" />
+                <kvantum-card
+                    :kvantum="card"
+                    @show-full-description="updateHeight"
+                />
             </SwiperSlide>
         </Swiper>
 
@@ -73,12 +86,13 @@ const modules = ref([Pagination, Navigation])
 
 .carousel {
     display: flex;
-    gap: 16px;
     align-items: center;
     justify-content: space-between;
 
+    width: 100%;
+
     &__element {
-        padding: #{px-to-rem(48px)};
+        padding: #{px-to-rem(12px)};
     }
 
     &__chevron {
@@ -102,9 +116,8 @@ const modules = ref([Pagination, Navigation])
         gap: #{px-to-rem(4px)};
         align-items: center;
         justify-content: center;
-        @include from-desktop {
-            gap: #{px-to-rem(8px)};
-        }
+
+        margin-top: #{px-to-rem(24px)};
     }
 
     &__bullet {
@@ -117,12 +130,27 @@ const modules = ref([Pagination, Navigation])
         height: #{px-to-rem(8px)};
 
         background: rgb(var(--c-black) / 20%);
+        border: none;
         border-radius: var(--br-full);
 
         &.active {
             background: rgb(var(--c-secondary-700) / 70%);
         }
-        @include from-desktop {
+    }
+    @include from-desktop {
+        gap: px-to-rem(16px);
+
+        &__element {
+            padding: #{px-to-rem(48px)};
+        }
+
+        &__pagination {
+            gap: #{px-to-rem(8px)};
+
+            margin-top: #{px-to-rem(32px)};
+        }
+
+        &__bullet {
             width: #{px-to-rem(12px)};
             height: #{px-to-rem(12px)};
         }
