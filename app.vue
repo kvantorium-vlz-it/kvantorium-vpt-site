@@ -1,9 +1,7 @@
 <template>
     <div :class="$style.app">
         <the-header :class="$style.app__header" />
-        <main :class="$style.app__main">
-            <nuxt-page />
-        </main>
+        <nuxt-page :class="$style.app__main" />
         <the-footer />
     </div>
 </template>
