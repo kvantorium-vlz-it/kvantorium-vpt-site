@@ -5,6 +5,10 @@ const props = defineProps<{
     buttonText: string;
 }>()
 
+const emit = defineEmits<{
+    (e: 'show-full-text'): void;
+}>()
+
 const {
     allowedLength: ALLOWED_LENGTH,
     buttonText,
@@ -24,6 +28,7 @@ const visibleText = computed(() => {
 
 const showMore = () => {
     isCanVisibleFullText.value = true
+    emit('show-full-text')
 }
 </script>
 

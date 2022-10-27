@@ -10,6 +10,10 @@ defineProps<{
     kvantum: kvantum;
 }>()
 
+defineEmits<{
+    (e: 'show-full-description'): void;
+}>()
+
 const ALLOWED_DESCRIPTION_LENGTH = 200
 </script>
 
@@ -27,9 +31,10 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         </h3>
         <p :class="$style.card__description">
             <hideable-text
-                :allowed-length="ALLOWED_DESCRIPTION_LENGTH"
                 button-text="..."
+                :allowed-length="ALLOWED_DESCRIPTION_LENGTH"
                 :text="kvantum.description"
+                @show-full-text="$emit('show-full-description')"
             />
         </p>
         <base-button :class="$style.card__button">
