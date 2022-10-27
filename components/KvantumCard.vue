@@ -6,27 +6,11 @@ interface kvantum {
     image: string;
 }
 
-const props = defineProps<{
+defineProps<{
     kvantum: kvantum;
 }>()
 
-const ALLOWED_LENGTH = 200
-
-const descriptionLength = computed(() => props.kvantum.description.length)
-const isMoreThanAllowed = computed(() => descriptionLength.value > ALLOWED_LENGTH)
-
-const isCanVisibleFullDescription = ref(!isMoreThanAllowed.value)
-
-const visibleDescription = computed(() => {
-    const description = props.kvantum.description
-    return isCanVisibleFullDescription.value
-        ? description
-        : description.slice(0, ALLOWED_LENGTH)
-})
-
-const showMore = () => {
-    isCanVisibleFullDescription.value = true
-}
+const ALLOWED_DESCRIPTION_LENGTH = 200
 </script>
 
 <template>
@@ -40,14 +24,11 @@ const showMore = () => {
             {{ kvantum.name }}
         </h3>
         <p :class="$style.card__description">
-            {{ visibleDescription }}
-            <button
-                v-if="!isCanVisibleFullDescription"
-                :class="$style['card__more-button']"
-                @click="showMore"
-            >
-                ...
-            </button>
+            <hideable-text
+                :allowed-length="ALLOWED_DESCRIPTION_LENGTH"
+                button-text="..."
+                :text="kvantum.description"
+            />
         </p>
         <base-button :class="$style.card__button">
             Подробнее
@@ -106,17 +87,6 @@ const showMore = () => {
         margin-bottom: #{px-to-rem(12px)};
 
         color: rgb(var(--text-body));
-        @include typo(body-2-normal);
-    }
-
-    &__more-button {
-        cursor: pointer;
-
-        padding: 0;
-
-        color: rgb(var(--text-body));
-
-        border: none;
         @include typo(body-2-normal);
     }
     @include only-mobile {
