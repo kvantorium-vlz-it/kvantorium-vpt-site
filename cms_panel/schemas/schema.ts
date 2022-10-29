@@ -7,6 +7,7 @@ import SiteSettings from './SiteSettings'
 // Documents
 import Icon from './documents/Icon'
 import SocialNetwork from './documents/SocialNetwork'
+import Contact from './documents/Contact'
 
 export default createSchema({
     name: 'default',
@@ -15,5 +16,6 @@ export default createSchema({
 
         Icon,
         SocialNetwork,
+        Contact,
     ]),
 })

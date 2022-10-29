@@ -119,7 +119,6 @@ const advantagesGroup = {
         {
             name: 'list',
             type: 'array',
-            // Change to advantages
             of: [
                 {
                     name: 'advantage',
@@ -172,8 +171,7 @@ const footerGroup = {
         {
             name: 'footerContacts',
             type: 'array',
-            // Change to contact
-            of: [{ type: 'string' }],
+            of: [{ type: 'reference', to: [{ type: 'Contact' }] }],
             group: footerGroupMeta.name,
         },
         {
