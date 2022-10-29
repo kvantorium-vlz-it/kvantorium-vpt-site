@@ -1,13 +1,6 @@
 import { FaCog } from 'react-icons/fa'
 
-const POSITION_FLAGS = [
-    {
-        name: 'isTeacher',
-        title: 'преподаватель',
-        type: 'boolean',
-        initialValue: false,
-    },
-]
+import { STAFF_POSITION_SCOPE_FLAGS } from '../assets/ts/PositionFlags'
 
 export default {
     name: 'StaffPosition',
@@ -24,8 +17,18 @@ export default {
             title: 'Возможности',
             type: 'object',
             description: 'Информация о том, что позволяет делать должность. Используется внутри сайта чтобы, например, отобразить только всех преподавателей кванториума.',
-            fields: POSITION_FLAGS,
+            fields: STAFF_POSITION_SCOPE_FLAGS,
         },
     ],
     icon: FaCog,
+}
+
+interface IFlag {
+    title: string;
+    description?: string;
+    initialValue?: boolean;
+}
+
+interface IFlags {
+    [key: string]: IFlag;
 }
