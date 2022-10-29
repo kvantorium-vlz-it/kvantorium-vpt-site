@@ -179,8 +179,7 @@ const footerGroup = {
         {
             name: 'footerSocials',
             type: 'array',
-            // Change to socials
-            of: [{ type: 'string' }],
+            of: [{ type: 'reference', to: [{ type: 'SocialNetwork' }] }],
             group: footerGroupMeta.name,
         },
         {
