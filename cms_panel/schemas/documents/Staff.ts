@@ -35,9 +35,8 @@ export default {
         },
         {
             name: 'kvantum',
-            // Change to kvantums
             type: 'array',
-            of: [{ type: 'string' }],
+            of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
             hidden: ({ document }) => !document.isTeacher,
             validation: Rule => Rule.custom((kvantums, context) => {
                 if (!context.parent.isTeacher) {

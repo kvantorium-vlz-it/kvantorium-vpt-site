@@ -1,7 +1,7 @@
 import { requiredFieldValidation } from "../../assets/ts/utils";
 
 export default {
-    name: 'Group',
+    name: 'Kvantum',
     type: 'document',
     fields: [
         {
@@ -10,27 +10,24 @@ export default {
             validation: requiredFieldValidation,
         },
         {
-            name: 'teacher',
-            type: 'reference',
-            to: [{ type: 'Staff' }],
-            options: {
-                filter: 'isTeacher',
-            },
+            name: 'description',
+            type: 'RichText',
             validation: requiredFieldValidation,
         },
         {
-            name: 'schedule',
-            type: 'GroupSchedule',
+            name: 'shortDescription',
+            type: 'text',
             validation: requiredFieldValidation,
         },
         {
-            name: 'curriculum',
-            type: 'reference',
-            to: [{ type: 'Document' }],
-            options: {
-                filter: 'isCurriculum'
-            },
+            name: 'icon',
+            type: 'image',
             validation: requiredFieldValidation,
-        }
+        },
+        {
+            name: 'image',
+            type: 'image',
+            validation: requiredFieldValidation,
+        },
     ]
 }

@@ -13,6 +13,11 @@ export default {
             name: 'file',
             type: 'file',
             validation: requiredFieldValidation,
+        },
+        {
+            name: 'isCurriculum',
+            type: 'boolean',
+            validation: requiredFieldValidation,
         }
     ]
 }

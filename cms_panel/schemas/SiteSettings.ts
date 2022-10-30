@@ -72,8 +72,7 @@ const kvantumsGroup = {
         {
             name: 'visibleKvantums',
             type: 'array',
-            // Change to kvantums
-            of: [{ type: 'string' }],
+            of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
             group: kvantumsGroupMeta.name,
             options: {
                 sortable: false,
