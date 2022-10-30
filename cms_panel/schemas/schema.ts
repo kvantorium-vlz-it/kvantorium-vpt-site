@@ -2,7 +2,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Singleton documents
-import SiteSettings from './SiteSettings'
+import SiteSettings from './static/SiteSettings'
 
 // Documents
 import Icon from './documents/Icon'
@@ -18,11 +18,13 @@ import GroupSchedule from './objects/GroupSchedule'
 import LessonSchedule from './objects/LessonSchedule'
 import Document from './documents/Document'
 import RichText from './objects/RichText'
+import IndexPage from './static/IndexPage'
 
 export default createSchema({
     name: 'default',
     types: schemaTypes.concat([
         SiteSettings,
+        IndexPage,
 
         Icon,
         SocialNetwork,

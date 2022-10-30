@@ -1,12 +1,14 @@
 import S from '@sanity/base/structure-builder'
 import { FaCogs, FaFolder } from 'react-icons/fa'
 
-import SiteSettings from './schemas/SiteSettings'
+import SiteSettings from './schemas/static/SiteSettings'
 
 import Icon from './schemas/documents/Icon'
+import IndexPage from './schemas/static/IndexPage'
 
 const staticDocuments = [
     SiteSettings.name,
+    IndexPage.name,
 ]
 
 const excludedDocuments = [
@@ -26,6 +28,16 @@ export default () =>
                 .find(item => item.getId() === Icon.name)
                 .icon(FaFolder)
                 .title('Иконки'),
+            S.listItem()
+                .title('Главная страница')
+                .id(`${IndexPage.name}Item`)
+                .icon(FaCogs)
+                .child(
+                    S.document()
+                        .schemaType(IndexPage.name)
+                        .documentId(IndexPage.name)
+                        .title('Главная страница')
+                ),
             S.listItem()
                 .title('Настройки сайта')
                 .id(`${SiteSettings.name}Item`)
