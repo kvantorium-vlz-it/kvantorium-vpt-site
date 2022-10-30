@@ -10,6 +10,12 @@ import SocialNetwork from './documents/SocialNetwork'
 import Contact from './documents/Contact'
 import StaffPosition from './documents/StaffPosition'
 import Staff from './documents/Staff'
+import Group from './documents/Group'
+
+// Objects
+import GroupSchedule from './objects/GroupSchedule'
+import LessonSchedule from './objects/LessonSchedule'
+import Document from './documents/Document'
 
 export default createSchema({
     name: 'default',
@@ -21,5 +27,10 @@ export default createSchema({
         Contact,
         StaffPosition,
         Staff,
+        Group,
+        Document,
+
+        GroupSchedule,
+        LessonSchedule,
     ]),
 })

@@ -1227,7 +1227,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.3.0.tgz#6460cd993a2c24368a6308028f3bc57df91f131e"
   integrity sha512-uyIOtGA4Duf+68I3BSbYHY5P+WGftn3QtNJD2Pn7h9WPGYsSrWViIPebE9yRN8N0NHhYj+hDQXaMpVdjG7r+zA==
 
-"@sanity/base@2.35.0", "@sanity/base@^2.30.1":
+"@sanity/base@2.35.0", "@sanity/base@>= 2.5.0", "@sanity/base@^2.30.1":
   version "2.35.0"
   resolved "https://registry.yarnpkg.com/@sanity/base/-/base-2.35.0.tgz#945a0d113d2cde159ba270e304385edb73e95a37"
   integrity sha512-gh66LiCYVyak6j7cncE+SJs4t9oKVzIOP79Ej8K08mDY5rQV6hZ5OS5esdBPYKLfb9eHr6oqBQejN0aHfEH59Q==
@@ -1840,7 +1840,7 @@
     "@types/lodash" "^4.14.149"
     lodash "^4.17.15"
 
-"@sanity/types@2.35.0":
+"@sanity/types@2.35.0", "@sanity/types@^2.10.0":
   version "2.35.0"
   resolved "https://registry.yarnpkg.com/@sanity/types/-/types-2.35.0.tgz#e74aba391885061188f8a045e37b9d1f0806ff38"
   integrity sha512-hocM0bZVa6ONVjLA50gxRSwIcmsaRPpvhl71MgutHxcnvsGZD55n2LQZb4n7h+J9yEFSkz9lY8HbY8n/bw8tsw==
@@ -1858,7 +1858,7 @@
     "@sanity/client" "^3.3.3"
     "@types/react" "^17.0.42"
 
-"@sanity/ui@^0.37.22":
+"@sanity/ui@>= 0.33.9", "@sanity/ui@^0.37.22":
   version "0.37.22"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.37.22.tgz#36bc54d689bc01f55103b01f6c8a571d6720df1a"
   integrity sha512-NoPfK92aXGW0miFpwYjN7ksZqO1HcXEvamPLzWWkmGjvEARr9B3Im+ooAKBkDuC9Bmufs4Jy++d5ITbPqDupJA==
@@ -1874,7 +1874,7 @@
     react-popper "^2.2.5"
     react-refractor "^2.1.7"
 
-"@sanity/util@2.35.0":
+"@sanity/util@2.35.0", "@sanity/util@>= 2.5.0":
   version "2.35.0"
   resolved "https://registry.yarnpkg.com/@sanity/util/-/util-2.35.0.tgz#9752638fca6611e6442efb7d7e00c4ece48aff03"
   integrity sha512-j9FyWRE1p97dkIJDuAg7lnSiLGPQVLa/qfnsVvaEr5iQK/3BSNh0AJ+RX4pfgl2JMmYaU961S/MESwPyOBEy2g==
@@ -9237,6 +9237,16 @@ sanity-diff-patch@^1.0.9:
   integrity sha512-J5YeuM/S7rLTp51iqUunwzz7Rf68K/jCDGKtNCj6Wzcfgf9CH+0GtPlvf2DFsg0QQhYYZ72FOVn6skmoLjMCdw==
   dependencies:
     diff-match-patch "^1.0.5"
+
+sanity-plugin-time-seconds@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/sanity-plugin-time-seconds/-/sanity-plugin-time-seconds-1.0.0.tgz#7b1e345f8e87ac60344a3091c6e551561f3c97a8"
+  integrity sha512-NIICCNKTOjeR2ROX25SnMM/FikMBq8evI0+F0gBUu5+Rb4SkeKqeXz9ORMvXPN22N6BpjUjb8G1eev7b4iHJ7g==
+  dependencies:
+    "@sanity/base" ">= 2.5.0"
+    "@sanity/types" "^2.10.0"
+    "@sanity/ui" ">= 0.33.9"
+    "@sanity/util" ">= 2.5.0"
 
 sax@~1.2.4:
   version "1.2.4"
