@@ -9,6 +9,7 @@ import StaffPosition from './schemas/documents/StaffPosition'
 import Document from './schemas/documents/Document'
 import Contact from './schemas/documents/Contact'
 import SocialNetwork from './schemas/documents/SocialNetwork'
+import Tag from './schemas/documents/Tag'
 
 const staticDocuments = [
     SiteSettings.name,
@@ -22,6 +23,7 @@ const excludedDocuments = [
     Document.name,
     Contact.name,
     SocialNetwork.name,
+    Tag.name,
 ]
 
 export default () =>
@@ -44,6 +46,10 @@ export default () =>
                 .find(item => item.getId() === SocialNetwork.name)
                 .icon(FaVk)
                 .title('Социальные сети'),
+            S.documentTypeListItems()
+                .find(item => item.getId() === Tag.name)
+                .icon(FaFile)
+                .title('Теги'),
             S.divider(),
             S.documentTypeListItems()
                 .find(item => item.getId() === StaffPosition.name)

@@ -12,6 +12,8 @@ import StaffPosition from './documents/StaffPosition'
 import Staff from './documents/Staff'
 import Group from './documents/Group'
 import Kvantum from './documents/Kvantum'
+import Tag from './documents/Tag'
+import News from './documents/News'
 
 // Objects
 import GroupSchedule from './objects/GroupSchedule'
@@ -34,6 +36,8 @@ export default createSchema({
         Group,
         Document,
         Kvantum,
+        Tag,
+        News,
 
         GroupSchedule,
         LessonSchedule,
