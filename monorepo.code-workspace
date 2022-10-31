@@ -1,0 +1,16 @@
+{
+    "folders": [
+        {
+            "name": "✨ kvantorium-vlz-site",
+            "path": "."
+        },
+        {
+            "name": "🌺kvantorium-vlz-site-cms",
+            "path": "apps/cms"
+        },
+        {
+            "name": "🌺kvantorium-vlz-site-frontend",
+            "path": "apps/frontend"
+        }
+    ],
+}
