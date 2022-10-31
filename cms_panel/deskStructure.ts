@@ -76,7 +76,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('Главная страница')
-                .id(`${IndexPage.name}Item`)
+                .id(IndexPage.staticPageItemId)
                 .icon(FaCogs)
                 .child(
                     S.document()
@@ -86,7 +86,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('Страница о квантумах')
-                .id(`${KvantumsPage.name}Item`)
+                .id(KvantumsPage.staticPageItemId)
                 .icon(FaCogs)
                 .child(
                     S.document()
@@ -96,7 +96,7 @@ export default () =>
                 ),
             S.listItem()
                 .title('Страница "о нас"')
-                .id(`${AboutPage.name}Item`)
+                .id(AboutPage.staticPageItemId)
                 .icon(FaCogs)
                 .child(
                     S.document()

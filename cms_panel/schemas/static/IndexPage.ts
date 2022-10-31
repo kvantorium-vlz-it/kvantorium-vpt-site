@@ -1,3 +1,4 @@
+import { definePage } from "../../assets/ts/Page"
 import { definePageSection } from "../../assets/ts/PageSection"
 import { onlyUniqueFilter, requiredFieldValidation } from "../../assets/ts/utils"
 
@@ -101,19 +102,12 @@ const map = definePageSection({
     }
 })
 
-export default {
+export default definePage({
     name: 'IndexPage',
-    type: 'document',
     groups: [
-        hero.group,
-        kvantums.group,
-        advantages.group,
-        map.group,
-    ],
-    fields: [
-        ...hero.fields,
-        ...kvantums.fields,
-        ...advantages.fields,
-        ...map.fields,
+        hero,
+        kvantums,
+        advantages,
+        map,
     ]
-}
+})

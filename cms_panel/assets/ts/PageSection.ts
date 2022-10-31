@@ -1,4 +1,4 @@
-import { IAdditionalProps, IField, IGroup } from './types';
+import { Fields, IAdditionalProps, IField, IGroup } from './types';
 import { requiredFieldValidation } from './utils'
 
 interface IPageSEctionFieldOptions {
@@ -17,7 +17,7 @@ interface IPageSectionSubHeadingOptions {
     additionalProps?: IAdditionalProps;
 }
 
-type PageSectionFields = (IField & IAdditionalProps)[]
+export type PageSectionFields = Fields
 
 interface IPageSection {
     group: IGroup;

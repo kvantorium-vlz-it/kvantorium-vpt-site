@@ -1,5 +1,5 @@
-import { requiredFieldValidation } from "../../assets/ts/utils";
 import { definePageSection } from "../../assets/ts/PageSection";
+import { definePage } from "../../assets/ts/Page";
 
 const kvantum = definePageSection({
     group: {
@@ -13,13 +13,9 @@ const kvantum = definePageSection({
     ]
 })
 
-export default {
+export default definePage({
     name: 'KvantumsPage',
-    type: 'document',
     groups: [
-        kvantum.group,
-    ],
-    fields: [
-        ...kvantum.fields,
+        kvantum,
     ]
-}
+})

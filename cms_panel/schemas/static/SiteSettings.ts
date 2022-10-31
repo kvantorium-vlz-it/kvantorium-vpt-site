@@ -1,4 +1,4 @@
-import { onlyUniqueFilter, requiredFieldValidation } from "../../assets/ts/utils"
+import { requiredFieldValidation } from "../../assets/ts/utils"
 
 const commonSettings = [
     {
@@ -42,19 +42,10 @@ export default {
     name: 'SiteSettings',
     type: 'document',
     groups: [
-        // heroGroupMeta,
-        // kvantumsGroupMeta,
-        // advantagesGroupMeta,
-        // mapGroupMeta,
         footerGroupMeta,
     ],
     fields: [
         ...commonSettings,
-
-        // ...heroGroup.fields,
-        // ...kvantumsGroup.fields,
-        // ...advantagesGroup.fields,
-        // ...mapGroup.fields,
         ...footerGroup.fields,
     ]
 }

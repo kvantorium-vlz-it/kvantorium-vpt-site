@@ -29,9 +29,9 @@ export default createSchema({
     name: 'default',
     types: schemaTypes.concat([
         SiteSettings,
-        IndexPage,
-        KvantumsPage,
-        AboutPage,
+        IndexPage.schema,
+        KvantumsPage.schema,
+        AboutPage.schema,
 
         Icon,
         SocialNetwork,

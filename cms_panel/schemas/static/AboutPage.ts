@@ -1,3 +1,4 @@
+import { definePage } from "../../assets/ts/Page"
 import { definePageSection } from "../../assets/ts/PageSection"
 
 const organization = definePageSection({
@@ -34,17 +35,11 @@ const enrollment = definePageSection({
     ]
 })
 
-export default {
+export default definePage({
     name: 'AboutPage',
-    type: 'document',
     groups: [
-        organization.group,
-        workflowOrganization.group,
-        enrollment.group,
-    ],
-    fields: [
-        ...organization.fields,
-        ...workflowOrganization.fields,
-        ...enrollment.fields,
+        organization,
+        workflowOrganization,
+        enrollment,
     ]
-}
+})
