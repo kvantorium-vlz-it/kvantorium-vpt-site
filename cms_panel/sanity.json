@@ -12,7 +12,8 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "time-seconds"
+    "time-seconds",
+    "dark-mode"
   ],
   "env": {
     "development": {

@@ -9283,6 +9283,11 @@ sanity-diff-patch@^1.0.9:
   dependencies:
     diff-match-patch "^1.0.5"
 
+sanity-plugin-dark-mode@^0.0.33:
+  version "0.0.33"
+  resolved "https://registry.npmjs.org/sanity-plugin-dark-mode/-/sanity-plugin-dark-mode-0.0.33.tgz#ab5b2a09ba5cf9fe300f7c58111b7c46bebef583"
+  integrity sha512-WGptmz++WvBJ9Tjl9701x6k+zR4ppuKlZ8yEVQHt4OoVrQepdryCNZo8z+xdiREYCLZaLQyEuPnIc1CPt2lHoQ==
+
 sanity-plugin-time-seconds@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/sanity-plugin-time-seconds/-/sanity-plugin-time-seconds-1.0.0.tgz#7b1e345f8e87ac60344a3091c6e551561f3c97a8"
