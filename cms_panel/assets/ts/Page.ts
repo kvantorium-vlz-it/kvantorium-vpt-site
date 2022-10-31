@@ -31,6 +31,7 @@ export const definePage = (options: IPageOptions) => {
             {
                 name: 'pageTab',
                 type: 'string',
+                title: 'Надпись страницы во вкладках браузера'
             }
         ],
     }

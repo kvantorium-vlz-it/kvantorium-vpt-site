@@ -5,16 +5,26 @@ import { onlyUniqueFilter, requiredFieldValidation } from "../../assets/ts/utils
 const hero = definePageSection({
     group: {
         name: 'hero',
-        title: 'Hero-секция'
+        title: 'Hero-секция',
+    },
+    headingAdditionalProps: {
+        title: 'Заголовок "Hero-секции"'
     },
     subHeadingAdditionalProps: {
         validation: requiredFieldValidation,
+        title: 'Подзаголовок "Hero-секции"'
     },
 })
 const kvantums = definePageSection({
     group: {
         name: 'kvantums',
         title: 'Секция с квантумами',
+    },
+    headingAdditionalProps: {
+        title: 'Заголовок cекция с квантумами'
+    },
+    subHeadingAdditionalProps: {
+        title: 'Подзаголовок cекция с квантумами'
     },
     fields: [
         {
@@ -26,6 +36,7 @@ const kvantums = definePageSection({
         {
             name: 'visibleKvantums',
             type: 'array',
+            title: 'Квантумы, которые надо отобразить',
             of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
             options: {
                 sortable: false,
@@ -64,28 +75,39 @@ const advantages = definePageSection({
         name: 'advantages',
         title: 'Секция преимуществ',
     },
+    headingAdditionalProps: {
+        title: 'Заголовок секции преимуществ'
+    },
+    subHeadingAdditionalProps: {
+        title: 'Подзаголовок секции преимуществ'
+    },
     fields: [
         {
             name: 'list',
             type: 'array',
+            title: 'Преимущества',
             of: [
                 {
                     name: 'advantage',
                     type: 'object',
+                    title: 'Преимущество',
                     fields: [
                         {
                             name: 'title',
                             type: 'string',
+                            title: 'Заголовок преимущества',
                             validation: requiredFieldValidation,
                         },
                         {
                             name: 'description',
-                            type: 'string',
+                            type: 'text',
+                            title: 'Описание преимущества',
                             validation: requiredFieldValidation,
                         },
                         {
                             name: 'image',
                             type: 'image',
+                            title: 'Изображение преимущества',
                             validation: requiredFieldValidation,
                         }
                     ]
@@ -99,7 +121,13 @@ const map = definePageSection({
     group: {
         name: 'map',
         title: 'Секция с картой'
-    }
+    },
+    headingAdditionalProps: {
+        title: 'Заголовок секции с картой'
+    },
+    subHeadingAdditionalProps: {
+        title: 'Подзаголовок секции с картой'
+    },
 })
 
 export default definePage({

@@ -5,6 +5,7 @@ export default {
     options: {
         sortable: false,
     },
+    title: 'Расписание группы квантума',
     validation: Rule =>
         Rule
             .min(1)
