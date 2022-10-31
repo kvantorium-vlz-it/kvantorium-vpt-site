@@ -1,92 +1,50 @@
-import { requiredFieldValidation } from "../../assets/ts/utils"
+import { definePageSection } from "../../assets/ts/PageSection"
 
-const organizationGroupMeta = {
-    name: 'organization',
-}
-const workflowOrganizationGroupMeta = {
-    name: 'workflowOrganization'
-}
-const enrollmentGroupMeta = {
-    name: 'enrollment'
-}
-
-const organizationGroup = {
-    name: organizationGroupMeta.name,
+const organization = definePageSection({
+    group: {
+        name: 'organization',
+    },
     fields: [
-        {
-            name: 'organizationHeading',
-            type: 'string',
-            validation: requiredFieldValidation,
-            group: organizationGroupMeta.name,
-        },
-        {
-            name: 'organizationSubHeading',
-            type: 'string',
-            group: organizationGroupMeta.name,
-        },
         {
             name: 'organizationContent',
             type: 'RichText',
-            group: organizationGroupMeta.name,
-        },
+        }
     ]
-}
-const workflowOrganizationGroup = {
-    name: workflowOrganizationGroupMeta.name,
+})
+const workflowOrganization = definePageSection({
+    group: {
+        name: 'workflowOrganization'
+    },
     fields: [
-        {
-            name: 'workflowOrganizationHeading',
-            type: 'string',
-            group: workflowOrganizationGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'workflowOrganizationSubHeading',
-            type: 'string',
-            group: workflowOrganizationGroupMeta.name,
-        },
         {
             name: 'workflowOrganizationContent',
             type: 'RichText',
-            group: workflowOrganizationGroupMeta.name,
         }
     ]
-}
-const enrollmentGroup = {
-    name: enrollmentGroupMeta.name,
+})
+const enrollment = definePageSection({
+    group: {
+        name: 'enrollment'
+    },
     fields: [
-        {
-            name: 'enrollmentHeading',
-            type: 'string',
-            group: enrollmentGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'enrollmentSubHeading',
-            type: 'string',
-            group: enrollmentGroupMeta.name,
-        },
         {
             name: 'enrollmentContent',
             type: 'RichText',
-            group: enrollmentGroupMeta.name,
         }
     ]
-}
-
-
+})
 
 export default {
     name: 'AboutPage',
     type: 'document',
     groups: [
-        organizationGroupMeta,
-        workflowOrganizationGroupMeta,
-        enrollmentGroupMeta,
+        organization.group,
+        workflowOrganization.group,
+        enrollment.group,
     ],
     fields: [
-        ...organizationGroup.fields,
-        ...workflowOrganizationGroup.fields,
-        ...enrollmentGroup.fields,
+        ...organization.fields,
+        ...workflowOrganization.fields,
+        ...enrollment.fields,
     ]
 }

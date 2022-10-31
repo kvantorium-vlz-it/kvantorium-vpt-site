@@ -1,76 +1,44 @@
+import { definePageSection } from "../../assets/ts/PageSection"
 import { onlyUniqueFilter, requiredFieldValidation } from "../../assets/ts/utils"
 
-const heroGroupMeta = {
-    name: 'hero',
-    title: 'Hero-секция',
-}
-const kvantumsGroupMeta = {
-    name: 'kvantums',
-    title: 'Секция с квантумами',
-}
-const advantagesGroupMeta = {
-    name: 'advantages',
-    title: 'Секция преимуществ',
-}
-const mapGroupMeta = {
-    name: 'map',
-    title: 'Секция с картой'
-}
-
-const heroGroup = {
-    name: heroGroupMeta.name,
-    title: heroGroupMeta.title,
+const hero = definePageSection({
+    group: {
+        name: 'hero',
+        title: 'Hero-секция'
+    },
+    subHeadingAdditionalProps: {
+        validation: requiredFieldValidation,
+    },
+})
+const kvantums = definePageSection({
+    group: {
+        name: 'kvantums',
+        title: 'Секция с квантумами',
+    },
     fields: [
         {
-            name: 'heroHeading',
-            type: 'string',
-            group: heroGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'heroSubHeading',
-            type: 'string',
-            group: heroGroupMeta.name,
-            validation: requiredFieldValidation,
-        }
-    ]
-}
-const kvantumsGroup = {
-    name: kvantumsGroupMeta.name,
-    title: kvantumsGroupMeta.title,
-    fields: [
-        {
-            name: 'kvantumsHeading',
-            type: 'string',
-            group: kvantumsGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'kvantumsSubheading',
-            type: 'string',
-            group: kvantumsGroupMeta.name,
-        },
-        {
-            name: 'isShowAll',
+            name: 'kvantumsIsShowAll',
             title: 'Отображать все квантумы',
             type: 'boolean',
-            group: kvantumsGroupMeta.name,
             validation: requiredFieldValidation,
         },
         {
             name: 'visibleKvantums',
             type: 'array',
             of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
-            group: kvantumsGroupMeta.name,
             options: {
                 sortable: false,
             },
-            hidden: ({ document }) => document.isShowAll,
+            hidden: ({ document }) => document.kvantumsIsShowAll,
             validation: Rule =>
                 Rule.custom((visibleKvantums, context) => {
                     // If field not needed stop validation
-                    if (context.parent.isShowAll) {
+                    if (context.parent.kvantumsIsShowAll) {
                         return true
+                    }
+
+                    if (!visibleKvantums) {
+                        return 'Необходимо указать квантумы'
                     }
 
                     // Check length
@@ -78,7 +46,9 @@ const kvantumsGroup = {
                         return 'Необходимо указать минимум 2 квантума'
                     }
 
-                    const unique = visibleKvantums.filter(onlyUniqueFilter)
+                    const unique = visibleKvantums
+                        .map(kvantum => kvantum['_ref'])
+                        .filter(onlyUniqueFilter)
 
                     // Check unique kvantums
                     if (unique.length !== visibleKvantums.length) {
@@ -87,22 +57,13 @@ const kvantumsGroup = {
                 }),
         }
     ]
-}
-const advantagesGroup = {
-    name: advantagesGroupMeta.name,
-    title: advantagesGroupMeta.title,
+})
+const advantages = definePageSection({
+    group: {
+        name: 'advantages',
+        title: 'Секция преимуществ',
+    },
     fields: [
-        {
-            name: 'advantagesHeading',
-            type: 'string',
-            group: advantagesGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'advantagesSubHeading',
-            type: 'string',
-            group: advantagesGroupMeta.name,
-        },
         {
             name: 'list',
             type: 'array',
@@ -129,42 +90,30 @@ const advantagesGroup = {
                     ]
                 }
             ],
-            group: advantagesGroupMeta.name,
             validation: requiredFieldValidation,
         }
     ]
-}
-const mapGroup = {
-    name: mapGroupMeta.name,
-    title: mapGroupMeta.title,
-    fields: [
-        {
-            name: 'mapHeading',
-            type: 'string',
-            group: mapGroupMeta.name,
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'mapSubTitle',
-            type: 'string',
-            group: mapGroupMeta.name,
-        },
-    ]
-}
+})
+const map = definePageSection({
+    group: {
+        name: 'map',
+        title: 'Секция с картой'
+    }
+})
 
 export default {
     name: 'IndexPage',
     type: 'document',
     groups: [
-        heroGroupMeta,
-        kvantumsGroupMeta,
-        advantagesGroupMeta,
-        mapGroupMeta,
+        hero.group,
+        kvantums.group,
+        advantages.group,
+        map.group,
     ],
     fields: [
-        ...heroGroup.fields,
-        ...kvantumsGroup.fields,
-        ...advantagesGroup.fields,
-        ...mapGroup.fields,
+        ...hero.fields,
+        ...kvantums.fields,
+        ...advantages.fields,
+        ...map.fields,
     ]
 }
