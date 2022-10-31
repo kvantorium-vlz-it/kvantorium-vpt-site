@@ -1,18 +1,10 @@
 {
-  "name": "kvantoriumvlz-site",
-  "private": true,
-  "version": "1.0.0",
-  "description": "",
-  "main": "package.json",
-  "author": "toomber <timurtokaevtoomber@gmail.com>",
-  "license": "UNLICENSED",
+  "name": "kvantorium-vlz-site-cms",
+  "version": "0.0.0",
   "scripts": {
-    "start": "sanity start",
+    "dev": "sanity start",
     "build": "sanity build"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
     "@sanity/base": "^2.35.0",
     "@sanity/core": "^2.35.0",
