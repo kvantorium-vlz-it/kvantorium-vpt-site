@@ -2,6 +2,8 @@ import S from '@sanity/base/structure-builder'
 import { FaCogs, FaFile, FaFolder, FaPhoneAlt, FaVk } from 'react-icons/fa'
 
 import SiteSettings from './schemas/static/SiteSettings'
+import KvantumsPage from './schemas/static/KvantumsPage'
+import AboutPage from './schemas/static/AboutPage'
 
 import Icon from './schemas/documents/Icon'
 import IndexPage from './schemas/static/IndexPage'
@@ -14,6 +16,8 @@ import Tag from './schemas/documents/Tag'
 const staticDocuments = [
     SiteSettings.name,
     IndexPage.name,
+    KvantumsPage.name,
+    AboutPage.name,
 ]
 
 const excludedDocuments = [
@@ -61,6 +65,16 @@ export default () =>
                 .title('Иконки'),
             S.divider(),
             S.listItem()
+                .title('Настройки сайта')
+                .id(`${SiteSettings.name}Item`)
+                .icon(FaCogs)
+                .child(
+                    S.document()
+                        .schemaType(SiteSettings.name)
+                        .documentId(SiteSettings.name)
+                        .title('Настройки сайта')
+                ),
+            S.listItem()
                 .title('Главная страница')
                 .id(`${IndexPage.name}Item`)
                 .icon(FaCogs)
@@ -71,14 +85,24 @@ export default () =>
                         .title('Главная страница')
                 ),
             S.listItem()
-                .title('Настройки сайта')
-                .id(`${SiteSettings.name}Item`)
+                .title('Страница о квантумах')
+                .id(`${KvantumsPage.name}Item`)
                 .icon(FaCogs)
                 .child(
                     S.document()
-                        .schemaType(SiteSettings.name)
-                        .documentId(SiteSettings.name)
-                        .title('Настройки сайта')
+                        .schemaType(KvantumsPage.name)
+                        .documentId(KvantumsPage.name)
+                        .title('Страница о квантумах')
+                ),
+            S.listItem()
+                .title('Страница "о нас"')
+                .id(`${AboutPage.name}Item`)
+                .icon(FaCogs)
+                .child(
+                    S.document()
+                        .schemaType(AboutPage.name)
+                        .documentId(AboutPage.name)
+                        .title('Страница "о нас"')
                 ),
         ])
 

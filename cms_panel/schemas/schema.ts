@@ -3,6 +3,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Singleton documents
 import SiteSettings from './static/SiteSettings'
+import KvantumsPage from './static/KvantumsPage'
+import AboutPage from './static/AboutPage'
 
 // Documents
 import Icon from './documents/Icon'
@@ -27,6 +29,8 @@ export default createSchema({
     types: schemaTypes.concat([
         SiteSettings,
         IndexPage,
+        KvantumsPage,
+        AboutPage,
 
         Icon,
         SocialNetwork,
