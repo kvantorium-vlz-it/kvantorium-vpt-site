@@ -1,5 +1,6 @@
 {
-  "name": "kvantorium-vlz-site",
+  "name": "kvantorium-vpt-site",
+  "description": "site for kvantorium vpt",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -16,5 +17,16 @@
     "node": ">=14.0.0"
   },
   "dependencies": {},
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "author": {
+    "email": "timurtokaevtoomber@gmail.com",
+    "name": "toombez",
+    "url": "https://github.com/toombez"
+  },
+  "keywords": ["vue", "nuxt", "kvantorium"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kvantorium-vlz-it/kvantorium-vpt-site"
+  }
 }

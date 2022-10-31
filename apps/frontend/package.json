@@ -1,5 +1,5 @@
 {
-  "name": "kvantorium-vlz-site-frontend",
+  "name": "kvantorium-vpt-site-frontend",
   "version": "0.0.0",
   "scripts": {
     "build": "nuxt build",

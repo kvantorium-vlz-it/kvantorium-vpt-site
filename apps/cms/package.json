@@ -1,5 +1,5 @@
 {
-  "name": "kvantorium-vlz-site-cms",
+  "name": "kvantorium-vpt-site-cms",
   "version": "0.0.0",
   "scripts": {
     "dev": "sanity start",
