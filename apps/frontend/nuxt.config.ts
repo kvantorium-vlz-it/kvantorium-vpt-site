@@ -1,5 +1,5 @@
 import path from 'path'
-import { api } from './cms_panel/sanity.json'
+import { api } from '../cms/sanity.json'
 
 export default defineNuxtConfig({
     modules: [

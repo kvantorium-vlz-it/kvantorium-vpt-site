@@ -1,8 +1,7 @@
 {
-    "recommendations": [
-        "Vue.volar",
-        "cpylua.language-postcss",
-        "vunguyentuan.vscode-css-variables",
-        "stylelint.vscode-stylelint"
-    ],
+  "recommendations": [
+    "Vue.volar",
+    "vunguyentuan.vscode-css-variables",
+    "stylelint.vscode-stylelint"
+  ],
 }
