@@ -19,7 +19,7 @@ interface ISiteSettings {
     tabTitle: string;
 }
 
-export const useSiteSettingsStore = defineStore('mainPage', () => {
+export const useSiteSettingsStore = defineStore('siteSettings', () => {
     const siteSettingsQuery = groq`*[_type == 'SiteSettings'][0]{
         footerCopyright, tabTitle,
         footerContacts[]->{label, value, type, name},
