@@ -1,17 +1,14 @@
-<template>
-    <div :class="$style.app">
-        <the-header :class="$style.app__header" />
-        <nuxt-page :class="$style.app__main" />
-        <the-footer />
-    </div>
-</template>
-
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useSiteSettingsStore } from '@/store/siteSettings'
+
+const { tabTitle } = storeToRefs(useSiteSettingsStore())
+
 useHead({
     link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
-    title: 'Кванториум ВПТ',
+    title: tabTitle,
     script: [
         {
             src: 'https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU',
@@ -20,6 +17,14 @@ useHead({
     ]
 })
 </script>
+
+<template>
+    <div :class="$style.app">
+        <the-header :class="$style.app__header" />
+        <nuxt-page :class="$style.app__main" />
+        <the-footer />
+    </div>
+</template>
 
 <style module lang="scss">
 .app {
