@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useSiteSettingsStore } from '@/store/siteSettings'
+
+const siteSettingsStore = storeToRefs(useSiteSettingsStore())
+</script>
+
 <template>
     <page-section :class="$style.footer" as="footer">
         <div :class="$style.footer__sections">
@@ -25,7 +32,9 @@
 
         <hr :class="$style.footer__separator">
         <p :class="$style.footer__copyright">
-            &#169; {{ new Date().getFullYear() }} Кванториум ВОЛЖСКИЙ ПОЛИТЕХ
+            &#169;
+            {{ new Date().getFullYear() }}
+            {{ siteSettingsStore.footerCopyright }}
         </p>
     </page-section>
 </template>

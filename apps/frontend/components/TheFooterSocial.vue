@@ -2,6 +2,7 @@
 defineProps<{
     icon: string;
     link: string;
+    title?: string;
 }>()
 </script>
 
@@ -12,15 +13,21 @@ defineProps<{
         :class="$style.social"
         target="_blank"
     >
-        <nuxt-icon
-            :name="icon"
-            fill
-        />
+        <img
+            :src="icon"
+            :alt="title"
+            :class="$style.social__image"
+            :title="title"
+        >
     </a>
 </template>
 
 <style module lang="scss">
 .social {
-    font-size: var(--fs-body-1);
+    &__image {
+        height: var(--fs-body-1);
+        width: var(--fs-body-1);
+        aspect-ratio: 1;
+    }
 }
 </style>

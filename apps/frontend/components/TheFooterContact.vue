@@ -8,7 +8,7 @@ defineProps<{
 <template>
     <div
         :class="$style.contact"
-        :title="link"
+        :title="name"
     >
         <h4 :class="$style.contact__name">
             {{ name }}:

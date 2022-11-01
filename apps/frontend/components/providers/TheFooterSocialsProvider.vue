@@ -1,27 +1,24 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useSiteSettingsStore } from '@/store/siteSettings'
+
 interface ISocial {
     icon: string;
     link: string;
+    title?: string;
 }
 
-const socials = ref<ISocial[]>([
-    {
-        icon: 'vk',
-        link: 'https://google.com'
-    },
-    {
-        icon: 'vk',
-        link: 'https://google.com'
-    },
-    {
-        icon: 'vk',
-        link: 'https://google.com'
-    },
-    {
-        icon: 'vk',
-        link: 'https://google.com'
-    }
-])
+const siteSettingsStore = storeToRefs(useSiteSettingsStore())
+
+const socials = computed<ISocial[]>(() =>
+    siteSettingsStore.footerSocials.value.map((social) => {
+        return {
+            icon: social.icon,
+            link: social.link,
+            title: social.title,
+        }
+    })
+)
 </script>
 
 <template>

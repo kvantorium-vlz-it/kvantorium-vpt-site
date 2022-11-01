@@ -3,12 +3,13 @@ import { defineStore } from 'pinia'
 interface IContact {
     label: string;
     value: string;
+    name: string;
     type: 'email' | 'link' | 'tel';
 }
 interface ISocial {
     link: string;
     title: string;
-    url: string;
+    icon: string;
 }
 
 interface ISiteSettings {
@@ -21,7 +22,7 @@ interface ISiteSettings {
 export const useSiteSettingsStore = defineStore('mainPage', () => {
     const siteSettingsQuery = groq`*[_type == 'SiteSettings'][0]{
         footerCopyright, tabTitle,
-        footerContacts[]->{label, value, type},
+        footerContacts[]->{label, value, type, name},
         footerSocials[]->{
             link, title,
             'icon': icon->image.asset->url
@@ -32,14 +33,14 @@ export const useSiteSettingsStore = defineStore('mainPage', () => {
 
     const footerCopyright = computed<string>(() => data.value?.footerCopyright || '')
     const tabTitle = computed<string>(() => data.value?.tabTitle || '')
-    const footerContact = computed<IContact[]>(() => data.value?.footerContacts || [])
+    const footerContacts = computed<IContact[]>(() => data.value?.footerContacts || [])
     const footerSocials = computed<ISocial[]>(() => data.value?.footerSocials || [])
 
     return {
         refresh,
         footerCopyright,
         tabTitle,
-        footerContact,
+        footerContacts,
         footerSocials,
     }
 })
