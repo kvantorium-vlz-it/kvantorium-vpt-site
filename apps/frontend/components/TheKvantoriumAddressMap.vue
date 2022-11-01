@@ -1,8 +1,18 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useIndexPageStore } from '@/store/indexPage'
+
+const indexPageStore = storeToRefs(useIndexPageStore())
+</script>
+
 <template>
     <page-section>
         <page-section-content :class="$style.location">
             <template #heading>
-                Как нас найти
+                {{ indexPageStore.map.value.heading }}
+            </template>
+            <template #subheading>
+                {{ indexPageStore.map.value.subHeading }}
             </template>
             <div :class="$style.location__details">
                 <address :class="$style.location__address">
