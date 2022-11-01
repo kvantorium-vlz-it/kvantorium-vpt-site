@@ -38,5 +38,6 @@ const serializers = ref({
     h5 {@include typo(h3-bold)}
     h6 {@include typo(h3-bold)}
     a {@include typo(body-2-normal)}
+    li {@include typo(body-1-normal)}
 }
 </style>
