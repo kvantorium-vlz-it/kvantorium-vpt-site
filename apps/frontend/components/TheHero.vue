@@ -1,12 +1,19 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useIndexPageStore } from '@/store/indexPage'
+
+const indexPageStore = storeToRefs(useIndexPageStore())
+</script>
+
 <template>
     <page-section :class="$style.hero" :wrapper-class="$style.hero__wrapper">
         <div :class="$style.hero__content">
             <div :class="$style.hero__info">
                 <h1 :class="$style.hero__heading">
-                    «Кванториум»
+                    {{ indexPageStore.hero.value.heading }}
                 </h1>
                 <p :class="$style.hero__paragraph">
-                    Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
+                    {{ indexPageStore.hero.value.subHeading }}
                 </p>
             </div>
 

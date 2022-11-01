@@ -51,7 +51,7 @@ export const useIndexPageStore = defineStore('indexPage', () => {
 
     const { data, refresh } = useSanityQuery<IIndexPage>(query)
 
-    const heading = computed<IPageSection>(() => ({
+    const hero = computed<IPageSection>(() => ({
         heading: data.value?.heroHeading || '',
         subHeading: data.value?.heroSubHeading || '',
     }))
@@ -72,7 +72,7 @@ export const useIndexPageStore = defineStore('indexPage', () => {
 
     return {
         refresh,
-        heading,
+        hero,
         kvantums,
         advantages,
         map,
