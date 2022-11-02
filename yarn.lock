@@ -12254,6 +12254,14 @@ same-origin@^0.1.1:
   resolved "https://registry.yarnpkg.com/same-origin/-/same-origin-0.1.1.tgz#c2287d3192577df517acbbd6d1451a9c3c3914f5"
   integrity sha512-effkSW9cap879l6CVNdwL5iubVz8tkspqgfiqwgBgFQspV7152WHaLzr5590yR8oFgt7E1d4lO09uUhtAgUPoA==
 
+sanity-blocks-vue-component@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sanity-blocks-vue-component/-/sanity-blocks-vue-component-1.0.1.tgz#7237f1d7c7b150533f31e62bdfb54abca6e96fc3"
+  integrity sha512-ba59NoGz3NENuIIAKMtjg/JWoyQVpHccanyenEVrT0A1cr3t1/75tUX9XSBMUUe6QyKEedjjJeO6KtNbEzeBRQ==
+  dependencies:
+    lodash.merge "^4.6.2"
+    vue "^3.0.0"
+
 sanity-diff-patch@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sanity-diff-patch/-/sanity-diff-patch-1.0.9.tgz#fb1fa3b52c27d369878af57ba02fee779b3ca8bd"
@@ -14385,7 +14393,7 @@ vue-svg-loader@^0.16.0:
     loader-utils "^1.2.3"
     svg-to-vue "^0.7.0"
 
-vue@^3.2.41:
+vue@^3.0.0, vue@^3.2.41:
   version "3.2.41"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.41.tgz#ed452b8a0f7f2b962f055c8955139c28b1c06806"
   integrity sha512-uuuvnrDXEeZ9VUPljgHkqB5IaVO8SxhPpqF2eWOukVrBnRBx2THPSGQBnVRt0GrIG1gvCmFXMGbd7FqcT1ixNQ==

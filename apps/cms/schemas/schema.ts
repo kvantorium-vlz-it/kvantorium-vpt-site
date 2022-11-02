@@ -17,6 +17,7 @@ import Kvantum from './documents/Kvantum'
 import Tag from './documents/Tag'
 import News from './documents/News'
 import Event from './documents/Event'
+import Advantage from './documents/Advantage'
 
 // Objects
 import GroupSchedule from './objects/GroupSchedule'
@@ -44,6 +45,7 @@ export default createSchema({
         Tag,
         News,
         Event,
+        Advantage,
 
         GroupSchedule,
         LessonSchedule,

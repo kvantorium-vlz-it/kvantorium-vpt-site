@@ -38,9 +38,6 @@ const kvantums = definePageSection({
             type: 'array',
             title: 'Квантумы, которые надо отобразить',
             of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
-            options: {
-                sortable: false,
-            },
             hidden: ({ document }) => document.kvantumsIsShowAll,
             validation: Rule =>
                 Rule.custom((visibleKvantums, context) => {
@@ -66,6 +63,8 @@ const kvantums = definePageSection({
                     if (unique.length !== visibleKvantums.length) {
                         return 'Квантумы не могут повторяться'
                     }
+
+                    return true
                 }),
         }
     ]
@@ -83,36 +82,10 @@ const advantages = definePageSection({
     },
     fields: [
         {
-            name: 'list',
+            name: 'advantagesList',
             type: 'array',
             title: 'Преимущества',
-            of: [
-                {
-                    name: 'advantage',
-                    type: 'object',
-                    title: 'Преимущество',
-                    fields: [
-                        {
-                            name: 'title',
-                            type: 'string',
-                            title: 'Заголовок преимущества',
-                            validation: requiredFieldValidation,
-                        },
-                        {
-                            name: 'description',
-                            type: 'text',
-                            title: 'Описание преимущества',
-                            validation: requiredFieldValidation,
-                        },
-                        {
-                            name: 'image',
-                            type: 'image',
-                            title: 'Изображение преимущества',
-                            validation: requiredFieldValidation,
-                        }
-                    ]
-                }
-            ],
+            of: [{ type: 'reference', to: [{ type: 'Advantage' }] }],
             validation: requiredFieldValidation,
         }
     ]

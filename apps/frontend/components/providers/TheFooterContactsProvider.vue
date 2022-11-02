@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useSiteSettingsStore } from '@/store/siteSettings'
+
 type ContactType = 'link' | 'email' | 'tel' | 'geo'
 
 interface IContact {
@@ -47,26 +50,16 @@ class Contact {
     }
 }
 
-const rawContacts = ref<IContact[]>([
-    {
-        label: 'label',
-        link: 'https://google.com',
-        name: ' name',
-        type: 'link',
-    },
-    {
-        label: 'label',
-        link: 'https://google.com',
-        name: ' name',
-        type: 'link',
-    },
-    {
-        label: 'label',
-        link: 'https://google.com',
-        name: ' name',
-        type: 'link',
-    },
-])
+const siteSettingsStore = storeToRefs(useSiteSettingsStore())
+
+const rawContacts = computed<IContact[]>(() => {
+    return siteSettingsStore.footerContacts.value.map(contact => ({
+        label: contact.label,
+        link: contact.value,
+        name: contact.name,
+        type: contact.type,
+    }))
+})
 
 const contacts = ref<Contact[]>(rawContacts.value
     .map(contact => new Contact(contact))

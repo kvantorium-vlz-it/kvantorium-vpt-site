@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@sanity/color-input": "^2.35.0",
-    "react-icons": "^4.6.0"
+    "react-icons": "^4.6.0",
+    "sanity-blocks-vue-component": "^1.0.1"
   }
 }

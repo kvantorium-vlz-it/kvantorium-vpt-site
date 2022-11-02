@@ -1,13 +1,20 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useIndexPageStore } from '@/store/indexPage'
+
+const indexPageStore = storeToRefs(useIndexPageStore())
+</script>
+
 <template>
     <main>
         <the-hero />
         <page-section>
             <page-section-content>
                 <template #heading>
-                    Квантумы
+                    {{ indexPageStore.kvantums.value.heading }}
                 </template>
                 <template #subheading>
-                    Программы Кванториума предназначены для школьников с 5 по 11 класс
+                    {{ indexPageStore.kvantums.value.subHeading }}
                 </template>
                 <kvantums-cards-provider #="{ cards }">
                     <kvantums-cards-carousel :kvantums="cards" />
@@ -17,7 +24,10 @@
         <page-section>
             <page-section-content>
                 <template #heading>
-                    Почему Кванториум?
+                    {{ indexPageStore.advantages.value.heading }}
+                </template>
+                <template #subheading>
+                    {{ indexPageStore.advantages.value.subHeading }}
                 </template>
                 <kvantorium-advantages-provider #="{ advantages }">
                     <kvantorium-advantages-list :advantages="advantages" />

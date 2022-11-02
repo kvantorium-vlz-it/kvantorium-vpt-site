@@ -28,6 +28,12 @@ export default {
             validation: requiredFieldValidation,
         },
         {
+            name: 'name',
+            type: 'string',
+            title: 'Описание, что это за контакт',
+            validation: requiredFieldValidation,
+        },
+        {
             name: 'label',
             type: 'string',
             title: 'Надпись контакта',
