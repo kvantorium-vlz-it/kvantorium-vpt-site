@@ -82,7 +82,7 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .carousel {
     display: flex;
@@ -92,7 +92,7 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
     width: 100%;
 
     &__element {
-        padding: #{px-to-rem(12px)};
+        padding: #{rem(12px)};
     }
 
     &__chevron {
@@ -113,11 +113,11 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
 
     &__pagination {
         display: flex;
-        gap: #{px-to-rem(4px)};
+        gap: #{rem(4px)};
         align-items: center;
         justify-content: center;
 
-        margin-top: #{px-to-rem(24px)};
+        margin-top: #{rem(24px)};
     }
 
     &__bullet {
@@ -126,8 +126,8 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
         display: inline-block;
 
         aspect-ratio: 1;
-        width: #{px-to-rem(8px)};
-        height: #{px-to-rem(8px)};
+        width: #{rem(8px)};
+        height: #{rem(8px)};
 
         background: rgb(var(--c-black) / 20%);
         border: none;
@@ -137,22 +137,22 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
             background: rgb(var(--c-secondary-700) / 70%);
         }
     }
-    @include from-desktop {
-        gap: px-to-rem(16px);
+    @include from-breakpoint(desktop) {
+        gap: rem(16px);
 
         &__element {
-            padding: #{px-to-rem(48px)};
+            padding: #{rem(48px)};
         }
 
         &__pagination {
-            gap: #{px-to-rem(8px)};
+            gap: #{rem(8px)};
 
-            margin-top: #{px-to-rem(32px)};
+            margin-top: #{rem(32px)};
         }
 
         &__bullet {
-            width: #{px-to-rem(12px)};
-            height: #{px-to-rem(12px)};
+            width: #{rem(12px)};
+            height: #{rem(12px)};
         }
     }
 }

@@ -26,7 +26,7 @@ const serializers = ref({
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .rich-text {
     * { color: rgb(var(--c-primary-600)); }

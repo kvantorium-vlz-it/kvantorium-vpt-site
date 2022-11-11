@@ -44,7 +44,7 @@ const showMore = () => {
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .text {
     &__more-button {

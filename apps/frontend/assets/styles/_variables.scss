@@ -1,85 +1,35 @@
-$root-font-size: 16px;
-$font-weight-bold: bold;
-$font-weight-normal: normal;
+/// Step for alpha values
+$alpha-step: 5;
 $desktop-page-section-max-width: 1024px;
 $page-section-shadow-width: 64px;
 
-// Design system
+/// Breakpoints
 $breakpoints: (
-    mobile-desktop: 1024px
+    all: 0px,
+    mobile: 320px,
+    desktop: 1024px,
 );
-$colors: (
-    primary: (
-        100: #d3e2f9,
-        200: #a9c4f4,
-        300: #789ade,
-        400: #5172be,
-        500: #234293,
-        600: #19327e,
-        700: #112569,
-        800: #0b1955,
-        900: #061146,
-    ),
-    secondary: (
-        100: #fafcfe,
-        200: #f5f9fe,
-        300: #eff4fc,
-        400: #e8eff9,
-        500: #e0e8f5,
-        600: #a3b3d2,
-        700: #7084b0,
-        800: #475a8e,
-        900: #2b3b75,
-    ),
-    success: (
-        100: #dafad1,
-        200: #aff5a5,
-        300: #76e174,
-        400: #4dc455,
-        500: #1e9e33,
-        600: #158733,
-        700: #0f7131,
-        800: #095b2e,
-        900: #054b2b,
-    ),
-    warning: (
-        100: #fff6cc,
-        200: #ffe999,
-        300: #ffda67,
-        400: #ffcb41,
-        500: #ffb302,
-        600: #db9301,
-        700: #b77501,
-        800: #935900,
-        900: #7a4600,
-    ),
-    error: (
-        100: #fbdfd1,
-        200: #f8baa4,
-        300: #ec8873,
-        400: #d95b4e,
-        500: #c11d1d,
-        600: #a51521,
-        700: #8a0e24,
-        800: #6f0923,
-        900: #5c0523,
-    ),
-    gray: (
-        100: #e6e6e6,
-        200: #ccc,
-        300: #b3b3b3,
-        400: #999,
-        500: #808080,
-        600: #666,
-        700: #4c4c4c,
-        800: #333,
-        900: #191919,
-    ),
-    specific: (
-        white: #fafafa,
-        black: #000017,
-    ),
+
+/// Z indexes
+$z-indexes: (
+    underlay: -1,
+    under-page: 0,
+    page: 1,
+    over-page: 2,
+    overlay: 3,
 );
+
+/// Border radiuses
+$border-radiuses: (
+    full: 1000vh,
+    8: 8px,
+    12: 12px,
+    16: 16px,
+    24: 24px,
+);
+
+/// Gradients
+/// I have no idea now how to store colors of gradient
 $gradients: (
     primary: (
         rgb(var(--c-primary-800)),
@@ -90,140 +40,38 @@ $gradients: (
         rgb(var(--c-secondary-100)),
     ),
 );
-$font-weight: (
-    bold: $font-weight-bold,
-    normal: $font-weight-normal,
-);
-$typography: (
-    logo-top-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 26px,
-            desktop: 32px,
-        ),
+
+/// Box-shadows
+$box-shadows: (
+    4: (
+        values: (0 0 4px 2px),
+        color: rgb(var(--c-black) / 25%),
     ),
-    logo-bottom-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 16px,
-            desktop: 20px,
-        ),
+    8: (
+        values: (0 0 8px 4px),
+        color: rgb(var(--c-black) / 25%),
     ),
-    h1-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 40px,
-            desktop: 64px,
-        ),
+    16: (
+        values: 0 0 16px 8px,
+        color: rgb(var(--c-black) / 25%),
     ),
-    h2-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 36px,
-            desktop: 48px,
-        ),
+    sidebar: (
+        values:8px 0 24px 12px,
+        color: rgb(var(--c-black) / 25%),
     ),
-    h3-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 28px,
-            desktop: 32px,
-        ),
+    page-section-left: (
+        type: inset,
+        values: (-$page-section-shadow-width) 0 $page-section-shadow-width (-$page-section-shadow-width),
+        color: rgb(var(--c-black) / 50%),
     ),
-    body-1-normal: (
-        font-weight: $font-weight-normal,
-        font-size: (
-            mobile: 20px,
-            desktop: 24px,
-        ),
+    page-section-right: (
+        type: inset,
+        values: $page-section-shadow-width 0 $page-section-shadow-width (-$page-section-shadow-width),
+        color: rgb(var(--c-black) / 50%),
     ),
-    body-1-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 20px,
-            desktop: 24px,
-        ),
+    promo: (
+        type: inset,
+        values: 0 -64px 64px,
+        color: rgb(var(--c-black) / 50%),
     ),
-    body-2-normal: (
-        font-weight: $font-weight-normal,
-        font-size: (
-            mobile: 16px,
-            desktop: 20px,
-        ),
-    ),
-    body-2-bold: (
-        font-weight: $font-weight-bold,
-        font-size: (
-            mobile: 16px,
-            desktop: 20px,
-        ),
-    ),
-    body-3-normal: (
-        font-weight: $font-weight-normal,
-        font-size: (
-            mobile: 12px,
-            desktop: 16px,
-        ),
-    ),
-);
-$font-family: 'Roboto',
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    helvetica,
-    arial,
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji';
-$border-radius: (
-    full: 1000vh,
-    s: 8px,
-    m: 12px,
-    l: 16px,
-    xl: 24px,
-);
-$effects: (
-    box-shadow: (
-        4: (
-            values: (0 0 4px 2px),
-            color: rgb(var(--c-black) / 25%),
-        ),
-        8: (
-            values: (0 0 8px 4px),
-            color: rgb(var(--c-black) / 25%),
-        ),
-        16: (
-            values: 0 0 16px 8px,
-            color: rgb(var(--c-black) / 25%),
-        ),
-        sidebar: (
-            values:8px 0 24px 12px,
-            color: rgb(var(--c-black) / 25%),
-        ),
-        page-section-left: (
-            type: inset,
-            values: (-$page-section-shadow-width) 0 $page-section-shadow-width (-$page-section-shadow-width),
-            color: rgb(var(--c-black) / 50%),
-        ),
-        page-section-right: (
-            type: inset,
-            values: $page-section-shadow-width 0 $page-section-shadow-width (-$page-section-shadow-width),
-            color: rgb(var(--c-black) / 50%),
-        ),
-        promo: (
-            type: inset,
-            values: 0 -64px 64px,
-            color: rgb(var(--c-black) / 50%),
-        ),
-    ),
-    blurs: (
-        hero: 4px,
-    )
-);
-$z-indexes: (
-    underlay: -1,
-    under-page: 0,
-    page: 1,
-    over-page: 2,
-    overlay: 3,
 );

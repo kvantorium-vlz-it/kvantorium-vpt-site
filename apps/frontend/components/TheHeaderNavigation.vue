@@ -1,82 +1,81 @@
 <script setup lang="ts">
-const navigation = ref<HTMLElement>(null)
-
 withDefaults(defineProps<{
-    isOpen: boolean;
+  isOpen: boolean
 }>(), {
-    isOpen: false
+  isOpen: false,
 })
 
 const emit = defineEmits<{
-    (_e: 'close'): void,
-    (_e: 'open'): void,
+  (_e: 'close'): void
+  (_e: 'open'): void
 }>()
 
+const navigation = ref<HTMLElement>(null)
+
 onClickOutside(navigation, (_event) => {
-    emit('close')
+  emit('close')
 })
 
 const swipeStartX = ref<number>(null)
 useSwipe(navigation, {
-    onSwipeEnd: (event, direction) => {
-        const swipeEndX = event.changedTouches.item(0).clientX
-        const deltaX = Math.abs(swipeStartX.value - swipeEndX)
+  onSwipeEnd: (event, direction) => {
+    const swipeEndX = event.changedTouches.item(0).clientX
+    const deltaX = Math.abs(swipeStartX.value - swipeEndX)
 
-        const sideBarWidth = parseFloat(getComputedStyle(navigation.value).width)
+    const sideBarWidth = parseFloat(getComputedStyle(navigation.value).width)
 
-        const allowedDeltaToCloseSidebar = sideBarWidth / 4
+    const allowedDeltaToCloseSidebar = sideBarWidth / 4
 
-        if (direction === 'RIGHT' || deltaX < allowedDeltaToCloseSidebar) {
-            return
-        }
+    if (direction === 'RIGHT' || deltaX < allowedDeltaToCloseSidebar)
+      return
 
-        emit('close')
-        swipeStartX.value = null
-    },
-    onSwipeStart: (event) => {
-        swipeStartX.value = event.touches.item(0).clientX
-    }
+    emit('close')
+    swipeStartX.value = null
+  },
+  onSwipeStart: (event) => {
+    swipeStartX.value = event.touches.item(0).clientX
+  },
 })
 </script>
 
 <template>
-    <nav
-        ref="navigation"
-        :class="{
-            [$style.navigation]: true,
-            [$style.open]: isOpen,
-        }"
+  <nav
+    ref="navigation"
+    :class="{
+      [$style.navigation]: true,
+      [$style.open]: isOpen,
+    }"
+  >
+    <the-header-navigation-provider
+      #="{ navigation, isGroup, isItem }"
     >
-        <the-header-navigation-provider
-            #="{ navigation, isGroup, isItem }"
+      <template
+        v-for="(item, index) in navigation"
+        :key="index"
+      >
+        <the-header-navigation-group
+          v-if="isGroup(item)"
+          :name="item.name"
+          :items="item.items"
+        />
+        <the-header-navigation-item
+          v-else-if="isItem(item)"
+          :to="item.to"
         >
-            <template
-                v-for="(item, index) in navigation"
-                :key="index"
-            >
-                <the-header-navigation-group
-                    v-if="isGroup(item)"
-                    :name="item.name"
-                    :items="item.items"
-                />
-                <the-header-navigation-item
-                    v-else-if="isItem(item)"
-                    :to="item.to"
-                >
-                    {{ item.label }}
-                </the-header-navigation-item>
-            </template>
-        </the-header-navigation-provider>
+          {{ item.label }}
+        </the-header-navigation-item>
+      </template>
+    </the-header-navigation-provider>
 
-        <the-header-navigation-decoration :class="$style.navigation__decoration" />
-    </nav>
+    <the-header-navigation-decoration :class="$style.navigation__decoration" />
+  </nav>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .navigation {
-    @include only-mobile {
+    @include between-breakpoint(mobile, desktop) {
         --br: var(--br-m);
 
         position: fixed;
@@ -88,7 +87,7 @@ useSwipe(navigation, {
         overflow: auto;
         display: flex;
         flex-direction: column;
-        gap: #{px-to-rem(4px)};
+        gap: #{rem(4px)};
 
         width: var(--w-mobile-sidebar-width);
         max-height: 100vh;
@@ -107,9 +106,9 @@ useSwipe(navigation, {
             box-shadow: var(--bs-sidebar);
         }
     }
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         display: flex;
-        gap: #{px-to-rem(8px)};
+        gap: #{rem(8px)};
 
         &__decoration {
             display: none;

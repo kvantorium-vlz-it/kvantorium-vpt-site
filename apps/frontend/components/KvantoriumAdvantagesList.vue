@@ -23,12 +23,12 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .list {
     display: flex;
     flex-direction: column;
-    gap: #{px-to-rem(12px)};
+    gap: #{rem(12px)};
 
     padding: 0;
 

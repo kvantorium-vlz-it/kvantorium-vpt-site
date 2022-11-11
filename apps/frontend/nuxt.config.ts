@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-icons',
     '@vueuse/nuxt',
-    '@kvantorium-vpt-site/ui',
   ],
 
   components: {
@@ -36,5 +35,5 @@ export default defineNuxtConfig({
       'autoprefixer': {},
       'cssnano': true,
     },
-},
+  },
 })

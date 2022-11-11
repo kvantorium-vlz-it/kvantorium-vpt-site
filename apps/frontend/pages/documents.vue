@@ -31,7 +31,7 @@ const documentsStore = storeToRefs(useDocumentsStore())
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .document {
     &__name {

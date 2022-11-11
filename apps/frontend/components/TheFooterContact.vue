@@ -24,7 +24,7 @@ defineProps<{
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .contact {
     &__name {

@@ -46,12 +46,12 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
 <style module lang="scss">
 @use 'sass:string' as string;
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .card {
-    --gap-x: #{px-to-rem(12px)};
-    --p: #{px-to-rem(12px)};
-    --p-t: #{px-to-rem(8px)};
+    --gap-x: #{rem(12px)};
+    --p: #{rem(12px)};
+    --p-t: #{rem(8px)};
 
     isolation: isolate;
     position: relative;
@@ -62,7 +62,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
     text-align: right;
 
     background-image: var(--g-promo-vertical);
-    border-top: #{px-to-rem(24px)} solid rgb(var(--c-secondary-700));
+    border-top: #{rem(24px)} solid rgb(var(--c-secondary-700));
     border-radius: var(--br-l);
     box-shadow: var(--bs-8);
 
@@ -101,7 +101,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
     &__name {
         margin: 0;
-        margin-bottom: #{px-to-rem(12px)};
+        margin-bottom: #{rem(12px)};
 
         color: rgb(var(--text-body));
 
@@ -111,20 +111,20 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
     &__description {
         margin: 0;
-        margin-bottom: #{px-to-rem(12px)};
+        margin-bottom: #{rem(12px)};
 
         color: rgb(var(--text-body));
         @include typo(body-2-normal);
     }
-    @include only-mobile {
-        --image-size: #{px-to-rem(80px)};
-        --gap-x: #{px-to-rem(12px)};
+    @include between-breakpoint(mobile, desktop) {
+        --image-size: #{rem(80px)};
+        --gap-x: #{rem(12px)};
 
         &__image-wrapper {
             float: left;
 
             margin-right: var(--gap-x);
-            margin-bottom: #{px-to-rem(4px)};
+            margin-bottom: #{rem(4px)};
         }
 
         &__button {
@@ -133,8 +133,8 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
             margin-left: auto;
         }
     }
-    @include from-desktop {
-        --image-size: #{px-to-rem(96px)};
+    @include from-breakpoint(desktop) {
+        --image-size: #{rem(96px)};
 
         $translate-percent: 70;
 
@@ -145,7 +145,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
             transform: translate((string.unquote('-#{$translate-percent}%')), 50%);
 
             box-sizing: content-box;
-            padding: #{px-to-rem(16px)};
+            padding: #{rem(16px)};
 
             background-color: rgb(var(--c-secondary-400));
             border: 2px solid rgb(var(--c-secondary-700));

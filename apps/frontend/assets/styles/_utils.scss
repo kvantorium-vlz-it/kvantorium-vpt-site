@@ -1,8 +1,11 @@
 @use 'sass:color' as color;
-@use 'sass:map' as map;
-@use 'sass:list' as list;
 @use 'sass:string' as string;
+@use 'sass:list' as list;
+@use 'sass:map' as map;
+
 @use 'variables' as *;
+@use 'typography' as typography;
+@use 'meta' as meta;
 
 /// Function that find last index of substring
 ///
@@ -25,122 +28,155 @@
     @return $result;
 }
 
-/// Function that converts color into project var color style
+/// Browser context in px
+$BROWSER_CONTEXT: 16px;
+
+/// Converter px to root em values
 ///
-/// @param { color } color
-/// @return { string } with schema "R G B"
-@function color-to-var($color) {
-    $red: color.red($color);
-    $green: color.green($color);
-    $blue: color.blue($color);
-    @return #{#{$red} #{$green} #{$blue}};
+/// @param { number | px } px
+/// @return { em } em root units
+@function em($pixels, $context: $BROWSER_CONTEXT) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return calc($pixels / $context) * 1em;
 }
 
-/// Base font for caclulating px-to-rem
-/// Changing base-font-size breaks styles in vue components and you shound
-/// reload app for force update styles
-$base-font-size: 16px;
+/// Body font in px
+$BODY_FONT: 16px;
 
-/// Function that calculate proportion px to base-font-size
+/// Converter px to rem values
 ///
-/// @param { px } px
-/// @return { number } proportion
-@function px-to-base-font-size-proportion($px) {
-    @return calc($px / $base-font-size);
-}
-
-/// Function that converts px to rem values
-///
-/// @param { number } px
+/// @param { number | px } px
 /// @return { rem } rem units
-///
-/// Using this function is hard:
-/// if you change parameter value in component app styles will not updated
-@function px-to-rem($px) {
-    /* stylelint-disable-next-line length-zero-no-unit */
-    @if $px == 0 { @return 0; }
-    @return '#{px-to-base-font-size-proportion($px)}rem';
+@function rem($pixels) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @return calc($pixels / $BODY_FONT) * 1rem;
 }
 
-/// Function that converts list of px to list of rem
+/// Converts list of px to list of rems
 ///
 /// @param { px[] } list of px
 /// @return { rem[] } list of rems
-///
-/// Using this function is hard:
-/// if you change parameter value in component app styles will not updated
-@function list-px-to-rem($list) {
+@function list-rem($list) {
     $result: ();
     @each $value in $list {
-        $result: list.append($result, #{px-to-rem($value)});
+        $result: list.append($result, #{rem($value)});
     }
     @return $result;
 }
 
-/// Function that converts px to value for media query breakpoint
+/// Formatter for css var name
 ///
-/// @param { number } px
-/// @return { em } em units for media query
+/// @param { string } prefix prefix for var
+/// @param { string } name css var name
 ///
-/// Using this function is hard:
-/// if you change parameter value in component app styles will not updated
-@function px-to-breakpoint($px) {
-    @if $px == 0 { @return 0; }
-
-    /* stylelint-disable-next-line order/order */
-    @return '#{px-to-base-font-size-proportion($px)}em';
+/// @return { string } css var name with prefix
+@function css-var-name($prefix, $name) {
+    @return --#{$prefix}-#{$name};
 }
 
-/// Function that calculate breakpoint `bounds` from px value
+/// Converter color to `RRR GGG BBB` color format
 ///
-/// @param { number } px between media queries
-/// @return { (start: number, end: number) } bounds of media queries in px units
-@function breakpoint-px-bounds($px) {
-    @return (start: $px, end: $px - 0.5px);
+/// @param { color } color
+/// @return { string } color formatted in `RRR GGG BBB`
+@function color-to-css-var($color) {
+    @if (type-of($color) != 'color') {
+        @error 'param must be color type'
+    }
+
+    $red: color.red($color);
+    $green: color.green($color);
+    $blue: color.blue($color);
+
+    @return #{#{$red} #{$green} #{$blue}};
 }
 
-/// Function that gets `start` key from `breakpoint`
+/// Checker is valid breakpoint
 ///
-/// @param { (start: number, end: number) } bounds
-/// @return { number } start of next from px media query
-@function breakpoint-start-bound($bounds) {
-    @return map.get($bounds, start);
+/// @param { string } breakpoint name
+/// @return { true } if breakpoint valid else throw error
+@function validate-breakpoint($breakpoint) {
+    @if (map-has-key($breakpoints, $breakpoint)) {
+        @return true;
+    } @else {
+        @error 'Undefined "#{$breakpoint}" breakpoint. Allowed: #{map-keys($breakpoints)}.';
+    }
 }
 
-/// Function that gets `end` key from `breakpoint`
+/// Mixin for apply rules only from breakpoint
 ///
-/// @param { (start: number, end: number) } bounds
-/// @return { number } end pf previos from px media query
-@function breakpoint-end-bound($bounds) {
-    @return map.get($bounds, end);
+/// @param { string } breakpoint name
+@mixin from-breakpoint($breakpoint) {
+    $isValid: validate-breakpoint($breakpoint);
+
+    $breakpoint-start: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: em($breakpoint-start)) {
+        @content;
+    }
 }
 
-/// Function that calculate breakpoint `bounds` from px value
+/// Mixin for apply rules only between breakpoints
 ///
-/// @param { number } px between media queries
-/// @return { (start: number, end: number) } bounds of media queries in em units
-@function breakpoint-bounds($px) {
-    $bounds: breakpoint-px-bounds($px);
-    $start: px-to-breakpoint(breakpoint-start-bound($bounds));
-    $end: px-to-breakpoint(breakpoint-end-bound($bounds));
-    @return (start: $start, end: $end);
+/// @param { string } breakpoint-start first breakpoint name
+/// @param { string } breakpoint-end second breakpoint name
+@mixin between-breakpoint($breakpoint-start, $breakpoint-end) {
+    $isValid: validate-breakpoint($breakpoint-start);
+    $isValid: validate-breakpoint($breakpoint-end);
+
+    @include from-breakpoint($breakpoint-start) {
+        @include until-breakpoint($breakpoint-end) {
+            @content;
+        }
+    }
 }
 
-/// Function that gets css var name from font-weight value
+/// Mixin for apply rules only until breakpoint
 ///
-/// @param { font-weight } font-weight string value
-/// @return { css-var } css var name
-@function get-font-weight-css-var($font-weight) {
-    $var: '--fw-#{$font-weight}';
-    @return $var;
+/// @param { string } breakpoint name
+@mixin until-breakpoint($breakpoint) {
+    $isValid: validate-breakpoint($breakpoint);
+
+    $previous-breakpoint-end: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: em($previous-breakpoint-end - 0.5px)) {
+        @content;
+    }
 }
 
-/// Function that gets css var name from name typography used font-size
+/// Validatior for typography names
 ///
-/// @param { string } name typography name
-/// @return { css-var } css var name
-@function get-font-size-css-var($name) {
-    $name-without-weight: string.slice($name, 0, string-last-index($name, '-') - 1);
-    $var: '--fs-#{$name-without-weight}';
-    @return $var;
+/// @param { string } typography name
+/// @return { true } if valid typography else throws error
+@function validate-typography($typography) {
+    @if (map-has-key(typography.$typography, $typography)) {
+        @return true;
+    } @else {
+        @error 'Unknown "#{$typography}" typography. Allowed typography: #{map-keys(typography.$typography)}.';
+    }
+}
+
+/// Mixin for apply typography
+///
+/// @param { string } typo name of typography
+@mixin typo($typo) {
+    $isValid: validate-typography($typo);
+
+    $font-weight-key: str-slice($typo, string-last-index($typo, '-') + 1);
+    $font-weight-css-var: '--#{map.get(meta.$prefixes, font-weight)}-#{$font-weight-key}';
+
+    $font-size-key: str-slice($typo, 0, string-last-index($typo, '-') - 1);
+    $font-size-css-var: '--#{map.get(meta.$prefixes, font-size)}-#{$font-size-key}';
+
+    font-weight: var(#{$font-weight-css-var});
+    font-size: var(#{$font-size-css-var});
 }
