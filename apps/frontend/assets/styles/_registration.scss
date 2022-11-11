@@ -8,7 +8,7 @@
 /// Alpha values
 @for $alpha-index from 0 through calc(100 / $alpha-step) {
     $alpha-value: calc($alpha-index * $alpha-step);
-    $alpha-var-name: css-var-name($alpha-prefix, $alpha-value);
+    $alpha-var-name: css-var-name(map.get($prefixes, alpha), $alpha-value);
 
     :root {
         #{$alpha-var-name}: #{percentage(calc($alpha-value / 100))};
@@ -17,7 +17,7 @@
 
 /// Not shaded colors
 @each $key, $color in $colors {
-    $color-var-name: css-var-name($colors-prefix, $key);
+    $color-var-name: css-var-name(map.get($prefixes, colors), $key);
 
     :root {
         #{$color-var-name}: color-to-css-var($color);
@@ -28,7 +28,7 @@
 @each $key, $color-map in $shaded-colors {
     @each $shade-key, $color in $color-map {
         $color-name: '#{$key}-#{$shade-key}';
-        $color-var-name: css-var-name($colors-prefix, $color-name);
+        $color-var-name: css-var-name(map.get($prefixes, colors), $color-name);
 
         :root {
             #{$color-var-name}: color-to-css-var($color);
@@ -38,7 +38,7 @@
 
 /// Font weights
 @each $key, $font-weight in $font-weights {
-    $font-weight-var-name: css-var-name($font-weight-prefix, $font-weight);
+    $font-weight-var-name: css-var-name(map.get($prefixes, font-weight), $font-weight);
 
     :root {
         #{$font-weight-var-name}: $font-weight;
@@ -49,7 +49,7 @@
 @each $key, $typo in $typography {
     $typo-name: str-slice($key, 0, string-last-index($key, '-') - 1);
 
-    $font-size-css-var: css-var-name($font-size-prefix, $typo-name);
+    $font-size-css-var: css-var-name(map.get($prefixes, font-size), $typo-name);
 
     @each $breakpoint, $font-size in $typo {
         :root {
@@ -62,7 +62,7 @@
 
 /// Z indexes
 @each $key, $index in $z-indexes {
-    $z-index-css-var: css-var-name($z-index-prefix, $key);
+    $z-index-css-var: css-var-name(map.get($prefixes, z-index), $key);
 
     :root {
         #{$z-index-css-var}: $index;
@@ -71,7 +71,7 @@
 
 /// Border radiuses
 @each $key, $radius in $border-radiuses {
-    $border-radius-css-var: css-var-name($border-radius-prefix, $key);
+    $border-radius-css-var: css-var-name(map.get($prefixes, border-radius), $key);
 
     :root {
         #{$border-radius-css-var}: $radius;
@@ -80,13 +80,13 @@
 
 /// Font family
 :root {
-    --#{$font-family-prefix}: #{$font-family};
+    --#{map.get($prefixes, font-family)}: #{$font-family};
 }
 
 /// Box shadows
 /// TODO: use alpha css vars for colors
 @each $key, $box-shadow in $box-shadows {
-    $box-shadow-css-var: css-var-name($box-shadow-prefix, $key);
+    $box-shadow-css-var: css-var-name(map.get($prefixes, box-shadow), $key);
     $result-bs: '';
 
     @if (map-get($box-shadow, type) == 'inset') {
@@ -111,7 +111,7 @@
 
 /// Gradients
 @each $key, $gradient in $gradients {
-    $gradient-css-var: css-var-name($gradient-prefix, $key);
+    $gradient-css-var: css-var-name(map.get($prefixes, gradient), $key);
 
     $var-vertical: '#{$gradient-css-var}-vertical';
     $var-horizontal: '#{$gradient-css-var}-horizontal';
