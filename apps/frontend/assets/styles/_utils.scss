@@ -172,10 +172,10 @@ $BODY_FONT: 16px;
     $isValid: validate-typography($typo);
 
     $font-weight-key: str-slice($typo, string-last-index($typo, '-') + 1);
-    $font-weight-css-var: '--#{meta.$font-weight-prefix}-#{$font-weight-key}';
+    $font-weight-css-var: '--#{map.get(meta.$prefixes, font-weight)}-#{$font-weight-key}';
 
     $font-size-key: str-slice($typo, 0, string-last-index($typo, '-') - 1);
-    $font-size-css-var: '--#{meta.$font-size-prefix}-#{$font-size-key}';
+    $font-size-css-var: '--#{map.get(meta.$prefixes, font-size)}-#{$font-size-key}';
 
     font-weight: var(#{$font-weight-css-var});
     font-size: var(#{$font-size-css-var});
