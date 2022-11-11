@@ -1,64 +1,63 @@
 <script setup lang="ts">
-const group = ref<HTMLDetailsElement>()
-
 const props = defineProps<{
-    name: string;
-    items: { to?: string; label: string; }[];
+  name: string
+  items: { to?: string; label: string }[]
 }>()
 
+const group = ref<HTMLDetailsElement>()
+
 const isActiveGroup = computed<boolean>(() => {
-    return props.items.find(item => item.to === useRoute().path) !== undefined
+  return props.items.find(item => item.to === useRoute().path) !== undefined
 })
 
 onClickOutside(group, () => {
-    if (group.value.open) {
-        group.value.open = false
-    }
+  if (group.value.open)
+    group.value.open = false
 })
 </script>
 
 <template>
-    <details
-        ref="group"
+  <details
+    ref="group"
+    :class="{
+      [$style.group]: true,
+      [$style.active]: isActiveGroup,
+    }"
+  >
+    <summary :class="$style.group__name">
+      {{ name }}
+      <nuxt-icon
+        name="chevron"
         :class="{
-            [$style.group]: true,
-            [$style.active]: isActiveGroup,
+          [$style.group__chevron]: true,
         }"
-    >
-        <summary :class="$style.group__name">
-            {{ name }}
-            <nuxt-icon
-                name="chevron"
-                :class="{
-                    [$style.group__chevron]: true,
-                }"
-            />
-        </summary>
-        <ul :class="$style.group__list">
-            <li
-                v-for="(item, index) in items"
-                :key="index"
-                :class="$style['group__list-item']"
-            >
-                <the-header-navigation-item
-                    :to="item.to"
-                    :class="$style.group__item"
-                >
-                    {{ item.label }}
-                </the-header-navigation-item>
-            </li>
-        </ul>
-    </details>
+      />
+    </summary>
+    <ul :class="$style.group__list">
+      <li
+        v-for="(item, index) in items"
+        :key="index"
+        :class="$style['group__list-item']"
+      >
+        <the-header-navigation-item
+          :to="item.to"
+          :class="$style.group__item"
+        >
+          {{ item.label }}
+        </the-header-navigation-item>
+      </li>
+    </ul>
+  </details>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .group {
-    --p-y: #{px-to-rem(4px)};
-    --p-x: #{px-to-rem(12px)};
+    --p-y: #{rem(4px)};
+    --p-x: #{rem(12px)};
     --br: var(--br-s);
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         display: inline-block;
     }
 
@@ -75,7 +74,7 @@ onClickOutside(group, () => {
         cursor: pointer;
 
         display: flex;
-        gap: #{px-to-rem(8px)};
+        gap: #{rem(8px)};
         align-items: center;
         justify-content: space-between;
 
@@ -98,12 +97,12 @@ onClickOutside(group, () => {
     &__list {
         display: flex;
         flex-direction: column;
-        gap: #{px-to-rem(4px)};
+        gap: #{rem(4px)};
 
         margin: 0;
-        margin-top: #{px-to-rem(4px)};
+        margin-top: #{rem(4px)};
         margin-left: var(--p-x);
-        padding-left: #{px-to-rem(8px)};
+        padding-left: #{rem(8px)};
 
         list-style: none;
 
@@ -125,7 +124,7 @@ onClickOutside(group, () => {
         @include typo(body-1-bold);
     }
     @include typo(body-1-normal);
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         position: relative;
 
         // Name(summary) element if desktop and open
@@ -143,7 +142,7 @@ onClickOutside(group, () => {
             width: max-content;
             max-width: 200%;
             margin: 0;
-            padding: #{px-to-rem(4px)};
+            padding: #{rem(4px)};
 
             background: var(--g-primary-vertical);
             border-left: none;

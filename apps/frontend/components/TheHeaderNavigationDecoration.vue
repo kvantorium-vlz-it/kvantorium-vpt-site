@@ -1,10 +1,10 @@
 <!-- Circle cutted by overflow if height more than vh -->
 <template>
-    <div :class="$style.decoration" />
+  <div :class="$style.decoration" />
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .decoration {
     pointer-events: none;
@@ -32,7 +32,7 @@
         aspect-ratio: 1;
         width: calc(var(--w-mobile-sidebar-width) * 3 / 4);
 
-        border: #{px-to-rem(48px)} solid rgb(var(--c-secondary-200) / 5%);
+        border: #{rem(48px)} solid rgb(var(--c-secondary-200) / 5%);
         border-radius: 100vw;
     }
 }

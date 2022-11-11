@@ -6,48 +6,48 @@ const siteSettingsStore = storeToRefs(useSiteSettingsStore())
 </script>
 
 <template>
-    <page-section :class="$style.footer" as="footer">
-        <div :class="$style.footer__sections">
-            <the-footer-section
-                name="Навигация"
-                :class="$style.footer__section"
-            >
-                <the-footer-navigation />
-            </the-footer-section>
+  <page-section :class="$style.footer" as="footer">
+    <div :class="$style.footer__sections">
+      <the-footer-section
+        name="Навигация"
+        :class="$style.footer__section"
+      >
+        <the-footer-navigation />
+      </the-footer-section>
 
-            <the-footer-section
-                name="Соц. сети"
-                :class="$style.footer__section"
-            >
-                <the-footer-socials />
-            </the-footer-section>
+      <the-footer-section
+        name="Соц. сети"
+        :class="$style.footer__section"
+      >
+        <the-footer-socials />
+      </the-footer-section>
 
-            <the-footer-section
-                name="Контакты"
-                :class="$style.footer__section"
-            >
-                <the-footer-contacts />
-            </the-footer-section>
-        </div>
+      <the-footer-section
+        name="Контакты"
+        :class="$style.footer__section"
+      >
+        <the-footer-contacts />
+      </the-footer-section>
+    </div>
 
-        <hr :class="$style.footer__separator">
-        <p :class="$style.footer__copyright">
-            &#169;
-            {{ new Date().getFullYear() }}
-            {{ siteSettingsStore.footerCopyright }}
-        </p>
-    </page-section>
+    <hr :class="$style.footer__separator">
+    <p :class="$style.footer__copyright">
+      &#169;
+      {{ new Date().getFullYear() }}
+      {{ siteSettingsStore.footerCopyright }}
+    </p>
+  </page-section>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .footer {
     /* stylelint-disable-next-line order/order */
     background-color: rgb(var(--bg-footer));
 
     &__sections {
-        --gap: #{px-to-rem(8px)};
+        --gap: #{rem(8px)};
 
         display: flex;
         flex-flow: row wrap;
@@ -61,8 +61,8 @@ const siteSettingsStore = storeToRefs(useSiteSettingsStore())
     }
 
     &__separator {
-        margin-top: #{px-to-rem(8px)};
-        margin-bottom: #{px-to-rem(4px)};
+        margin-top: #{rem(8px)};
+        margin-bottom: #{rem(4px)};
 
         border: 1px solid rgb(var(--c-white));
     }
@@ -74,7 +74,7 @@ const siteSettingsStore = storeToRefs(useSiteSettingsStore())
         text-align: center;
         @include typo(body-2-normal);
     }
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         &__section {
             width: auto;
         }

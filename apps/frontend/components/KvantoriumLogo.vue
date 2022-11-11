@@ -10,10 +10,10 @@
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .logo {
-    --gap: #{px-to-rem(8px)};
+    --gap: #{rem(8px)};
     --icon-size: calc(var(--fs-logo-top) + var(--fs-logo-bottom));
 
     display: inline-flex;

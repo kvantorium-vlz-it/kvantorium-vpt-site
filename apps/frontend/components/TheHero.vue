@@ -6,35 +6,35 @@ const indexPageStore = storeToRefs(useIndexPageStore())
 </script>
 
 <template>
-    <page-section :class="$style.hero" :wrapper-class="$style.hero__wrapper">
-        <div :class="$style.hero__content">
-            <div :class="$style.hero__info">
-                <h1 :class="$style.hero__heading">
-                    {{ indexPageStore.hero.value.heading }}
-                </h1>
-                <p :class="$style.hero__paragraph">
-                    {{ indexPageStore.hero.value.subHeading }}
-                </p>
-            </div>
+  <page-section :class="$style.hero" :wrapper-class="$style.hero__wrapper">
+    <div :class="$style.hero__content">
+      <div :class="$style.hero__info">
+        <h1 :class="$style.hero__heading">
+          {{ indexPageStore.hero.value.heading }}
+        </h1>
+        <p :class="$style.hero__paragraph">
+          {{ indexPageStore.hero.value.subHeading }}
+        </p>
+      </div>
 
-            <div :class="$style.hero__buttons">
-                <base-button>
-                    записаться
-                </base-button>
+      <div :class="$style.hero__buttons">
+        <base-button>
+          записаться
+        </base-button>
 
-                <base-button variant="light">
-                    узнать больше
-                </base-button>
-            </div>
-        </div>
-    </page-section>
+        <base-button variant="light">
+          узнать больше
+        </base-button>
+      </div>
+    </div>
+  </page-section>
 </template>
 
 <style module lang="ts">
 </style>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .hero {
     --hero-image: url('@/assets/images/hero-closeup.webp');
@@ -61,7 +61,7 @@ const indexPageStore = storeToRefs(useIndexPageStore())
 
     &__heading {
         margin: 0;
-        margin-bottom: #{px-to-rem(16px)};
+        margin-bottom: #{rem(16px)};
 
         color: rgb(var(--c-white));
         @include typo(h1-bold);
@@ -75,16 +75,16 @@ const indexPageStore = storeToRefs(useIndexPageStore())
     &__buttons {
         display: flex;
         flex-direction: column;
-        gap: #{px-to-rem(8px)};
+        gap: #{rem(8px)};
         align-items: flex-start;
     }
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         --hero-image: url('@/assets/images/hero-fullshot.webp');
 
         background-size: auto;
 
         &__content {
-            --desktop-p-y: calc(#{px-to-rem(96px)} + var(--p-y));
+            --desktop-p-y: calc(#{rem(96px)} + var(--p-y));
 
             padding-top: var(--desktop-p-y);
             padding-bottom: var(--desktop-p-y);
@@ -92,7 +92,7 @@ const indexPageStore = storeToRefs(useIndexPageStore())
 
         &__buttons {
             flex-direction: row;
-            gap: #{px-to-rem(48px)};
+            gap: #{rem(48px)};
         }
     }
 }

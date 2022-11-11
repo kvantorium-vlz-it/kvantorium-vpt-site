@@ -136,5 +136,5 @@
     --text-body: var(--c-primary-600);
     --text-body-light: var(--c-secondary-700);
 
-    --w-mobile-sidebar-width: #{px-to-rem(256px)};
+    --w-mobile-sidebar-width: #{rem(256px)};
 }

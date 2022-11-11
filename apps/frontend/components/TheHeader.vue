@@ -36,7 +36,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .header {
     background-color: rgb(var(--bg-header));
@@ -50,7 +50,7 @@ const isMobileNavigationOpen = ref<boolean>(false)
     &__link {
         text-decoration: none;
     }
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         &__navigationMenuButton {
             display: none;
         }

@@ -2,7 +2,7 @@
     <div :class="$style.decoration" />
 </template>
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .decoration {
     position: absolute;
@@ -16,7 +16,7 @@
     border-radius: inherit;
 
     &::after {
-        $size: #{px-to-rem(112px)};
+        $size: #{rem(112px)};
 
         content: '';
 
@@ -30,9 +30,9 @@
         width: $size;
         height: $size;
 
-        border: #{px-to-rem(24px)} solid rgb(var(--c-secondary-400));
+        border: #{rem(24px)} solid rgb(var(--c-secondary-400));
         border-radius: var(--br-full);
-        @include from-desktop {
+        @include from-breakpoint(desktop) {
             right: 70%;
             left: auto;
             transform: translate(90%, -50%);

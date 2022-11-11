@@ -1,25 +1,25 @@
 <script setup lang="ts">
 defineProps<{
-    to?: string;
+  to?: string
 }>()
 </script>
 
 <template>
-    <nuxt-link
-        :to="to"
-        :class="$style.item"
-        :exact-active-class="$style.current"
-    >
-        <slot />
-    </nuxt-link>
+  <nuxt-link
+    :to="to"
+    :class="$style.item"
+    :exact-active-class="$style.current"
+  >
+    <slot />
+  </nuxt-link>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .item {
-    --p-y: #{px-to-rem(4px)};
-    --p-x: #{px-to-rem(12px)};
+    --p-y: #{rem(4px)};
+    --p-x: #{rem(12px)};
     --br: var(--br-s);
 
     display: inline-block;

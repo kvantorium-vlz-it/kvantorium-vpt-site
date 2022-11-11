@@ -2,24 +2,24 @@
 type As = 'section' | 'main' | 'header' | 'footer' | 'div'
 
 withDefaults(defineProps<{
-    as?: As;
-    wrapperClass?: string;
+  as?: As
+  wrapperClass?: string
 }>(), {
-    as: 'div',
-    wrapperClass: ''
+  as: 'div',
+  wrapperClass: '',
 })
 </script>
 
 <template>
-    <component :is="as" :class="$style.section">
-        <div :class="[$style.section__wrapper, wrapperClass]" v-bind="$attrs">
-            <slot />
-        </div>
-    </component>
+  <component :is="as" :class="$style.section">
+    <div :class="[$style.section__wrapper, wrapperClass]" v-bind="$attrs">
+      <slot />
+    </div>
+  </component>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .section {
     --bg-color: var(--bg);
@@ -27,14 +27,14 @@ withDefaults(defineProps<{
     background-color: rgb(var(--bg-color));
 
     &__wrapper {
-        $shadow-width: px-to-rem($page-section-shadow-width);
+        $shadow-width: rem($page-section-shadow-width);
 
         background-color: inherit;
-        @include page-section-padding;
-        @include from-desktop {
+        // @include page-section-padding;
+        @include from-breakpoint(desktop) {
             position: relative;
 
-            max-width: #{px-to-rem($desktop-page-section-max-width)};
+            max-width: #{rem($desktop-page-section-max-width)};
             margin: 0 auto;
 
             &::after,

@@ -6,55 +6,55 @@ const indexPageStore = storeToRefs(useIndexPageStore())
 </script>
 
 <template>
-    <page-section>
-        <page-section-content :class="$style.location">
-            <template #heading>
-                {{ indexPageStore.map.value.heading }}
-            </template>
-            <template #subheading>
-                {{ indexPageStore.map.value.subHeading }}
-            </template>
-            <div :class="$style.location__details">
-                <address :class="$style.location__address">
-                    <h3 :class="$style.location__title">
-                        Адрес:
-                    </h3>
+  <page-section>
+    <page-section-content :class="$style.location">
+      <template #heading>
+        {{ indexPageStore.map.value.heading }}
+      </template>
+      <template #subheading>
+        {{ indexPageStore.map.value.subHeading }}
+      </template>
+      <div :class="$style.location__details">
+        <address :class="$style.location__address">
+          <h3 :class="$style.location__title">
+            Адрес:
+          </h3>
 
-                    <a
-                        :class="$style.location__link"
-                        href="geo:48.786934,44.772160"
-                    >
-                        ул. Машиностроителей, 15, г. Волжский, Волгоградская область, Россия
-                    </a>
-                </address>
-                <kvantorium-map :class="$style.location__map" />
-            </div>
-        </page-section-content>
-    </page-section>
+          <a
+            :class="$style.location__link"
+            href="geo:48.786934,44.772160"
+          >
+            ул. Машиностроителей, 15, г. Волжский, Волгоградская область, Россия
+          </a>
+        </address>
+        <kvantorium-map :class="$style.location__map" />
+      </div>
+    </page-section-content>
+  </page-section>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .location {
     &__details {
         display: flex;
         flex-direction: column;
-        gap: #{px-to-rem(8px)};
+        gap: #{rem(8px)};
         align-items: flex-start;
     }
 
     &__address {
-        padding-left: #{px-to-rem(10px)};
+        padding-left: #{rem(10px)};
 
         font-style: normal;
 
-        border-left: #{px-to-rem(8px)} solid rgb(var(--c-secondary-700));
+        border-left: #{rem(8px)} solid rgb(var(--c-secondary-700));
     }
 
     &__title {
         margin: 0;
-        margin-bottom: #{px-to-rem(8px)};
+        margin-bottom: #{rem(8px)};
 
         color: rgb(var(--c-secondary-700));
         @include typo(body-1-normal);
@@ -70,14 +70,14 @@ const indexPageStore = storeToRefs(useIndexPageStore())
 
     &__map {
         width: 100%;
-        min-height: #{px-to-rem(224px)};
+        min-height: #{rem(224px)};
     }
-    @include only-mobile {
+    @include between-breakpoint(mobile, desktop) {
         &__link {
             text-decoration: underline;
         }
     }
-    @include from-desktop {
+    @include from-breakpoint(desktop) {
         &__details {
             flex-direction: row;
         }
@@ -85,7 +85,7 @@ const indexPageStore = storeToRefs(useIndexPageStore())
         &__map {
             flex: 1 0 65%;
 
-            min-height: #{px-to-rem(304px)};
+            min-height: #{rem(304px)};
         }
     }
 }

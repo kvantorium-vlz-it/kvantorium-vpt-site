@@ -2,29 +2,29 @@
 type Variant = 'dark' | 'light'
 
 withDefaults(defineProps<{
-    variant?: Variant;
+  variant?: Variant
 }>(), {
-    variant: 'dark'
+  variant: 'dark',
 })
 </script>
 
 <template>
-    <button
-        :class="[
-            $style.button,
-            $style[variant],
-        ]"
-    >
-        <slot />
-    </button>
+  <button
+    :class="[
+      $style.button,
+      $style[variant],
+    ]"
+  >
+    <slot />
+  </button>
 </template>
 
 <style module lang="scss">
-@use '@styles/functional' as *;
+@use '@styles/main.scss' as *;
 
 .button {
-    --p-x: #{px-to-rem(16px)};
-    --p-y: #{px-to-rem(4px)};
+    --p-x: #{rem(16px)};
+    --p-y: #{rem(4px)};
 
     cursor: pointer;
 
@@ -63,9 +63,9 @@ withDefaults(defineProps<{
         --color: var(--c-primary-500);
     }
     @include typo(body-2-normal);
-    @include from-desktop {
-        --p-y: #{px-to-rem(8px)};
-        --p-x: #{px-to-rem(32px)};
+    @include from-breakpoint(desktop) {
+        --p-y: #{rem(8px)};
+        --p-x: #{rem(32px)};
     }
 }
 @keyframes on-hover {
