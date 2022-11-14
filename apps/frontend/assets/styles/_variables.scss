@@ -1,0 +1,14 @@
+@use 'theme';
+
+/// Gradients
+/// I have no idea now how to store colors of gradient
+$gradients: (
+    primary: (
+        rgb(var(--c-primary-800)),
+        rgb(var(--c-primary-500)),
+    ),
+    promo: (
+        rgb(var(--c-secondary-400)),
+        rgb(var(--c-secondary-100)),
+    ),
+);

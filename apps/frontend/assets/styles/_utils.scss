@@ -1,0 +1,27 @@
+@use 'sass:color';
+
+/// Formatter for css var name
+///
+/// @param { string } prefix prefix for var
+/// @param { string } name css var name
+///
+/// @return { string } css var name with prefix
+@function css-var-name($prefix, $name) {
+    @return --#{$prefix}-#{$name};
+}
+
+/// Converter color to `RRR GGG BBB` color format
+///
+/// @param { color } color
+/// @return { string } color formatted in `RRR GGG BBB`
+@function color-to-css-var($color) {
+    @if (type-of($color) != 'color') {
+        @error 'param must be color type'
+    }
+
+    $red: color.red($color);
+    $green: color.green($color);
+    $blue: color.blue($color);
+
+    @return #{#{$red} #{$green} #{$blue}};
+}

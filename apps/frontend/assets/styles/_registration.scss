@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+@use 'theme';
+@use 'variables';
+@use 'utils';
+@use 'meta';
+
+/// =========================
+/// Colors and gradients
+/// =========================
+:root {
+    @each $key, $color in theme.$colors {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, colors), $key);
+
+        #{$css-var-name}: utils.color-to-css-var($color);
+    }
+
+    @each $key, $color-map in theme.$shaded-colors {
+        @each $shade, $color in $color-map {
+            $color-name: #{$key}-#{$shade};
+            $css-var-name: utils.css-var-name(map.get(meta.$prefixes, colors), $color-name);
+
+            #{$css-var-name}: utils.color-to-css-var($color);
+        }
+    }
+
+    @each $key, $gradient in variables.$gradients {
+        $gradient-css-var-name: utils.css-var-name(map.get(meta.$prefixes, gradient), $key);
+
+        $var-vertical: '#{$gradient-css-var-name}-vertical';
+        $var-horizontal: '#{$gradient-css-var-name}-horizontal';
+
+        #{$var-vertical}: linear-gradient(to bottom, $gradient);
+        #{$var-horizontal}: linear-gradient(to right, $gradient);
+    }
+}
