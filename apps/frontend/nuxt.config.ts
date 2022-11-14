@@ -7,6 +7,6 @@ export default defineNuxtConfig({
     ],
 
     alias: {
-        '@styles': '@/assets/styles',
+        '@styles': path.join(__dirname, 'assets', 'styles'),
     }
 })

@@ -2,6 +2,13 @@
 
 $page-section-shadow-width: 64px;
 
+/// Breakpoints
+$breakpoints: (
+    all: 0px,
+    mobile: 320px,
+    desktop: 1024px,
+);
+
 /// Gradients
 /// I have no idea now how to store colors of gradient
 $gradients: (

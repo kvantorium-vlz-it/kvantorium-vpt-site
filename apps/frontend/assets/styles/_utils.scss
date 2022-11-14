@@ -1,5 +1,8 @@
 @use 'sass:color';
 @use 'sass:list';
+@use 'sass:map';
+
+@use 'variables';
 
 /// Browser context in px
 $BROWSER_CONTEXT: 16px;
@@ -71,4 +74,57 @@ $BODY_FONT: 16px;
     $blue: color.blue($color);
 
     @return #{#{$red} #{$green} #{$blue}};
+}
+
+/// Checker is valid breakpoint
+///
+/// @param { string } breakpoint name
+/// @return { true } if breakpoint valid else throw error
+@function validate-breakpoint($breakpoint) {
+    @if (map.has-key(variables.$breakpoints, $breakpoint)) {
+        @return true;
+    } @else {
+        @error 'Undefined "#{$breakpoint}" breakpoint. Allowed: #{map.keys(variables.$breakpoints)}.';
+    }
+}
+
+/// Mixin for apply rules only from breakpoint
+///
+/// @param { string } breakpoint name
+@mixin from-breakpoint($breakpoint) {
+    $isValid: validate-breakpoint($breakpoint);
+
+    $breakpoint-start: map.get(variables.$breakpoints, $breakpoint);
+
+    @media (min-width: em($breakpoint-start)) {
+        @content;
+    }
+}
+
+/// Mixin for apply rules only between breakpoints
+///
+/// @param { string } breakpoint-start first breakpoint name
+/// @param { string } breakpoint-end second breakpoint name
+@mixin between-breakpoint($breakpoint-start, $breakpoint-end) {
+    $isValid: validate-breakpoint($breakpoint-start);
+    $isValid: validate-breakpoint($breakpoint-end);
+
+    @include from-breakpoint($breakpoint-start) {
+        @include until-breakpoint($breakpoint-end) {
+            @content;
+        }
+    }
+}
+
+/// Mixin for apply rules only until breakpoint
+///
+/// @param { string } breakpoint name
+@mixin until-breakpoint($breakpoint) {
+    $isValid: validate-breakpoint($breakpoint);
+
+    $previous-breakpoint-end: map.get(variables.$breakpoints, $breakpoint);
+
+    @media (max-width: em($previous-breakpoint-end - 0.5px)) {
+        @content;
+    }
 }
