@@ -1,10 +1,3 @@
-export const onlyUniqueFilter = (value, index, self) => {
-    return self.indexOf(value) === index
-}
-
-export const onlyUniqueObjectsFilter =(value, index, self) => {
-}
-
-export const requiredFieldValidation = Rule => Rule
+export const requiredRule = Rule => Rule
     .required()
-    .error('Поле обязательно для заполнения')
+    .error('Обязательно для заполнения')

@@ -1,4 +1,6 @@
-import { requiredFieldValidation } from "../../assets/ts/utils";
+import { requiredRule } from '../../assets/ts/utils'
+
+const SHORT_DESCRIPTION_MAX_LENGTH = 200
 
 export default {
     name: 'Kvantum',
@@ -9,33 +11,40 @@ export default {
             name: 'name',
             type: 'string',
             title: 'Название квантума',
-            validation: requiredFieldValidation,
+            validation: requiredRule,
         },
         {
             name: 'description',
             type: 'RichText',
-            title: 'Подробное описание квантума',
-            description: 'Исползуется на отдельной странице квантума',
-            validation: requiredFieldValidation,
+            title: 'Описание квантума',
+            validation: requiredRule,
         },
         {
             name: 'shortDescription',
             type: 'text',
-            title: 'Короткое описание квантума',
-            description: 'Используется на других страницах',
-            validation: requiredFieldValidation,
+            title: `Короткое описание квантума (${SHORT_DESCRIPTION_MAX_LENGTH} символов).`,
+            validation: Rule => [
+                requiredRule(Rule),
+                Rule.max(SHORT_DESCRIPTION_MAX_LENGTH),
+            ],
         },
         {
             name: 'icon',
             type: 'image',
             title: 'Иконка квантума',
-            validation: requiredFieldValidation,
+            validation: requiredRule,
         },
         {
             name: 'image',
             type: 'image',
-            title: 'Основное изображение квантума',
-            validation: requiredFieldValidation,
+            title: 'Изображение квантума',
+            description: 'Основное изображение, представляющее квантум',
         },
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'name',
+            media: 'icon',
+        }
+    }
 }

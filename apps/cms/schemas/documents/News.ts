@@ -1,44 +1,32 @@
-import { requiredFieldValidation } from "../../assets/ts/utils";
+import { requiredRule } from '../../assets/ts/utils'
 
 export default {
     name: 'News',
     type: 'document',
-    title: 'Новости',
+    title: 'Новости/События',
     fields: [
         {
             name: 'name',
             type: 'string',
-            title: 'Название новости',
-            validation: requiredFieldValidation,
+            title: 'Заголовок',
+            validation: requiredRule,
         },
         {
             name: 'content',
             type: 'RichText',
             title: 'Текст новости',
-            validation: requiredFieldValidation,
-        },
-        {
-            name: 'image',
-            type: 'image',
-            title: 'Изображение новости'
+            validation: requiredRule,
         },
         {
             name: 'shortContent',
             type: 'text',
             title: 'Короткое описание новости',
-            description: 'Используется для добавления новости на другие страницы',
+            validation: requiredRule,
         },
         {
-            name: 'tags',
-            type: 'array',
-            title: 'Категория новости',
-            description: 'Используется для добавления новости в категорию',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'Tag' }],
-                }
-            ]
-        }
+            name: 'image',
+            type: 'image',
+            title: 'Изображение новости',
+        },
     ]
 }
