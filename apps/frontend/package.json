@@ -7,14 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@kvantorium-vpt-site/tsconfig": "workspace:*",
-    "@kvantorium-vpt-site/ui": "workspace:*",
-
     "@vueuse/core": "^9.3.1",
     "@vueuse/nuxt": "^9.3.1",
     "@nuxtjs/sanity": "^1.2.3",

@@ -1,4 +1,4 @@
-<img src="assets/kvantorium-vlz-logo.png">
+<img src=".github/kvantorium-vlz-logo.png">
 
 # Kvantorium vlz site
 

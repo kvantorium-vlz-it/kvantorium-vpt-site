@@ -3,32 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix"
+    "dev": "turbo run dev --parallel"
   },
   "devDependencies": {
-    "@kvantorium-vpt-site/eslint-config": "workspace:*",
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=v16.18.0"
+    "node": ">=v16.18.1"
   },
-  "packageManager": "pnpm@7.14.2",
-  "author": {
-    "email": "timurtokaevtoomber@gmail.com",
-    "name": "toombez",
-    "url": "https://github.com/toombez"
-  },
-  "keywords": ["vue", "nuxt", "kvantorium"],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kvantorium-vlz-it/kvantorium-vpt-site"
-  }
+  "packageManager": "pnpm@7.15.0"
 }
