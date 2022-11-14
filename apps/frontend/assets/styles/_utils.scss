@@ -1,8 +1,32 @@
 @use 'sass:color';
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:string';
 
 @use 'variables';
+@use 'typography';
+@use 'meta';
+
+/// Function that find last index of substring
+///
+/// @param { string } string
+/// @param { string } substring
+/// @return { number } last index
+@function string-last-index($string, $substring) {
+    $index: string.index($string, $substring);
+    $result: $index;
+    @if $index {
+        $string-length: string.length($string);
+        $substring-length: string.length($substring);
+        @for $i from $index + $substring-length through $string-length {
+            $substring-length: string.length($substring);
+            @if str-slice($string, $i, $i + $substring-length - 1) == $substring {
+                $result: $i;
+            }
+        }
+    }
+    @return $result;
+}
 
 /// Browser context in px
 $BROWSER_CONTEXT: 16px;
@@ -127,4 +151,32 @@ $BODY_FONT: 16px;
     @media (max-width: em($previous-breakpoint-end - 0.5px)) {
         @content;
     }
+}
+
+/// Validatior for typography names
+///
+/// @param { string } typography name
+/// @return { true } if valid typography else throws error
+@function validate-typography($typography) {
+    @if (map.has-key(typography.$typography, $typography)) {
+        @return true;
+    } @else {
+        @error 'Unknown "#{$typography}" typography. Allowed typography: #{map.keys(typography.$typography)}.';
+    }
+}
+
+/// Mixin for apply typography
+///
+/// @param { string } typo name of typography
+@mixin typo($typo) {
+    $isValid: validate-typography($typo);
+
+    $font-weight-key: string.slice($typo, string-last-index($typo, '-') + 1);
+    $font-weight-css-var: '--#{map.get(meta.$prefixes, font-weight)}-#{$font-weight-key}';
+
+    $font-size-key: string.slice($typo, 0, string-last-index($typo, '-') - 1);
+    $font-size-css-var: '--#{map.get(meta.$prefixes, font-size)}-#{$font-size-key}';
+
+    font-weight: var(#{$font-weight-css-var});
+    font-size: var(#{$font-size-css-var});
 }

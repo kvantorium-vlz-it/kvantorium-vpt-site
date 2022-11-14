@@ -3,6 +3,7 @@
 
 @use 'theme';
 @use 'variables';
+@use 'typography';
 @use 'utils';
 @use 'meta';
 
@@ -73,6 +74,32 @@
 
         #{$css-var-name}: #{$result-bs};
     }
+}
+
+
+/// =========================
+/// Font weights and sizes
+/// =========================
+:root {
+    @each $key, $font-weight in typography.$font-weights {
+        $font-weight-var-name: utils.css-var-name(map.get(meta.$prefixes, font-weight), $font-weight);
+
+        #{$font-weight-var-name}: $font-weight;
+    }
+
+    @each $key, $typo in typography.$typography {
+        $typo-name: string.slice($key, 0, utils.string-last-index($key, '-') - 1);
+
+        $font-size-css-var: utils.css-var-name(map.get(meta.$prefixes, font-size), $typo-name);
+
+        @each $breakpoint, $font-size in $typo {
+            @include utils.from-breakpoint($breakpoint) {
+                #{$font-size-css-var}: utils.rem($font-size);
+            }
+        }
+    }
+
+    --#{map.get(meta.$prefixes, font-family)}: #{typography.$font-family};
 }
 
 /// =========================
