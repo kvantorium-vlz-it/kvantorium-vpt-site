@@ -34,3 +34,21 @@
         #{$var-horizontal}: linear-gradient(to right, $gradient);
     }
 }
+
+
+/// =========================
+/// High level colors and gradients
+/// =========================
+:root {
+    --bg: var(--c-white);
+    --bg-header: var(--c-primary-900);
+    --bg-footer: var(--c-primary-900);
+    --bg-sidebar: var(--g-primary-vertical);
+    --bg-kvantum-card: var(--g-kvantum-card-vertical);
+
+    --text-heading: var(--c-primary-600);
+    --text-heading-dark: var(--c-primary-900);
+    --text-subheading: var(--c-primary-600);
+    --text-body: var(--c-primary-600);
+    --text-body-light: var(--c-secondary-700);
+}
