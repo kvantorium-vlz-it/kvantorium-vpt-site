@@ -1,5 +1,7 @@
 @use 'theme';
 
+$page-section-shadow-width: 64px;
+
 /// Gradients
 /// I have no idea now how to store colors of gradient
 $gradients: (
@@ -10,5 +12,53 @@ $gradients: (
     kvantum-card: (
         rgb(var(--c-secondary-400)),
         rgb(var(--c-secondary-100)),
+    ),
+);
+
+/// Z indexes
+$z-indexes: (
+    underlay: -1,
+    under-page: 0,
+    page: 1,
+    over-page: 2,
+    overlay: 3,
+);
+
+/// Border radiuses
+$border-radiuses: (
+    8: 8px,
+    12: 12px,
+    16: 16px,
+    24: 24px,
+    full: 1000vh,
+);
+
+/// Box-shadows
+$box-shadows: (
+    4: (
+        values: (0 0 4px 2px),
+        color: rgb(var(--c-black) / 25%),
+    ),
+    8: (
+        values: (0 0 8px 4px),
+        color: rgb(var(--c-black) / 25%),
+    ),
+    16: (
+        values: 0 0 16px 8px,
+        color: rgb(var(--c-black) / 25%),
+    ),
+    sidebar: (
+        values:8px 0 24px 12px,
+        color: rgb(var(--c-black) / 25%),
+    ),
+    page-section-left: (
+        type: inset,
+        values: (-$page-section-shadow-width) 0 $page-section-shadow-width (-$page-section-shadow-width),
+        color: rgb(var(--c-black) / 50%),
+    ),
+    page-section-right: (
+        type: inset,
+        values: $page-section-shadow-width 0 $page-section-shadow-width (-$page-section-shadow-width),
+        color: rgb(var(--c-black) / 50%),
     ),
 );

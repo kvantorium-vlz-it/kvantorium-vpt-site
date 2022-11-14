@@ -1,4 +1,51 @@
 @use 'sass:color';
+@use 'sass:list';
+
+/// Browser context in px
+$BROWSER_CONTEXT: 16px;
+
+/// Converter px to root em values
+///
+/// @param { number | px } px
+/// @return { em } em root units
+@function em($pixels, $context: $BROWSER_CONTEXT) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return calc($pixels / $context) * 1em;
+}
+
+/// Body font in px
+$BODY_FONT: 16px;
+
+/// Converter px to rem values
+///
+/// @param { number | px } px
+/// @return { rem } rem units
+@function rem($pixels) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @return calc($pixels / $BODY_FONT) * 1rem;
+}
+
+/// Converts list of px to list of rems
+///
+/// @param { px[] } list of px
+/// @return { rem[] } list of rems
+@function list-rem($list) {
+    $result: ();
+    @each $value in $list {
+        $result: list.append($result, #{rem($value)});
+    }
+    @return $result;
+}
 
 /// Formatter for css var name
 ///

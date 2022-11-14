@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:string';
 
 @use 'theme';
 @use 'variables';
@@ -35,6 +36,44 @@
     }
 }
 
+/// =========================
+/// Misc variables
+/// =========================
+:root {
+    @each $key, $index in variables.$z-indexes {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, z-index), $key);
+
+        #{$css-var-name}: $index;
+    }
+
+    @each $key, $radius in variables.$border-radiuses {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, border-radius), $key);
+
+        #{$css-var-name}: $radius;
+    }
+
+    @each $key, $box-shadow in variables.$box-shadows {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, box-shadow), $key);
+        $result-bs: '';
+
+        @if (map.get($box-shadow, type) == 'inset') {
+            $result-bs: string.insert($result-bs, 'inset ', 0);
+        }
+
+        $result-bs: string.insert(
+            $result-bs,
+            '#{utils.list-rem(map.get($box-shadow, values))} ',
+            string.length($result-bs + 1),
+        );
+        $result-bs: string.insert(
+            $result-bs,
+            map.get($box-shadow, color),
+            string.length($result-bs + 1)
+        );
+
+        #{$css-var-name}: #{$result-bs};
+    }
+}
 
 /// =========================
 /// High level colors and gradients
