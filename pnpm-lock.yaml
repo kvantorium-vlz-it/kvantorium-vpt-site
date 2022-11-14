@@ -47,10 +47,12 @@ importers:
     specifiers:
       modern-normalize: ^1.1.0
       nuxt: 3.0.0-rc.13
+      nuxt-icons: ^2.0.2
       sass: ^1.56.1
     devDependencies:
       modern-normalize: 1.1.0
       nuxt: 3.0.0-rc.13_sass@1.56.1
+      nuxt-icons: 2.0.2
       sass: 1.56.1
 
 packages:
@@ -10281,6 +10283,15 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /nuxt-icons/2.0.2:
+    resolution: {integrity: sha512-Sr9xwM6sLH9k6gCpr1j8Vdixgm2LBgkPcoCRngU9xlBglEnEmLZzPHi6eMpl0u2ux4RkRdyRIt+cdvgdFqD/FQ==}
+    dependencies:
+      '@nuxt/kit': 3.0.0-rc.13
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
     dev: true
 
   /nuxt/3.0.0-rc.13_sass@1.56.1:

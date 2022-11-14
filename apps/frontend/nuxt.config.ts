@@ -1,6 +1,10 @@
 import path from 'path'
 
 export default defineNuxtConfig({
+    modules: [
+        'nuxt-icons'
+    ],
+
     css: [
         'modern-normalize',
         '@styles/main.scss',
