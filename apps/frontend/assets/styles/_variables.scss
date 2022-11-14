@@ -1,6 +1,7 @@
 @use 'theme';
 
 $page-section-shadow-width: 64px;
+$desktop-page-section-max-width: 1024px;
 
 /// Breakpoints
 $breakpoints: (
