@@ -2,7 +2,8 @@ import path from 'path'
 
 export default defineNuxtConfig({
     modules: [
-        'nuxt-icons'
+        'nuxt-icons',
+        '@vueuse/nuxt',
     ],
 
     css: [
