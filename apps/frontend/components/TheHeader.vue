@@ -41,7 +41,7 @@ const slideLeftDrawer = () => {
                 :class="$style.header__bar"
                 :items="items"
             />
-            <NavigationDrawer
+            <LazyNavigationDrawer
                 :class="$style.header__drawer"
                 :is-open="isOpenDrawer"
                 :items="items"
