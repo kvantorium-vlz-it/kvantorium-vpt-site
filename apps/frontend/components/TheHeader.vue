@@ -64,7 +64,8 @@ const slideLeftDrawer = () => {
 @use '@styles/main.scss' as *;
 
 .header {
-    background-color: rgb(var(--bg-header));
+    // Build version not override PageSecion background
+    --bg-color: var(--bg-header) !important;
 
     &__wrapper {
         display: flex;
