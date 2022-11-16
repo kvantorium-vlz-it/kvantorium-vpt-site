@@ -118,3 +118,7 @@
     --text-body: var(--c-primary-600);
     --text-body-light: var(--c-secondary-700);
 }
+
+:root {
+    --w-navigation-drawer: #{utils.rem(256px)};
+}

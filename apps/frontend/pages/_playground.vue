@@ -1,6 +1,23 @@
+<script setup lang="ts">
+const isShowDrawer = ref(false)
+
+const toggleShowDrawer = () => {
+    isShowDrawer.value = !isShowDrawer.value
+}
+
+const closeDrawer = () => {
+    isShowDrawer.value = false
+}
+
+const navigationItems = [
+    { items: [{ label: 'gjikawgwa' }, { label: 'jgnkwag' }], name: 'gnmka,vwa' },
+    { label: 'mkbvavbwa', to: '/' },
+]
+</script>
+
 <template>
     <div :class="$style.b">
-        <PageSection>
+        <PageSection as="main">
             <PageSectionDefaultLayout>
                 <template #heading>
                     Lorem ipsum dolor sit.
@@ -28,7 +45,8 @@
                             { label: 'gamwekbaw' }
                         ]"
                     />
-                    <NavigationGroup name="jmgiwakgwa"
+                    <NavigationGroup
+                        name="jmgiwakgwa"
                         :items="[
                             { label: 'gkwagwa' },
                             { label: 'gamwekbaw', to: '/' }
@@ -44,10 +62,27 @@
                     />
                     <KvantumCard
                         :kvantum="{
-                            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
+                            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
                             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbOC4XXrHYPUwVz-WpDswN4f1JGttUCZ5zQHbNnku&s',
                             name: 'Lorem ipsum dolor',
                         }"
+                    />
+                    <NavigationBar
+                        :items="navigationItems"
+                    />
+
+                    <div style="display: flex; justify-content: flex-end;">
+                        <BaseButton @click="toggleShowDrawer">
+                            toggle drawer
+                        </BaseButton>
+                    </div>
+
+                    <NavigationDrawer
+                        ref="drawer"
+                        :items="navigationItems"
+                        :is-open="isShowDrawer"
+                        @click-outside="closeDrawer"
+                        @slide-left="closeDrawer"
                     />
                 </div>
             </PageSectionDefaultLayout>
