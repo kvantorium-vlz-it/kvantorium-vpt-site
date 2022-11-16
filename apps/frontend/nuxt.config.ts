@@ -4,6 +4,8 @@ export default defineNuxtConfig({
     modules: [
         'nuxt-icons',
         '@vueuse/nuxt',
+        '@nuxtjs/sanity',
+        '@pinia/nuxt',
     ],
 
     css: [
@@ -20,5 +22,10 @@ export default defineNuxtConfig({
 
     alias: {
         '@styles': path.join(__dirname, 'assets', 'styles'),
+    },
+
+    sanity: {
+        projectId: 'bf6yq4p9',
+        apiVersion: '2021-10-18',
     }
 })

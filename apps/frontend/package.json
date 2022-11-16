@@ -10,11 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/sanity": "^1.4.1",
+    "@pinia/nuxt": "^0.4.3",
     "@vueuse/core": "^9.5.0",
     "@vueuse/nuxt": "^9.5.0",
     "modern-normalize": "^1.1.0",
     "nuxt": "3.0.0-rc.13",
     "nuxt-icons": "^2.0.2",
+    "pinia": "^2.0.23",
     "sass": "^1.56.1",
     "swiper": "^8.4.4",
     "ymaps": "^0.2.1"
