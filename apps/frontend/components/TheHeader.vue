@@ -87,7 +87,7 @@ const slideLeftDrawer = () => {
 
     @include until-breakpoint(desktop) {
         &__bar {
-            display: none;
+            display: none !important;
         }
     }
 
