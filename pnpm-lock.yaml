@@ -52,6 +52,7 @@ importers:
       nuxt-icons: ^2.0.2
       sass: ^1.56.1
       swiper: ^8.4.4
+      ymaps: ^0.2.1
     devDependencies:
       '@vueuse/core': 9.5.0
       '@vueuse/nuxt': 9.5.0_nuxt@3.0.0-rc.13
@@ -60,6 +61,7 @@ importers:
       nuxt-icons: 2.0.2
       sass: 1.56.1
       swiper: 8.4.4
+      ymaps: 0.2.1
 
 packages:
 
@@ -15223,6 +15225,10 @@ packages:
       y18n: 3.2.2
       yargs-parser: 7.0.0
     dev: false
+
+  /ymaps/0.2.1:
+    resolution: {integrity: sha512-7PXl4mwipFyqBuyWsphOEEP+9wlkIyNKcXlhrWi+mX8R9m9Fz1bNdPGSMdAw3zTZRq4vjOQ7WIFFCvf7Q5UX/A==}
+    dev: true
 
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
