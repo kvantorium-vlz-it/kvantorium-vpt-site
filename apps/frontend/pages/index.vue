@@ -3,5 +3,6 @@
         <TheHero />
         <TheKvantums />
         <TheAdvantages />
+        <TheKvantoriumLocation />
     </div>
 </template>
