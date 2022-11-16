@@ -35,6 +35,13 @@ withDefaults(defineProps<{
 
     background-color: rgb(var(--bg-color));
 
+    &:only-child {
+        height: 100%;
+    }
+    &:only-child &__wrapper {
+        height: 100%;
+    }
+
     &__wrapper {
         height: 100%;
         width: 100%;

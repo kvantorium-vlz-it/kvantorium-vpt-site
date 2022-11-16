@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <TheHero />
-        <LazyTheKvantums />
-        <LazyTheAdvantages />
-        <LazyTheKvantoriumLocation />
-    </div>
+    <TheHero />
+    <LazyTheKvantums />
+    <LazyTheAdvantages />
+    <LazyTheKvantoriumLocation />
 </template>

@@ -1,9 +1,9 @@
 <template>
     <div :class="$style.app">
         <TheHeader />
-        <div>
+        <main>
             <NuxtPage />
-        </div>
+        </main>
         <TheFooter />
     </div>
 </template>
@@ -13,8 +13,8 @@
     overflow-x: clip;
     min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
 }
 </style>
