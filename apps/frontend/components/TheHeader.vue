@@ -30,7 +30,12 @@ const slideLeftDrawer = () => {
         :class="$style.header"
         :wrapper-class="$style.header__wrapper"
     >
-        <KvantoriumLogo :class="$style.header__logo" />
+        <NuxtLink
+            to="/"
+            :class="$style.header__logo"
+        >
+            <KvantoriumLogo />
+        </NuxtLink>
         <NavigationProvider #="{ items }">
             <NavigationBar
                 :class="$style.header__bar"
@@ -67,8 +72,10 @@ const slideLeftDrawer = () => {
 
     &__logo {
         margin-right: auto;
+        text-decoration: none;
     }
     &__button {
+        cursor: pointer;
         background-color: transparent;
         border: none;
         padding: 0;
