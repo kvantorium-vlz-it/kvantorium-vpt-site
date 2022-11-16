@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
 const isShowDrawer = ref(false)
 
 const toggleShowDrawer = () => {

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useKvantumsStore } from './store/kvantums'
+
+useKvantumsStore()
+</script>
+
 <template>
     <div :class="$style.app">
         <TheHeader />

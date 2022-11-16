@@ -3,7 +3,7 @@ interface kvantum {
     name: string
     description: string
     image: string
-    link?: string
+    to?: string
 }
 
 defineProps<{
@@ -40,7 +40,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
             />
         </p>
         <base-button
-            :to="kvantum.link"
+            :to="kvantum.to"
             :class="$style.card__button"
         >
             Подробнее

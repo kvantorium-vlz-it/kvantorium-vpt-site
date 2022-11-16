@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useKvantumsStore } from '@/store/kvantums'
+
 interface IKvantum {
     name: string
     description: string
@@ -6,28 +9,16 @@ interface IKvantum {
     to?: string
 }
 
-const kvantums: IKvantum[] = [
-    {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbOC4XXrHYPUwVz-WpDswN4f1JGttUCZ5zQHbNnku&s',
-        name: 'Slide 1',
-    },
-    {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbOC4XXrHYPUwVz-WpDswN4f1JGttUCZ5zQHbNnku&s',
-        name: 'Slide 2',
-    },
-    {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbOC4XXrHYPUwVz-WpDswN4f1JGttUCZ5zQHbNnku&s',
-        name: 'Slide 3',
-    },
-    {
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbOC4XXrHYPUwVz-WpDswN4f1JGttUCZ5zQHbNnku&s',
-        name: 'Slide 4',
-    }
-]
+const kvantumsStore = storeToRefs(useKvantumsStore())
+
+const kvantums = computed<IKvantum[]>(() => {
+    return kvantumsStore.kvantums.value?.map(kvantum => ({
+        name: kvantum.name,
+        description: kvantum.shortDescription,
+        image: kvantum.icon,
+        to: `/kvantum-${kvantum.id}`,
+    })) || []
+})
 </script>
 
 <template>
