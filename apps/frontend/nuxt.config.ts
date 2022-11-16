@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     css: [
         'modern-normalize',
         '@styles/main.scss',
+        'swiper/css',
     ],
 
     components: {

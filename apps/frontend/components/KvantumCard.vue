@@ -12,6 +12,7 @@ defineProps<{
 
 defineEmits<{
     (e: 'showFullDescription'): void
+    (e: 'hideFullDescription'): void
 }>()
 
 const ALLOWED_DESCRIPTION_LENGTH = 200
@@ -35,6 +36,7 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
                 :allowed-length="ALLOWED_DESCRIPTION_LENGTH"
                 :text="kvantum.description"
                 @show-full-text="$emit('showFullDescription')"
+                @hide-full-text="$emit('hideFullDescription')"
             />
         </p>
         <base-button
