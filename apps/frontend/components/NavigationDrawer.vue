@@ -135,6 +135,8 @@ useSwipe(drawer, {
 
     transition: transform ease-out 0.5s;
 
+    z-index: var(--z-overlay);
+
     &__decoration {
         pointer-events: none;
 

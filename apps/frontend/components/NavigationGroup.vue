@@ -112,6 +112,8 @@ onClickOutside(group, () => {
         list-style: none;
 
         border-left: 2px solid rgb(var(--c-secondary-100));
+
+        z-index: var(--z-overlay);
     }
 
     &:not(&[open]) &__list {
