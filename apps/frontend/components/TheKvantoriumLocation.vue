@@ -27,10 +27,15 @@
 
 .location {
     display: grid;
-    grid-template-columns: auto 60%;
-    grid-template-rows: rem(280px);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto rem(280px);
 
     gap: rem(16px);
+
+    @include from-breakpoint(desktop) {
+        grid-template-columns: auto 60%;
+        grid-template-rows: rem(280px);
+    }
 
     &__address {
         color: rgb(var(--c-secondary-700));
