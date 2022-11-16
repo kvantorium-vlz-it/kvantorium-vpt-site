@@ -1,5 +1,6 @@
 <template>
     <div>
-        index
+        <TheHero />
+        <TheAdvantages />
     </div>
 </template>
