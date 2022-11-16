@@ -5,15 +5,8 @@
       "dependsOn": ["^build"],
       "outputs": [
         "dist/**",
-        ".output/**",
-        ".histoire/**"
+        ".output/**"
       ]
-    },
-    "lint": {
-      "outputs": []
-    },
-    "lint:fix": {
-      "outputs": []
     },
     "dev": {
       "cache": false

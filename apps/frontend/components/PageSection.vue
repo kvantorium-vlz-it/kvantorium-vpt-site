@@ -1,62 +1,67 @@
 <script setup lang="ts">
-type As = 'section' | 'main' | 'header' | 'footer' | 'div'
-
+type As = 'div' | 'section' | 'article' | 'main' | 'footer' | 'header'
 withDefaults(defineProps<{
-  as?: As
-  wrapperClass?: string
+    as?: As
+    wrapperClass?: string
 }>(), {
-  as: 'div',
-  wrapperClass: '',
+    as: 'section',
 })
+
 </script>
 
 <template>
-  <component :is="as" :class="$style.section">
-    <div :class="[$style.section__wrapper, wrapperClass]" v-bind="$attrs">
-      <slot />
+    <div
+        :class="$style.section"
+    >
+        <component
+            :is="as"
+            :class="[
+                $style.section__wrapper,
+                wrapperClass,
+            ]"
+        >
+            <slot />
+        </component>
     </div>
-  </component>
 </template>
 
 <style module lang="scss">
-@use '@styles/main.scss' as *;
+@use '../assets/styles/main' as *;
 
 .section {
     --bg-color: var(--bg);
+    --p-x: #{rem(16px)};
+    --p-y: #{rem(12px)};
 
     background-color: rgb(var(--bg-color));
 
     &__wrapper {
-        $shadow-width: rem($page-section-shadow-width);
+        height: 100%;
+        width: 100%;
 
+        padding: var(--p-y) var(--p-x);
         background-color: inherit;
-        // @include page-section-padding;
-        @include from-breakpoint(desktop) {
+    }
+    @include from-breakpoint(desktop) {
+        &__wrapper {
             position: relative;
-
-            max-width: #{rem($desktop-page-section-max-width)};
+            max-width: rem($desktop-page-section-max-width);
             margin: 0 auto;
 
             &::after,
             &::before {
                 content: '';
-
                 position: absolute;
                 top: 0;
-
-                width: #{$shadow-width};
+                width: rem($page-section-shadow-width);
                 height: 100%;
             }
-
             &::before {
-                left: -#{$shadow-width};
-
+                left: -#{$page-section-shadow-width};
                 box-shadow: var(--bs-page-section-left);
             }
-
             &::after {
-                right: -#{$shadow-width};
-
+                right: -#{$page-section-shadow-width};
                 box-shadow: var(--bs-page-section-right);
             }
         }

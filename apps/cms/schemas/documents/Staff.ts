@@ -1,4 +1,4 @@
-import { requiredFieldValidation } from "../../assets/ts/utils"
+import { requiredRule } from '../../assets/ts/utils'
 
 export default {
     name: 'Staff',
@@ -9,13 +9,13 @@ export default {
             name: 'firstName',
             type: 'string',
             title: 'Имя',
-            validation: requiredFieldValidation,
+            validation: requiredRule,
         },
         {
             name: 'secondName',
             type: 'string',
             title: 'Фамилия',
-            validation: requiredFieldValidation,
+            validation: requiredRule,
         },
         {
             name: 'middleName',
@@ -26,21 +26,21 @@ export default {
             name: 'position',
             type: 'reference',
             to: [{ type: 'StaffPosition' }],
-            title: 'Должность',
-            description: 'Используется, чтобы отобразить сотрудников на специальной странице по должностям',
-            validation: requiredFieldValidation,
+            title: 'Должность работника',
+            validation: requiredRule,
         },
         {
             name: 'isTeacher',
             type: 'boolean',
-            title: 'Преподает ли сотрудник в каком-нибудь квантуме',
-            validation: requiredFieldValidation,
+            title: 'Является ли преподавателем одного из квантумов',
+            initialValue: false,
+            validation: requiredRule,
         },
         {
             name: 'kvantum',
             type: 'array',
             of: [{ type: 'reference', to: [{ type: 'Kvantum' }] }],
-            title: 'Квантум(ы), в котором(ых) сотрудник ведет занятия',
+            title: 'Квантум(ы), в котом(ых) ведет занятия сотрудник',
             hidden: ({ document }) => !document.isTeacher,
             validation: Rule => Rule.custom((kvantums, context) => {
                 if (!context.parent.isTeacher) {
@@ -52,7 +52,19 @@ export default {
                 }
 
                 return true
-            })
+            }),
         }
-    ]
+    ],
+    preview: {
+        select: {
+            firstName: 'firstName',
+            secondName: 'secondName',
+            middleName: 'middleName',
+        },
+        prepare: ({ firstName, secondName, middleName }) => {
+            return {
+                title: `${secondName} ${firstName} ${middleName || ''}`.trim()
+            }
+        }
+    }
 }

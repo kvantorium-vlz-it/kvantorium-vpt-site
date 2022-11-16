@@ -1,17 +1,21 @@
 <script setup lang="ts">
-const props = defineProps<{
-    text: string;
-    allowedLength: number;
-    buttonText: string;
-}>()
+const props = withDefaults(defineProps<{
+    text: string
+    allowedLength: number
+    hideButtonText?: string
+    showButtonText?: string
+}>(), {
+    hideButtonText: 'скрыть',
+    showButtonText: '...',
+})
 
 const emit = defineEmits<{
-    (e: 'show-full-text'): void;
+    (e: 'showFullText'): void
+    (e: 'hideFullText'): void
 }>()
 
 const {
     allowedLength: ALLOWED_LENGTH,
-    buttonText,
     text,
 } = toRefs(props)
 
@@ -28,35 +32,56 @@ const visibleText = computed(() => {
 
 const showMore = () => {
     isCanVisibleFullText.value = true
-    emit('show-full-text')
+    emit('showFullText')
+}
+const hide = () => {
+    isCanVisibleFullText.value = false
+    emit('hideFullText')
 }
 </script>
 
 <template>
-    {{ visibleText }}
-    <button
-        v-if="!isCanVisibleFullText"
-        :class="$style['text__more-button']"
-        @click="showMore"
-    >
-        {{ buttonText }}
-    </button>
+    <span>
+        {{ visibleText }}
+
+        <button
+            v-if="!isCanVisibleFullText"
+            :class="$style.text__button"
+            @click="showMore"
+        >
+            {{ showButtonText }}
+        </button>
+
+        <button
+            v-else
+            :class="$style.text__button"
+            @click="hide"
+        >
+            {{ hideButtonText }}
+        </button>
+    </span>
 </template>
 
 <style module lang="scss">
 @use '@styles/main.scss' as *;
 
 .text {
-    &__more-button {
+    @include typo(body-2-normal);
+    color: rgb(var(--text-body));
+
+    &__button {
+        font-size: inherit;
+        font-weight: inherit;
+        text-decoration: underline;
+
         cursor: pointer;
 
         padding: 0;
 
-        color: rgb(var(--text-body));
+        color: inherit;
 
         background: none;
         border: none;
-        @include typo(body-2-normal);
     }
 }
 </style>

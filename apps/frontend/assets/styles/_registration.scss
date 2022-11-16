@@ -1,140 +1,124 @@
-@use 'sass:map' as map;
-@use 'meta' as *;
-@use 'utils' as *;
+@use 'sass:map';
+@use 'sass:string';
 
-@use 'variables' as *;
-@use 'theme' as *;
-@use 'typography' as *;
+@use 'theme';
+@use 'variables';
+@use 'typography';
+@use 'utils';
+@use 'meta';
 
-/// Alpha values
-@for $alpha-index from 0 through calc(100 / $alpha-step) {
-    $alpha-value: calc($alpha-index * $alpha-step);
-    $alpha-var-name: css-var-name(map.get($prefixes, alpha), $alpha-value);
-
-    :root {
-        #{$alpha-var-name}: #{percentage(calc($alpha-value / 100))};
-    }
-}
-
-/// Not shaded colors
-@each $key, $color in $colors {
-    $color-var-name: css-var-name(map.get($prefixes, colors), $key);
-
-    :root {
-        #{$color-var-name}: color-to-css-var($color);
-    }
-}
-
-/// Shaded colors
-@each $key, $color-map in $shaded-colors {
-    @each $shade-key, $color in $color-map {
-        $color-name: '#{$key}-#{$shade-key}';
-        $color-var-name: css-var-name(map.get($prefixes, colors), $color-name);
-
-        :root {
-            #{$color-var-name}: color-to-css-var($color);
-        }
-    }
-}
-
-/// Font weights
-@each $key, $font-weight in $font-weights {
-    $font-weight-var-name: css-var-name(map.get($prefixes, font-weight), $font-weight);
-
-    :root {
-        #{$font-weight-var-name}: $font-weight;
-    }
-}
-
-/// Font sizes
-@each $key, $typo in $typography {
-    $typo-name: str-slice($key, 0, string-last-index($key, '-') - 1);
-
-    $font-size-css-var: css-var-name(map.get($prefixes, font-size), $typo-name);
-
-    @each $breakpoint, $font-size in $typo {
-        :root {
-            @include from-breakpoint($breakpoint) {
-                #{$font-size-css-var}: rem($font-size);
-            }
-        }
-    }
-}
-
-/// Z indexes
-@each $key, $index in $z-indexes {
-    $z-index-css-var: css-var-name(map.get($prefixes, z-index), $key);
-
-    :root {
-        #{$z-index-css-var}: $index;
-    }
-}
-
-/// Border radiuses
-@each $key, $radius in $border-radiuses {
-    $border-radius-css-var: css-var-name(map.get($prefixes, border-radius), $key);
-
-    :root {
-        #{$border-radius-css-var}: $radius;
-    }
-}
-
-/// Font family
+/// =========================
+/// Colors and gradients
+/// =========================
 :root {
-    --#{map.get($prefixes, font-family)}: #{$font-family};
-}
+    @each $key, $color in theme.$colors {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, colors), $key);
 
-/// Box shadows
-/// TODO: use alpha css vars for colors
-@each $key, $box-shadow in $box-shadows {
-    $box-shadow-css-var: css-var-name(map.get($prefixes, box-shadow), $key);
-    $result-bs: '';
-
-    @if (map-get($box-shadow, type) == 'inset') {
-        $result-bs: str-insert($result-bs, 'inset ', 0);
+        #{$css-var-name}: utils.color-to-css-var($color);
     }
 
-    $result-bs: str-insert(
-        $result-bs,
-        '#{list-rem(map-get($box-shadow, values))} ',
-        str-length($result-bs + 1),
-    );
-    $result-bs: str-insert(
-        $result-bs,
-        map-get($box-shadow, color),
-        str-length($result-bs + 1)
-    );
+    @each $key, $color-map in theme.$shaded-colors {
+        @each $shade, $color in $color-map {
+            $color-name: #{$key}-#{$shade};
+            $css-var-name: utils.css-var-name(map.get(meta.$prefixes, colors), $color-name);
 
-    :root {
-        #{$box-shadow-css-var}: #{$result-bs};
+            #{$css-var-name}: utils.color-to-css-var($color);
+        }
     }
-}
 
-/// Gradients
-@each $key, $gradient in $gradients {
-    $gradient-css-var: css-var-name(map.get($prefixes, gradient), $key);
+    @each $key, $gradient in variables.$gradients {
+        $gradient-css-var-name: utils.css-var-name(map.get(meta.$prefixes, gradient), $key);
 
-    $var-vertical: '#{$gradient-css-var}-vertical';
-    $var-horizontal: '#{$gradient-css-var}-horizontal';
+        $var-vertical: '#{$gradient-css-var-name}-vertical';
+        $var-horizontal: '#{$gradient-css-var-name}-horizontal';
 
-    :root {
         #{$var-vertical}: linear-gradient(to bottom, $gradient);
         #{$var-horizontal}: linear-gradient(to right, $gradient);
     }
 }
 
+/// =========================
+/// Misc variables
+/// =========================
+:root {
+    @each $key, $index in variables.$z-indexes {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, z-index), $key);
 
+        #{$css-var-name}: $index;
+    }
+
+    @each $key, $radius in variables.$border-radiuses {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, border-radius), $key);
+
+        #{$css-var-name}: $radius;
+    }
+
+    @each $key, $box-shadow in variables.$box-shadows {
+        $css-var-name: utils.css-var-name(map.get(meta.$prefixes, box-shadow), $key);
+        $result-bs: '';
+
+        @if (map.get($box-shadow, type) == 'inset') {
+            $result-bs: string.insert($result-bs, 'inset ', 0);
+        }
+
+        $result-bs: string.insert(
+            $result-bs,
+            '#{utils.list-rem(map.get($box-shadow, values))} ',
+            string.length($result-bs + 1),
+        );
+        $result-bs: string.insert(
+            $result-bs,
+            map.get($box-shadow, color),
+            string.length($result-bs + 1)
+        );
+
+        #{$css-var-name}: #{$result-bs};
+    }
+}
+
+
+/// =========================
+/// Font weights and sizes
+/// =========================
+:root {
+    @each $key, $font-weight in typography.$font-weights {
+        $font-weight-var-name: utils.css-var-name(map.get(meta.$prefixes, font-weight), $font-weight);
+
+        #{$font-weight-var-name}: $font-weight;
+    }
+
+    @each $key, $typo in typography.$typography {
+        $typo-name: string.slice($key, 0, utils.string-last-index($key, '-') - 1);
+
+        $font-size-css-var: utils.css-var-name(map.get(meta.$prefixes, font-size), $typo-name);
+
+        @each $breakpoint, $font-size in $typo {
+            @include utils.from-breakpoint($breakpoint) {
+                #{$font-size-css-var}: utils.rem($font-size);
+            }
+        }
+    }
+
+    --#{map.get(meta.$prefixes, font-family)}: #{typography.$font-family};
+}
+
+/// =========================
+/// High level colors and gradients
+/// =========================
 :root {
     --bg: var(--c-white);
     --bg-header: var(--c-primary-900);
     --bg-footer: var(--c-primary-900);
     --bg-sidebar: var(--g-primary-vertical);
+    --bg-kvantum-card: var(--g-kvantum-card-vertical);
 
     --text-heading: var(--c-primary-600);
     --text-heading-dark: var(--c-primary-900);
     --text-subheading: var(--c-primary-600);
     --text-body: var(--c-primary-600);
     --text-body-light: var(--c-secondary-700);
+}
 
-    --w-mobile-sidebar-width: #{rem(256px)};
+:root {
+    --w-navigation-drawer: #{utils.rem(256px)};
 }

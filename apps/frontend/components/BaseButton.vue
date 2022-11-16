@@ -1,27 +1,37 @@
 <script setup lang="ts">
 type Variant = 'dark' | 'light'
 
-withDefaults(defineProps<{
-  variant?: Variant
+const props = withDefaults(defineProps<{
+    variant?: Variant
+    to?: string
 }>(), {
-  variant: 'dark',
+    variant: 'dark',
 })
+
+const classes = ref([
+    useCssModule().button,
+    useCssModule()[props.variant],
+])
 </script>
 
 <template>
-  <button
-    :class="[
-      $style.button,
-      $style[variant],
-    ]"
-  >
-    <slot />
-  </button>
+    <NuxtLink
+        v-if="to"
+        :class="classes"
+        :to="to"
+    >
+        <slot />
+    </NuxtLink>
+    <button
+        v-else
+        :class="classes"
+    >
+        <slot />
+    </button>
 </template>
 
 <style module lang="scss">
 @use '@styles/main.scss' as *;
-
 .button {
     --p-x: #{rem(16px)};
     --p-y: #{rem(4px)};
@@ -35,49 +45,37 @@ withDefaults(defineProps<{
     padding: var(--p-y) var(--p-x);
 
     color: rgb(var(--color));
-
     background-color: rgb(var(--bg-color));
-    border: 1px solid rgb(var(--bg-color));
+
+    border: none;
     border-radius: 0.5rem;
 
+    outline-offset: rem(2px);
+    outline-width: rem(3px);
+    outline-color: rgb(var(--outline-color) / 50%);
+
+    text-decoration: none;
+
+    &:focus-visible,
     &:hover {
-        animation: on-hover 0.1s ease-out forwards;
-    }
-
-    &:active {
-        animation: on-active 0.3s ease-out forwards;
-    }
-
-    &:focus-visible {
-        outline: 2px rgb(var(--bg-color)) auto;
-        outline-offset: 3px;
+        outline-style: solid;
     }
 
     &.dark {
         --bg-color: var(--c-primary-600);
         --color: var(--c-white);
+        --outline-color: var(--bg-color);
     }
-
     &.light {
         --bg-color: var(--c-secondary-200);
         --color: var(--c-primary-500);
+        --outline-color: var(--color);
     }
+
     @include typo(body-2-normal);
     @include from-breakpoint(desktop) {
         --p-y: #{rem(8px)};
         --p-x: #{rem(32px)};
-    }
-}
-@keyframes on-hover {
-    100% {
-        color: rgb(var(--color) / 70%);
-
-        box-shadow: var(--bs-4);
-    }
-}
-@keyframes on-active {
-    100% {
-        color: rgb(var(--color) / 50%);
     }
 }
 </style>

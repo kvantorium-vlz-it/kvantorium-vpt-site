@@ -1,39 +1,35 @@
 <script setup lang="ts">
 defineProps<{
-  name: string
+    name: string
 }>()
 </script>
 
 <template>
-  <section :class="$style.section">
-    <h3 :class="$style.section__name">
-      {{ name }}
-    </h3>
-
-    <div :class="$style.section__wrapper">
-      <slot />
-    </div>
-  </section>
+    <section>
+        <p :class="$style.section__name">
+            {{ name }}
+        </p>
+        <div :class="$style.section__wrapper">
+            <slot></slot>
+        </div>
+    </section>
 </template>
 
 <style module lang="scss">
 @use '@styles/main.scss' as *;
 
 .section {
-    min-width: 25%;
+    display: inline-block;
 
     &__name {
-        margin: 0;
-        margin-bottom: #{rem(4px)};
-
-        color: rgb(var(--c-white));
-
-        border-bottom: 1px solid rgb(var(--c-white));
         @include typo(body-1-bold);
-    }
+        border-bottom: rem(2px) solid rgb(var(--c-white));
 
+        margin: 0;
+        margin-bottom: rem(4px);
+    }
     &__wrapper {
-        padding-left: #{rem(8px)};
+        padding-left: rem(8px);
     }
 }
 </style>

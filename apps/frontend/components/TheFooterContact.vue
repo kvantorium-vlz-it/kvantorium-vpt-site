@@ -1,24 +1,28 @@
 <script setup lang="ts">
+import { AnchorHTMLAttributes } from 'vue'
+
+interface IContact {
+    title: string
+    label: string
+    link?: string
+}
 defineProps<{
-    name: string;
-    link: string;
+    contact: IContact
+    target?: AnchorHTMLAttributes['target']
 }>()
 </script>
 
 <template>
-    <div
-        :class="$style.contact"
-        :title="name"
-    >
-        <h4 :class="$style.contact__name">
-            {{ name }}:
-        </h4>
+    <div :class="$style.contact">
+        <p :class="$style.contact__title">
+            {{ contact.title }}:
+        </p>
         <a
-            :href="link"
             :class="$style.contact__link"
-            target="blank"
+            :href="contact.link"
+            :target="target"
         >
-            <slot />
+            {{ contact.label }}
         </a>
     </div>
 </template>
@@ -27,23 +31,22 @@ defineProps<{
 @use '@styles/main.scss' as *;
 
 .contact {
-    &__name {
-        margin: 0;
+    color: rgb(var(--c-white));
+    font-style: normal;
 
-        font-style: normal;
-        color: rgb(var(--c-white));
+    &__title {
         @include typo(body-2-bold);
+        margin: 0;
     }
-
     &__link {
-        font-style: normal;
-        color: rgb(var(--c-white));
+        @include typo(body-3-normal);
+
         text-decoration: none;
+        color: inherit;
 
         &:hover {
             text-decoration: underline;
         }
-        @include typo(body-2-normal);
     }
 }
 </style>

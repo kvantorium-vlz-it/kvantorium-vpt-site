@@ -1,8 +1,0 @@
-{
-  "extends": "@kvantorium-vpt-site/tsconfig/histoire.json",
-  "include": [
-    "env.d.ts",
-    "./**/*",
-    "./**/*.vue"
-  ]
-}

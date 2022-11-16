@@ -15,11 +15,10 @@ export default {
                     title: 'Альтернативный текст',
                     description: 'Альтернативый текст, если изображение не загрузится',
                     options: {
-                      isHighlighted: true
-                    }
-                }
-            ]
-        }
-    ]
-  }
-
+                        isHighlighted: true
+                    },
+                },
+            ],
+        },
+    ],
+}

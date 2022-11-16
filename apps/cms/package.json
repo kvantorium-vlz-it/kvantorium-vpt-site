@@ -1,6 +1,9 @@
 {
-  "name": "kvantorium-vpt-site-cms",
+  "name": "@kvantorium-vpt-site/cms",
+  "private": true,
   "version": "0.0.0",
+  "main": "package.json",
+  "license": "MIT",
   "scripts": {
     "dev": "sanity start",
     "build": "sanity build"
@@ -11,19 +14,17 @@
     "@sanity/default-layout": "^2.35.0",
     "@sanity/default-login": "^2.35.0",
     "@sanity/desk-tool": "^2.35.1",
-    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/eslint-config-studio": "^2.0.1",
     "@sanity/vision": "^2.35.0",
+    "@sanity/form-builder": "^2.35.0",
     "eslint": "^8.6.0",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
-    "sanity-plugin-dark-mode": "^0.0.33",
-    "sanity-plugin-time-seconds": "^1.0.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "@sanity/data-aspects": "^2.33.2"
   },
   "devDependencies": {
-    "@sanity/color-input": "^2.35.0",
-    "react-icons": "^4.6.0",
-    "sanity-blocks-vue-component": "^1.0.1"
+    "@sanity/cli": "^2.35.0"
   }
 }

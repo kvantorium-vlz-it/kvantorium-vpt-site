@@ -1,57 +1,99 @@
 <script setup lang="ts">
-const menuToggleButton = ref()
+const menuButton = ref<HTMLElement>()
 
-const handleCloseMobileMenu = () => {
-    isMobileNavigationOpen.value = false
+const isOpenDrawer = ref(false)
+
+const toggleDrawer = () => {
+    isOpenDrawer.value = !isOpenDrawer.value
 }
 
-const toggleMobileMenu = () => {
-    isMobileNavigationOpen.value = !isMobileNavigationOpen.value
+const openDrawer = () => {
+    isOpenDrawer.value = true
 }
 
-const isMobileNavigationOpen = ref<boolean>(false)
+const clickOutsideDrawer = (target: EventTarget | null) => {
+    if (menuButton.value?.contains(target as HTMLElement)) {
+        return
+    }
+
+    isOpenDrawer.value = false
+}
+
+const slideLeftDrawer = () => {
+    isOpenDrawer.value = false
+}
 </script>
 
 <template>
-    <page-section
+    <PageSection
         as="header"
         :class="$style.header"
         :wrapper-class="$style.header__wrapper"
     >
-        <nuxt-link to="/" :class="$style.header__link">
-            <kvantorium-logo />
-        </nuxt-link>
+        <NuxtLink
+            to="/"
+            :class="$style.header__logo"
+        >
+            <KvantoriumLogo />
+        </NuxtLink>
+        <NavigationProvider #="{ items }">
+            <NavigationBar
+                :class="$style.header__bar"
+                :items="items"
+            />
+            <LazyNavigationDrawer
+                :class="$style.header__drawer"
+                :is-open="isOpenDrawer"
+                :items="items"
+                @slide-left="slideLeftDrawer"
+                @click-outside="clickOutsideDrawer"
+            />
+        </NavigationProvider>
 
-        <the-header-navigation
-            :is-open="isMobileNavigationOpen"
-            @close="handleCloseMobileMenu"
-        />
-
-        <the-header-navigation-menu-button
-            ref="menuToggleButton"
-            :class="$style.header__navigationMenuButton"
-            @click="toggleMobileMenu"
-        />
-    </page-section>
+        <button
+            ref="menuButton"
+            :class="$style.header__button"
+            @click="openDrawer"
+        >
+            <NuxtIcon name="menu" />
+        </button>
+    </PageSection>
 </template>
 
 <style module lang="scss">
 @use '@styles/main.scss' as *;
 
 .header {
-    background-color: rgb(var(--bg-header));
+    // Build version not override PageSecion background
+    --bg-color: var(--bg-header) !important;
 
     &__wrapper {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
-    &__link {
+    &__logo {
+        margin-right: auto;
         text-decoration: none;
     }
+    &__button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        color: rgb(var(--c-white));
+
+        @include typo(body-1-normal);
+    }
+
+    @include until-breakpoint(desktop) {
+        &__bar {
+            display: none !important;
+        }
+    }
+
     @include from-breakpoint(desktop) {
-        &__navigationMenuButton {
+        &__button,
+        &__drawer {
             display: none;
         }
     }

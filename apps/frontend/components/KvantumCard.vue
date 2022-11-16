@@ -1,17 +1,18 @@
 <script setup lang="ts">
 interface kvantum {
-    name: string;
-    description: string;
-    link: string;
-    image: string;
+    name: string
+    description: string
+    image: string
+    link?: string
 }
 
 defineProps<{
-    kvantum: kvantum;
+    kvantum: kvantum
 }>()
 
 defineEmits<{
-    (e: 'show-full-description'): void;
+    (e: 'showFullDescription'): void
+    (e: 'hideFullDescription'): void
 }>()
 
 const ALLOWED_DESCRIPTION_LENGTH = 200
@@ -31,16 +32,20 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
         </div>
         <p :class="$style.card__description">
             <hideable-text
-                button-text="..."
+                show-button-text="..."
                 :allowed-length="ALLOWED_DESCRIPTION_LENGTH"
                 :text="kvantum.description"
-                @show-full-text="$emit('show-full-description')"
+                @show-full-text="$emit('showFullDescription')"
+                @hide-full-text="$emit('hideFullDescription')"
             />
         </p>
-        <base-button :class="$style.card__button">
+        <base-button
+            :to="kvantum.link"
+            :class="$style.card__button"
+        >
             Подробнее
         </base-button>
-        <kvantum-card-decoration :class="$style.card__decoration" />
+        <div :class="$style.card__decoration"></div>
     </article>
 </template>
 
@@ -61,9 +66,9 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
     text-align: right;
 
-    background-image: var(--g-promo-vertical);
+    background-image: var(--g-kvantum-card-vertical);
     border-top: #{rem(24px)} solid rgb(var(--c-secondary-700));
-    border-radius: var(--br-l);
+    border-radius: var(--br-16);
     box-shadow: var(--bs-8);
 
     & > * {
@@ -72,6 +77,40 @@ const ALLOWED_DESCRIPTION_LENGTH = 200
 
     &__decoration {
         z-index: -1;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        overflow: hidden;
+
+        border-radius: inherit;
+
+        &::after {
+            $size: #{rem(112px)};
+
+            content: '';
+
+            position: absolute;
+            top: 100%;
+            left: 70%;
+            transform: translate(-90%, -75%);
+
+            box-sizing: content-box;
+            aspect-ratio: 1;
+            width: $size;
+            height: $size;
+
+            border: #{rem(24px)} solid rgb(var(--c-secondary-400));
+            border-radius: var(--br-full);
+            @include from-breakpoint(desktop) {
+                right: 70%;
+                left: auto;
+                transform: translate(90%, -50%);
+            }
+        }
     }
 
     /// Image wrapper element for make padding on image and not cut it by border-radius

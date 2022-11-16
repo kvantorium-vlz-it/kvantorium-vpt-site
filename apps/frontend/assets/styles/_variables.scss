@@ -1,13 +1,26 @@
-/// Step for alpha values
-$alpha-step: 5;
-$desktop-page-section-max-width: 1024px;
+@use 'theme';
+
 $page-section-shadow-width: 64px;
+$desktop-page-section-max-width: 1024px;
 
 /// Breakpoints
 $breakpoints: (
     all: 0px,
     mobile: 320px,
     desktop: 1024px,
+);
+
+/// Gradients
+/// I have no idea now how to store colors of gradient
+$gradients: (
+    primary: (
+        rgb(var(--c-primary-800)),
+        rgb(var(--c-primary-500)),
+    ),
+    kvantum-card: (
+        rgb(var(--c-secondary-400)),
+        rgb(var(--c-secondary-100)),
+    ),
 );
 
 /// Z indexes
@@ -21,24 +34,11 @@ $z-indexes: (
 
 /// Border radiuses
 $border-radiuses: (
-    full: 1000vh,
     8: 8px,
     12: 12px,
     16: 16px,
     24: 24px,
-);
-
-/// Gradients
-/// I have no idea now how to store colors of gradient
-$gradients: (
-    primary: (
-        rgb(var(--c-primary-800)),
-        rgb(var(--c-primary-500)),
-    ),
-    promo: (
-        rgb(var(--c-secondary-400)),
-        rgb(var(--c-secondary-100)),
-    ),
+    full: 1000vh,
 );
 
 /// Box-shadows
@@ -67,11 +67,6 @@ $box-shadows: (
     page-section-right: (
         type: inset,
         values: $page-section-shadow-width 0 $page-section-shadow-width (-$page-section-shadow-width),
-        color: rgb(var(--c-black) / 50%),
-    ),
-    promo: (
-        type: inset,
-        values: 0 -64px 64px,
         color: rgb(var(--c-black) / 50%),
     ),
 );

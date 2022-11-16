@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 node_modules
 .pnp
@@ -8,17 +6,11 @@ node_modules
 # testing
 coverage
 
-# next.js
-.next/
-out/
-build
-
 # misc
 .DS_Store
 *.pem
 
 # debug
-*.log*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -29,19 +21,13 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-**/.env
 
 # turbo
 .turbo
 
-# IDEs
-.idea
-
 # nuxt
+.nuxt
+
+# build
+dist
 .output
-
-# histoire
-.histoire
-
-# vitepress
-**/.vitepress/dist/**

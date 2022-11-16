@@ -1,11 +1,11 @@
-@use 'sass:color' as color;
-@use 'sass:string' as string;
-@use 'sass:list' as list;
-@use 'sass:map' as map;
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:string';
 
-@use 'variables' as *;
-@use 'typography' as typography;
-@use 'meta' as meta;
+@use 'variables';
+@use 'typography';
+@use 'meta';
 
 /// Function that find last index of substring
 ///
@@ -105,10 +105,10 @@ $BODY_FONT: 16px;
 /// @param { string } breakpoint name
 /// @return { true } if breakpoint valid else throw error
 @function validate-breakpoint($breakpoint) {
-    @if (map-has-key($breakpoints, $breakpoint)) {
+    @if (map.has-key(variables.$breakpoints, $breakpoint)) {
         @return true;
     } @else {
-        @error 'Undefined "#{$breakpoint}" breakpoint. Allowed: #{map-keys($breakpoints)}.';
+        @error 'Undefined "#{$breakpoint}" breakpoint. Allowed: #{map.keys(variables.$breakpoints)}.';
     }
 }
 
@@ -118,7 +118,7 @@ $BODY_FONT: 16px;
 @mixin from-breakpoint($breakpoint) {
     $isValid: validate-breakpoint($breakpoint);
 
-    $breakpoint-start: map-get($breakpoints, $breakpoint);
+    $breakpoint-start: map.get(variables.$breakpoints, $breakpoint);
 
     @media (min-width: em($breakpoint-start)) {
         @content;
@@ -146,7 +146,7 @@ $BODY_FONT: 16px;
 @mixin until-breakpoint($breakpoint) {
     $isValid: validate-breakpoint($breakpoint);
 
-    $previous-breakpoint-end: map-get($breakpoints, $breakpoint);
+    $previous-breakpoint-end: map.get(variables.$breakpoints, $breakpoint);
 
     @media (max-width: em($previous-breakpoint-end - 0.5px)) {
         @content;
@@ -158,10 +158,10 @@ $BODY_FONT: 16px;
 /// @param { string } typography name
 /// @return { true } if valid typography else throws error
 @function validate-typography($typography) {
-    @if (map-has-key(typography.$typography, $typography)) {
+    @if (map.has-key(typography.$typography, $typography)) {
         @return true;
     } @else {
-        @error 'Unknown "#{$typography}" typography. Allowed typography: #{map-keys(typography.$typography)}.';
+        @error 'Unknown "#{$typography}" typography. Allowed typography: #{map.keys(typography.$typography)}.';
     }
 }
 
@@ -171,10 +171,10 @@ $BODY_FONT: 16px;
 @mixin typo($typo) {
     $isValid: validate-typography($typo);
 
-    $font-weight-key: str-slice($typo, string-last-index($typo, '-') + 1);
+    $font-weight-key: string.slice($typo, string-last-index($typo, '-') + 1);
     $font-weight-css-var: '--#{map.get(meta.$prefixes, font-weight)}-#{$font-weight-key}';
 
-    $font-size-key: str-slice($typo, 0, string-last-index($typo, '-') - 1);
+    $font-size-key: string.slice($typo, 0, string-last-index($typo, '-') - 1);
     $font-size-css-var: '--#{map.get(meta.$prefixes, font-size)}-#{$font-size-key}';
 
     font-weight: var(#{$font-weight-css-var});
