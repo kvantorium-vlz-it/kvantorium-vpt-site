@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useKvantumsStore } from '@/store/kvantums'
+
 interface IItem {
     label: string
     to?: string
@@ -9,13 +12,28 @@ interface IGroup {
     items: IItem[]
 }
 
+const {
+    kvantums,
+} = storeToRefs(useKvantumsStore())
+
 const items: (IItem | IGroup)[] = [
-    { label: 'hgiawohgwa', to: '/' },
+    { label: 'Главная', to: '/' },
+    { label: 'Новости', to: '/news' },
     {
-        name: 'jgkawgaw',
-        items: [ { label: 'jvbkaw' }, { label: 'nbmnwaj' } ]
+        name: 'Квантумы',
+        items: kvantums.value.map(kvantum => ({
+            label: kvantum.name,
+            to: `/kvantum-${kvantum.id}`,
+        })),
     },
-    { label: 'nbjkabnwja' }
+    {
+        name: 'О нас',
+        items: [
+            { label: 'Сотрудники', to: '/staff' },
+            { label: 'Общая информация', to: '/about' },
+            { label: 'Документы', to: '/documents' },
+        ],
+    }
 ]
 </script>
 
