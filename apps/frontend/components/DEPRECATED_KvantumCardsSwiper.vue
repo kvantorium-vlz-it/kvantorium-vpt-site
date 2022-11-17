@@ -51,7 +51,7 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
         >
             <SwiperSlide
                 v-for="(card, index) in kvantums"
-                :key="index"
+                :key="card.id"
             >
                 <kvantum-card
                     :kvantum="card"
@@ -70,8 +70,6 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    width: 100%;
 
     &__element {
         padding: #{rem(12px)};

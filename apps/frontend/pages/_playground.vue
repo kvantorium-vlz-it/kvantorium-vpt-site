@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-
 const isShowDrawer = ref(false)
 
 const toggleShowDrawer = () => {
@@ -88,7 +85,8 @@ const navigationItems = [
                         @slide-left="closeDrawer"
                     />
                 </div>
-                <KvantumCardsSwiper
+                <KvantumsSwiper
+                    :items-in-row="3"
                     :kvantums="[
                         {
                             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor',

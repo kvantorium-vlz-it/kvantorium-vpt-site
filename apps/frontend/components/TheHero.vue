@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div :class="$style.hero__buttons">
-                <BaseButton to="/">
+                <BaseButton to="/#location">
                     записаться
                 </BaseButton>
                 <BaseButton variant="light" to="/about">
@@ -28,11 +28,11 @@
 @use '@styles/main.scss' as *;
 
 .hero {
-
     background-color: rgb(var(--c-black));
+
     &__content {
         backdrop-filter: blur(2px);
-        padding: rem(108px) var(--p-x);
+        padding: var(--p-y) var(--p-x);
     }
     &__info {
         width: min-content;
@@ -70,6 +70,10 @@
     }
 
     @include from-breakpoint(desktop) {
+        &__content {
+            --p-y: #{rem(108px)};
+        }
+
         &__heading {
             margin-bottom: rem(48px);
         }
@@ -77,6 +81,7 @@
         &__buttons {
             flex-direction: row;
             gap: rem(42px);
+            margin-top: rem(32px);
         }
 
         &__wrapper {

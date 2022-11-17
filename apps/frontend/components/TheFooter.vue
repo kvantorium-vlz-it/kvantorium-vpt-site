@@ -13,9 +13,16 @@
                         Главная
                     </NuxtLink>
                     <NuxtLink
+                        to="/#kvatums"
                         :class="$style['footer__navigation-item']"
                     >
                         Квантумы
+                    </NuxtLink>
+                    <NuxtLink
+                        to="/about#organization"
+                        :class="$style['footer__navigation-item']"
+                    >
+                        О нас
                     </NuxtLink>
                 </nav>
             </TheFooterSection>

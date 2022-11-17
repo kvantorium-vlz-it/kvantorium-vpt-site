@@ -1,9 +1,21 @@
+<script setup lang="ts">
+import { useKvantumsStore } from './store/kvantums'
+import { useNewsStore } from './store/News'
+import { useStaffStore } from './store/Staff'
+import { useFilesStore } from './store/Files'
+
+useKvantumsStore()
+useNewsStore()
+useStaffStore()
+useFilesStore()
+</script>
+
 <template>
     <div :class="$style.app">
         <TheHeader />
-        <div>
+        <main>
             <NuxtPage />
-        </div>
+        </main>
         <TheFooter />
     </div>
 </template>
@@ -13,8 +25,8 @@
     overflow-x: clip;
     min-height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
 }
 </style>
