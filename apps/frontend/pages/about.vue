@@ -1,5 +1,5 @@
 <template>
-    <PageSection>
+    <PageSection id="organization">
         <PageSectionDefaultLayout :class="$style.about">
             <template #heading>
                 Сведения об организации
