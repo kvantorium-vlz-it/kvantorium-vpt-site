@@ -39,7 +39,8 @@ const serializers = {
     li {@include typo(body-1-normal)}
 
     img {
-        float: left;
+        max-width: 60%;
+        margin-right: rem(16px);
     }
 
     &::after {

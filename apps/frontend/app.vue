@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useKvantumsStore } from './store/kvantums'
+import { useNewsStore } from './store/News'
 
 useKvantumsStore()
+useNewsStore()
 </script>
 
 <template>
