@@ -37,7 +37,9 @@ const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
             <template #subheading>
                 Программы Кванториума предназначены для школьников с 5 по 11 класс
             </template>
-            <KvantumsSwiper :kvantums="kvantums" :items-in-row="slidesInRow" />
+            <ClientOnly>
+                <KvantumsSwiper :kvantums="kvantums" :items-in-row="slidesInRow" />
+            </ClientOnly>
         </PageSectionDefaultLayout>
     </PageSection>
 </template>

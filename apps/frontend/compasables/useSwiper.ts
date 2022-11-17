@@ -8,10 +8,6 @@ export const useSwiper = (length: number, itemsInRow: Ref<number> = ref(1)) => {
         throw new Error('Items in row cannot be more than length')
     }
 
-    watch(ref(itemsInRow), () => {
-        console.log(itemsInRow)
-    })
-
     const firstSlideIndex = computed<number>(() => 0)
     const _current = ref<number>(0)
     const lastSlideIndex = computed<number>(() => length - itemsInRow.value)
