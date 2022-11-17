@@ -19,6 +19,13 @@ const kvantums = computed<IKvantum[]>(() => {
         to: `/kvantum-${kvantum.id}`,
     })) || []
 })
+
+const breakpoints = useBreakpoints({
+    desktop: 1024,
+})
+const isDesktop = breakpoints.greater('desktop')
+
+const slidesInRow = computed(() => isDesktop.value ? 2 : 1)
 </script>
 
 <template>
@@ -30,9 +37,7 @@ const kvantums = computed<IKvantum[]>(() => {
             <template #subheading>
                 Программы Кванториума предназначены для школьников с 5 по 11 класс
             </template>
-            <KvantumCardsSwiper
-                :kvantums="kvantums"
-            />
+            <KvantumsSwiper :kvantums="kvantums" :items-in-row="slidesInRow" />
         </PageSectionDefaultLayout>
     </PageSection>
 </template>
