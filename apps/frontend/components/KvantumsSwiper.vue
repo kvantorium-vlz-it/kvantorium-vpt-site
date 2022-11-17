@@ -66,10 +66,12 @@ useSwipe(slidesRef, {
                     v-for="(kvantum, index) in kvantums"
                     :key="index"
                 >
-                    <KvantumCard
-                        v-if="visibleKvantums.get(kvantum)"
-                        :kvantum="kvantum"
-                    />
+                    <KeepAlive>
+                        <KvantumCard
+                            v-if="visibleKvantums.get(kvantum)"
+                            :kvantum="kvantum"
+                        />
+                    </KeepAlive>
                 </template>
             </div>
             <button
@@ -130,6 +132,7 @@ useSwipe(slidesRef, {
         flex: 1 0 0;
 
         display: flex;
+        align-items: flex-start;
         gap: rem(48px);
 
         & > * {
