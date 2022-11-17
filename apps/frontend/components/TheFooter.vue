@@ -13,6 +13,7 @@
                         Главная
                     </NuxtLink>
                     <NuxtLink
+                        to="/#kvatums"
                         :class="$style['footer__navigation-item']"
                     >
                         Квантумы

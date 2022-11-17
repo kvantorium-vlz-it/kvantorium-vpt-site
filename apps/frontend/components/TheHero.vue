@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div :class="$style.hero__buttons">
-                <BaseButton to="/">
+                <BaseButton to="/#location">
                     записаться
                 </BaseButton>
                 <BaseButton variant="light" to="/about">

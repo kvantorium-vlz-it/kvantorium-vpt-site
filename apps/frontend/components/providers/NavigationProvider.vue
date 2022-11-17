@@ -31,7 +31,7 @@ const items: (IItem | IGroup)[] = [
         items: [
             { label: 'Сотрудники', to: '/staff' },
             { label: 'Общая информация', to: '/about' },
-            { label: 'Документы', to: '/documents' },
+            { label: 'Документы', to: '/files' },
         ],
     }
 ]
