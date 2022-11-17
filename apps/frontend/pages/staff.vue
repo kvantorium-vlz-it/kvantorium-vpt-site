@@ -26,7 +26,7 @@ const staffPositionMap = computed<Map<string, IStaff[]>>(() => {
                 Сотрудники
             </template>
 
-            <div v-for="([position, staff]) in staffPositionMap">
+            <div v-for="([position, staff]) in staffPositionMap" :class="$style.staff">
                 <h2>
                     {{ position }}:
                 </h2>
@@ -40,3 +40,11 @@ const staffPositionMap = computed<Map<string, IStaff[]>>(() => {
         </PageSectionDefaultLayout>
     </PageSection>
 </template>
+
+<style module lang="scss">
+@use '@styles/main.scss' as *;
+
+.staff {
+    @include typo(body-1-normal);
+}
+</style>
