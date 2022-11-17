@@ -6,14 +6,14 @@ const kvantum = ref(useKvantumsStore().getKvantumById(useRoute().params.id as st
 </script>
 
 <template>
-    <PageSection>
+    <PageSection :class="kvantum">
         <PageSectionDefaultLayout v-if="kvantum">
             <template #heading>
                 {{ kvantum.name }}
             </template>
             <RichText :blocks="kvantum.description"></RichText>
 
-            <div>
+            <div :class="$style.kvantum__buttons">
                 <BaseButton to="/">
                     Записаться
                 </BaseButton>
@@ -21,3 +21,13 @@ const kvantum = ref(useKvantumsStore().getKvantumById(useRoute().params.id as st
         </PageSectionDefaultLayout>
     </PageSection>
 </template>
+
+<style module lang="scss">
+@use '@styles/main.scss' as *;
+
+.kvantum {
+    &__buttons {
+        margin-top: rem(16px);
+    }
+}
+</style>
