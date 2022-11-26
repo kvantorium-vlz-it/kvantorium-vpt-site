@@ -16,7 +16,7 @@ const {
     kvantums,
 } = storeToRefs(useKvantumsStore())
 
-const items: (IItem | IGroup)[] = [
+const items = computed<(IItem | IGroup)[]>(() => [
     { label: 'Главная', to: '/' },
     { label: 'Новости', to: '/news' },
     {
@@ -34,7 +34,7 @@ const items: (IItem | IGroup)[] = [
             { label: 'Документы', to: '/files' },
         ],
     }
-]
+])
 </script>
 
 <template>
