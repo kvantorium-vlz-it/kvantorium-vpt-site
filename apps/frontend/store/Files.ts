@@ -22,8 +22,6 @@ export const useFilesStore = defineStore('files', () => {
     const curriculums = computed<IFile[]>(() => files.value.filter((f) => f.isCurriculum))
     const regularFiles = computed<IFile[]>(() => files.value.filter((f) => !f.isCurriculum))
 
-    console.log(files);
-
     return {
         files,
         curriculums,
