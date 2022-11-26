@@ -59,7 +59,7 @@
             >
                 <div :class="$style.footer__socials">
                     <a href="https://vk.com/public195220786" target="_blank" title="Группа ВК" >
-                        <NuxtIcon name="vk" fill />
+                        <NuxtIcon name="vk" filled />
                     </a>
                 </div>
             </TheFooterSection>
