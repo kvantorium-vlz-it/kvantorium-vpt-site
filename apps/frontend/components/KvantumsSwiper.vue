@@ -15,6 +15,8 @@ const props = withDefaults(defineProps<{
     itemsInRow: 1,
 })
 
+const kvantums = toRef(props, 'kvantums')
+
 const itemsInRow = toRef(props, 'itemsInRow')
 
 const slidesRef = ref<HTMLElement>()
@@ -29,10 +31,10 @@ const {
     selectNextSlide,
     selectPrevSlide,
     selectSlide,
-} = useSwiper(props.kvantums.length, itemsInRow)
+} = useSwiper(kvantums.value.length, itemsInRow)
 
 const visibleKvantums = computed<Map<IKvantum, boolean>>(() => {
-    return new Map<IKvantum, boolean>(props.kvantums.map((kvantum, index) => {
+    return new Map<IKvantum, boolean>(kvantums.value.map((kvantum, index) => {
         return [kvantum, visibleSlides.value.includes(index)]
     }))
 })
