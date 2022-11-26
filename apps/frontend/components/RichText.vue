@@ -38,15 +38,18 @@ const serializers = {
     a {@include typo(body-2-normal)}
     li {@include typo(body-1-normal)}
 
+    // FIX
+    // on 320px image overflows windows
     img {
-        max-width: 60%;
-        margin-right: rem(16px);
+        display: block;
+        margin: 0 auto;
+        width: 100%;
     }
 
-    &::after {
-        content: "";
-        clear: both;
-        display: table;
+    @include from-breakpoint(desktop) {
+        img {
+            max-width: 60%;
+        }
     }
 }
 </style>
