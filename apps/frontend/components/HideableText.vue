@@ -22,6 +22,8 @@ const {
 const length = computed(() => text.value.length)
 const isMoreThanAllowed = computed(() => length.value > ALLOWED_LENGTH.value)
 
+const isVisibleButtons = computed(() => ALLOWED_LENGTH.value < text.value.length)
+
 const isCanVisibleFullText = ref(!isMoreThanAllowed.value)
 
 const visibleText = computed(() => {
@@ -44,21 +46,23 @@ const hide = () => {
     <span>
         {{ visibleText }}
 
-        <button
-            v-if="!isCanVisibleFullText"
-            :class="$style.text__button"
-            @click="showMore"
-        >
-            {{ showButtonText }}
-        </button>
+        <template v-if="isVisibleButtons">
+            <button
+                v-if="!isCanVisibleFullText"
+                :class="$style.text__button"
+                @click="showMore"
+            >
+                {{ showButtonText }}
+            </button>
 
-        <button
-            v-else
-            :class="$style.text__button"
-            @click="hide"
-        >
-            {{ hideButtonText }}
-        </button>
+            <button
+                v-else
+                :class="$style.text__button"
+                @click="hide"
+            >
+                {{ hideButtonText }}
+            </button>
+        </template>
     </span>
 </template>
 

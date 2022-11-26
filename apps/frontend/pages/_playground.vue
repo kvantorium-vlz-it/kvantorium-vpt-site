@@ -34,7 +34,7 @@ const navigationItems = [
                     <BaseButton variant="light">
                         Lorem, ipsum.
                     </BaseButton>
-                    <HideableText :allowed-length="50" text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus culpa voluptas voluptate possimus. Dolores fuga sint quis ipsa vero sed, iure deleniti natus aliquid sit dicta totam velit explicabo cumque!" />
+                    <HideableText :allowed-length="50" text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus culpa voluptas voluptate possimus. Dolores fuga sint quis ipsa vero sed, iure deleniti natus aliquid sit dicta totam velit explicabo cumque!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus culpa voluptas voluptate possimus. Dolores fuga sint quis ipsa vero sed, iure deleniti natus aliquid sit dicta totam velit explicabo cumque!" />
 
                     <NavigationItem to="/">
                         Lorem, ipsum.

@@ -4,10 +4,12 @@ import { useNewsStore } from './store/News'
 import { useStaffStore } from './store/Staff'
 import { useFilesStore } from './store/Files'
 
-useKvantumsStore()
-useNewsStore()
-useStaffStore()
-useFilesStore()
+await Promise.all([
+    useKvantumsStore(),
+    useNewsStore(),
+    useStaffStore(),
+    useFilesStore(),
+])
 </script>
 
 <template>
