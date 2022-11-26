@@ -11,7 +11,8 @@ const allKvantums = computed(() => {
         name: _kvantum.name,
         description: _kvantum.shortDescription,
         image: _kvantum.icon,
-        id: _kvantum.id
+        id: _kvantum.id,
+        to: `/kvantum-${_kvantum.id}`
     }))
 })
 </script>
