@@ -1,8 +1,6 @@
-<a href="www.kvantoriumvlz.ru">
-    <img src=".github/image/github-logo-light.png#gh-light-mode-only">
-    <img src=".github/image/github-logo-dark.png#gh-dark-mode-only" >
-</a>
-
+[![logo](./.github/image/github-logo-dark.png#gh-dark-mode-only)
+![logo](./.github/image/github-logo-light.png#gh-light-mode-only)
+](http://www.kvantoriumvlz.ru)
 # Kvantorium vlz site
 
 Site for kvantorium vlz organization.
