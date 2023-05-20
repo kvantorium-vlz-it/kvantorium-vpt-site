@@ -12,7 +12,10 @@ export const news = s.document({
         {
             name: 'content',
             type: s.array({
-                of: [s.block()],
+                of: [
+                    s.block(),
+                    s.image()
+                ],
                 validation: (rule) => rule.required(),
             }),
         },
