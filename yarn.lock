@@ -1046,6 +1046,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kvantorium-vpt-site/cms@workspace:apps/cms"
   dependencies:
+    "@kvantorium-vpt-site/tsconfig": "npm:*"
     "@sanity/vision": "npm:^3.11.1"
     "@types/react": "npm:^18.0.25"
     "@types/styled-components": "npm:^5.1.26"
@@ -1073,6 +1074,12 @@ __metadata:
     sass: "npm:^1.62.1"
     swiper: "npm:^9.3.2"
     ymaps: "npm:^0.2.1"
+  languageName: unknown
+  linkType: soft
+
+"@kvantorium-vpt-site/tsconfig@npm:*, @kvantorium-vpt-site/tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "@kvantorium-vpt-site/tsconfig@workspace:packages/tsconfig"
   languageName: unknown
   linkType: soft
 

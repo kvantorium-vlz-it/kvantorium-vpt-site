@@ -1,0 +1,8 @@
+{
+  "name": "@kvantorium-vpt-site/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    "sanity.json"
+  ]
+}
