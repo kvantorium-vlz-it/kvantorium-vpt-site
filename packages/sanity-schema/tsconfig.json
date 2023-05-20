@@ -1,0 +1,4 @@
+{
+  "extends": ["@kvantorium-vpt-site/tsconfig/sanity.json"],
+  "include": ["**/*.ts", "**/*.tsx"],
+}
