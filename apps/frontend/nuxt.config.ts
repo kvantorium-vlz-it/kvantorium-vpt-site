@@ -3,6 +3,7 @@ import path from 'path'
 export default defineNuxtConfig({
     modules: [
         'nuxt-icons',
+        'nuxt-icon',
         '@vueuse/nuxt',
         '@nuxtjs/sanity',
         '@pinia/nuxt',
