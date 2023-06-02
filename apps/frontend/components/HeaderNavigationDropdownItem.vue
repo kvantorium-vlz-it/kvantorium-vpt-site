@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const {} = defineProps<{
-    label: string
-    to?: string
-}>()
+import { HeaderNavigationDropdownItemProps } from '@/assets/typescript/types'
+
+defineProps<HeaderNavigationDropdownItemProps>()
 </script>
 
 <template>

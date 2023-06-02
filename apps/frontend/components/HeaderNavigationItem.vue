@@ -1,11 +1,7 @@
 <script setup lang="ts">
-const {
-    label,
-    to,
-} = defineProps<{
-    label: string
-    to?: string
-}>()
+import { HeaderNavigationItemProps } from '@/assets/typescript/types'
+
+defineProps<HeaderNavigationItemProps>()
 
 const isCurrent = computed(() => false)
 </script>
