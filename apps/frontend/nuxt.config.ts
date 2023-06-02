@@ -30,5 +30,12 @@ export default defineNuxtConfig({
         dataset: process.env.NODE_ENV === 'development'
             ? 'develop'
             : 'production',
-    }
+    },
+
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
 })
