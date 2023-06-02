@@ -1,92 +1,30 @@
 <template>
-    <PageSection
-        :class="$style.hero"
-        :wrapper-class="$style.hero__wrapper"
-    >
-        <div :class="$style.hero__content">
-            <div :class="$style.hero__info">
-                <h1 :class="$style.hero__heading">
-                    «Кванториум»
-                </h1>
-                <p :class="$style.hero__subheading">
-                    Современное учреждение дополнительного образования, оснащённое высокотехнологичным оборудованием.
-                </p>
+    <section id="#hero" class="bg-[url(/images/hero-fullshot.webp)] bg-no-repeat bg-cover bg-bottom">
+        <Container
+            class="py-28 grid grid-cols-2 gap-y-12 gap-x-12"
+        >
+            <div class="text-[36px] font-semibold text-white">
+                Кванториум - современное учреждение дополнительного оборазования, оснащённое высокотехнологичным оборудованием
             </div>
-            <div :class="$style.hero__buttons">
-                <BaseButton to="/#location">
-                    записаться
+
+            <div class="justify-self-end self-center">
+                <BaseButton>
+                    Демонстрационные занятия июнь 2023
+                    <Icon
+                        name="tabler:chevron-down"
+                        class="w-10 h-10"
+                    />
                 </BaseButton>
-                <BaseButton variant="light" to="/about">
+            </div>
+
+            <div class="flex gap-8">
+                <BaseButton>
+                    Записаться на занятия
+                </BaseButton>
+                <BaseButton>
                     Узнать больше
                 </BaseButton>
             </div>
-        </div>
-    </PageSection>
+        </Container>
+    </section>
 </template>
-
-<style module lang="scss">
-@use '@styles/main.scss' as *;
-
-.hero {
-    background-color: rgb(var(--c-black));
-
-    &__content {
-        backdrop-filter: blur(2px);
-        padding: var(--p-y) var(--p-x);
-    }
-    &__info {
-        width: min-content;
-        backdrop-filter: blur(2px);
-    }
-    &__heading {
-        @include typo(h1-bold);
-        color: rgb(var(--c-white));
-        margin: 0;
-
-        margin-bottom: rem(16px)
-    }
-    &__subheading {
-        @include typo(body-1-normal);
-        color: rgb(var(--c-white));
-        margin: 0;
-    }
-    &__buttons {
-        margin-top: rem(8px);
-        display: flex;
-        flex-direction: column;
-        gap: rem(8px);
-
-        & > * {
-            width: fit-content;
-        }
-    }
-
-    &__wrapper {
-        padding: 0;
-        background-image: url('/images/hero-closeup.webp');
-        background-repeat: no-repeat;
-        background-position: right bottom;
-        background-size: contain;
-    }
-
-    @include from-breakpoint(desktop) {
-        &__content {
-            --p-y: #{rem(108px)};
-        }
-
-        &__heading {
-            margin-bottom: rem(48px);
-        }
-
-        &__buttons {
-            flex-direction: row;
-            gap: rem(42px);
-            margin-top: rem(32px);
-        }
-
-        &__wrapper {
-            background-image: url('/images/hero-fullshot.webp');
-        }
-    }
-}
-</style>
