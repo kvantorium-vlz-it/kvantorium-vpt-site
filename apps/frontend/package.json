@@ -22,5 +22,8 @@
     "sass": "^1.62.1",
     "swiper": "^9.3.2",
     "ymaps": "^0.2.1"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "^5.0.2"
   }
 }
