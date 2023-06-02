@@ -1,0 +1,37 @@
+<script setup lang="ts">
+import { HeaderNavigationDropdownGroupProps, HeaderNavigationItemProps } from '~/assets/typescript/types';
+
+type NavigationItem = HeaderNavigationDropdownGroupProps
+    | HeaderNavigationItemProps
+
+type NavigationItemType = 'item' | 'group'
+
+const items: Array<NavigationItem> = [
+    { label: "Главная", to: "/" },
+    { label: "Новости", to: "/news" },
+    { label: "3D-тур", to: "/3d-tour" },
+    { label: "Выставка", to: "/exhibition" },
+    {
+        label: "Квантумы",
+        items: [
+            { label: 'Квантумы', to: '/kvantums' },
+            { label: 'Внебюджет', to: '/off-budget' },
+        ]
+    },
+    { label: "О нас", items: [] },
+    { label: "Контакты", to: "/contacts" },
+]
+
+function checkIsGroupItem(
+    item: NavigationItem
+): item is HeaderNavigationDropdownGroupProps {
+    return 'items' in item
+}
+</script>
+
+<template>
+    <slot
+        :items="items"
+        :checkIsGroupItem="checkIsGroupItem"
+    />
+</template>
