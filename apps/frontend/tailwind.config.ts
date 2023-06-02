@@ -1,4 +1,5 @@
 import { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
     content: [
@@ -10,6 +11,9 @@ export default {
         "./app.vue",
     ],
     theme: {
+        fontFamily: {
+            'sans': ['Montserrat Variable', ...defaultTheme.fontFamily.sans]
+        },
         screens: {
             'desktop': '1720px'
         },

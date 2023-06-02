@@ -11,6 +11,7 @@
     "prepare": "nuxi prepare"
   },
   "devDependencies": {
+    "@fontsource-variable/montserrat": "^5.0.3",
     "@nuxtjs/sanity": "^1.7.2",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/core": "^10.1.2",
@@ -25,8 +26,5 @@
     "swiper": "^9.3.2",
     "tailwindcss": "^3.3.2",
     "ymaps": "^0.2.1"
-  },
-  "dependencies": {
-    "@fontsource/montserrat": "^5.0.2"
   }
 }
