@@ -1,101 +1,21 @@
 <script setup lang="ts">
-const menuButton = ref<HTMLElement>()
-
-const isOpenDrawer = ref(false)
-
-const toggleDrawer = () => {
-    isOpenDrawer.value = !isOpenDrawer.value
-}
-
-const openDrawer = () => {
-    isOpenDrawer.value = true
-}
-
-const clickOutsideDrawer = (target: EventTarget | null) => {
-    if (menuButton.value?.contains(target as HTMLElement)) {
-        return
-    }
-
-    isOpenDrawer.value = false
-}
-
-const slideLeftDrawer = () => {
-    isOpenDrawer.value = false
-}
 </script>
 
 <template>
-    <PageSection
-        as="header"
-        :class="$style.header"
-        :wrapper-class="$style.header__wrapper"
-    >
-        <NuxtLink
-            to="/"
-            :class="$style.header__logo"
-        >
-            <KvantoriumLogo />
-        </NuxtLink>
-        <NavigationProvider #="{ items }">
-            <NavigationBar
-                :class="$style.header__bar"
-                :items="items"
-            />
-            <LazyNavigationDrawer
-                :class="$style.header__drawer"
-                :is-open="isOpenDrawer"
-                :items="items"
-                @slide-left="slideLeftDrawer"
-                @click-outside="clickOutsideDrawer"
-            />
-        </NavigationProvider>
+    <header id="#header" class="shadow-xl">
+        <Container class="flex justify-between items-center py-7">
+            <div class="flex gap-1 items-center">
+                <KvantoriumLogo
+                    is-multicolor
+                    class="w-16 h-16"
+                />
 
-        <button
-            ref="menuButton"
-            :class="$style.header__button"
-            @click="openDrawer"
-        >
-            <NuxtIcon name="menu" />
-        </button>
-    </PageSection>
+                <h1 class="text-[26px] font-bold">
+                    Кванториум “Волжский политех”
+                </h1>
+            </div>
+
+            <TheHeaderNavigation />
+        </Container>
+    </header>
 </template>
-
-<style module lang="scss">
-@use '@styles/main.scss' as *;
-
-.header {
-    // Build version not override PageSecion background
-    --bg-color: var(--bg-header) !important;
-
-    &__wrapper {
-        display: flex;
-    }
-
-    &__logo {
-        margin-right: auto;
-        text-decoration: none;
-    }
-    &__button {
-        cursor: pointer;
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        color: rgb(var(--c-white));
-
-        @include typo(body-1-normal);
-    }
-
-    @include until-breakpoint(desktop) {
-        &__bar {
-            display: none !important;
-        }
-    }
-
-    @include from-breakpoint(desktop) {
-        &__button,
-        &__drawer {
-            display: none;
-        }
-    }
-}
-</style>
