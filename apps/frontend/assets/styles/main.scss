@@ -18,4 +18,10 @@
     * {
         @apply font-sans;
     }
+
+    // Fix nuxt-icons svg size
+    .nuxt-icon > svg {
+        width: 100% !important;
+        height: 100% !important;
+    }
 }
