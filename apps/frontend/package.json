@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@fontsource-variable/montserrat": "^5.0.3",
+    "@kvantorium-vpt-site/sanity-schema": "*",
     "@nuxtjs/sanity": "^1.7.2",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/core": "^10.1.2",

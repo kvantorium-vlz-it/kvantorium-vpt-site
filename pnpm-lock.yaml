@@ -50,6 +50,9 @@ importers:
       '@fontsource-variable/montserrat':
         specifier: ^5.0.3
         version: 5.0.3
+      '@kvantorium-vpt-site/sanity-schema':
+        specifier: '*'
+        version: link:../../packages/sanity-schema
       '@nuxtjs/sanity':
         specifier: ^1.7.2
         version: 1.7.2
