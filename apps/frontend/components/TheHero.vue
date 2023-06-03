@@ -8,7 +8,7 @@
             </div>
 
             <div class="justify-self-end self-center">
-                <BaseButton>
+                <BaseButton variant="yellow">
                     Демонстрационные занятия июнь 2023
                     <Icon
                         name="tabler:chevron-down"
