@@ -3,6 +3,7 @@ import path from 'path'
 export default defineNuxtConfig({
     modules: [
         'nuxt-icons',
+        'nuxt-icon',
         '@vueuse/nuxt',
         '@nuxtjs/sanity',
         '@pinia/nuxt',
@@ -30,5 +31,12 @@ export default defineNuxtConfig({
         dataset: process.env.NODE_ENV === 'development'
             ? 'develop'
             : 'production',
-    }
+    },
+
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
 })
