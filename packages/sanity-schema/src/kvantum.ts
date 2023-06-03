@@ -1,45 +1,34 @@
 import { s } from '@sanity-typed/schema-builder'
 
 export const kvantum = s.document({
-    name: 'Kvantum',
+    name: 'kvantum',
+    title: 'Квантумы',
     fields: [
         {
             name: 'name',
-            type: s.string({
-                validation: (rule) => rule.required(),
+            title: 'Название квантума',
+            type: s.string(),
+        },
+        {
+            name: 'icon',
+            title: 'Иконка квантума',
+            type: s.image(),
+        },
+        {
+            name: 'isAdditional',
+            title: 'Дополнительный квантум',
+            type: s.boolean({
+                initialValue: false,
             }),
         },
         {
             name: 'description',
+            title: 'Описание квантума',
             type: s.array({
                 of: [s.block()],
-                validation: (rule) => rule.required(),
             }),
         },
-        {
-            name: 'shortDescription',
-            type: s.text({
-                max: 200,
-                validation: (rule) => rule.required(),
-            }),
-        },
-        {
-            name: 'icon',
-            type: s.image({
-                validation: (rule) => rule.required(),
-            }),
-        },
-        {
-            name: 'image',
-            type: s.image(),
-        },
-    ],
-    preview: {
-        select: {
-            title: 'name',
-            media: 'icon',
-        },
-    },
+    ]
 })
 
 export type Kvantum = s.infer<typeof kvantum>
