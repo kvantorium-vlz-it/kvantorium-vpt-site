@@ -21,7 +21,7 @@ function nextSlide() {
 
 <template>
     <div>
-        <slot name="left-thumb">
+        <slot name="leftThumb" :previousSlide="previousSlide">
             <button @click="previousSlide">
                 <Icon name="material-symbols:chevron-left" />
             </button>
@@ -39,7 +39,7 @@ function nextSlide() {
                 ></slot>
             </li>
         </ol>
-        <slot name="right-thumb">
+        <slot name="rightThumb" :nextSlide="nextSlide">
             <button @click="nextSlide">
                 <Icon name="material-symbols:chevron-right" />
             </button>
