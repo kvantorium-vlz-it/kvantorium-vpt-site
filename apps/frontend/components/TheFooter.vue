@@ -1,140 +1,60 @@
 <template>
-    <PageSection
-        as="footer"
-        :class="$style.footer"
-    >
-        <div :class="$style.footer__wrapper">
-            <TheFooterSection name="Навигация">
-                <nav :class="$style.footer__navigation">
-                    <NuxtLink
-                        to="/"
-                        :class="$style['footer__navigation-item']"
-                    >
-                        Главная
-                    </NuxtLink>
-                    <NuxtLink
-                        to="/#kvatums"
-                        :class="$style['footer__navigation-item']"
-                    >
-                        Квантумы
-                    </NuxtLink>
-                    <NuxtLink
-                        to="/about#organization"
-                        :class="$style['footer__navigation-item']"
-                    >
-                        О нас
-                    </NuxtLink>
-                </nav>
-            </TheFooterSection>
+    <footer>
+        <Container>
+            <div class="grid grid-cols-3 gap-[10px] mb-[50px]">
+                <FooterSocialLink
+                    icon="ic:baseline-telegram"
+                    href="telegram.org"
+                    label="Наш канал в Telegram"
+                />
+                <FooterSocialLink
+                    icon="mdi:vk"
+                    href="vk.com"
+                    label="Наше сообщество во ВКонтакте"
+                />
+                <FooterSocialLink
+                    icon="fa6-brands:square-odnoklassniki"
+                    href="ok.ru/"
+                    label="Наша группа в Одноклассниках"
+                />
+            </div>
 
-            <TheFooterSection name="Контакты">
-                <address :class="$style.footer__contacts">
-                    <TheFooterContact
-                        :contact="{
-                            title: 'Эл. почта',
-                            label: 'kvantroiumvlz@volpt.ru',
-                            link: 'mailto:kvantroiumvlz@volpt.ru',
-                        }"
+            <div class="grid grid-cols-4 mb-[20px]">
+                <div class="flex flex-col gap-[30px]">
+                    <FooterInfo
+                        title="Почта техникума"
+                        label="volpt@volganet.ru"
+                        href="mailto:volpt@volganet.ru"
                     />
-                    <TheFooterContact
-                        :contact="{
-                            title: 'Телефон',
-                            label: '+7 (902)-383-50-24',
-                            link: 'tel:+79023835024',
-                        }"
+                    <FooterInfo
+                        title="Сайт техникума"
+                        label="volpt.ru"
+                        href="volpt.ru"
                     />
-                    <TheFooterContact
-                        :contact="{
-                            title: 'сайт',
-                            label: 'www.kvantoriumvpt.ru',
-                            link: 'https://www.kvantoriumvlz.ru/',
-                        }"
-                        target="_blank"
-                    />
-                </address>
-            </TheFooterSection>
-
-            <TheFooterSection
-                name="Соц. сети"
-            >
-                <div :class="$style.footer__socials">
-                    <a href="https://vk.com/public195220786" target="_blank" title="Группа ВК" >
-                        <NuxtIcon name="vk" filled />
-                    </a>
                 </div>
-            </TheFooterSection>
-        </div>
-        <section :class="$style.footer__copyright">
-            {{ new Date().getFullYear() }} Кванториум ВОЛЖСКИЙ ПОЛИТЕХ
-        </section>
-    </PageSection>
+                <div class="flex flex-col gap-[30px]">
+                    <FooterInfo
+                        title="Мы на карте"
+                        label="Волжский ул. Машиностроителей, 15 404121"
+                        href="geo:48.786934,44.772160"
+                    />
+                    <FooterInfo
+                        title="Телефон"
+                        label="8(902)383-50-24"
+                        href="tel:89023835024"
+                    />
+                    <FooterInfo
+                        title="Почта Кванториума"
+                        label="kvantoriumvlz@volpt.com"
+                        href="mailto:kvantoriumvlz@volpt.com"
+                    />
+                </div>
+                <KvantoriumLocationMap class="col-span-2" />
+            </div>
+
+            <div class="text-center text-[22px] font-bold mb-[20px]">
+                Кванториум “Волжский политех” {{ new Date().getFullYear() }}
+            </div>
+        </Container>
+    </footer>
 </template>
-
-<style module lang="scss">
-@use '@styles/main.scss' as *;
-
-.footer {
-    background-color: rgb(var(--bg-footer));
-    color: rgb(var(--c-white));
-
-    &__wrapper {
-        padding-bottom: rem(12px);
-
-        display: flex;
-        justify-content: space-between;
-        column-gap: rem(16px);
-        row-gap: rem(8px);
-
-        & > * {
-            min-width: calc(100% / 4);
-        }
-    }
-
-    &__navigation {
-        display: flex;
-        flex-direction: column;
-        gap: rem(8px);
-    }
-    &__navigation-item {
-        @include typo(body-2-normal);
-
-        color: inherit;
-        text-decoration: none;
-
-        &[href]:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &__contacts {
-        display: flex;
-        flex-direction: column;
-        gap: rem(8px);
-    }
-
-    &__socials {
-        display: flex;
-        justify-content: flex-start;
-        gap: rem(4px);
-
-        @include typo(body-2-normal);
-    }
-
-    &__copyright {
-        border-top: rem(2px) solid rgb(var(--c-white));
-
-        padding-top: rem(8px);
-
-        @include typo(body-2-normal);
-
-        text-align: center;
-        color: rgb(var(--c-white));
-    }
-
-    @include until-breakpoint(desktop) {
-        &__wrapper {
-            flex-wrap: wrap;
-        }
-    }
-}
-</style>
