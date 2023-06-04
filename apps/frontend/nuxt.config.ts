@@ -26,11 +26,8 @@ export default defineNuxtConfig({
     },
 
     sanity: {
-        projectId: 'bf6yq4p9',
-        apiVersion: '2021-10-18',
-        dataset: process.env.NODE_ENV === 'development'
-            ? 'develop'
-            : 'production',
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
     },
 
     postcss: {
