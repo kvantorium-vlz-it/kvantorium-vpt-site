@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { useKvantumsStore } from './store/kvantums'
-import { useNewsStore } from './store/News'
-import { useStaffStore } from './store/Staff'
-import { useFilesStore } from './store/Files'
 
 await Promise.all([
-    useKvantumsStore(),
-    useNewsStore(),
-    useStaffStore(),
-    useFilesStore(),
+    useKvantumsStore().fetchAllKvantuns(),
 ])
 </script>
 

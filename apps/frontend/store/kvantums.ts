@@ -4,6 +4,14 @@ import { Kvantum } from '~/assets/typescript/types'
 export const useKvantumsStore = defineStore('kvantums', () => {
     const kvantums = ref<Kvantum[]>([])
 
+    const mainKvantum = computed(() => {
+        return kvantums.value.filter((kvantum) => !kvantum.isAdditional)
+    })
+
+    const additionalKvantums = computed(() => {
+        return kvantums.value.filter((kvantum) => kvantum.isAdditional)
+    })
+
     async function fetchAllKvantuns() {
         kvantums.value = await $fetch('/api/kvantums')
         return kvantums
@@ -20,5 +28,8 @@ export const useKvantumsStore = defineStore('kvantums', () => {
     return {
         fetchAllKvantuns,
         fetchKvantumById,
+        kvantums,
+        mainKvantum,
+        additionalKvantums,
     }
 })
