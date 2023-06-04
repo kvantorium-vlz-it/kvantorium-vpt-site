@@ -36,4 +36,4 @@ export const kvantum = s.document({
     ]
 })
 
-export type Kvantum = s.infer<typeof kvantum>
+export type RawKvantum = s.infer<typeof kvantum>
