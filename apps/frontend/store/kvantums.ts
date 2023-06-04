@@ -8,6 +8,10 @@ export const useKvantumsStore = defineStore('kvantums', () => {
         return kvantums.value.filter((kvantum) => !kvantum.isAdditional)
     })
 
+    const additionalKvantums = computed(() => {
+        return kvantums.value.filter((kvantum) => kvantum.isAdditional)
+    })
+
     async function fetchAllKvantuns() {
         kvantums.value = await $fetch('/api/kvantums')
         return kvantums
@@ -26,5 +30,6 @@ export const useKvantumsStore = defineStore('kvantums', () => {
         fetchKvantumById,
         kvantums,
         mainKvantum,
+        additionalKvantums,
     }
 })
