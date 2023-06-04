@@ -1,5 +1,3 @@
 <template>
-    <li>
-        <slot></slot>
-    </li>
+    <slot></slot>
 </template>

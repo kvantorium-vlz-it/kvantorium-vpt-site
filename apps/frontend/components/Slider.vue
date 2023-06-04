@@ -1,17 +1,21 @@
-<script setup lang="ts">
-const slides = computed(() => {
-    return useSlots().default?.() || []
-})
+<script setup lang="ts" generic="T">
+const props = defineProps<{
+    slides: T[]
+}>()
+const {
+    slides
+} = toRefs(props)
 
 const slidesCount = computed(() => slides.value.length)
-
 const currentSlideIndex = ref(0)
 
 function previousSlide() {
-    currentSlideIndex.value = (slidesCount.value + currentSlideIndex.value - 1) % slidesCount.value
+    const newIndex = slidesCount.value + currentSlideIndex.value - 1
+    currentSlideIndex.value = (newIndex) % slidesCount.value
 }
 function nextSlide() {
-    currentSlideIndex.value = (currentSlideIndex.value + 1) % slidesCount.value
+    const newIndex = currentSlideIndex.value + 1
+    currentSlideIndex.value = (newIndex) % slidesCount.value
 }
 </script>
 
@@ -23,15 +27,17 @@ function nextSlide() {
             </button>
         </slot>
         <ol>
-            <template
+            <li
                 v-for="slide, index in slides"
                 :key="index"
             >
-                <component
-                    v-if="index === currentSlideIndex"
-                    :is="() => h(slide)"
-                />
-            </template>
+                <slot
+                    v-if="currentSlideIndex === index"
+                    name="slide"
+                    :slide="slide"
+                    :slideIndex="index"
+                ></slot>
+            </li>
         </ol>
         <slot name="right-thumb">
             <button @click="nextSlide">
