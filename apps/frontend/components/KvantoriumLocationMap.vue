@@ -37,14 +37,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="map" :class="$style.map"></div>
+    <div id="map" class="w-full aspect-[2] rounded-[20px] overflow-hidden"></div>
 </template>
 
-<style module lang="scss">
-.map {
-    width: 100%;
-    box-shadow: var(--bs-8);
-    border-radius: var(--br-16);
-    overflow: hidden;
-}
-</style>
