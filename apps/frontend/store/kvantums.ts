@@ -1,34 +1,24 @@
 import { defineStore } from "pinia"
-
-interface IKvantum {
-    name: string
-    description: unknown[]
-    shortDescription: string
-    id: string
-    icon: string
-}
-
-const query = groq`*[_type == "Kvantum"] {
-    description[]{
-        ...,
-        'asset': asset->url,
-    },
-    name,
-    shortDescription,
-    'id': _id,
-    'icon': icon.asset->url,
-}`
+import { Kvantum } from '@kvantorium-vpt-site/sanity-schema'
 
 export const useKvantumsStore = defineStore('kvantums', () => {
-    const { data, refresh } = useSanityQuery<IKvantum[]>(query)
+    const kvantums = ref<Kvantum[]>([])
 
-    const kvantums = computed<IKvantum[]>(() => data.value || [])
+    async function fetchAllKvantuns() {
+        kvantums.value = await $fetch('/api/kvantums')
+        return kvantums
+    }
 
-    const getKvantumById = (id: string) => kvantums.value.find(_k => _k.id === id)
+    async function fetchKvantumById(id: string) {
+        return await $fetch('/api/kvantums/:id', {
+            params: {
+                id,
+            }
+        })
+    }
 
     return {
-        kvantums,
-        refresh,
-        getKvantumById,
+        fetchAllKvantuns,
+        fetchKvantumById,
     }
 })
