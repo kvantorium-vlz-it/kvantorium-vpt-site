@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <header id="#header" class="shadow-xl sticky top-0 bg-white">
+    <header id="#header" class="z-50 shadow-xl sticky top-0 bg-white">
         <Container class="flex justify-between items-center py-7">
             <div class="flex gap-1 items-center">
                 <KvantoriumLogo
