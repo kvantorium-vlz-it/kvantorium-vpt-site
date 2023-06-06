@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { useKvantumsStore } from './store/kvantums'
+import { useCurriculasStore } from './store/curriculas'
+import { useEmployeesStore } from './store/employees'
 
 await Promise.all([
     useKvantumsStore().fetchAllKvantuns(),
+    useCurriculasStore().fetchAllCurriculas(),
+    useEmployeesStore().fetchAllEmployees(),
 ])
 </script>
 

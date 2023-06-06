@@ -18,7 +18,13 @@ const items: Array<NavigationItem> = [
             { label: 'Внебюджет', to: '/off-budget' },
         ]
     },
-    { label: "О нас", items: [] },
+    {
+        label: "О нас",
+        items: [
+            { label: 'Общая информация', to: '/about' },
+            { label: 'Документы', to: '/documents' }
+        ]
+    },
     { label: "Контакты", to: "/contacts" },
 ]
 
