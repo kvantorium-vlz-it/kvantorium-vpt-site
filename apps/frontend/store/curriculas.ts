@@ -1,4 +1,4 @@
-import { defineStore } from '@pinia/nuxt/dist/runtime/composables';
+import { defineStore } from 'pinia';
 import { Curriculum } from '~/assets/typescript/types';
 
 export const useCurriculasStore = defineStore('curriculas', () => {
@@ -11,5 +11,6 @@ export const useCurriculasStore = defineStore('curriculas', () => {
 
     return {
         fetchAllCurriculas,
+        curriculas,
     }
 })

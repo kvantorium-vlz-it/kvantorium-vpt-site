@@ -1,4 +1,4 @@
-import { defineStore } from '@pinia/nuxt/dist/runtime/composables'
+import { defineStore } from 'pinia'
 import { Employee } from '~/assets/typescript/types'
 
 export const useEmployeesStore = defineStore('employes', () => {
@@ -11,5 +11,6 @@ export const useEmployeesStore = defineStore('employes', () => {
 
     return {
         fetchAllEmployees,
+        employees,
     }
 })
