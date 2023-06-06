@@ -1,13 +1,19 @@
 <script setup lang="ts">
-defineProps<{
+type SectionTag = 'section' | 'footer' | 'header'
+
+withDefaults(defineProps<{
     heading: string
     id?: string
-}>()
+    tag?: SectionTag
+}>(), {
+    tag: 'section'
+})
 </script>
 
 <template>
-    <section
+    <component
         class="py-12"
+        :is="tag"
         :id="id"
     >
         <Container>
@@ -17,5 +23,5 @@ defineProps<{
 
             <slot></slot>
         </Container>
-    </section>
+    </component>
 </template>
