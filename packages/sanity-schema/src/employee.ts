@@ -22,3 +22,5 @@ export const employee = s.document({
         },
     ],
 })
+
+export type RawEmployee = s.infer<typeof employee>
