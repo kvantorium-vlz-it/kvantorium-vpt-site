@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
     css: [
         'modern-normalize',
-        '@styles/main.scss',
+        '@styles',
         'swiper/css',
     ],
 
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     },
 
     alias: {
-        '@styles': path.resolve(__dirname, path.join('assets', 'styles')),
+        '@styles': path.resolve(__dirname, path.join('assets', 'styles', 'main.scss')),
         '@types': path.resolve(__dirname, path.join('assets', 'typescript', 'types.ts'))
     },
 
