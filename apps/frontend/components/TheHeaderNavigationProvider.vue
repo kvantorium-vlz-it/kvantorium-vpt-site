@@ -23,7 +23,7 @@ const items: Array<NavigationItem> = [
             { label: 'Документы', to: '/documents' }
         ]
     },
-    { label: "Контакты", to: "/#footer" },
+    { label: "Контакты", to: "#footer" },
 ]
 
 function checkIsGroupItem(

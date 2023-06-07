@@ -1,5 +1,5 @@
 <template>
-    <Section heading="Где нас найти">
+    <Section heading="Где нас найти" id="footer">
         <div class="grid grid-cols-3 gap-[10px] mb-[50px]">
             <FooterSocialLink
                 icon="ic:baseline-telegram"

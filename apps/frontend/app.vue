@@ -14,6 +14,7 @@ await Promise.all([
 
 <template>
     <div
+        id="root"
         class="min-h-screen grid grid-cols-1 grid-rows-layout"
     >
         <TheHeader />
