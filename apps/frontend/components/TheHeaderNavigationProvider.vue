@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HeaderNavigationDropdownGroupProps, HeaderNavigationItemProps } from '~/assets/typescript/types';
+import { HeaderNavigationDropdownGroupProps, HeaderNavigationItemProps } from '@types';
 
 type NavigationItem = HeaderNavigationDropdownGroupProps
     | HeaderNavigationItemProps

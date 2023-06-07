@@ -1,4 +1,4 @@
-import { News } from '~/assets/typescript/types'
+import { News } from '@types'
 
 const query = groq`*[_type == 'news'] | order(date){
     'id': _id,

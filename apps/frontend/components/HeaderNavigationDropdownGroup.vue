@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HeaderNavigationDropdownGroupProps } from '@/assets/typescript/types'
+import { HeaderNavigationDropdownGroupProps } from '@types'
 
 defineProps<HeaderNavigationDropdownGroupProps>()
 </script>

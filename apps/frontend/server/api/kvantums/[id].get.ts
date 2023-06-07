@@ -1,4 +1,4 @@
-import { Kvantum } from '@/assets/typescript/types'
+import { Kvantum } from '@types'
 
 export default defineEventHandler(async (event) => {
     const id = getQuery(event).id

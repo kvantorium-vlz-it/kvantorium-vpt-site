@@ -22,7 +22,8 @@ export default defineNuxtConfig({
     },
 
     alias: {
-        '@styles': path.join(__dirname, 'assets', 'styles'),
+        '@styles': path.resolve(__dirname, path.join('assets', 'styles')),
+        '@types': path.resolve(__dirname, path.join('assets', 'typescript', 'types.ts'))
     },
 
     sanity: {
