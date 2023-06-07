@@ -16,7 +16,7 @@ defineProps<HeaderNavigationDropdownGroupProps>()
 
         <ul
             v-show="items.length > 0"
-            class="group-open:absolute group-open:top-[calc(100%+10px)] bg-[#E6E7EE] z-10 max-w-full p-[10px] rounded-[10px]"
+            class="group-open:absolute group-open:top-[calc(100%+10px)] bg-[#E6E7EE] z-10 p-[10px] rounded-[10px]"
         >
             <li
                 v-for="item, index in items"

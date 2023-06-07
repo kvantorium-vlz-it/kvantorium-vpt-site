@@ -3,17 +3,17 @@
         <div class="grid grid-cols-3 gap-[10px] mb-[50px]">
             <FooterSocialLink
                 icon="ic:baseline-telegram"
-                href="telegram.org"
+                href="https://t.me/kvantoriumvlz34"
                 label="Наш канал в Telegram"
             />
             <FooterSocialLink
                 icon="mdi:vk"
-                href="vk.com"
+                href="https://vk.com/public195220786"
                 label="Наше сообщество во ВКонтакте"
             />
             <FooterSocialLink
                 icon="fa6-brands:square-odnoklassniki"
-                href="ok.ru/"
+                href="https://ok.ru/group/57811145785374"
                 label="Наша группа в Одноклассниках"
             />
         </div>
@@ -28,7 +28,7 @@
                 <FooterInfo
                     title="Сайт техникума"
                     label="volpt.ru"
-                    href="volpt.ru"
+                    href="https://volpt.ru/"
                 />
             </div>
             <div class="flex flex-col gap-[30px]">

@@ -4,18 +4,16 @@ import { HeaderNavigationDropdownGroupProps, HeaderNavigationItemProps } from '@
 type NavigationItem = HeaderNavigationDropdownGroupProps
     | HeaderNavigationItemProps
 
-type NavigationItemType = 'item' | 'group'
-
 const items: Array<NavigationItem> = [
     { label: "Главная", to: "/" },
     { label: "Новости", to: "/news" },
-    { label: "3D-тур", to: "/3d-tour" },
-    { label: "Выставка", to: "/exhibition" },
+    // { label: "3D-тур", to: "/3d-tour" },
+    // { label: "Выставка", to: "/exhibition" },
     {
         label: "Квантумы",
         items: [
-            { label: 'Квантумы', to: '/kvantums' },
-            { label: 'Внебюджет', to: '/off-budget' },
+            // { label: 'Квантумы', to: '/kvantums' },
+            // { label: 'Внебюджет', to: '/off-budget' },
         ]
     },
     {
@@ -25,7 +23,7 @@ const items: Array<NavigationItem> = [
             { label: 'Документы', to: '/documents' }
         ]
     },
-    { label: "Контакты", to: "/contacts" },
+    { label: "Контакты", to: "/#footer" },
 ]
 
 function checkIsGroupItem(
