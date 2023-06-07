@@ -10,7 +10,7 @@ const isOpened = computed(() => modalStore.isOpened)
     <dialog
         :open="isOpened"
         @click.self="modalStore.close"
-        class="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-sm bg-transparent bg-black bg-opacity-50"
+        class="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-sm bg-black bg-opacity-50"
     >
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-7xl p-[40px] rounded-[20px]"

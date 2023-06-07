@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 export const useModalStore = defineStore('modal', () => {
-    const isOpened = ref<boolean>(true)
+    const isOpened = ref<boolean>(false)
 
     function open() {
         isOpened.value = true
