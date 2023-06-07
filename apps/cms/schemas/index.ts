@@ -1,4 +1,4 @@
-import { kvantum, news, staffPosition, file, staff, curriculum, employee } from '@kvantorium-vpt-site/sanity-schema'
+import { kvantum, news, staffPosition, file, staff, curriculum, employee, demoLesson } from '@kvantorium-vpt-site/sanity-schema'
 
 export const schemaTypes = [
     staffPosition.schema(),
@@ -8,4 +8,5 @@ export const schemaTypes = [
     staff.schema(),
     curriculum.schema(),
     employee.schema(),
+    demoLesson.schema(),
 ]

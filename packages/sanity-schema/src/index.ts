@@ -5,6 +5,7 @@ import { file, File } from './file'
 import { staff, Staff } from './staff'
 import { curriculum, RawCurriculum } from './curriculum'
 import { employee, RawEmployee } from './employee'
+import { demoLesson, RawDemoLesson } from './demoLesson'
 
 export type {
     StaffPosition,
@@ -14,6 +15,7 @@ export type {
     Staff,
     RawEmployee,
     RawCurriculum,
+    RawDemoLesson,
 }
 export {
     staffPosition,
@@ -23,4 +25,5 @@ export {
     staff,
     curriculum,
     employee,
+    demoLesson,
 }
