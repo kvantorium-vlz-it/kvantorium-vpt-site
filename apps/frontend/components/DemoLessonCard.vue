@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useModalStore } from '~/store/modal'
 import { DemoLesson } from '@types';
 import { useEmployeesStore } from '~/store/employees';
 import { useKvantumsStore } from '~/store/kvantums';
 
 const employeesStore = useEmployeesStore()
 const kvantumStore = useKvantumsStore()
+const modalStore = useModalStore()
 
 const {
     lesson,
@@ -44,7 +46,10 @@ const kvantum = computed(() => {
                     {{ fromTime }}-{{ toTime }}
                 </span>
             </div>
-            <BaseButton class="bottom-6 absolute left-1/2 -translate-x-1/2">
+            <BaseButton
+                class="bottom-6 absolute left-1/2 -translate-x-1/2"
+                @click="modalStore.open"
+            >
                 Записаться
             </BaseButton>
         </div>
