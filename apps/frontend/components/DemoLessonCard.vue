@@ -1,35 +1,21 @@
 <script setup lang="ts">
-interface DemoLessonCardTime {
-    from: string
-    to: string
-}
-interface DemoLessonCardAge {
-    from: number
-    to: number
-}
+import { DemoLesson } from '~/assets/typescript/types';
 
 defineProps<{
-    name: string
-    time: DemoLessonCardTime
-    kvantum: string
-    age: DemoLessonCardAge
-    teacher: string
-
-    to?: string
-    image: string
+    lesson: DemoLesson
 }>()
 </script>
 
 <template>
     <article>
         <div
-            :style="`background-image: url(${image});`"
+            :style="`background-image: url(${lesson.image});`"
             class="aspect-square bg-center bg-cover relative mb-4"
         >
             <div class="text-center text-white font-bold text-[36px] absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                "{{ name }}"
+                "{{ lesson.name }}"
                 <br>
-                {{ time.from }}-{{ time.to }}
+                {{ lesson.fromTime }}-{{ lesson.toTime }}
             </div>
             <BaseButton class="bottom-6 absolute left-1/2 -translate-x-1/2">
                 Записаться
@@ -38,12 +24,12 @@ defineProps<{
 
         <div class="text-center font-semibold text-[26px]">
             <strong class="font-bold">
-                {{ kvantum }}
+                {{ lesson.kvantum }}
             </strong>
             <br>
-            Возраст от {{ age.from }} до {{ age.to }}
+            Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
-            {{ teacher }}
+            {{ lesson.teacher }}
         </div>
     </article>
 </template>
