@@ -51,7 +51,7 @@
             <KvantoriumLocationMap class="col-span-2" id="footer-map" />
         </div>
 
-        <div class="text-center text-[22px] font-bold mb-[20px]">
+        <div class="text-center text-[22px] font-bold mb-[20px] aspect-[2] ">
             Кванториум “Волжский политех” {{ new Date().getFullYear() }}
         </div>
     </Section>

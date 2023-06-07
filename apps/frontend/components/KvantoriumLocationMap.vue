@@ -41,6 +41,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <div :id="id" class="w-full aspect-[2] rounded-[20px] overflow-hidden"></div>
+    <div :id="id" class="w-full rounded-[20px] overflow-hidden"></div>
 </template>
 
