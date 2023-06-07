@@ -13,7 +13,10 @@ await Promise.all([
 </script>
 
 <template>
-    <div :class="$style.app">
+    <div
+        id="root"
+        class="min-h-screen grid grid-cols-1 grid-rows-layout"
+    >
         <TheHeader />
         <main>
             <NuxtPage />
@@ -21,14 +24,3 @@ await Promise.all([
         <TheFooter />
     </div>
 </template>
-
-<style module lang="scss">
-.app {
-    overflow-x: clip;
-    min-height: 100vh;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-}
-</style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Kvantum } from '~/assets/typescript/types';
+import { Kvantum } from '@types';
 
 defineProps<{
     kvantums: Kvantum[]

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HeaderNavigationItemProps } from '@/assets/typescript/types'
+import { HeaderNavigationItemProps } from '@types'
 
 defineProps<HeaderNavigationItemProps>()
 

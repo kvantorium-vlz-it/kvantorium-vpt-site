@@ -1,4 +1,4 @@
-import { Kvantum } from '~/assets/typescript/types'
+import { Kvantum } from '@types'
 
 const query = groq`*[_type == 'kvantum'] {
     'icon': icon.asset-> url,
