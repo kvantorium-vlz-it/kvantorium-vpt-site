@@ -5,7 +5,7 @@ export const useNewsStore = defineStore('news', () => {
     const news = ref<News[]>([])
 
     async function fetchAllNews() {
-        news.value = await $fetch('/api/news/news')
+        news.value = await $fetch('/api/news')
         return news.value
     }
 

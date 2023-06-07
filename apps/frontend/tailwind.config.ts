@@ -27,6 +27,9 @@ export default {
         extend: {
             gridTemplateRows: {
                 'layout': 'auto 1fr auto',
+            },
+            gridTemplateColumns: {
+                'demo-slider': 'auto 1fr auto'
             }
         },
     },
