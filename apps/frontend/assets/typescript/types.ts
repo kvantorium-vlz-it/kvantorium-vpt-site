@@ -58,5 +58,6 @@ export interface DemoLesson {
     toTime: RawDemoLesson['toTime']
     date: RawDemoLesson['date']
     teacher: string
+    kvantum: string
     image: string
 }

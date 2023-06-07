@@ -1,5 +1,6 @@
 import { s } from '@sanity-typed/schema-builder'
 import { employee } from './employee'
+import { kvantum } from './kvantum'
 
 export const demoLesson = s.document({
     name: 'demoLesson',
@@ -48,6 +49,13 @@ export const demoLesson = s.document({
             title: 'Педагог',
             type: s.reference({
                 to: [employee],
+            }),
+        },
+        {
+            name: 'kvantum',
+            title: 'Квантум',
+            type: s.reference({
+                to: [kvantum],
             }),
         },
         {

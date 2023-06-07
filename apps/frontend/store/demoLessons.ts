@@ -4,7 +4,7 @@ import { DemoLesson } from '~/assets/typescript/types';
 export const useDemoLessonsStore = defineStore('demoLessons', () => {
     const demoLessons = ref<DemoLesson[]>([])
 
-    const groupedByDateDemoLEssons = computed(() => {
+    const groupedByDateDemoLessons = computed(() => {
         const grouped = demoLessons.value
             .reduce((grouped, lesson) => {
                 const date = lesson.date
@@ -19,7 +19,7 @@ export const useDemoLessonsStore = defineStore('demoLessons', () => {
             }, new Map<string, DemoLesson[]>())
 
         return new Map([...grouped.entries()]
-            .map(([date, lessons]) => [new Date(), lessons])
+            .map(([date, lessons]) => [new Date(date), lessons])
         )
     })
 
@@ -31,6 +31,6 @@ export const useDemoLessonsStore = defineStore('demoLessons', () => {
     return {
         fetchAllDemoLessons,
         demoLessons,
-        groupedByDateDemoLEssons,
+        groupedByDateDemoLessons,
     }
 })
