@@ -1,4 +1,4 @@
-import { RawCurriculum, RawEmployee, RawKvantum, RawNews } from '@kvantorium-vpt-site/sanity-schema'
+import { RawCurriculum, RawDemoLesson, RawEmployee, RawKvantum, RawNews } from '@kvantorium-vpt-site/sanity-schema'
 
 export interface NavigationLink {
     label: string
@@ -47,4 +47,16 @@ export interface News {
     heading: RawNews['heading']
     content: RawNews['content']
     images: string[]
+}
+
+export interface DemoLesson {
+    id: RawDemoLesson['_id']
+    name: RawDemoLesson['name']
+    fromAge: RawDemoLesson['fromAge']
+    toAge: RawDemoLesson['toAge']
+    fromTime: RawDemoLesson['fromTime']
+    toTime: RawDemoLesson['toTime']
+    date: RawDemoLesson['date']
+    teacher: string
+    image: string
 }
