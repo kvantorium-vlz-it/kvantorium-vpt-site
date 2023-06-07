@@ -61,3 +61,5 @@ export interface DemoLesson {
     kvantum: string
     image: string
 }
+
+export type ButtonVariant = 'blue' | 'yellow'
