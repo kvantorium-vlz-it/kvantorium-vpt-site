@@ -1,9 +1,34 @@
 <script setup lang="ts">
 import { DemoLesson } from '@types';
+import { useEmployeesStore } from '~/store/employees';
+import { useKvantumsStore } from '~/store/kvantums';
 
-defineProps<{
+const employeesStore = useEmployeesStore()
+const kvantumStore = useKvantumsStore()
+
+const {
+    lesson,
+} = defineProps<{
     lesson: DemoLesson
 }>()
+
+const fromTime = computed(() => {
+    const date = new Date(lesson.fromTime)
+    return `${date.getHours()}:${date.getMinutes()}`
+})
+
+const toTime = computed(() => {
+    const date = new Date(lesson.toTime)
+    return `${date.getHours()}:${date.getMinutes()}`
+})
+
+const teacher = computed(() => {
+    return employeesStore.employees.find((e) => e.id === lesson.teacher)!
+})
+
+const kvantum = computed(() => {
+    return kvantumStore.kvantums.find((k) => k.id === lesson.kvantum)!
+})
 </script>
 
 <template>
@@ -15,7 +40,9 @@ defineProps<{
             <div class="text-center text-white font-bold text-[36px] absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 "{{ lesson.name }}"
                 <br>
-                {{ lesson.fromTime }}-{{ lesson.toTime }}
+                <span class="text-[#DEE3FF]">
+                    {{ fromTime }}-{{ toTime }}
+                </span>
             </div>
             <BaseButton class="bottom-6 absolute left-1/2 -translate-x-1/2">
                 Записаться
@@ -24,12 +51,14 @@ defineProps<{
 
         <div class="text-center font-semibold text-[26px]">
             <strong class="font-bold">
-                {{ lesson.kvantum }}
+                {{ kvantum.name }}
             </strong>
             <br>
             Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
-            {{ lesson.teacher }}
+            {{ teacher.firstName }}
+            {{ teacher.middleName!.slice(0, 1).toUpperCase() }}.
+            {{ teacher.secondName.slice(0, 1).toUpperCase() }}.
         </div>
     </article>
 </template>

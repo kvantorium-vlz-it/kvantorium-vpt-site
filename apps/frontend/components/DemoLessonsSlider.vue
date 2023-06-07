@@ -9,7 +9,7 @@ defineProps<{
 <template>
     <Slider
         :slides="[...groupedLessons.entries()]"
-        class="flex items-center gap-[50px]"
+        class="grid grid-cols-demo-slider gap-[50px]"
     >
         <template #leftThumb="{ previousSlide }">
             <button
