@@ -1,5 +1,6 @@
 import { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import plugin from 'tailwindcss/plugin'
 
 export default {
     content: [
@@ -9,6 +10,7 @@ export default {
         "./plugins/**/*.{js,ts}",
         "./nuxt.config.{js,ts}",
         "./app.vue",
+        "./assets/styles/**/*",
     ],
     theme: {
         fontFamily: {
@@ -33,5 +35,22 @@ export default {
             }
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(({ addComponents }) => {
+            addComponents({
+                '.button': {
+                    '@apply flex items-center gap-2 px-6 py-3 w-fit': {},
+                    '@apply text-[24px] font-medium': {},
+                    '@apply rounded-[10px] shadow-lg': {},
+                    '@apply text-[#313340]': {},
+                },
+                '.button-yellow': {
+                    '@apply bg-[#FFD685]': {},
+                },
+                '.button-blue': {
+                    '@apply bg-[#DEE2FF]': {},
+                },
+            })
+        })
+    ],
 } as Config
