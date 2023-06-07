@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { DemoLesson } from '~/assets/typescript/types';
+import { defineStore } from 'pinia'
+import { DemoLesson } from '@types'
 
 export const useDemoLessonsStore = defineStore('demoLessons', () => {
     const demoLessons = ref<DemoLesson[]>([])

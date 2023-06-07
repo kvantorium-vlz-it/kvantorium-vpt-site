@@ -1,4 +1,4 @@
-import { DemoLesson } from '~/assets/typescript/types'
+import { DemoLesson } from '@types'
 
 const query = groq`*[_type == 'demoLesson'] {
     'id': _id,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DemoLesson } from '~/assets/typescript/types';
+import { DemoLesson } from '@types';
 
 defineProps<{
     lesson: DemoLesson
