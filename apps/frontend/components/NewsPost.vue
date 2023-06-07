@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { News } from '~/assets/typescript/types';
+import { News } from '@types';
 
 defineProps<{
     news: News

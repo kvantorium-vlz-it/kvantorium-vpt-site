@@ -1,4 +1,4 @@
-import { Curriculum } from '~/assets/typescript/types'
+import { Curriculum } from '@types'
 
 const query = groq`*[_type == 'curriculum'] {
     'id': _id,

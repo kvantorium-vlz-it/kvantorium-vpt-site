@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { News } from '~/assets/typescript/types'
+import { News } from '@types'
 
 export const useNewsStore = defineStore('news', () => {
     const news = ref<News[]>([])

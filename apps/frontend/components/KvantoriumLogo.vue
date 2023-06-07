@@ -20,9 +20,3 @@ const name = computed(() => isMulticolor
         :filled="isMulticolor"
     />
 </template>
-
-<style scoped>
-span {
-    display: block;
-}
-</style>

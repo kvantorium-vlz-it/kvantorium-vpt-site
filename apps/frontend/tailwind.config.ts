@@ -24,7 +24,11 @@ export default {
                 'desktop': '0.75rem',
             },
         },
-        extend: {},
+        extend: {
+            gridTemplateRows: {
+                'layout': 'auto 1fr auto',
+            }
+        },
     },
     plugins: [],
 } as Config

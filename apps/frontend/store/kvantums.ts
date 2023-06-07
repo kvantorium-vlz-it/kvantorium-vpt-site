@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { Kvantum } from '~/assets/typescript/types'
+import { Kvantum } from '@types'
 
 export const useKvantumsStore = defineStore('kvantums', () => {
     const kvantums = ref<Kvantum[]>([])
