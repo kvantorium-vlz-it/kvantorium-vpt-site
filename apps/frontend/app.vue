@@ -25,4 +25,6 @@ await Promise.all([
         </main>
         <TheFooter />
     </div>
+
+    <SignUpModal />
 </template>
