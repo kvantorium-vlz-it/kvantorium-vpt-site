@@ -5,17 +5,17 @@ export const employee = s.document({
     title: 'Сотрудники',
     fields: [
         {
+            name: 'lastName',
+            title: 'Фамилия',
+            type: s.string(),
+        },
+        {
             name: 'firstName',
             title: 'Имя',
             type: s.string(),
         },
         {
-            name: 'secondName',
-            title: 'Фамилия',
-            type: s.string(),
-        },
-        {
-            name: 'middleName',
+            name: 'patronymic',
             title: 'Отчество',
             type: s.string({}),
             optional: true,

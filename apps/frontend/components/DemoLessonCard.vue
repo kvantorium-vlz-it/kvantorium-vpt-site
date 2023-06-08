@@ -62,8 +62,8 @@ const kvantum = computed(() => {
             Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
             {{ teacher.firstName }}
-            {{ teacher.middleName!.slice(0, 1).toUpperCase() }}.
-            {{ teacher.secondName.slice(0, 1).toUpperCase() }}.
+            {{ teacher.patronymic!.slice(0, 1).toUpperCase() }}.
+            {{ teacher.lastName.slice(0, 1).toUpperCase() }}.
         </div>
     </article>
 </template>
