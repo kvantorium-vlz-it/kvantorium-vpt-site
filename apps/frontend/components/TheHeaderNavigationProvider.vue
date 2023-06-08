@@ -10,9 +10,9 @@ const items: Array<NavigationItem> = [
     // { label: "3D-тур", to: "/3d-tour" },
     // { label: "Выставка", to: "/exhibition" },
     {
-        label: "Квантумы",
+        label: "Программы",
         items: [
-            // { label: 'Квантумы', to: '/kvantums' },
+            { label: 'Квантумы', to: '/kvantums' },
             // { label: 'Внебюджет', to: '/off-budget' },
         ]
     },
