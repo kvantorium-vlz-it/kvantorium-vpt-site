@@ -31,6 +31,13 @@ export const curriculum = s.document({
             type: s.file(),
         },
         {
+            name: 'description',
+            title: 'Описание программы',
+            type: s.array({
+                of: [s.block()],
+            }),
+        },
+        {
             name: 'kvantum',
             title: 'К какому квантуму относится программа',
             type: s.reference({
