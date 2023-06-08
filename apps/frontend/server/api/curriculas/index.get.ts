@@ -9,6 +9,7 @@ const query = groq`*[_type == 'curriculum'] {
         'file': file.asset->url,
         'teacher': teacher->_id,
         projectExamples,
+        description,
 }`
 
 export default defineEventHandler(async () => {

@@ -39,6 +39,7 @@ export interface Curriculum {
     teacher: Employee['id']
     file: string
     projectExamples: string[]
+    description: RawCurriculum['description']
 }
 
 export interface News {
