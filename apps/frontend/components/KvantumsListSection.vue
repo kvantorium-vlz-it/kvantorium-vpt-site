@@ -15,7 +15,7 @@ const additionalKvantums = computed(() => kvantumsStore.additionalKvantums)
         />
         <KvantumsList
             heading="Дополнительные"
-            :kvantums="mainKvantums"
+            :kvantums="additionalKvantums"
         />
     </Section>
 </template>
