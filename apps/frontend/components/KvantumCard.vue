@@ -18,7 +18,7 @@ defineProps<{
         >
             {{ kvantum.name }}
 
-            <Icon name="mdi:chevron-down" />
+            <Icon name="mdi:chevron-down" class="text-[30px]" />
         </a>
         </article>
 </template>
