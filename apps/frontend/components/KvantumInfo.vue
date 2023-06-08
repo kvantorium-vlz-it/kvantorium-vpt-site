@@ -18,7 +18,7 @@ const isOpened = ref<boolean>(false)
 </script>
 
 <template>
-    <article class="">
+    <article :id="kvantum.id">
         <div class="flex items-start mb-[70px]">
             <img
                 class="flex-shrink-0 flex-grow-0 w-[420px] mr-[50px]"
