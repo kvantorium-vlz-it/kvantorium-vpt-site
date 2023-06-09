@@ -26,8 +26,8 @@ export interface Kvantum {
 export interface Employee {
     id: RawEmployee['_id']
     firstName: RawEmployee['firstName']
-    secondName: RawEmployee['secondName']
-    middleName: RawEmployee['middleName']
+    lastName: RawEmployee['lastName']
+    patronymic: RawEmployee['patronymic']
 }
 
 export interface Curriculum {

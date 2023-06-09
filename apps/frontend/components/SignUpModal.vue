@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { useModalStore } from '~/store/modal';
+const modal = useModal()
 
-const modalStore = useModalStore()
-
-const isOpened = computed(() => modalStore.isOpened)
+const isOpened = computed(() => modal.isOpened.value)
 </script>
 
 <template>
     <dialog
         :open="isOpened"
-        @click.self="modalStore.close"
+        @click.self="modal.close"
         class="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-sm bg-black bg-opacity-50"
     >
         <div
@@ -58,7 +56,7 @@ const isOpened = computed(() => modalStore.isOpened)
             </div>
 
             <button
-                @click="modalStore.close"
+                @click="modal.close"
             >
                 <Icon
                     name="material-symbols:close"

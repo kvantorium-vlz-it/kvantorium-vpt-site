@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useModalStore } from '~/store/modal'
-
-const modalStore = useModalStore()
-
 const offersAdvantages = [
     'Множество востребованных направлений',
     'Разнообразные программы - от простых к продвинутым',
@@ -56,7 +52,7 @@ const skillsAdvantage = [
             </li>
         </ul>
 
-        <BaseButton class="mx-auto" variant="yellow" @click="modalStore.open">
+        <BaseButton class="mx-auto" variant="yellow" @click="useModal().open">
             Записаться за занятия
         </BaseButton>
     </Section>

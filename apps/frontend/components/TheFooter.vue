@@ -48,7 +48,7 @@
                     href="mailto:kvantoriumvlz@volpt.com"
                 />
             </div>
-            <KvantoriumLocationMap class="col-span-2" id="footer-map" />
+            <KvantoriumLocationMap class="col-span-2 aspect-[1.5]" id="footer-map" />
         </div>
 
         <div class="text-center text-[22px] font-bold mb-[20px]">

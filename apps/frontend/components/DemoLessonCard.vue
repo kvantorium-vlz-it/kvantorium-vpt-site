@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { useModalStore } from '~/store/modal'
 import { DemoLesson } from '@types';
 import { useEmployeesStore } from '~/store/employees';
 import { useKvantumsStore } from '~/store/kvantums';
 
 const employeesStore = useEmployeesStore()
 const kvantumStore = useKvantumsStore()
-const modalStore = useModalStore()
 
 const {
     lesson,
@@ -48,7 +46,7 @@ const kvantum = computed(() => {
             </div>
             <BaseButton
                 class="bottom-6 absolute left-1/2 -translate-x-1/2"
-                @click="modalStore.open"
+                @click="useModal().open"
             >
                 Записаться
             </BaseButton>
@@ -62,8 +60,8 @@ const kvantum = computed(() => {
             Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
             {{ teacher.firstName }}
-            {{ teacher.middleName!.slice(0, 1).toUpperCase() }}.
-            {{ teacher.secondName.slice(0, 1).toUpperCase() }}.
+            {{ teacher.patronymic!.slice(0, 1).toUpperCase() }}.
+            {{ teacher.lastName.slice(0, 1).toUpperCase() }}.
         </div>
     </article>
 </template>

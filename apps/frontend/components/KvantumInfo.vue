@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { Kvantum } from '~/assets/typescript/types';
 import { useCurriculasStore } from '~/store/curriculas';
-import { useModalStore } from '~/store/modal';
 
 const curriculasStore = useCurriculasStore()
-const modalStore = useModalStore()
 
 const {
     kvantum,
@@ -35,7 +33,7 @@ const isOpened = ref<boolean>(false)
 
                 <div class="flex justify-evenly">
                     <BaseButton
-                        @click="modalStore.open"
+                        @click="useModal().open"
                         variant="yellow"
                     >
                         Записаться на занятия
