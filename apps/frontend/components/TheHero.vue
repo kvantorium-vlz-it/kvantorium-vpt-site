@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { useModalStore } from '~/store/modal';
-
-const modalStore = useModalStore()
-</script>
-
 <template>
     <section id="#hero" class="bg-[url(/images/hero-fullshot.webp)] bg-no-repeat bg-cover bg-bottom">
         <Container
@@ -24,7 +18,7 @@ const modalStore = useModalStore()
             </div>
 
             <div class="flex gap-8">
-                <BaseButton @click="modalStore.open">
+                <BaseButton @click="useModal().open">
                     Записаться на занятия
                 </BaseButton>
                 <BaseLink to="/about">

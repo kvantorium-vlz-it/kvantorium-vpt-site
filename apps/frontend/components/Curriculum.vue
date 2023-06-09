@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Curriculum } from '~/assets/typescript/types';
 import { useEmployeesStore } from '~/store/employees';
-import { useModalStore } from '~/store/modal';
 
 const {
     curriculum,
@@ -10,7 +9,6 @@ const {
 }>()
 
 const employeesStore = useEmployeesStore()
-const modalStore = useModalStore()
 
 const teacher = computed(() => employeesStore.employees.find((e) => e.id === curriculum.teacher)!)
 </script>
@@ -34,7 +32,7 @@ const teacher = computed(() => employeesStore.employees.find((e) => e.id === cur
                 {{ teacher.lastName?.slice(0, 1).toUpperCase() }}.</strong>
             </div>
 
-            <BaseButton @click="modalStore.open" variant="yellow">
+            <BaseButton @click="useModal().open" variant="yellow">
                 Записаться
             </BaseButton>
         </p>
