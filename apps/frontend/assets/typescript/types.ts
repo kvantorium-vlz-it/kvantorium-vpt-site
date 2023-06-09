@@ -1,0 +1,66 @@
+import { RawCurriculum, RawDemoLesson, RawEmployee, RawKvantum, RawNews } from '@kvantorium-vpt-site/sanity-schema'
+
+export interface NavigationLink {
+    label: string
+    to?: string
+}
+
+export interface HeaderNavigationDropdownItemProps extends NavigationLink {}
+
+export interface HeaderNavigationDropdownGroupProps {
+    label: string
+    items: Array<NavigationLink>
+}
+
+export interface HeaderNavigationItemProps extends NavigationLink {}
+
+export interface Kvantum {
+    id: RawKvantum['_id']
+    name: RawKvantum['name']
+    isAdditional: RawKvantum['isAdditional']
+    description: RawKvantum['description']
+    promoImage: string
+    icon: string
+}
+
+export interface Employee {
+    id: RawEmployee['_id']
+    firstName: RawEmployee['firstName']
+    lastName: RawEmployee['lastName']
+    patronymic: RawEmployee['patronymic']
+}
+
+export interface Curriculum {
+    id: RawCurriculum['_id']
+    name: RawCurriculum['name']
+    fromAge: RawCurriculum['fromAge']
+    toAge: RawCurriculum['toAge']
+    kvantum: Kvantum['id']
+    teacher: Employee['id']
+    file: string
+    projectExamples: string[]
+    description: RawCurriculum['description']
+}
+
+export interface News {
+    id: RawNews['_id']
+    date: RawNews['date']
+    heading: RawNews['heading']
+    content: RawNews['content']
+    images: string[]
+}
+
+export interface DemoLesson {
+    id: RawDemoLesson['_id']
+    name: RawDemoLesson['name']
+    fromAge: RawDemoLesson['fromAge']
+    toAge: RawDemoLesson['toAge']
+    fromTime: RawDemoLesson['fromTime']
+    toTime: RawDemoLesson['toTime']
+    date: RawDemoLesson['date']
+    teacher: string
+    kvantum: string
+    image: string
+}
+
+export type ButtonVariant = 'blue' | 'yellow'

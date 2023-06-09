@@ -1,9 +1,20 @@
-@import 'variables';
+@import "@fontsource-variable/montserrat";
 
-@import 'registration';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import 'fonts';
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+    * {
+        @apply font-sans;
+    }
 
-@import 'normalize';
-
-@import 'utils';
+    // Fix nuxt-icons svg size
+    .nuxt-icon > svg {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

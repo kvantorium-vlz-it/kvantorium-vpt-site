@@ -1,34 +1,30 @@
 <script setup lang="ts">
 import { useKvantumsStore } from './store/kvantums'
-import { useNewsStore } from './store/News'
-import { useStaffStore } from './store/Staff'
-import { useFilesStore } from './store/Files'
+import { useCurriculasStore } from './store/curriculas'
+import { useEmployeesStore } from './store/employees'
+import { useNewsStore } from './store/news';
+import { useDemoLessonsStore } from './store/demoLessons';
 
 await Promise.all([
-    useKvantumsStore(),
-    useNewsStore(),
-    useStaffStore(),
-    useFilesStore(),
+    useKvantumsStore().fetchAllKvantuns(),
+    useCurriculasStore().fetchAllCurriculas(),
+    useEmployeesStore().fetchAllEmployees(),
+    useNewsStore().fetchAllNews(),
+    useDemoLessonsStore().fetchAllDemoLessons(),
 ])
 </script>
 
 <template>
-    <div :class="$style.app">
+    <div
+        id="root"
+        class="min-h-screen grid grid-cols-1 grid-rows-layout"
+    >
         <TheHeader />
         <main>
             <NuxtPage />
         </main>
         <TheFooter />
     </div>
+
+    <SignUpModal />
 </template>
-
-<style module lang="scss">
-.app {
-    overflow-x: clip;
-    min-height: 100vh;
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-}
-</style>

@@ -1,40 +1,37 @@
 import { s } from '@sanity-typed/schema-builder'
 
 export const news = s.document({
-    name: 'News',
+    name: 'news',
+    title: 'Новости',
     fields: [
         {
-            name: 'name',
-            type: s.string({
-                validation: (rule) => rule.required(),
+            name: 'heading',
+            title: 'Заголовок',
+            type: s.string(),
+        },
+        {
+            name: 'date',
+            title: 'Дата',
+            type: s.datetime({
+                initialValue: new Date().toISOString(),
+            }),
+        },
+        {
+            name: 'images',
+            title: 'Изображения',
+            type: s.array({
+                of: [s.image()],
+                initialValue: [],
             }),
         },
         {
             name: 'content',
+            title: 'Контент новости',
             type: s.array({
-                of: [
-                    s.block(),
-                    s.image()
-                ],
-                validation: (rule) => rule.required(),
+                of: [s.block()],
             }),
-        },
-        {
-            name: 'shortContent',
-            type: s.text({
-                max: 200,
-                validation: (rule) => rule.required(),
-            }),
-        },
-        {
-            name: 'image',
-            type: s.image()
-        },
-        {
-            name: 'date',
-            type: s.date(),
         },
     ]
 })
 
-export type News = s.infer<typeof news>
+export type RawNews = s.infer<typeof news>

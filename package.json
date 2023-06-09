@@ -1,20 +1,20 @@
 {
   "name": "kvantorium-vpt-site",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel"
+    "build": "dotenv -- turbo run build",
+    "dev": "dotenv -- turbo run dev --parallel"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "turbo": "latest",
+    "dotenv-cli": "latest"
   },
   "engines": {
     "node": ">=v16.18.1"
-  },
-  "packageManager": "yarn@4.0.0-rc.44"
+  }
 }

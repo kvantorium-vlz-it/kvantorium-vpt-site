@@ -1,20 +1,20 @@
-import { staffPosition, StaffPosition } from './staffPosition'
-import { news, News } from './news'
-import { kvantum, Kvantum } from './kvantum'
-import { file, File } from './file'
-import { staff, Staff } from './staff'
+import { news, RawNews } from './news'
+import { kvantum, RawKvantum } from './kvantum'
+import { curriculum, RawCurriculum } from './curriculum'
+import { employee, RawEmployee } from './employee'
+import { demoLesson, RawDemoLesson } from './demoLesson'
 
 export type {
-    StaffPosition,
-    News,
-    Kvantum,
-    File,
-    Staff,
+    RawNews,
+    RawKvantum,
+    RawCurriculum,
+    RawEmployee,
+    RawDemoLesson,
 }
 export {
-    staffPosition,
     news,
     kvantum,
-    file,
-    staff,
+    curriculum,
+    employee,
+    demoLesson,
 }

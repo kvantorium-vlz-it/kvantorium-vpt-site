@@ -1,7 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import ymaps from 'ymaps'
 
-const YANDEX_API = '20dfd6f4-545a-43cf-b1c8-96e82339316a'
+const {
+    id,
+} = defineProps<{
+    id: string
+}>()
 
 const KVANTORIUM_LOCATION = {
     latitude: 48.786934,
@@ -10,9 +14,9 @@ const KVANTORIUM_LOCATION = {
 
 onMounted(() => {
     ymaps
-        .load(`https://api-maps.yandex.ru/2.1/?apikey=${YANDEX_API}&lang=ru_RU`)
-        .then(maps => {
-            const map = new maps.Map('map', {
+        .load()
+        .then((maps) => {
+            const map = new maps.Map(id, {
                 center: [KVANTORIUM_LOCATION.latitude, KVANTORIUM_LOCATION.longitude],
                 zoom: 15
             })
@@ -37,14 +41,6 @@ onMounted(() => {
 </script>
 
 <template>
-    <div id="map" :class="$style.map"></div>
+    <div :id="id" class="w-full rounded-[20px] overflow-hidden"></div>
 </template>
 
-<style module lang="scss">
-.map {
-    width: 100%;
-    box-shadow: var(--bs-8);
-    border-radius: var(--br-16);
-    overflow: hidden;
-}
-</style>

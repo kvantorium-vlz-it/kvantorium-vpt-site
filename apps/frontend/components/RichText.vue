@@ -1,55 +1,13 @@
 <script setup lang="ts">
-import RichTextImage from '@/components/RichTextImage.vue';
+import { News } from '@types';
 
 defineProps<{
-    // IDK where find block types
-    blocks: any[];
+    blocks: News['content']
 }>()
-
-const serializers = {
-    types: {
-        image: RichTextImage
-    }
-}
 </script>
 
 <template>
-    <div
-        :class="$style['rich-text']"
-    >
-        <SanityContent
-            :blocks="blocks"
-            :serializers="serializers"
-        />
+    <div class="text-[24px] text-[#313340]">
+        <SanityContent :blocks="blocks" />
     </div>
 </template>
-
-<style module lang="scss">
-@use '@styles/main.scss' as *;
-.rich-text {
-    * { color: rgb(var(--c-primary-600)); }
-    p {@include typo(body-1-normal)}
-    h1 {@include typo(h1-bold)}
-    h2 {@include typo(h1-bold)}
-    h3 {@include typo(h2-bold)}
-    h4 {@include typo(h2-bold)}
-    h5 {@include typo(h3-bold)}
-    h6 {@include typo(h3-bold)}
-    a {@include typo(body-2-normal)}
-    li {@include typo(body-1-normal)}
-
-    // FIX
-    // on 320px image overflows windows
-    img {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    @include from-breakpoint(desktop) {
-        img {
-            max-width: 60%;
-        }
-    }
-}
-</style>
