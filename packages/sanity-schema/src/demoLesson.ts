@@ -33,16 +33,11 @@ export const demoLesson = s.document({
             }),
         },
         {
-            name: 'toTime',
-            title: 'Время окончания занятия',
-            type: s.datetime({
-                initialValue: new Date().toISOString(),
+            name: 'duration',
+            title: 'Продолжительность занятия',
+            type: s.number({
+                initialValue: 1.5,
             }),
-        },
-        {
-            name: 'date',
-            title: 'Дата проведения',
-            type: s.date(),
         },
         {
             name: 'teacher',
@@ -57,11 +52,6 @@ export const demoLesson = s.document({
             type: s.reference({
                 to: [kvantum],
             }),
-        },
-        {
-            name: 'image',
-            title: 'Изображение',
-            type: s.image(),
         },
     ]
 })
