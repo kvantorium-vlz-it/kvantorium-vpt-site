@@ -6,11 +6,9 @@ const query = groq`*[_type == 'demoLesson'] {
       fromAge,
       toAge,
       fromTime,
-      toTime,
-      date,
+      duration,
       'teacher': teacher->_id,
       'kvantum': kvantum->_id,
-      'image': image.asset->url,
 }`
 
 export default defineEventHandler(async () => {

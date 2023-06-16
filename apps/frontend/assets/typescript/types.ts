@@ -56,11 +56,9 @@ export interface DemoLesson {
     fromAge: RawDemoLesson['fromAge']
     toAge: RawDemoLesson['toAge']
     fromTime: RawDemoLesson['fromTime']
-    toTime: RawDemoLesson['toTime']
-    date: RawDemoLesson['date']
+    duration: RawDemoLesson['duration']
     teacher: string
     kvantum: string
-    image: string
 }
 
 export type ButtonVariant = 'blue' | 'yellow'

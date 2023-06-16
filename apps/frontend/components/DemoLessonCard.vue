@@ -14,12 +14,28 @@ const {
 
 const fromTime = computed(() => {
     const date = new Date(lesson.fromTime)
-    return `${date.getHours()}:${date.getMinutes()}`
+    const dateMinutes = date
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')
+
+    return `${date.getHours()}:${dateMinutes}`
 })
 
 const toTime = computed(() => {
-    const date = new Date(lesson.toTime)
-    return `${date.getHours()}:${date.getMinutes()}`
+    const hours = Math.floor(lesson.duration)
+    const minutes = (lesson.duration % 1) * 60
+
+    const lessonStartDate = new Date(lesson.fromTime)
+
+    const date = new Date(lessonStartDate.setHours(lessonStartDate.getHours() + hours, minutes))
+
+    const dateMinutes = date
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')
+
+    return `${date.getHours()}:${dateMinutes}`
 })
 
 const teacher = computed(() => {
@@ -34,8 +50,11 @@ const kvantum = computed(() => {
 <template>
     <article>
         <div
-            :style="`background-image: url(${lesson.image});`"
-            class="aspect-square bg-center bg-cover relative mb-4"
+            class="
+                aspect-square bg-center bg-cover relative mb-4
+                bg-[url(/images/demo-lessons-image.jpg)]
+                rounded-[20px]
+            "
         >
             <div class="text-center text-white font-bold text-[36px] absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 "{{ lesson.name }}"
@@ -47,6 +66,7 @@ const kvantum = computed(() => {
             <BaseButton
                 class="bottom-6 absolute left-1/2 -translate-x-1/2"
                 @click="useModal().open"
+                variant="yellow"
             >
                 Записаться
             </BaseButton>
@@ -59,9 +79,9 @@ const kvantum = computed(() => {
             <br>
             Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
-            {{ teacher.firstName }}
+            {{ teacher.lastName }}
             {{ teacher.patronymic!.slice(0, 1).toUpperCase() }}.
-            {{ teacher.lastName.slice(0, 1).toUpperCase() }}.
+            {{ teacher.firstName.slice(0, 1).toUpperCase() }}.
         </div>
     </article>
 </template>

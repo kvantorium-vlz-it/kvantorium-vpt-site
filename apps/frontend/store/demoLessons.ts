@@ -7,13 +7,13 @@ export const useDemoLessonsStore = defineStore('demoLessons', () => {
     const groupedByDateDemoLessons = computed(() => {
         const grouped = demoLessons.value
             .reduce((grouped, lesson) => {
-                const date = lesson.date
+                const date = new Date(lesson.fromTime).toISOString().slice(0, 10)
 
-                if (grouped.has(date)) {
-                    grouped.set(date, [...grouped.get(date)!, lesson])
-                } else {
-                    grouped.set(date, [lesson])
-                }
+                const lessons = grouped.has(date)
+                    ? [...grouped.get(date)!, lesson]
+                    : [lesson]
+
+                grouped.set(date, lessons)
 
                 return grouped
             }, new Map<string, DemoLesson[]>())
