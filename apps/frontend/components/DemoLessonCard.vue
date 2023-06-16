@@ -18,7 +18,13 @@ const fromTime = computed(() => {
 })
 
 const toTime = computed(() => {
-    const date = new Date(lesson.toTime)
+    const hours = Math.floor(lesson.duration)
+    const minutes = (lesson.duration % 1) * 60
+
+    const lessonStartDate = new Date(lesson.fromTime)
+
+    const date = new Date(lessonStartDate.setHours(lessonStartDate.getHours() + hours, minutes))
+
     return `${date.getHours()}:${date.getMinutes()}`
 })
 
