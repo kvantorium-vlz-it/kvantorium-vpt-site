@@ -14,7 +14,12 @@ const {
 
 const fromTime = computed(() => {
     const date = new Date(lesson.fromTime)
-    return `${date.getHours()}:${date.getMinutes()}`
+    const dateMinutes = date
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')
+
+    return `${date.getHours()}:${dateMinutes}`
 })
 
 const toTime = computed(() => {
@@ -25,7 +30,12 @@ const toTime = computed(() => {
 
     const date = new Date(lessonStartDate.setHours(lessonStartDate.getHours() + hours, minutes))
 
-    return `${date.getHours()}:${date.getMinutes()}`
+    const dateMinutes = date
+        .getMinutes()
+        .toString()
+        .padStart(2, '0')
+
+    return `${date.getHours()}:${dateMinutes}`
 })
 
 const teacher = computed(() => {
