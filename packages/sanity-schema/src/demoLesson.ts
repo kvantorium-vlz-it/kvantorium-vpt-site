@@ -22,7 +22,7 @@ export const demoLesson = s.document({
             name: 'toAge',
             title: 'До какого возраста',
             type: s.number({
-                initialValue: 18,
+                initialValue: 17,
             }),
         },
         {
@@ -34,7 +34,7 @@ export const demoLesson = s.document({
         },
         {
             name: 'duration',
-            title: 'Продолжительность занятия',
+            title: 'Продолжительность занятия (в часах)',
             type: s.number({
                 initialValue: 1.5,
             }),
@@ -53,7 +53,31 @@ export const demoLesson = s.document({
                 to: [kvantum],
             }),
         },
-    ]
+    ],
+    preview: {
+        prepare(object, viewOptions) {
+            const { name, fromTime } = object
+
+            const fromTimeDate = new Date(fromTime)
+
+            const hours = fromTimeDate
+                .getHours()
+            const minutes = fromTimeDate
+                .getMinutes()
+                .toString()
+                .padStart(2, '0')
+
+            const previewDate = fromTimeDate
+                .toISOString()
+                .slice(0, 10)
+                .replaceAll('-', '.')
+
+            return {
+                title: name,
+                subtitle: `Дата проведения ${previewDate} ${hours}:${minutes}`
+            }
+        },
+    }
 })
 
 export type RawDemoLesson = s.infer<typeof demoLesson>
