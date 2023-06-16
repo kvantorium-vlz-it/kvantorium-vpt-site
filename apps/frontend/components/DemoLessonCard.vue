@@ -34,8 +34,10 @@ const kvantum = computed(() => {
 <template>
     <article>
         <div
-            :style="`background-image: url(${lesson.image});`"
-            class="aspect-square bg-center bg-cover relative mb-4"
+            class="
+                aspect-square bg-center bg-cover relative mb-4
+                bg-[url(/images/demo-lessons-image.jpg)]
+            "
         >
             <div class="text-center text-white font-bold text-[36px] absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 "{{ lesson.name }}"
