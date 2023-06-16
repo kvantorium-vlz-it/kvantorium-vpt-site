@@ -2,7 +2,7 @@
 import { ButtonVariant } from '@types';
 
 withDefaults(defineProps<{
-    variant: ButtonVariant
+    variant?: ButtonVariant
 }>(), {
     variant: 'blue'
 })

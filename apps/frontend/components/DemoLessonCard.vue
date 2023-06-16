@@ -53,6 +53,7 @@ const kvantum = computed(() => {
             class="
                 aspect-square bg-center bg-cover relative mb-4
                 bg-[url(/images/demo-lessons-image.jpg)]
+                rounded-[20px]
             "
         >
             <div class="text-center text-white font-bold text-[36px] absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -65,6 +66,7 @@ const kvantum = computed(() => {
             <BaseButton
                 class="bottom-6 absolute left-1/2 -translate-x-1/2"
                 @click="useModal().open"
+                variant="yellow"
             >
                 Записаться
             </BaseButton>
@@ -77,9 +79,9 @@ const kvantum = computed(() => {
             <br>
             Возраст от {{ lesson.fromAge }} до {{ lesson.toAge }}
             <br>
-            {{ teacher.firstName }}
+            {{ teacher.lastName }}
             {{ teacher.patronymic!.slice(0, 1).toUpperCase() }}.
-            {{ teacher.lastName.slice(0, 1).toUpperCase() }}.
+            {{ teacher.firstName.slice(0, 1).toUpperCase() }}.
         </div>
     </article>
 </template>
