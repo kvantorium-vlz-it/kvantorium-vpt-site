@@ -1,4 +1,0 @@
-<template>
-    <KvantumsListSection />
-    <TheKvantumsInfo />
-</template>
