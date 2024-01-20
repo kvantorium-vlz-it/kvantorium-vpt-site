@@ -1,0 +1,56 @@
+:root {
+    /* Brand colors */
+    --c-kvantorium-blue: #213A8F;
+    --c-kvantorium-blue-light: #1BAAFF;
+    --c-kvantorium-orange: #E63312;
+    --c-kvantorium-orange-light: #EC6600;
+    --c-kvantorium-green: #00713C;
+    --c-kvantorium-green-light: #A2C617;
+    --c-kvantorium-red: #A52F23;
+    --c-kvantorium-red-light: #D63517;
+
+    /* Text colors */
+    --c-site-text: #0A0C12;
+
+    --c-site-text-lighten-2: #555E79;
+    --c-site-text-lighter-1: #232734;
+    --c-site-text-default: var(--c-site-text);
+    --c-site-text-darker-1: #080A0E;
+    --c-site-text-darker-2: #040507;
+
+    /* Background colors */
+    --c-site-background: #FAFBFC;
+
+    --c-site-background-lighten-2: #FFFFFF;
+    --c-site-background-lighter-1: #FBFCFD;
+    --c-site-background-default: var(--c-site-background);
+    --c-site-background-darker-1: #EAEFF4;
+    --c-site-background-darker-2: #CFD9E3;
+
+    /* Primary colors */
+    --c-site-primary: #213A8F;
+
+    --c-site-primary-lighten-2: #6D7EB9;
+    --c-site-primary-lighter-1: #475CA4;
+    --c-site-primary-default: var(--c-site-primary);
+    --c-site-primary-darker-1: #1A2E72;
+    --c-site-primary-darker-2: #0D1739;
+
+    /* Secondary colors */
+    --c-site-secondary: #1BAAFF;
+
+    --c-site-secondary-lighten-2: #A4DDFF;
+    --c-site-secondary-lighter-1: #76CCFF;
+    --c-site-secondary-default: var(--c-site-secondary);
+    --c-site-secondary-darker-1: #1688CC;
+    --c-site-secondary-darker-2: #0B4466;
+
+    /* Accent colors */
+    --c-site-accent: #EC6600;
+
+    --c-site-accent-lighten-2: #F4A366;
+    --c-site-accent-lighter-1: #F08533;
+    --c-site-accent-default: var(--c-site-accent);
+    --c-site-accent-darker-1: #BD5200;
+    --c-site-accent-darker-2: #8E3D00;
+}
