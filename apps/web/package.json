@@ -10,9 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "normalize.css": "^8.0.1",
     "nuxt": "^3.9.3",
     "vue": "^3.4.14",
-    "vue-router": "^4.2.5",
-    "normalize.css": "^8.0.1"
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "modern-normalize": "^2.0.0"
   }
 }
