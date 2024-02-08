@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     css: [
-        '~/assets/styles.css',
-        'normalize.css/normalize.css',
+        '~/assets/css/index.css',
+        'modern-normalize/modern-normalize.css',
     ]
 })

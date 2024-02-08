@@ -16,6 +16,10 @@ importers:
         version: 1.10.12
 
   apps/web:
+    dependencies:
+      modern-normalize:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       normalize.css:
         specifier: ^8.0.1
@@ -5528,6 +5532,11 @@ packages:
     dependencies:
       obliterator: 2.0.4
     dev: true
+
+  /modern-normalize@2.0.0:
+    resolution: {integrity: sha512-CxBoEVKh5U4DH3XuNbc5ONLF6dQBc8dSc7pdZ1957FGbIO5JBqGqqchhET9dTexri8/pk9xBL6+5ceOtCIp1QA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /module-alias@2.2.3:
     resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
