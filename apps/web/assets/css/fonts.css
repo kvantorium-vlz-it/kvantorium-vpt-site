@@ -1,0 +1,50 @@
+/* TODO: fix loading fonts */
+
+/* BankGothic font */
+@font-face {
+    font-family: BankGothic;
+    src: url("~/assets/fonts/BankGothic/BankGothic.woff");
+}
+
+/* Circe font */
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-Thin.woff");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-ExtraLight.woff");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-Light.woff");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-Regular.woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-Bold.woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Circe;
+    src: url("~/assets/fonts/Circe/Circe-ExtraBold.woff");
+    font-weight: 800;
+    font-style: normal;
+}
