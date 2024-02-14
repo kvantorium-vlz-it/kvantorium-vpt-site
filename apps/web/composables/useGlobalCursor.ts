@@ -6,3 +6,18 @@ export type ComponentProps<
     ? InstanceType<C>['$props']
     : never
 
+function useCursorGlobalPrivate<
+    _C extends Component
+>() {
+    const _CursorComponent = shallowRef<_C | null>(null)
+    const _attrs = shallowRef<ComponentProps<_C> | null>(null)
+
+    return {
+        Cursor: readonly(_CursorComponent),
+        cursorAttrs: readonly(_attrs),
+    }
+}
+
+const useCursorGlobal = createGlobalState(useCursorGlobalPrivate)
+
+export { useCursorGlobal }
