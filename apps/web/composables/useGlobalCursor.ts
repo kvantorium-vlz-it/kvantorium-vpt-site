@@ -22,9 +22,23 @@ function useCursorGlobalPrivate<
     const _CursorComponent = shallowRef<_C | null>(null)
     const _attrs = shallowRef<AllComponentProps<_C> | null>(null)
 
+    function setCursorComponent<C extends Component = _C>(
+        component: C | null = null,
+        attrs: AllComponentProps<C> | null = null,
+    ) {
+        _CursorComponent.value = component
+        _attrs.value = attrs
+    }
+
+    const clearCursor = () => {
+        setCursorComponent()
+    }
+
     return {
         Cursor: readonly(_CursorComponent),
         cursorAttrs: readonly(_attrs),
+        setCursorComponent,
+        clearCursor,
     }
 }
 
