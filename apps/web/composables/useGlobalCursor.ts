@@ -1,5 +1,5 @@
 import { createGlobalState } from '@vueuse/core'
-import type { AllowedComponentProps, VNodeProps } from 'vue'
+import type { AllowedComponentProps, Component, ShallowRef, VNodeProps } from 'vue'
 
 export type ComponentProps<
     C extends Component
@@ -20,20 +20,43 @@ function useCursorGlobalPrivate<
     _C extends Component
 >() {
     const _CursorComponent = shallowRef<_C | null>(null)
-    const _attrs = shallowRef<AllComponentProps<_C> | null>(null)
+    const _cursorAttrs = shallowRef<AllComponentProps<_C> | null>(null)
+
+    const _TransitionComponent = shallowRef<Component | null>(null)
+    const _transitionAttrs = shallowRef<AllComponentProps<_C> | null>(null)
 
     const _isVisibleGlobalCursor = ref<boolean>(true)
+
+    function setComponent<C extends Component>(
+        target: ShallowRef<Component | null>,
+        targetAttrs: ShallowRef<AllComponentProps<C> | null>,
+        newComponent: Component | null,
+        newAttrs: AllComponentProps<C> | null,
+    ) {
+        target.value = newComponent
+        targetAttrs.value = newAttrs
+    }
 
     function setCursorComponent<C extends Component = _C>(
         component: C | null = null,
         attrs: AllComponentProps<C> | null = null,
     ) {
-        _CursorComponent.value = component
-        _attrs.value = attrs
+        setComponent(_CursorComponent, _cursorAttrs, component, attrs)
     }
 
-    const clearCursor = () => {
+    function clearCursor() {
         setCursorComponent()
+    }
+
+    function setTrasitionComponent<C extends Component = _C>(
+        component: C | null = null,
+        attrs: AllComponentProps<C> | null = null,
+    ) {
+        setComponent(_TransitionComponent, _transitionAttrs, component, attrs)
+    }
+
+    function clearTransition() {
+        setTrasitionComponent()
     }
 
     function toggleCursor(isVisible = !_isVisibleGlobalCursor.value) {
@@ -41,11 +64,15 @@ function useCursorGlobalPrivate<
     }
 
     return {
-        Cursor: readonly(_CursorComponent),
-        cursorAttrs: readonly(_attrs),
+        Cursor: shallowReadonly(_CursorComponent),
+        cursorAttrs: readonly(_cursorAttrs),
+        TransitionComponent: shallowReadonly(_TransitionComponent),
+        transitionAttrs: readonly(_transitionAttrs),
         isVisibleGlobalCursor: readonly(_isVisibleGlobalCursor),
         setCursorComponent,
         clearCursor,
+        setTrasitionComponent,
+        clearTransition,
         toggleCursor,
     }
 }
