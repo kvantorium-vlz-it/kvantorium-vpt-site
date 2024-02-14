@@ -1,16 +1,11 @@
 import { createGlobalState } from '@vueuse/core'
-import type { AllowedComponentProps, Component, ShallowRef, VNodeProps } from 'vue'
 
-interface ComponentOptions<C extends Component = Component> {
-    Component: C
-    attrs: ComponentProps<C>
-}
-
-function useCursorGlobalPrivate<
+function useGlobalCursorPrivate<
     _C extends Component
 >() {
-    const cursor = useDynamicComponent()
-    const cursorTransition = useDynamicComponent()
+    const _cursor = useDynamicComponent()
+    const _cursorTransition = useDynamicComponent()
+    const _fallbackTransition = useDynamicComponent()
 
     const _isVisibleGlobalCursor = ref<boolean>(true)
 
@@ -19,19 +14,23 @@ function useCursorGlobalPrivate<
     }
 
     return {
-        Cursor: cursor.Component,
-        cursorAttrs: cursor.attrs,
-        TransitionComponent: cursorTransition.Component,
-        transitionAttrs: cursorTransition.attrs,
+        Cursor: _cursor.Component,
+        cursorAttrs: _cursor.attrs,
+        CursorTransition: _cursorTransition.Component,
+        cursorTransitionAttrs: _cursorTransition.attrs,
+        FallbackTransition: _fallbackTransition.Component,
+        fallbackTransitionAttrs: _fallbackTransition.attrs,
         isVisibleGlobalCursor: readonly(_isVisibleGlobalCursor),
-        setCursorComponent: cursor.setComponent,
-        clearCursor: cursor.clearComponent,
-        setTrasitionComponent: cursorTransition.setComponent,
-        clearTransition: cursorTransition.clearComponent,
+        setCursorComponent: _cursor.setComponent,
+        clearCursor: _cursor.clearComponent,
+        setCursorTrasitionComponent: _cursorTransition.setComponent,
+        clearCursorTransition: _cursorTransition.clearComponent,
+        setFallbackTransitionComponent: _fallbackTransition.setComponent,
+        clearFallbackTransition: _fallbackTransition.clearComponent,
         toggleCursor,
     }
 }
 
-const useCursorGlobal = createGlobalState(useCursorGlobalPrivate)
+const useGlobalCursor = createGlobalState(useGlobalCursorPrivate)
 
-export { useCursorGlobal }
+export { useGlobalCursor }
