@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import TheCursorFallback from './TheCursorFallback.vue';
+
 interface Position {
     x: number
     y: number
@@ -42,11 +44,16 @@ const {
     cursorAttrs,
     Cursor,
     isVisibleGlobalCursor,
-    transitionAttrs,
-    TransitionComponent,
-} = useCursorGlobal()
+    CursorTransition,
+    cursorTransitionAttrs,
+    FallbackTransition,
+    fallbackTransitionAttrs,
+} = useGlobalCursor()
 
-const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
+const [DefineCursorTemplate, ReuseCursorTemplate] = createReusableTemplate()
+const [DefineFallbackTemplate, ReuseFallbackTemplate] = createReusableTemplate()
+
+const isRenderDefault = computed(() => Cursor.value === null)
 </script>
 
 <template>
@@ -55,27 +62,44 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
         :class="$style.cursor"
         :style="`transform: ${translate};`"
     >
-        <DefineTemplate>
-            <component
-                v-if="Cursor"
+        <DefineCursorTemplate>
+            <Component
+                v-if="!isRenderDefault"
                 :is="Cursor"
                 :="cursorAttrs"
             />
-        </DefineTemplate>
+        </DefineCursorTemplate>
 
-        <component
-            v-if="TransitionComponent"
-            :is="TransitionComponent"
-        :="transitionAttrs"
+        <DefineFallbackTemplate>
+            <div v-if="isRenderDefault" style="position: absolute;">
+                <slot>
+                    <TheCursorFallback />
+                </slot>
+            </div>
+        </DefineFallbackTemplate>
+
+        <Component
+            v-if="CursorTransition"
+            :is="CursorTransition"
+            :="cursorTransitionAttrs"
         >
-            <ReuseTemplate />
-        </component>
+            <ReuseCursorTemplate />
+        </Component>
+        <ReuseCursorTemplate v-else />
 
-        <ReuseTemplate v-else />
+        <!-- <CustomCursorTransition>
+            <TheCursorFallback v-if="isRenderDefault" />
+        </CustomCursorTransition> -->
 
-        <slot v-if="!Cursor">
-            <TheCursorFallback />
-        </slot>
+        <Component
+            v-if="FallbackTransition"
+            :is="FallbackTransition"
+            :="fallbackTransitionAttrs"
+        >
+            <ReuseFallbackTemplate />
+        </Component>
+
+        <ReuseFallbackTemplate v-else />
     </div>
 </template>
 
