@@ -4,6 +4,14 @@ export default defineNuxtConfig({
     modules: [
         '@vueuse/nuxt',
     ],
+    components: {
+        dirs: [
+            {
+                path: "~/components",
+                pathPrefix: false,
+            }
+        ]
+    },
     css: [
         '~/assets/css/index.css',
         'modern-normalize/modern-normalize.css',
