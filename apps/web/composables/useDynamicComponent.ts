@@ -15,6 +15,21 @@ export type AllComponentProps<
     ? InstanceType<C>['$props']
     : never
 
+export interface ChangeComponentOptions<C extends Component = Component> {
+    component: C
+    attrs: AllComponentProps<C>
+}
+
+export interface ClearComponentOptions {
+    component: null
+    attrs: null
+}
+
+export type SetComponentOptions<
+    C extends Component = Component
+> = ChangeComponentOptions<C>
+    | ClearComponentOptions
+
 function useDynamicComponent<_C extends Component>(
     initialComponent: _C | null = null,
     initialAttrs: AllComponentProps<_C> | null = null,
@@ -22,12 +37,11 @@ function useDynamicComponent<_C extends Component>(
     const _Component = shallowRef<_C | null>(initialComponent)
     const _attrs = shallowRef<AllComponentProps<_C> | null>(initialAttrs)
 
-    function setComponent<C extends Component>(
-        component: Component | null = null,
-        attrs: AllComponentProps<C> | null = null,
-    ) {
-        _Component.value = component
-        _attrs.value = attrs
+    function setComponent<
+        C extends Component = _C
+    >(options: SetComponentOptions<C> | null = null) {
+        _Component.value = options?.component || null
+        _attrs.value = options?.attrs || null
     }
 
     function clearComponent() {
