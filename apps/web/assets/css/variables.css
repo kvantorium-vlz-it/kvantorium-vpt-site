@@ -54,5 +54,9 @@
     --c-site-accent-darker-1: #BD5200;
     --c-site-accent-darker-2: #8E3D00;
 
+    /* Utils colors */
+    --c-util-black: #000000;
+    --c-util-white: #FFFFFF;
+
     --site-margin: 1rem;
 }
