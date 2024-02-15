@@ -87,10 +87,6 @@ const isRenderDefault = computed(() => Cursor.value === null)
         </Component>
         <ReuseCursorTemplate v-else />
 
-        <!-- <CustomCursorTransition>
-            <TheCursorFallback v-if="isRenderDefault" />
-        </CustomCursorTransition> -->
-
         <Component
             v-if="FallbackTransition"
             :is="FallbackTransition"
