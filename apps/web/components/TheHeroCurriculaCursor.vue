@@ -26,5 +26,6 @@ defineProps<Props>()
     backdrop-filter: blur(0.1rem);
     padding: 1rem;
     text-align: center;
+    font-size: 1.25rem;
 }
 </style>
