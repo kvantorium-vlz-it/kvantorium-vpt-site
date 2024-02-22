@@ -79,6 +79,7 @@ const deltaXToCenter = computed(() => iconX.value)
 .button:hover {
     width: 18rem;
     padding: 7rem;
+    box-shadow: 0 0 2rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 .button::after {
     content: '';
@@ -117,5 +118,7 @@ const deltaXToCenter = computed(() => iconX.value)
     justify-content: center;
     align-items: center;
     width: 100%;
+    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 </style>
