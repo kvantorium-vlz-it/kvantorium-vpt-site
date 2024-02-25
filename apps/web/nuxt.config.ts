@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     modules: [
         '@vueuse/nuxt',
         'nuxt-icon',
+        'floating-vue/nuxt',
     ],
     components: {
         dirs: [
@@ -16,5 +17,6 @@ export default defineNuxtConfig({
     css: [
         '~/assets/css/index.css',
         'modern-normalize/modern-normalize.css',
+        'vue-final-modal/style.css',
     ]
 })
