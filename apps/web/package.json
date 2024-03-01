@@ -17,6 +17,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.0.6",
     "@vueuse/core": "^10.7.2",
     "@vueuse/nuxt": "^10.7.2",
     "floating-vue": "^5.2.2",

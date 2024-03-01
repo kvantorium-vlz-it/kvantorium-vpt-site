@@ -17,6 +17,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@floating-ui/vue':
+        specifier: ^1.0.6
+        version: 1.0.6(vue@3.4.14)
       '@vueuse/core':
         specifier: ^10.7.2
         version: 10.7.2(vue@3.4.14)
@@ -906,6 +909,13 @@ packages:
       '@floating-ui/utils': 0.2.1
     dev: true
 
+  /@floating-ui/dom@1.6.3:
+    resolution: {integrity: sha512-RnDthu3mzPlQ31Ss/BTwQ1zjzIhr3lk1gZB1OC56h/1vEtaXkESrOqL5fQVMfXpwGtRwX+YsZBdyHtJMQnkArw==}
+    dependencies:
+      '@floating-ui/core': 1.5.3
+      '@floating-ui/utils': 0.2.1
+    dev: false
+
   /@floating-ui/react-dom@2.0.6(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-IB8aCRFxr8nFkdYZgH+Otd9EVQPJoynxeFRGTB8voPoZMRWo8XjYuCRgpI1btvuKY69XMiLnW+ym7zoBHM90Rw==}
     peerDependencies:
@@ -919,6 +929,17 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+
+  /@floating-ui/vue@1.0.6(vue@3.4.14):
+    resolution: {integrity: sha512-EdrOljjkpkkqZnrpqUcPoz9NvHxuTjUtSInh6GMv3+Mcy+giY2cE2pHh9rpacRcZ2eMSCxel9jWkWXTjLmY55w==}
+    dependencies:
+      '@floating-ui/dom': 1.6.3
+      '@floating-ui/utils': 0.2.1
+      vue-demi: 0.14.7(vue@3.4.14)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@iconify/collections@1.0.395:
     resolution: {integrity: sha512-NwzLrvQDEAsXpCwRGzI6uSE6gJT5u1/AZLPRPRSqTIOym5NRahpQL/VTFUH8DU0YVWVj6ulfxlHdtAz6lp38Rg==}
