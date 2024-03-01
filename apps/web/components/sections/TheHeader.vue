@@ -55,7 +55,7 @@ const navigation: (NavigationGroup | NavigationItem)[] = [
             </NuxtLink>
         </div>
         <div :class="$style.right">
-            <TheHeaderNavigation :items="navigation" />
+            <TheHeaderNavigation :variant="variant === 'blank' ? 'light' : 'dark'" :items="navigation" />
 
             <Button
                 to="/enroll"
