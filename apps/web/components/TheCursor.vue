@@ -101,6 +101,7 @@ const isRenderDefault = computed(() => Cursor.value === null)
 
 <style module>
 .cursor {
+    z-index: 1;
     pointer-events: none;
     position: fixed;
     top: 0;
