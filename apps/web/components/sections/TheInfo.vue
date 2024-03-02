@@ -20,22 +20,32 @@ const isPlayAnimation = computed(() => isLoadedOnce.value)
         <div :class="$style.content">
             <TheInfoBlockWrapper :is-visible="isPlayAnimation">
                 <template #right>
-                    <TheInfoBlockContent label="lorem">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore mollitia aliquid dignissimos recusandae, soluta molestiae sit maxime quaerat. Ut dignissimos, atque nam officia at quo excepturi possimus doloribus quisquam ratione.
+                    <TheInfoBlockContent label="О нас">
+                        Детские технопарки «Кванториум» — это федеральная сеть образовательных площадок, оснащенных высокотехнологичным оборудованием, где дети учатся по принципу проектного обучения: от теории сразу к практике.
                     </TheInfoBlockContent>
                 </template>
             </TheInfoBlockWrapper>
             <TheInfoBlockWrapper :animation-delay="0.3" :is-visible="isPlayAnimation">
                 <template #left>
-                    <TheInfoBlockContent label="lorem">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore mollitia aliquid dignissimos recusandae, soluta molestiae sit maxime quaerat. Ut dignissimos, atque nam officia at quo excepturi possimus doloribus quisquam ratione.
+                    <TheInfoBlockContent label="Миссия">
+                        Содействовать ускоренному техническому развитию детей и реализации научно-технического потенциала российской молодежи, внедряя эффективные модели образования, доступные для тиражирования во всех регионах страны.
                     </TheInfoBlockContent>
                 </template>
             </TheInfoBlockWrapper>
             <TheInfoBlockWrapper :animation-delay="0.6" :is-visible="isPlayAnimation">
                 <template #right>
-                    <TheInfoBlockContent label="lorem">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore mollitia aliquid dignissimos recusandae, soluta molestiae sit maxime quaerat. Ut dignissimos, atque nam officia at quo excepturi possimus doloribus quisquam ratione.
+                    <TheInfoBlockContent label="Задачи">
+                        <ol :class="$style.list">
+                            <li>
+                                Развитие творческого потенциала детей
+                            </li>
+                            <li>
+                                Возрождение интереса к техническим профессиям.
+                            </li>
+                            <li>
+                                Воспитание будущих высококлассных специалистов в стратегически важных областях российской науки и техники
+                            </li>
+                        </ol>
                     </TheInfoBlockContent>
                 </template>
             </TheInfoBlockWrapper>
@@ -73,5 +83,10 @@ const isPlayAnimation = computed(() => isLoadedOnce.value)
 }
 .visible .content::after {
     top: 100%;
+}
+.list {
+    padding: 0;
+    margin: 0;
+    list-style-position: inside;
 }
 </style>
