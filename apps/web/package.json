@@ -17,8 +17,11 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.0.6",
     "@vueuse/core": "^10.7.2",
     "@vueuse/nuxt": "^10.7.2",
-    "modern-normalize": "^2.0.0"
+    "floating-vue": "^5.2.2",
+    "modern-normalize": "^2.0.0",
+    "vue-final-modal": "^4.5.4"
   }
 }
