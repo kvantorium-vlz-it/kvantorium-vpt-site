@@ -6,9 +6,15 @@ const theHeaderVariant = computed(() => isIndexPage && y.value > 16 ? 'filled' :
 </script>
 
 <template>
-    <div>
+    <div :class="$style.app">
         <TheHeader :variant="theHeaderVariant" />
         <NuxtPage />
         <TheCursor />
     </div>
 </template>
+
+<style module>
+.app {
+    background-color: var(--c-site-background);
+}
+</style>
