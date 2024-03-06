@@ -11,15 +11,15 @@
   },
   "devDependencies": {
     "normalize.css": "^8.0.1",
-    "nuxt": "^3.9.3",
+    "nuxt": "^3.10.3",
     "nuxt-icon": "^0.6.8",
-    "vue": "^3.4.14",
-    "vue-router": "^4.2.5"
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",
-    "@vueuse/core": "^10.7.2",
-    "@vueuse/nuxt": "^10.7.2",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
     "floating-vue": "^5.2.2",
     "modern-normalize": "^2.0.0",
     "vue-final-modal": "^4.5.4"
