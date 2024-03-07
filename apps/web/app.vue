@@ -9,6 +9,7 @@ const theHeaderVariant = computed(() => isIndexPage && y.value > 16 ? 'filled' :
     <div :class="$style.app">
         <TheHeader :variant="theHeaderVariant" />
         <NuxtPage />
+        <TheFooter />
         <TheCursor />
     </div>
 </template>
