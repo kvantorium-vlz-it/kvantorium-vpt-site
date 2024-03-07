@@ -36,8 +36,8 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(@vueuse/core@10.9.0)(@vueuse/integrations@10.8.0)(focus-trap@7.5.4)(vue@3.4.21)
       vue-yandex-maps:
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^2.0.1
+        version: 2.0.1(nuxt@3.10.3)(vue@3.4.21)
     devDependencies:
       normalize.css:
         specifier: ^8.0.1
@@ -2882,6 +2882,21 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: false
+
+  /@yandex/ymaps3-types@0.0.22:
+    resolution: {integrity: sha512-LHXbC3CcjDg7Kqch1YkV9bCzQkD7u6BDXftX5HSB/sMkbme04xorKcP++K8FAihSaNDgwIYlqn+JBqXA+G8+Tg==}
+    peerDependencies:
+      '@types/react': 16-18
+      '@types/react-dom': 16-18
+      '@vue/runtime-core': '3'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+      '@vue/runtime-core':
+        optional: true
     dev: false
 
   /abbrev@1.1.1:
@@ -8681,8 +8696,26 @@ packages:
       '@vue/devtools-api': 6.5.1
       vue: 3.4.21
 
-  /vue-yandex-maps@1.1.0:
-    resolution: {integrity: sha512-pYgjEl8BRCkwK2BPF23/OwHD9Yk58wp2t0WSAHa+hKbb1JyMpbDTgVFXD4+7BkzGk6YpQT6zu1BV4aXOcyoJhQ==}
+  /vue-yandex-maps@2.0.1(nuxt@3.10.3)(vue@3.4.21):
+    resolution: {integrity: sha512-tLP+3YZKazLNWsoYF2tMZCM4RCAUMspz5FOk2VnlPWaDFHi71PtHo8dfhTlf5Guy9YP2i11YjZGJfBfSUsEU4g==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@vue/composition-api': '>=1'
+      nuxt: ^2.16 || ^3
+      vue: ^2.7 || ^3.3
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      nuxt:
+        optional: true
+    dependencies:
+      '@yandex/ymaps3-types': 0.0.22
+      nuxt: 3.10.3(vite@5.1.5)
+      vue: 3.4.21
+    transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
+      - '@vue/runtime-core'
     dev: false
 
   /vue@3.4.21:
