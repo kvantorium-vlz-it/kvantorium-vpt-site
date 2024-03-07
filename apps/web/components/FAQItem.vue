@@ -37,7 +37,6 @@ defineProps<Props>()
     );
     border-image-slice: 30;
     border-bottom: 1px solid;
-    padding-inline: 4rem;
     position: relative;
 }
 .faq:first-child {
@@ -48,6 +47,7 @@ defineProps<Props>()
     text-align: center;
     padding-block: 0.75rem;
     list-style: none;
+    cursor: pointer;
 }
 .faq > .question::-webkit-details-marker {
    display: none;
@@ -65,5 +65,6 @@ defineProps<Props>()
     text-align: center;
     padding-bottom: 0.75rem;
     padding-top: 0.25rem;
+    padding-inline: 4rem;
 }
 </style>
