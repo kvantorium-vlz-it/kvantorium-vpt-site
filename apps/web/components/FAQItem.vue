@@ -32,16 +32,16 @@ defineProps<Props>()
     border-image: linear-gradient(
         to right,
         transparent,
-        #cfd9e3b3,
+        var(--c-site-background-darker-2),
         transparent
     );
     border-image-slice: 30;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     padding-inline: 4rem;
     position: relative;
 }
 .faq:first-child {
-    border-top: 2px solid;
+    border-top: 1px solid;
 }
 .question {
     color: var(--c-site-text-lighter-2);
