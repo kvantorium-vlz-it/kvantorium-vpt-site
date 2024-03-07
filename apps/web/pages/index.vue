@@ -2,4 +2,5 @@
     <TheHero />
     <TheInfo />
     <TheKvantumsSection />
+    <TheFAQSection />
 </template>
