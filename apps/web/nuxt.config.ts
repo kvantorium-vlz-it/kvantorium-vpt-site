@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         'nuxt-icon',
         'floating-vue/nuxt',
+        'vue-yandex-maps/nuxt',
     ],
     components: {
         dirs: [
@@ -18,5 +19,8 @@ export default defineNuxtConfig({
         '~/assets/css/index.css',
         'modern-normalize/modern-normalize.css',
         'vue-final-modal/style.css',
-    ]
+    ],
+    yandexMaps: {
+        apikey: '20dfd6f4-545a-43cf-b1c8-96e82339316a',
+    },
 })

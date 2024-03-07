@@ -3,4 +3,5 @@
     <TheInfo />
     <TheKvantumsSection />
     <TheFAQSection />
+    <TheMapSection />
 </template>
