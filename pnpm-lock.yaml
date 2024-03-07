@@ -35,6 +35,9 @@ importers:
       vue-final-modal:
         specifier: ^4.5.4
         version: 4.5.4(@vueuse/core@10.9.0)(@vueuse/integrations@10.8.0)(focus-trap@7.5.4)(vue@3.4.21)
+      vue-yandex-maps:
+        specifier: ^1.1.0
+        version: 1.1.0
     devDependencies:
       normalize.css:
         specifier: ^8.0.1
@@ -8677,6 +8680,10 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.5.1
       vue: 3.4.21
+
+  /vue-yandex-maps@1.1.0:
+    resolution: {integrity: sha512-pYgjEl8BRCkwK2BPF23/OwHD9Yk58wp2t0WSAHa+hKbb1JyMpbDTgVFXD4+7BkzGk6YpQT6zu1BV4aXOcyoJhQ==}
+    dev: false
 
   /vue@3.4.21:
     resolution: {integrity: sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==}

@@ -18,5 +18,5 @@ export default defineNuxtConfig({
         '~/assets/css/index.css',
         'modern-normalize/modern-normalize.css',
         'vue-final-modal/style.css',
-    ]
+    ],
 })
