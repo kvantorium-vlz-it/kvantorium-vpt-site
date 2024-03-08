@@ -18,15 +18,28 @@ const siteMaxMargin = ref(null)
 const key = ref('--site-margin')
 const cssSiteMargin = useCssVar(key, siteMaxMargin)
 
-const scrollPercent = computed(() => y.value / height.value)
+const scrollPercent = ref(0)
+const margin = ref(`0rem`)
 
-const margin = computed(() => {
-    const marginRems = +cssSiteMargin.value.replace('rem', '')
+onMounted(() => {
+    const _scrollPercent = computed(() => y.value / height.value)
+    const _margin = computed(() => {
+        const marginRems = +cssSiteMargin.value.replace('rem', '')
 
-    const newMargin = Math.min(marginRems * scrollPercent.value, marginRems)
+        const newMargin = Math.min(marginRems * scrollPercent.value, marginRems)
 
-    return `${newMargin}rem`
+        return `${newMargin}rem`
+    })
+
+    watch(_scrollPercent, () => {
+        scrollPercent.value = _scrollPercent.value
+    })
+
+    watch(_margin, () => {
+        margin.value = _margin.value
+    })
 })
+
 </script>
 
 <template>
