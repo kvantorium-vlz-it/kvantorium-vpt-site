@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "devDependencies": {
     "@kvantorium-vpt-site/tsconfig": "*",
-    "@sanity-typed/schema-builder": "^2.2.7",
-    "typescript": "^5.0.4"
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@sanity-typed/types": "^6.3.3"
   }
 }
