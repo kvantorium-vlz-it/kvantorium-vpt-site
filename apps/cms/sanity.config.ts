@@ -1,18 +1,18 @@
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemaTypes'
 
 export default defineConfig({
-  name: 'default',
-  title: 'cms',
+    name: 'default',
+    title: 'kvantoriumvlz',
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: process.env.SANITY_STUDIO_DATASET!,
+    projectId: 'ez4gpfpj',
+    dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+    plugins: [structureTool(), visionTool()],
 
-  schema: {
-    types: schemaTypes,
-  },
+    schema: {
+        types: schemaTypes
+    },
 })
