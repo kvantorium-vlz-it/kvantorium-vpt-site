@@ -17,6 +17,9 @@ importers:
 
   apps/cms:
     dependencies:
+      '@formkit/tempo':
+        specifier: ^0.0.15
+        version: 0.0.15
       '@sanity/vision':
         specifier: ^3.32.0
         version: 3.32.0(@babel/runtime@7.23.8)(@codemirror/lint@6.5.0)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.1)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
@@ -1234,6 +1237,10 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: false
+
+  /@formkit/tempo@0.0.15:
+    resolution: {integrity: sha512-jDz5yrCAG2gPoalgoqKUtJWOgdLGCtHgBYLZBRUjAUpvX5DMBAJz2QqyfTdLhXCfhfOrugl2FQtSaBxIPcKcyw==}
     dev: false
 
   /@iconify/collections@1.0.395:
