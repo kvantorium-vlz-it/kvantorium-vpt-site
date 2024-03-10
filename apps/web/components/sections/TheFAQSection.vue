@@ -1,3 +1,17 @@
+<script setup lang="ts">
+const { data } = useSanityQuery<{
+    _id: string
+    answer: string
+    question: string
+}[]>(groq`
+    *[_type == 'frequentlyAskedQuestions'] {
+        _id,
+        answer,
+        question,
+    }
+`)
+</script>
+
 <template>
     <section>
         <div :class="$style.container">
@@ -8,13 +22,10 @@
                 <div :class="$style.faq">
                     <ol :class="$style.list">
                         <li
-                            v-for="i in 7"
-                            :key="i"
+                            v-for="question in data"
+                            :key="question._id"
                         >
-                            <FAQItem
-                                question="Lorem ipsum?"
-                                answer="Lorem ipsum dolor sit amet consectetur. Proin gravida lectus egestas mattis massa in. Amet consequat praesent purus adipiscing. A eleifend facilisi vel purus consequat placerat semper imperdiet purus. Adipiscing orci."
-                            />
+                            <FAQItem :="question" />
                         </li>
                     </ol>
                 </div>
