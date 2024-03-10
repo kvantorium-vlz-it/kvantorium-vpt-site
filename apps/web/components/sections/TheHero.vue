@@ -1,16 +1,4 @@
 <script setup lang="ts">
-const curriculas = [
-    { name: 'VR/AR-квантум' },
-    { name: 'IT-квантум' },
-    { name: 'медиа-квантум' },
-    { name: 'робо-квантум' },
-    { name: 'хайтек-квантум' },
-    { name: 'промдизайн-квантум' },
-    { name: 'аэро-квантум' },
-    { name: 'кванто-шахматы' },
-    { name: 'авто-шахматы' },
-]
-
 const { y } = useWindowScroll()
 const { height } = useWindowSize()
 
@@ -40,6 +28,11 @@ onMounted(() => {
     })
 })
 
+const { data: curriculas } = useSanityQuery<{ name: string }[]>(groq`
+    *[_type == 'kvantum'] {
+        name,
+    }
+`)
 </script>
 
 <template>
