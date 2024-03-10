@@ -1,16 +1,28 @@
 <script setup lang="ts">
 // Delete before production
-const kvantums = ref(Array.from({ length: 8 }).map((_, i) => ({
-        age: 12,
-        imageURL: '',
-        name: `Kvantum`,
-        slug: 'slug',
-        topicsList: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-        ]
-})))
+const { data } = useSanityQuery<{
+    minAge: number
+    name: string
+    icon: string
+    slug: string
+    topics: string[]
+}[]>(groq`
+    *[_type == 'kvantum'] {
+        minAge,
+        name,
+        'icon': icon.asset->url,
+        'slug': slug.current,
+        topics,
+    }
+`)
+
+const kvantums = computed(() => data.value?.map((kvantum) => ({
+    name: kvantum.name,
+    imageURL: kvantum.icon,
+    slug: kvantum.slug,
+    age: kvantum.minAge,
+    topicsList: kvantum.topics,
+})) || [])
 </script>
 
 <template>
