@@ -2,6 +2,7 @@
   "name": "kvantorium-vpt-site",
   "version": "3.0.0",
   "private": true,
+  "license": "MIT",
   "workspaces": [
     "apps/*",
     "packages/*"
