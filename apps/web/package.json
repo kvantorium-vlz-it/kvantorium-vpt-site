@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",
+    "@nuxtjs/sanity": "^1.9.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "floating-vue": "^5.2.2",
