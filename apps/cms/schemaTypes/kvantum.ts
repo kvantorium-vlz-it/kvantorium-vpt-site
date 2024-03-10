@@ -20,5 +20,13 @@ export default defineType({
             type: 'array',
             of: [{ type: 'string' }],
         }),
+        defineField({
+            name: 'icon',
+            type: 'image',
+        }),
+        defineField({
+            name: 'minAge',
+            type: 'number',
+        }),
     ],
 })
