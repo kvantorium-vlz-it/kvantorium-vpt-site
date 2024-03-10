@@ -15,5 +15,10 @@ export default defineType({
                 source: 'name',
             },
         }),
+        defineField({
+            name: 'topics',
+            type: 'array',
+            of: [{ type: 'string' }],
+        }),
     ],
 })
