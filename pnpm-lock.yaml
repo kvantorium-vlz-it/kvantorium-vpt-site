@@ -82,6 +82,9 @@ importers:
       nuxt-icon:
         specifier: ^0.6.8
         version: 0.6.8(nuxt@3.10.3)(vite@5.1.5)(vue@3.4.21)
+      ui:
+        specifier: '*'
+        version: link:../../packages/ui
       vue:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.4.2)

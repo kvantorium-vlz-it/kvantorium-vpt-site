@@ -7,6 +7,7 @@ export default defineNuxtConfig({
         'floating-vue/nuxt',
         'vue-yandex-maps/nuxt',
         '@nuxtjs/sanity',
+        'ui',
     ],
     components: {
         dirs: [
