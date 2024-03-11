@@ -1,12 +1,18 @@
 <script setup lang="ts">
-const isIndexPage = useRoute().name === 'index'
+const isIndexPage = computed(() => useRoute().name === 'index')
 const { y } = useWindowScroll({ behavior: 'smooth', window: this })
 
 const theHeaderVariant = ref<'filled' | 'blank'>('blank')
 
 onMounted(() => {
-    watch(y, () => {
-        theHeaderVariant.value = isIndexPage && y.value > 16 ? 'filled' : 'blank'
+    watch([y, isIndexPage], () => {
+        if (isIndexPage.value) {
+            theHeaderVariant.value = y.value > 16 ? 'filled' : 'blank'
+        } else {
+            theHeaderVariant.value = 'filled'
+        }
+    }, {
+        immediate: true,
     })
 })
 </script>
