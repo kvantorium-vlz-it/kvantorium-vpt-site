@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addComponentsDir, addImportsDir, installModule } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
@@ -10,8 +10,11 @@ export default defineNuxtModule<ModuleOptions>({
     },
     // Default configuration options of the Nuxt module
     defaults: {},
-    setup (options, nuxt) {
+    async setup (options, nuxt) {
         const resolver = createResolver(import.meta.url)
+
+        await installModule('nuxt-icon')
+        await installModule('floating-vue/nuxt')
 
         addImportsDir(resolver.resolve('runtime/assets/fonts'))
 
