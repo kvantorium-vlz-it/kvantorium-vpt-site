@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
@@ -17,6 +17,10 @@ export default defineNuxtModule<ModuleOptions>({
 
         nuxt.options.css.push(resolver.resolve('runtime/assets/css/index.css'))
 
+        addComponentsDir({
+            path: resolver.resolve('runtime/components'),
+            prefix: 'k'
+        })
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
         addPlugin(resolver.resolve('./runtime/plugin'))
