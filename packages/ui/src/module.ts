@@ -22,7 +22,8 @@ export default defineNuxtModule<ModuleOptions>({
 
         addComponentsDir({
             path: resolver.resolve('runtime/components'),
-            prefix: 'k'
+            prefix: 'k',
+            pathPrefix: false,
         })
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
