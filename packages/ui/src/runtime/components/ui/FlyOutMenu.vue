@@ -109,6 +109,7 @@ const arrowStyles = computed(() => {
     transition: rotate 0.2s ease;
 }
 .floating {
+    z-index: 2;
     max-width: 20rem;
     border-radius: var(--_border-radius);
     padding: 1rem;
