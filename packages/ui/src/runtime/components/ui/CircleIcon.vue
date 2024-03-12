@@ -1,20 +1,24 @@
 <script setup lang="ts">
 interface Props {
-    iconName: string
+    iconName?: string
     color?: string
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+    iconName: '',
+})
 </script>
 
 <template>
     <div :class="$style.wrapper">
-        <Icon
-            size="100%"
-            :class="$style.icon"
-            :name="iconName"
-            :color="color"
-        />
+        <slot :iconClass="$style.icon">
+            <Icon
+                size="100%"
+                :class="$style.icon"
+                :name="iconName"
+                :color="color"
+            />
+        </slot>
     </div>
 </template>
 
