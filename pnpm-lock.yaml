@@ -82,9 +82,6 @@ importers:
       nuxt-icon:
         specifier: ^0.6.8
         version: 0.6.8(nuxt@3.10.3)(vite@5.1.5)(vue@3.4.21)
-      ui:
-        specifier: '*'
-        version: link:../../packages/ui
       vue:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.4.2)
@@ -102,6 +99,12 @@ importers:
       '@nuxt/kit':
         specifier: ^3.10.3
         version: 3.10.3(rollup@3.29.4)
+      '@vueuse/core':
+        specifier: ^10.9.0
+        version: 10.9.0(vue@3.4.21)
+      '@vueuse/nuxt':
+        specifier: ^10.9.0
+        version: 10.9.0(nuxt@3.10.3)(rollup@3.29.4)(vue@3.4.21)
       floating-vue:
         specifier: ^5.2.2
         version: 5.2.2(@nuxt/kit@3.10.3)(vue@3.4.21)
@@ -3677,6 +3680,24 @@ packages:
 
   /@vueuse/metadata@10.9.0:
     resolution: {integrity: sha512-iddNbg3yZM0X7qFY2sAotomgdHK7YJ6sKUvQqbvwnf7TmaVPxS4EJydcNsVejNdS8iWCtDk+fYXr7E32nyTnGA==}
+    dev: false
+
+  /@vueuse/nuxt@10.9.0(nuxt@3.10.3)(rollup@3.29.4)(vue@3.4.21):
+    resolution: {integrity: sha512-nC4Efg28Q6E41fUD5R+zM9uT5c+NfaDzaJCpqaEV/qHj+/BNJmkDBK8POLIUsiVOY35d0oD/YxZ+eVizqWBZow==}
+    peerDependencies:
+      nuxt: ^3.0.0
+    dependencies:
+      '@nuxt/kit': 3.10.3(rollup@3.29.4)
+      '@vueuse/core': 10.9.0(vue@3.4.21)
+      '@vueuse/metadata': 10.9.0
+      local-pkg: 0.5.0
+      nuxt: 3.10.3(@types/node@20.11.25)(rollup@3.29.4)(typescript@5.4.2)(vite@5.1.5)
+      vue-demi: 0.14.7(vue@3.4.21)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - rollup
+      - supports-color
+      - vue
     dev: false
 
   /@vueuse/nuxt@10.9.0(nuxt@3.10.3)(vue@3.4.21):

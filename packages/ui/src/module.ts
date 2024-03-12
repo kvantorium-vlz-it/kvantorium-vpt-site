@@ -14,7 +14,7 @@ export default defineNuxtModule<ModuleOptions>({
         const resolver = createResolver(import.meta.url)
 
         await installModule('nuxt-icon')
-        await installModule('floating-vue/nuxt')
+        await installModule('@vueuse/nuxt')
 
         addImportsDir(resolver.resolve('runtime/assets/fonts'))
 

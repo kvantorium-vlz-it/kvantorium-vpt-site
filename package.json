@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build": "dotenv -- turbo run build",
-    "dev": "dotenv -- turbo run dev --parallel"
+    "dev": "dotenv -- turbo run dev --parallel",
+    "dev:prepare": "dotenv -- turbo run dev:prepare --parallel"
   },
   "devDependencies": {
     "turbo": "latest",
