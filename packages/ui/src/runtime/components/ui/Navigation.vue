@@ -39,7 +39,8 @@ function isGroupNavigationItem(
     <div
         :class="[
             $style.navigation,
-            $style[direction]
+            $style[direction],
+            $style[variant],
         ]"
     >
         <h3
@@ -114,7 +115,7 @@ function isGroupNavigationItem(
     color: var(--heading-color);
     font-family: 'BankGothic';
     margin-bottom: 0.75rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1;
 }
 .navigation > .list {
@@ -131,5 +132,11 @@ function isGroupNavigationItem(
 .vertical {
     --gap: 0.25rem;
     --direction: column;
+}
+.light {
+    --heading-color: var(--c-site-background);
+}
+.dark {
+    --heading-color: var(--c-site-text);
 }
 </style>
