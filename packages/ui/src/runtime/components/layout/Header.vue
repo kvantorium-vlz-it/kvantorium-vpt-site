@@ -45,50 +45,9 @@ function isGroupNavigationItem(
 
             <div :class="$style.right">
                 <nav>
-                    <ul :class="$style['navigation-list']">
-                        <li
-                            v-for="item, index in navigation"
-                            :key="index"
-                        >
-                            <KFlyOutMenu
-                                v-if="isGroupNavigationItem(item)"
-                                :label="item.label"
-                                :variant="variant === 'blank' ? 'light' : 'dark'"
-                            >
-                                <ul
-                                    :class="$style['fly-out-menu-list']"
-                                >
-                                    <li
-                                        v-for="flyOutMenuItem, _index in item.items"
-                                        :key="_index"
-                                    >
-                                        <KLink
-                                            variant="dark"
-                                            :to="flyOutMenuItem.to"
-                                        >
-                                            <Icon
-                                                v-if="flyOutMenuItem.iconName"
-                                                :name="flyOutMenuItem.iconName"
-                                            />
-                                            {{ flyOutMenuItem.label }}
-                                        </KLink>
-                                    </li>
-                                </ul>
-                            </KFlyOutMenu>
-
-                            <KLink
-                                v-else
-                                :to="item.to"
-                                :variant="variant === 'blank' ? 'light' : 'dark'"
-                            >
-                                <Icon
-                                    v-if="item.iconName"
-                                    :name="item.iconName"
-                                />
-                                {{ item.label }}
-                            </KLink>
-                        </li>
-                    </ul>
+                    <KNavigation
+                        :items="navigation"
+                    />
                 </nav>
 
                 <KLinkButton
@@ -146,20 +105,6 @@ function isGroupNavigationItem(
 .logo {
     --width: 2.5rem;
     transition: 0.5s ease;
-}
-
-.navigation-list {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.fly-out-menu-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
 }
 
 .right {
