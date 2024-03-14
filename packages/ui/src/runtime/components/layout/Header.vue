@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { KCircleIcon, KFlyOutMenu, KLinkButton, KLink, KContainer, NuxtLink, KLogo } from '#components';
+// TODO: make more abstract component
+import { KCircleIcon, KLinkButton, KContainer, NuxtLink } from '#components';
 import type { RouterLinkProps } from '#vue-router';
 
 type Variant = 'white' | 'blank'
@@ -47,6 +48,7 @@ function isGroupNavigationItem(
                 <nav>
                     <KNavigation
                         :items="navigation"
+                        :variant="variant === 'blank' ? 'light' : 'dark'"
                     />
                 </nav>
 
