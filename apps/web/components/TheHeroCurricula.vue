@@ -25,24 +25,11 @@ const { changeCursor, clearCursor } = useGlobalCursor()
             clearCursor()
         }"
         :to="to"
-        :class="$style.curricula"
     >
-        {{ name }}
-        <Icon name="ph:arrow-up-right" />
+        <KBadge>
+            {{ name }}
+
+            <Icon name="ph:arrow-up-right" />
+        </KBadge>
     </NuxtLink>
 </template>
-
-<style module>
-.curricula {
-    border: 1px solid var(--c-site-background);
-    text-decoration: none;
-    color: var(--c-site-background);
-    display: inline-flex;
-    padding: 0.25rem 1rem;
-    border-radius: 100vw;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 1rem;
-    font-family: 'Circe';
-}
-</style>
