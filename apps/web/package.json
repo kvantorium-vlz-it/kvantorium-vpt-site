@@ -16,7 +16,8 @@
     "nuxt": "^3.10.3",
     "nuxt-icon": "^0.6.8",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "ui": "*"
   },
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",
