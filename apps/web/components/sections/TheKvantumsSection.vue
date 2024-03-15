@@ -27,74 +27,78 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
 
 <template>
     <section :class="$style.section">
-        <div :class="$style.container">
-            <TheKvantumsSectionInfoCard :class="$style.info" />
+        <KContainer :class="$style.container">
+            <h2 :class="$style.heading">
+                Квантумы
+            </h2>
 
-            <BaseSwiper
-                :class="$style.swiper"
-                :items="kvantums"
-                :slidesCount="4"
-            >
-                <template #default="{ item }">
-                    <TheKvantumsSectionKvantumCard :kvantum="item" />
-                </template>
+            <div :class="$style.kvantums">
+                <TheKvantumsSectionInfoCard :class="$style.info" />
 
-                <template
-                    #pagination="{
+                <KSwiper
+                    :items="kvantums"
+                    :visibleSlidesCount="4"
+                    :class="$style.swiper"
+                >
+                    <template #slide="{ item }">
+                        <TheKvantumsSectionKvantumCard :kvantum="item" />
+                    </template>
+
+                    <template #navigation="{
+                        currentSlide,
                         slideToNextSlide,
                         slideToPreviousSlide,
-                        currentSlide,
                         slidesCount,
-                        visibleSlidesCount,
-                    }"
-                >
-                    <div :class="$style.menu">
-                        <div
-                            :style="`
-                                --left: ${currentSlide / slidesCount * 100}%;
-                                --width: ${visibleSlidesCount / slidesCount * 100}%;
-                            `"
-                            :class="$style['progress-bar']"
-                        ></div>
+                    }">
+                        <div :class="$style.navigation">
+                            <KProgress
+                                :value="currentSlide"
+                                :max="slidesCount - 4"
+                                :class="$style.progress"
+                            />
 
-                        <div :class="$style.pagination">
-                            <button
-                                :class="$style['pagination-button']"
-                                @click="slideToPreviousSlide"
-                            >
-                                <Icon name="ph:arrow-left" />
-                            </button>
-                            <button
-                                :class="$style['pagination-button']"
-                                @click="slideToNextSlide"
-                            >
-                                <Icon name="ph:arrow-right" />
-                            </button>
+                            <div :class="$style.buttons">
+                                <button :class="$style['pagination-button']"
+                                    @click="slideToPreviousSlide"
+                                >
+                                    <Icon name="ph:arrow-left" />
+                                </button>
+                                <button :class="$style['pagination-button']"
+                                    @click="slideToNextSlide"
+                                >
+                                    <Icon name="ph:arrow-right" />
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </template>
-            </BaseSwiper>
-        </div>
+                    </template>
+                </KSwiper>
+            </div>
+        </KContainer>
     </section>
 </template>
 
 <style module>
 .section {
-    padding-bottom: 5rem;
+    padding-bottom: 5.25rem;
+    position: relative;
 }
-.container {
-    padding-inline: var(--site-margin);
+.heading {
+    font-family: 'BankGothic';
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.kvantums {
     display: flex;
     gap: 0.5rem;
     position: relative;
+    align-items: stretch;
 }
 .info {
-    flex: 1 0 0;
-    width: 20%;
+    width: calc(20% - 0.5rem + 0.5rem / 5);
 }
 .swiper {
-    flex: 4 0 0;
-    width: 80%;
+    width: calc(4 * 20% - 0.5rem + 0.5rem / 5);
 }
 .pagination-button {
     display: inline-flex;
@@ -111,33 +115,21 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
     color: var(--c-site-primary);
     cursor: pointer;
 }
-.pagination {
+.progress {
+    width: calc(20% - 0.5rem + 0.5rem / 5);
+    margin-bottom: 0.5rem;
+}
+.navigation {
+    position: absolute;
+    top: calc(100% + 2.5rem);
+    left: 0;
+    right: 0;
     display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    translate: -50%;
-    bottom: -5rem;
+    flex-direction: column;
+    align-items: center;
 }
-.progress-bar {
-    --left: 0;
-    --width: 0;
-    bottom: -2rem;
-    position: absolute;
-    width: calc(20% - 0.5rem);
-    left: 50%;
-    translate: -50%;
-    height: 0.125rem;
-    background-color: var(--c-site-background-darker-2);
-}
-.progress-bar::after {
-    position: absolute;
-    top: 100%;
-    content: '';
-    left: var(--left);
-    width: var(--width);
-    height: 0.125rem;
-    background-color: var(--c-site-primary);
+.buttons {
+    display: flex;
+    gap: 1rem;
 }
 </style>

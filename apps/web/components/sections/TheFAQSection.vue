@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data } = useSanityQuery<{
+const { data = [] } = useSanityQuery<{
     _id: string
     answer: string
     question: string
@@ -19,16 +19,11 @@ const { data } = useSanityQuery<{
                 <h2 :class="$style.heading">
                     Часто задаваемые вопросы
                 </h2>
-                <div :class="$style.faq">
-                    <ol :class="$style.list">
-                        <li
-                            v-for="question in data"
-                            :key="question._id"
-                        >
-                            <FAQItem :="question" />
-                        </li>
-                    </ol>
-                </div>
+
+                <KAccordion
+                    :class="$style.faq"
+                    :items='data?.map((i) => ({ label: i.question, content: i.answer })) || []'
+                ></KAccordion>
             </div>
         </div>
     </section>
@@ -38,6 +33,7 @@ const { data } = useSanityQuery<{
 .faq {
     max-width: 40rem;
     margin-inline: auto;
+    margin-top: 2rem;
 }
 .heading {
     font-size: 2.5rem;
