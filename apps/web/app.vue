@@ -2,14 +2,14 @@
 const isIndexPage = computed(() => useRoute().name === 'index')
 const { y } = useWindowScroll({ behavior: 'smooth', window: this })
 
-const theHeaderVariant = ref<'filled' | 'blank'>('blank')
+const theHeaderVariant = ref<'white' | 'blank'>('blank')
 
 onMounted(() => {
     watch([y, isIndexPage], () => {
         if (isIndexPage.value) {
-            theHeaderVariant.value = y.value > 16 ? 'filled' : 'blank'
+            theHeaderVariant.value = y.value > 16 ? 'white' : 'blank'
         } else {
-            theHeaderVariant.value = 'filled'
+            theHeaderVariant.value = 'white'
         }
     }, {
         immediate: true,
@@ -19,9 +19,15 @@ onMounted(() => {
 
 <template>
     <div :class="$style.app">
-        <TheHeader :variant="theHeaderVariant" />
+        <TheHeader
+            :class="$style.header"
+            :variant="theHeaderVariant"
+        />
+
         <NuxtPage />
-        <TheFooter />
+
+        <TheFooter :class="$style.footer" />
+
         <TheCursor />
     </div>
 </template>
@@ -29,5 +35,14 @@ onMounted(() => {
 <style module>
 .app {
     background-color: var(--c-site-background);
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.footer {
+    margin-bottom: var(--site-margin);
 }
 </style>
