@@ -45,5 +45,6 @@ onMounted(() => {
 }
 .footer {
     margin-bottom: var(--site-margin);
+    margin-top: 6rem;
 }
 </style>
