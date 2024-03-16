@@ -46,7 +46,7 @@ defineProps<Props>()
 <style module>
 .card {
     aspect-ratio: 1;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     position: relative;
     border: 2px solid var(--c-site-background-darker-2);
     overflow: hidden;
