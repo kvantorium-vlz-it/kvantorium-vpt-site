@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity"
-import BlockImage from "./BlockImage"
-import NewsTag from "./NewsTag"
+import imageBlock from "./imageBlock"
+import newsTag from "./newsTag"
 
 export default defineType({
     name: 'news',
@@ -17,7 +17,7 @@ export default defineType({
         defineField({
             name: 'content',
             type: 'array',
-            of: [{ type: 'block' }, { type: BlockImage.name }]
+            of: [{ type: 'block' }, { type: imageBlock.name }]
         }),
         defineField({
             name: 'slug',
@@ -35,7 +35,7 @@ export default defineType({
             type: 'array',
             of: [{
                 type: 'reference',
-                to: [{ type: NewsTag.name }]
+                to: [{ type: newsTag.name }]
             }]
         }),
         defineField({
