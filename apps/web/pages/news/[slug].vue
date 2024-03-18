@@ -83,7 +83,7 @@ const formattedDate = computed(() => {
                 />
 
                 <div>
-                    <KSwiper :visible-slides-count="2" :items="data.images" >
+                    <KSwiper :class="$style.swiper" :visible-slides-count="2" :items="data.images" >
                         <template #slide="{ item }">
                             <img
                                 :src="item.url"
@@ -182,5 +182,8 @@ const formattedDate = computed(() => {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     margin-bottom: 0.5rem;
+}
+.swiper ul {
+    padding-inline: 0;
 }
 </style>
