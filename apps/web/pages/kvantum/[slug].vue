@@ -8,18 +8,69 @@ const { data: kvantum } = useSanityQuery<{
     minAge: number
     icon: string
     slug: string
+    teachers: {
+        name: string
+        surname: string
+        patronymic: string
+        curriculas: {
+            hoursPerYear: {
+                firstHalf: number
+                secondHalf: number
+            }
+            ageFrom: number
+            ageTo: number
+            description: any[]
+            schedule: {
+                count: number
+                hours: number
+            }
+            studentsCount: number
+            name: string
+            interview: boolean
+            level: 'Вводный' | 'Углубленный' | 'Проектный'
+        }[]
+    }[]
 }>(groq`
-    *[_type == 'kvantum' && slug.current == $slug][0] {
+*[_type == 'kvantum' && slug.current == $slug] {
+    _id,
+    name,
+    topics,
+    minAge,
+    'icon': icon.asset->url,
+    'slug': slug.current,
+    'teachers': *[_type == 'employee' && isTeacher] {
         _id,
         name,
-        topics,
-        minAge,
-        'icon': icon.asset->url,
-        'slug': slug.current,
-    }
+        surname,
+        patronymic,
+        'curriculas': *[
+            _type == 'curricula' && references(^._id) && ^.^._id == kvantum._ref
+        ] {
+            _id,
+            ageFrom,
+            ageTo,
+            interview,
+            name,
+            hoursPerYear,
+            studentsCount,
+            schedule,
+            level,
+            'description': description[]{
+                ...,
+                _type == "imageBlock" => {
+                    ...,
+                    'image': image.asset->url,
+                }
+            },
+        },
+    }[count(@.curriculas) != 0]
+}[0]
 `, {
     slug,
 })
+
+console.log(kvantum.value);
+
 </script>
 
 <template>
@@ -40,6 +91,51 @@ const { data: kvantum } = useSanityQuery<{
                     {{ topic }}
                 </li>
             </ol>
+
+            <h2>
+                Программы
+            </h2>
+
+            <div v-for="teacher in kvantum.teachers">
+                <h3>
+                    {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
+                </h3>
+
+                <div v-for="curricula in teacher.curriculas">
+
+                    <h4>
+                        {{ curricula.name }}
+                    </h4>
+
+                    <p>
+                        Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
+                    </p>
+
+                    <p>
+                        Уровень: {{ curricula.level }}
+                    </p>
+
+                    <p>
+                        Собеседование {{ curricula.interview ? 'да' : 'нет' }}
+                    </p>
+
+                    <p>
+                        Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
+                    </p>
+
+                    <p>
+                        Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
+                    </p>
+
+                    <p>
+                        Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
+                    </p>
+
+                    <div>
+                        <NewsContentBlock :blocks="curricula.description" />
+                    </div>
+                </div>
+            </div>
         </template>
 
         <h1 v-else>
