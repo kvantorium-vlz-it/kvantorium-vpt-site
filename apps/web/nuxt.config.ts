@@ -27,5 +27,6 @@ export default defineNuxtConfig({
     sanity: {
         projectId: 'ez4gpfpj',
         dataset: 'production',
+        apiVersion: '2022-03-07',
     }
 })
