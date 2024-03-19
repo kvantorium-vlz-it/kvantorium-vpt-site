@@ -8,42 +8,53 @@ const { data: kvantum } = useSanityQuery<{
     minAge: number
     icon: string
     slug: string
-    curriculas: {
-        hoursPerYear: {
-            firstHalf: number
-            secondHalf: number
-        }
-        ageFrom: number
-        ageTo: number
-        description: any[]
-        schedule: {
-            count: number
-            hours: number
-        }
-        studentsCount: number
+    teachers: {
         name: string
-        interview: boolean
-        level: 'Вводный' | 'Углубленный' | 'Проектный'
-        teacher: {
+        surname: string
+        patronymic: string
+        curriculas: {
+            hoursPerYear: {
+                firstHalf: number
+                secondHalf: number
+            }
+            ageFrom: number
+            ageTo: number
+            description: any[]
+            schedule: {
+                count: number
+                hours: number
+            }
+            studentsCount: number
             name: string
-            surname: string
-            patronymic: string
-            _id: string
-        }
+            interview: boolean
+            level: 'Вводный' | 'Углубленный' | 'Проектный'
+        }[]
     }[]
 }>(groq`
-    *[_type == 'kvantum' && slug.current == $slug][0] {
+*[_type == 'kvantum' && slug.current == $slug] {
+    _id,
+    name,
+    topics,
+    minAge,
+    'icon': icon.asset->url,
+    'slug': slug.current,
+    'teachers': *[_type == 'employee' && isTeacher] {
         _id,
         name,
-        topics,
-        minAge,
-        'icon': icon.asset->url,
-        'slug': slug.current,
-
-        'curriculas': *[_type == 'curricula' && references(^._id)] {
-            hoursPerYear,
+        surname,
+        patronymic,
+        'curriculas': *[
+            _type == 'curricula' && references(^._id) && ^.^._id == kvantum._ref
+        ] {
+            _id,
             ageFrom,
             ageTo,
+            interview,
+            name,
+            hoursPerYear,
+            studentsCount,
+            schedule,
+            level,
             'description': description[]{
                 ...,
                 _type == "imageBlock" => {
@@ -51,23 +62,15 @@ const { data: kvantum } = useSanityQuery<{
                     'image': image.asset->url,
                 }
             },
-            schedule,
-            studentsCount,
-            level,
-            teacher-> {
-                _id,
-                name,
-                surname,
-                patronymic,
-            },
-            name,
-            interview,
-        }
-    }
+        },
+    }[count(@.curriculas) != 0]
+}[0]
 `, {
     slug,
 })
-console.log(kvantum.value?.curriculas);
+
+console.log(kvantum.value);
+
 </script>
 
 <template>
@@ -93,38 +96,44 @@ console.log(kvantum.value?.curriculas);
                 Программы
             </h2>
 
-            <div v-for="curricula in kvantum.curriculas">
-
+            <div v-for="teacher in kvantum.teachers">
                 <h3>
-                    {{ curricula.name }}
+                    {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
                 </h3>
 
-                <p>
-                    Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
-                </p>
+                <div v-for="curricula in teacher.curriculas">
 
-                <p>
-                    Уровень: {{ curricula.level }}
-                </p>
+                    <h4>
+                        {{ curricula.name }}
+                    </h4>
 
-                <p>
-                    Собеседование {{ curricula.interview ? 'да' : 'нет' }}
-                </p>
+                    <p>
+                        Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
+                    </p>
 
-                <p>
-                    Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
-                </p>
+                    <p>
+                        Уровень: {{ curricula.level }}
+                    </p>
 
-                <p>
-                    Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
-                </p>
+                    <p>
+                        Собеседование {{ curricula.interview ? 'да' : 'нет' }}
+                    </p>
 
-                <p>
-                    Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
-                </p>
+                    <p>
+                        Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
+                    </p>
 
-                <div>
-                    <NewsContentBlock :blocks="curricula.description" />
+                    <p>
+                        Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
+                    </p>
+
+                    <p>
+                        Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
+                    </p>
+
+                    <div>
+                        <NewsContentBlock :blocks="curricula.description" />
+                    </div>
                 </div>
             </div>
         </template>
