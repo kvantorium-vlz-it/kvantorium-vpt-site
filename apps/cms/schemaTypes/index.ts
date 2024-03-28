@@ -5,6 +5,7 @@ import frequentlyAskedQuestions from "./frequentlyAskedQuestions"
 import kvantum from "./kvantum"
 import news from "./news"
 import curricula from "./curricula"
+import papers from "./papers"
 
 export const schemaTypes = [
     imageBlock,
@@ -14,4 +15,5 @@ export const schemaTypes = [
     frequentlyAskedQuestions,
     kvantum,
     news,
+    papers,
 ]
