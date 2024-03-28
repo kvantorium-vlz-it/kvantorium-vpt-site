@@ -149,37 +149,54 @@ const isClicked = ref(false)
             </div>
         </KContainer>
 
-        <KNavigation variant="dark" heading="heading" :items="navigation" />
-        <KNavigation variant="dark" heading="heading" direction="vertical" :items="navigation" />
-        <KNavigation
-            variant="dark"
-            heading="heading"
-            direction="vertical"
-            :items="navigation"
-        >
-            <template
-                #links-group="{ items, variant }"
-            >
+        <KSection heading="section 1">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam voluptate maiores consectetur ipsum excepturi dolore, similique rem a officia quisquam, adipisci vero voluptatum quo. Eius sit, eveniet quod nam mollitia dolorum provident quae voluptates repellat itaque quia architecto delectus assumenda consequatur nemo laborum ullam magni, autem quam debitis labore ea! Recusandae maxime temporibus impedit omnis. Reiciendis quos necessitatibus eos ipsum iusto quia quis atque at perspiciatis dolore provident, consequatur quisquam, maiores ex? Sunt, nostrum recusandae laborum soluta accusantium porro sequi est quod, suscipit nam veniam! Cumque officia tempora quidem illo amet. Facilis maxime minus cum sapiente repellat corporis ipsa suscipit.
+        </KSection>
+
+        <KContainer>
+            <KSection heading="section 2">
+                <KNavigation variant="dark" heading="heading" :items="navigation" />
+                <KNavigation variant="dark" heading="heading" direction="vertical" :items="navigation" />
                 <KNavigation
-                    direction="horizontal"
-                    :items="items"
-                    :variant="variant"
-                    heading="submenu"
-                />
-                <ul>
-                    <li
-                        v-for="item in items"
+                    variant="dark"
+                    heading="heading"
+                    direction="vertical"
+                    :items="navigation"
+                >
+                    <template
+                        #links-group="{ items, variant }"
                     >
-                        {{ item.label }}
-                    </li>
-                </ul>
-            </template>
-            <template #link="{ link }">
-                <a href="">
-                    {{ link.label }}|Lorem.
-                </a>
-            </template>
-        </KNavigation>
+                        <KNavigation
+                            direction="horizontal"
+                            :items="items"
+                            :variant="variant"
+                            heading="submenu"
+                        />
+                        <ul>
+                            <li
+                                v-for="item in items"
+                            >
+                                {{ item.label }}
+                            </li>
+                        </ul>
+                    </template>
+                    <template #link="{ link }">
+                        <a href="">
+                            {{ link.label }}|Lorem.
+                        </a>
+                    </template>
+                </KNavigation>
+            </KSection>
+        </KContainer>
+
+        <KContainer is-full-width>
+            <KSection>
+                <template #heading>
+                    <Icon name="ph:arrow-arc-left" /> Lorem, ipsum.
+                </template>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam voluptate maiores consectetur ipsum excepturi dolore, similique rem a officia quisquam, adipisci vero voluptatum quo. Eius sit, eveniet quod nam mollitia dolorum provident quae voluptates repellat itaque quia architecto delectus assumenda consequatur nemo laborum ullam magni, autem quam debitis labore ea! Recusandae maxime temporibus impedit omnis. Reiciendis quos necessitatibus eos ipsum iusto quia quis atque at perspiciatis dolore provident, consequatur quisquam, maiores ex? Sunt, nostrum recusandae laborum soluta accusantium porro sequi est quod, suscipit nam veniam! Cumque officia tempora quidem illo amet. Facilis maxime minus cum sapiente repellat corporis ipsa suscipit.
+            </KSection>
+        </KContainer>
 
         <div style="background-color: green;">
             <hr>
