@@ -13,7 +13,7 @@ withDefaults(defineProps<Props>(), {
 const navigation = [
     { label: 'О нас', items: [
         { label: 'Об организации', to: '/organization' },
-        { label: 'Наша команда', to: '/comand' },
+        { label: 'Наша команда', to: '/team' },
         { label: 'Медиа', to: '/media' },
         { label: 'Документы', to: '/documents' },
     ] },
