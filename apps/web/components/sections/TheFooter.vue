@@ -73,7 +73,7 @@ const collegeContacts = ref([
 </script>
 
 <template>
-    <KFooter>
+    <KFooter id="footer">
         <template #column-1>
             <div :class="$style.info">
                 <div :class="$style['info-top']">
