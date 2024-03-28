@@ -19,7 +19,7 @@ const navigation = [
     ] },
     { label: 'Новости', to: '/news' },
     { label: 'Направления', to: '/kvantums' },
-    { label: 'Контакты', to: '/contacts' },
+    { label: 'Контакты', to: '#footer' },
 ]
 </script>
 
