@@ -26,12 +26,8 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
 </script>
 
 <template>
-    <section :class="$style.section">
-        <KContainer :class="$style.container">
-            <h2 :class="$style.heading">
-                Квантумы
-            </h2>
-
+    <KContainer :class="$style.container">
+        <KSection heading="Квантумы">
             <div :class="$style.kvantums">
                 <TheKvantumsSectionInfoCard :class="$style.info" />
 
@@ -73,8 +69,8 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
                     </template>
                 </KSwiper>
             </div>
-        </KContainer>
-    </section>
+        </KSection>
+    </KContainer>
 </template>
 
 <style module>
@@ -93,6 +89,7 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
     gap: 0.5rem;
     position: relative;
     align-items: stretch;
+    padding-bottom: 5rem;
 }
 .info {
     width: calc(20% - 0.5rem + 0.5rem / 5);
@@ -121,7 +118,7 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
 }
 .navigation {
     position: absolute;
-    top: calc(100% + 2.5rem);
+    bottom: 0;
     left: 0;
     right: 0;
     display: flex;

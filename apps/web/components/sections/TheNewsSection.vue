@@ -28,31 +28,29 @@ const { data } = useSanityQuery<{
 
 <template>
     <KContainer>
-        <h1 :class="$style.heading">
-            Новости
-        </h1>
-
-        <ul :class="$style.list">
-            <li v-for="news in data">
-                <NuxtLink :to="`/news/${news.slug}`">
-                    <NewsCard
-                        :news="{
-                            previewImage: news.previewImage,
-                            publishDate: new Date(news.publishDate),
-                            tags: news.tags,
-                            title: news.heading,
-                        }"
-                    />
-                </NuxtLink>
-            </li>
-            <KLinkButton
-                to="/news"
-                variant="primary"
-                style="grid-column: 3;"
-            >
-                Все новости
-            </KLinkButton>
-        </ul>
+        <KSection heading="Новости">
+            <ul :class="$style.list">
+                <li v-for="news in data">
+                    <NuxtLink :to="`/news/${news.slug}`">
+                        <NewsCard
+                            :news="{
+                                previewImage: news.previewImage,
+                                publishDate: new Date(news.publishDate),
+                                tags: news.tags,
+                                title: news.heading,
+                            }"
+                        />
+                    </NuxtLink>
+                </li>
+                <KLinkButton
+                    to="/news"
+                    variant="primary"
+                    style="grid-column: 3;"
+                >
+                    Все новости
+                </KLinkButton>
+            </ul>
+        </KSection>
     </KContainer>
 </template>
 
@@ -73,7 +71,5 @@ const { data } = useSanityQuery<{
     grid-template-columns: repeat(3, 1fr);
     /* grid-auto-rows: 1fr; */
     gap: 0.25rem;
-}
-.list-item {
 }
 </style>

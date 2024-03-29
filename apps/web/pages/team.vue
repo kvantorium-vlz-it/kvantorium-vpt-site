@@ -22,26 +22,24 @@ const { data: employes } = useSanityQuery<{
 
 <template>
     <KContainer :class="$style.container">
-        <h1 :class="$style.heading">
-            Наша команда
-        </h1>
+        <KSection heading="Наша команда">
+            <ul :class="$style.list">
+                <li v-for="employee in employes" :key="employee._id">
+                    <div :class="$style.card">
+                        <img :src="employee.image" :alt="`${employee.name} ${employee.surname} ${employee.patronymic}`" :class="$style.image">
+                        <div :class="$style.name">
+                            {{ employee.name }}
+                            {{ employee.patronymic }}
+                            {{ employee.surname }}
+                        </div>
 
-        <ul :class="$style.list">
-            <li v-for="employee in employes" :key="employee._id">
-                <div :class="$style.card">
-                    <img :src="employee.image" :alt="`${employee.name} ${employee.surname} ${employee.patronymic}`" :class="$style.image">
-                    <div :class="$style.name">
-                        {{ employee.name }}
-                        {{ employee.patronymic }}
-                        {{ employee.surname }}
+                        <div>
+                            {{ employee.description }}
+                        </div>
                     </div>
-
-                    <div>
-                        {{ employee.description }}
-                    </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </KSection>
     </KContainer>
 </template>
 

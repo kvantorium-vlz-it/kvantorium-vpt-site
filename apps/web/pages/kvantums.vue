@@ -28,27 +28,21 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
 </script>
 
 <template>
-<div :class="$style.page">
-    <h1>
-        Наши направления
-    </h1>
-
-    <ul :class="$style.list">
-        <li
-            v-for="kvantum in kvantums"
-            :key="kvantum.id"
-        >
-            <TheKvantumsSectionKvantumCard :kvantum="kvantum" />
-        </li>
-    </ul>
-</div>
+    <KContainer>
+        <KSection heading="Наши направления">
+                <ul :class="$style.list">
+                    <li
+                        v-for="kvantum in kvantums"
+                        :key="kvantum.id"
+                    >
+                        <TheKvantumsSectionKvantumCard :kvantum="kvantum" />
+                    </li>
+                </ul>
+        </KSection>
+    </KContainer>
 </template>
 
 <style module>
-.page {
-    margin-top: 4rem;
-    padding-inline: var(--site-margin);
-}
 .list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

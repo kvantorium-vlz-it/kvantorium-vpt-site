@@ -19,33 +19,30 @@ const { data } = useSanityQuery<{
 </script>
 
 <template>
-    <KContainer
-        :class="$style.page"
-    >
-        <ul :class="$style.list">
-            <li
-                v-for="news in data"
-                :key="news._id"
-            >
-                <NuxtLink :to="`/news/${news.slug}`">
-                    <NewsCard
-                        :news="{
-                            previewImage: news.previewImage,
-                            publishDate: new Date(news.publishDate),
-                            tags: news.tags,
-                            title: news.heading
-                        }"
-                    />
-                </NuxtLink>
-            </li>
-        </ul>
+    <KContainer>
+        <KSection heading="Все новости">
+            <ul :class="$style.list">
+                <li
+                    v-for="news in data"
+                    :key="news._id"
+                >
+                    <NuxtLink :to="`/news/${news.slug}`">
+                        <NewsCard
+                            :news="{
+                                previewImage: news.previewImage,
+                                publishDate: new Date(news.publishDate),
+                                tags: news.tags,
+                                title: news.heading
+                            }"
+                        />
+                    </NuxtLink>
+                </li>
+            </ul>
+        </KSection>
     </KContainer>
 </template>
 
 <style module>
-.page {
-    padding-top: 5rem;
-}
 .list {
     list-style: none;
     display: grid;
