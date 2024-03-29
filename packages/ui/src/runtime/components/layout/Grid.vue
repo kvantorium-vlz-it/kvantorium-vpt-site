@@ -12,28 +12,37 @@ withDefaults(defineProps<Props>(), {
 
 <template>
     <ul :class="$style.grid">
-        <li
-            v-for="item, index in items"
-            :key="index"
-        >
-            <slot name="item" :item="item"></slot>
-        </li>
+        <slot name="before"></slot>
+
+        <slot>
+            <li
+                v-for="item, index in items"
+                :key="index"
+            >
+                <slot name="item" :item="item"></slot>
+            </li>
+        </slot>
+
+        <slot name="after"></slot>
     </ul>
 </template>
 
 <style module>
 .grid {
-    --columns-count: v-bind(columns);
+    --columns: v-bind(columns);
     --gap: 0.5rem;
 
     margin: 0;
     padding: 0;
+    list-style: none;
 
     display: grid;
-    grid-template-columns: repeat(var(--columns-count), 1fr);
+    grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: 1fr;
     gap: var(--gap);
+}
 
-    list-style: none;
+.grid > * {
+    width: 100%;
 }
 </style>
