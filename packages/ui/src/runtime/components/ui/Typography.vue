@@ -58,11 +58,13 @@ withDefaults(defineProps<Props>(), {
     --weight: inherit;
     --style: inherit;
     --size: inherit;
+    --line-height: inherit;
 
     font-family: var(--family), Arial, Helvetica, sans-serif;
     font-weight: var(--weight);
     font-style: var(--style);
     font-size: var(--size);
+    line-height: var(--line-height);
 }
 .bank-gothic {
     --family: "BankGothic";
@@ -102,32 +104,42 @@ withDefaults(defineProps<Props>(), {
 }
 .size-h00 {
     --size: 3rem;
+    --line-height: 1.5;
 }
 .size-h0 {
     --size: 2.5rem;
+    --line-height: 1.5;
 }
 .size-h1 {
     --size: 2rem;
+    --line-height: 1.3;
 }
 .size-h2 {
     --size: 1.5rem;
+    --line-height: 1.3;
 }
 .size-h3 {
     --size: 1.25rem;
+    --line-height: 1.3;
 }
 .size-h4 {
     --size: 1rem;
+    --line-height: 1.3;
 }
 .size-h5 {
     --size: 0.875rem;
+    --line-height: 1.3;
 }
 .size-h6 {
     --size: 0.75rem;
+    --line-height: 1.3;
 }
 .size-body {
     --size: 0.875rem;
+    --line-height: 1.3;
 }
 .size-body-small {
     --size: 0.75rem;
+    --line-height: 1.3;
 }
 </style>
