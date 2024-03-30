@@ -28,35 +28,33 @@ function formatDate(date: Date) {
 </script>
 
 <template>
-    <KContainer style="padding-top: 6rem">
-        <h1 style="font-family: 'BankGothic'; margin-bottom: 2rem; font-size: 2.5rem; text-align: center;">
-            Документы
-        </h1>
-
-        <ul :class="$style.list">
-            <li
-                v-for="document in documents"
-                :key="document._id"
-            >
-            <div :class="$style.card">
-                <div :class="$style.title">
-                    {{ document.name }}
+    <KContainer>
+        <KSection heading="Документы">
+            <ul :class="$style.list">
+                <li
+                    v-for="document in documents"
+                    :key="document._id"
+                >
+                <div :class="$style.card">
+                    <div :class="$style.title">
+                        {{ document.name }}
+                    </div>
+                    <div :class="$style.date">
+                        <template v-if="document._updatedAt">
+                            (Обновлено {{ formatDate(new Date(document._updatedAt)) }})
+                        </template>
+                        <template v-else>
+                            (Создано {{ formatDate(new Date(document._createdAt)) }})
+                        </template>
+                    </div>
+                    <a download target="_blank" :href="document.file.url">
+                        <Icon name="ph:file"/>
+                        (Скачать/скачать {{ Math.floor(document.file.size * 100) / 100 }} кб.)
+                    </a>
                 </div>
-                <div :class="$style.date">
-                    <template v-if="document._updatedAt">
-                        (Обновлено {{ formatDate(new Date(document._updatedAt)) }})
-                    </template>
-                    <template v-else>
-                        (Создано {{ formatDate(new Date(document._createdAt)) }})
-                    </template>
-                </div>
-                <a download target="_blank" :href="document.file.url">
-                    <Icon name="ph:file"/>
-                    (Скачать/скачать {{ Math.floor(document.file.size * 100) / 100 }} кб.)
-                </a>
-            </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </KSection>
     </KContainer>
 </template>
 

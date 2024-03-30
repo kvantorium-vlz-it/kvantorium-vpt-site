@@ -3,36 +3,35 @@ import { YandexMap, YandexMapDefaultSchemeLayer, YandexMapZoomControl, YandexMap
 </script>
 
 <template>
-    <section :class="$style.section">
-        <h2 :class="$style.heading">
-            Мы на карте
-        </h2>
-        <div :class="$style['map-wrapper']">
-            <ClientOnly>
-                <YandexMap
-                    :settings="{
-                        location: {
-                            center: [44.772160, 48.786934],
-                            zoom: 18,
-                            easing: { p1: { x: 1, y: 4 }, p2: { x: 2, y: 4 } }
-                        },
-                        camera: {
-                            tilt: Math.PI * 45 / 180,
-                        }
-                    }"
-                    width="100%"
-                    height="22rem"
-                    :class="$style.map"
-                >
-                    <YandexMapDefaultSchemeLayer />
-                    <YandexMapControls :settings="{ position: 'left' }">
-                        <YandexMapZoomControl />
-                        <YandexMapGeolocationControl />
-                    </YandexMapControls>
-                </YandexMap>
-            </ClientOnly>
-        </div>
-    </section>
+    <KContainer>
+        <KSection heading="мы на карте">
+            <div :class="$style['map-wrapper']">
+                <ClientOnly>
+                    <YandexMap
+                        :settings="{
+                            location: {
+                                center: [44.772160, 48.786934],
+                                zoom: 18,
+                                easing: { p1: { x: 1, y: 4 }, p2: { x: 2, y: 4 } }
+                            },
+                            camera: {
+                                tilt: Math.PI * 45 / 180,
+                            }
+                        }"
+                        width="100%"
+                        height="22rem"
+                        :class="$style.map"
+                    >
+                        <YandexMapDefaultSchemeLayer />
+                        <YandexMapControls :settings="{ position: 'left' }">
+                            <YandexMapZoomControl />
+                            <YandexMapGeolocationControl />
+                        </YandexMapControls>
+                    </YandexMap>
+                </ClientOnly>
+            </div>
+        </KSection>
+    </KContainer>
 </template>
 
 <style module>

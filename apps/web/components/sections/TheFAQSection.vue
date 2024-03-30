@@ -13,48 +13,29 @@ const { data = [] } = useSanityQuery<{
 </script>
 
 <template>
-    <section>
-        <div :class="$style.container">
-            <div :class="$style.wrapper">
-                <h2 :class="$style.heading">
-                    Часто задаваемые вопросы
-                </h2>
-
-                <KAccordion
-                    :class="$style.faq"
-                    :items='data?.map((i) => ({ label: i.question, content: i.answer })) || []'
-                ></KAccordion>
-            </div>
-        </div>
-    </section>
+    <KContainer>
+        <KSection
+            heading="Часто задаваемые вопросы"
+            :class="$style.section"
+        >
+            <KAccordion
+                :class="$style.accordion"
+                :items='data?.map((i) => ({ label: i.question, content: i.answer })) || []'
+            ></KAccordion>
+        </KSection>
+    </KContainer>
 </template>
 
 <style module>
-.faq {
+.accordion {
     max-width: 40rem;
     margin-inline: auto;
-    margin-top: 2rem;
 }
-.heading {
-    font-size: 2.5rem;
-    line-height: 1.3;
-    font-family: 'BankGothic';
-    text-align: center;
-}
-.list {
-    list-style: none;
-    padding: 0;
-    margin-top: 2rem;
-}
-.container {
-    padding-inline: var(--site-margin);
-    position: relative;
-}
-.wrapper {
+.section {
     position: relative;
     padding-top: 3.5rem;
 }
-.wrapper::before {
+.section::before {
     content: "";
     position: absolute;
     inset: 0;

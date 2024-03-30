@@ -1,12 +1,9 @@
 <template>
     <KContainer :class="$style.container">
-        <h1 :class="$style.heading">
-            Медиа
-        </h1>
-
-        <h2 :class="$style.heading">
-            Галерея
-        </h2>
+        <KSection heading="Медиа" />
+    </KContainer>
+    <KContainer :class="$style.container">
+        <KSection heading="Галерея" />
     </KContainer>
 </template>
 
