@@ -21,6 +21,23 @@ const isClicked = ref(false)
 
 <template>
     <div>
+        <KTypography font-family="BankGothic" #default="{ classes }">
+            <span :class="classes">
+                Lorem, ipsum.
+            </span>
+        </KTypography>
+        <KTypography
+            font-family="Circe"
+            font-size="h00"
+            :font-weight="900"
+            is-italic
+            #default="{ classes }"
+        >
+            <span :class="classes">
+                Lorem, ipsum.
+            </span>
+        </KTypography>
+
         <KHeader
             variant="white"
             :navigation="navigation"

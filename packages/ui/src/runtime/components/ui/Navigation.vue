@@ -43,12 +43,18 @@ function isGroupNavigationItem(
             $style[variant],
         ]"
     >
-        <h3
-            v-if="heading"
-            :class="$style.heading"
+        <KTypography
+            fontFamily="BankGothic"
+            fontSize="h2"
+            #default="{ classes }"
         >
-            {{ heading }}
-        </h3>
+            <h3
+                v-if="heading"
+                :class="[classes, $style.heading]"
+            >
+                {{ heading }}
+            </h3>
+        </KTypography>
 
         <ul
             v-if="items.length > 0"
@@ -113,10 +119,7 @@ function isGroupNavigationItem(
 }
 .heading {
     color: var(--heading-color);
-    font-family: 'BankGothic';
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-    line-height: 1;
 }
 .navigation > .list {
     flex-direction: var(--direction);

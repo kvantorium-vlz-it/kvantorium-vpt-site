@@ -14,12 +14,18 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <NuxtLink
-        :class="[$style.link, $style[variant]]"
-        :="$props"
+    <KTypography
+        font-family="Circe"
+        font-size="h4"
+        #default="{ classes }"
     >
-        <slot></slot>
-    </NuxtLink>
+        <NuxtLink
+            :class="[classes, $style.link, $style[variant]]"
+            :="$props, $attrs"
+        >
+            <slot></slot>
+        </NuxtLink>
+    </KTypography>
 </template>
 
 <style module>
@@ -39,8 +45,6 @@ withDefaults(defineProps<Props>(), {
 
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1rem;
-    font-family: 'Circe';
 
     display: inline-flex;
     align-items: center;

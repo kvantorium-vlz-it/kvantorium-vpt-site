@@ -5,7 +5,7 @@
             is-full-width
         >
             <div :class="$style.inner">
-                <KGrid :columns="4">
+                <KGrid :columns="4" :items="[]">
                     <template
                         v-for="index in 4"
                         :key="index"
