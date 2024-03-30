@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // TODO: add possibility to open to left and right
-import { computed, ref } from '#imports';
+import { computed, onClickOutside, ref, useElementVisibility, watch } from '#imports';
 import { flip, offset, shift, useFloating, arrow as floatingArrow, autoUpdate } from '@floating-ui/vue';
 
 type Variant = 'light' | 'dark'
@@ -17,6 +17,7 @@ withDefaults(defineProps<Props>(), {
 const trigger = ref<HTMLElement>()
 const floating = ref<HTMLUListElement>()
 const arrow = ref<HTMLDivElement>()
+const details = ref<HTMLDetailsElement>()
 
 const { floatingStyles, middlewareData } = useFloating(trigger, floating, {
     placement: 'bottom',
@@ -29,6 +30,32 @@ const { floatingStyles, middlewareData } = useFloating(trigger, floating, {
     whileElementsMounted: autoUpdate,
 })
 
+interface Emits {
+    (e: "clickOutside", close: () => void): void
+}
+
+const emit = defineEmits<Emits>()
+
+onClickOutside(floating, () => {
+    emit('clickOutside', close)
+})
+
+const isVisisble = useElementVisibility(floating)
+
+watch(isVisisble, (isVisible) => {
+    if (!isVisible) {
+        close()
+    }
+})
+
+function close() {
+    if (!details.value) {
+        return
+    }
+
+    details.value.open = false
+}
+
 const arrowStyles = computed(() => {
     const left = `left: ${middlewareData.value.arrow?.x || 0}px`
     const top = `top: ${middlewareData.value.arrow?.y || 0}px`
@@ -40,6 +67,7 @@ const arrowStyles = computed(() => {
 <template>
     <details
         :class="[$style['fly-out-menu'], $style[variant]]"
+        ref="details"
     >
         <summary
             ref="trigger"
@@ -109,7 +137,7 @@ const arrowStyles = computed(() => {
     transition: rotate 0.2s ease;
 }
 .floating {
-    z-index: 2;
+    z-index: 3;
     max-width: 20rem;
     border-radius: var(--_border-radius);
     padding: 1rem;
