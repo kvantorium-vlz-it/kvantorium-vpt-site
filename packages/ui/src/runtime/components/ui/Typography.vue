@@ -27,7 +27,7 @@ type FontWeight =
 interface Props {
     fontFamily?: FontFamily | null
     fontWeight?: FontWeight | null
-    isItalic: boolean
+    isItalic?: boolean
     fontSize?: FontSize | null
 }
 
