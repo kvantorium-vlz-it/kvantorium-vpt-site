@@ -8,14 +8,21 @@ defineProps<Props>()
 
 <template>
     <div :class="$style.section">
-        <h2
-            :class="$style.heading"
-            v-if="heading || $slots.heading"
+        <KTypography
+            font-family="BankGothic"
+            font-size="h0"
+            :font-weight="500"
+            #default="{ classes }"
         >
-            <slot name="heading">
-                {{ heading }}
-            </slot>
-        </h2>
+            <h2
+                :class="[classes, $style.heading]"
+                v-if="heading || $slots.heading"
+            >
+                <slot name="heading">
+                    {{ heading }}
+                </slot>
+            </h2>
+        </KTypography>
 
         <slot></slot>
     </div>
@@ -29,10 +36,7 @@ defineProps<Props>()
     margin-block: var(--section-margin);
 }
 .heading {
-    font-size: 2.5rem;
-    font-family: 'BankGothic';
     text-align: center;
-    line-height: 1.3;
     text-transform: uppercase;
 
     margin-bottom: var(--heading-gap);

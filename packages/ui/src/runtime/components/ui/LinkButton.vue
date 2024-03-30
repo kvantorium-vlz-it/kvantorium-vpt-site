@@ -14,12 +14,18 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <NuxtLink
-        :class="[$style.button, $style[variant]]"
-        :="$props"
+    <KTypography
+        font-family="Circe"
+        font-size="h4"
+        #default="{ classes }"
     >
-        <slot></slot>
-    </NuxtLink>
+        <NuxtLink
+            :class="[classes, $style.button, $style[variant]]"
+            :="$props, $attrs"
+        >
+            <slot></slot>
+        </NuxtLink>
+    </KTypography>
 </template>
 
 <style module>

@@ -1,7 +1,16 @@
 <template>
-    <div :class="$style.badge">
-        <slot></slot>
-    </div>
+    <KTypography
+        font-family="Circe"
+        font-size="h4"
+        #default="{ classes }"
+    >
+        <div
+            :class="[classes, $style.badge]"
+            :="$attrs"
+        >
+            <slot></slot>
+        </div>
+    </KTypography>
 </template>
 
 <style module>
@@ -13,8 +22,6 @@
     border-radius: 100vw;
     padding: 0.25rem 1rem;
 
-    font-size: 1rem;
-    font-family: 'Circe';
     color: var(--text-color);
 
     display: inline-flex;

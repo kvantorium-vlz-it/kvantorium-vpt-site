@@ -8,14 +8,20 @@ defineProps<Props>()
 
 <template>
     <details :class="$style['accordion-item']">
-        <summary :class="$style.trigger">
-            {{ label }}
+        <KTypography
+            font-family="Circe"
+            font-size="h4"
+            #default="{ classes }"
+        >
+            <summary :class="[classes, $style.trigger]">
+                {{ label }}
 
-            <Icon
-                name="ph:caret-down"
-                :class="$style['trigger-icon']"
-            />
-        </summary>
+                <Icon
+                    name="ph:caret-down"
+                    :class="$style['trigger-icon']"
+                />
+            </summary>
+        </KTypography>
 
         <div :class="$style.content">
             <slot></slot>
