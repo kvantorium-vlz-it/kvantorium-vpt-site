@@ -74,6 +74,9 @@ function isGroupNavigationItem(
                     <KFlyOutMenu
                         :label="item.label"
                         :variant="variant"
+                        @click-outside="(close) => {
+                            close()
+                        }"
                     >
                         <KNavigation
                             :items="item.items"

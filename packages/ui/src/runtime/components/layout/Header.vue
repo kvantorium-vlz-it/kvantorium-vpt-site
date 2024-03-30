@@ -68,7 +68,6 @@ function isGroupNavigationItem(
     --background-color: transparent;
     padding: 0.5rem;
     position: relative;
-    isolation: isolate;
 }
 .header::after {
     z-index: -1;
