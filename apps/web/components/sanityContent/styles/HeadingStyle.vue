@@ -28,6 +28,7 @@ defineProps<Props>()
 
 <style module>
 .heading {
+    text-indent: 1.5rem;
     margin-block: 1em;
 }
 </style>

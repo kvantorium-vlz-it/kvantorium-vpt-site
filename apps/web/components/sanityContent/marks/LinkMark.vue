@@ -21,6 +21,7 @@ defineProps<Props>()
 <style module>
 .link {
     color: var(--c-site-primary-lighter-2);
+    text-indent: 0;
 }
 .link:visited {
     color: var(--c-site-primary);

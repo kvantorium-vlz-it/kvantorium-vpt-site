@@ -10,5 +10,6 @@
     padding-inline: 0.5ch;
     background-color: var(--c-site-background-darker-2);
     border-radius: 0.25rem;
+    text-indent: 0;
 }
 </style>
