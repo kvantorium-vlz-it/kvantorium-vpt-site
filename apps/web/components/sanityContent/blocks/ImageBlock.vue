@@ -11,16 +11,15 @@ defineProps<Props>()
     <img
         :src="image"
         :alt="alt"
-        :class="[$style.image]"
+        :class="$style.image"
     >
 </template>
 
 <style module>
 .image {
     display: block;
-    object-fit: cover;
     width: 100%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-block: 1em;
+    border-radius: 1rem;
 }
 </style>
