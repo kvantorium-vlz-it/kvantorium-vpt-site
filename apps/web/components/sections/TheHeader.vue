@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { RouterLinkProps } from 'vue-router';
+import EnrollModal from '../EnrollModal.vue';
+import { useModal } from 'vue-final-modal';
 
 type Variant = 'white' | 'blank'
 
@@ -21,6 +22,10 @@ const navigation = [
     { label: 'Направления', to: '/kvantums' },
     { label: 'Контакты', to: '#footer' },
 ]
+
+const { open } = useModal({
+    component: EnrollModal,
+})
 </script>
 
 <template>
@@ -48,8 +53,11 @@ const navigation = [
         </template>
         <template #column-4>
             <div style="display: flex; flex-direction: row; justify-content: flex-end">
-                <KLinkButton :variant="variant === 'blank' ? 'white' : 'secondary'">
-                    Lorem, ipsum.
+                <KLinkButton
+                    :variant="variant === 'blank' ? 'white' : 'secondary'"
+                    @click="open"
+                >
+                    Записаться
                 </KLinkButton>
             </div>
         </template>
