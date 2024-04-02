@@ -69,7 +69,8 @@ import { YandexMap, YandexMapDefaultSchemeLayer, YandexMapZoomControl, YandexMap
 }
 .content {
     display: grid;
-    grid-template-columns: auto 1fr;
+    /* grid-template-columns: auto 1fr; */
+    gap: 1rem;
 }
 .map-wrapper {
     height: 22rem;
