@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ModalsContainer } from 'vue-final-modal'
 const isIndexPage = computed(() => useRoute().name === 'index')
 const { y } = useWindowScroll({ behavior: 'smooth', window: this })
 
@@ -29,6 +30,8 @@ onMounted(() => {
         <TheFooter :class="$style.footer" />
 
         <TheCursor />
+
+        <ModalsContainer />
     </div>
 </template>
 

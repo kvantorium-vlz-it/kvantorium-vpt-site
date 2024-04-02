@@ -19,18 +19,23 @@ withDefaults(defineProps<Props>(), {
         font-size="h4"
         #default="{ classes }"
     >
-        <NuxtLink
+        <component
+            :is="!to ? 'button' : 'nuxt-link'"
             :class="[classes, $style.button, $style[variant]]"
             :="$props, $attrs"
         >
             <slot></slot>
-        </NuxtLink>
+        </component>
     </KTypography>
 </template>
 
 <style module>
 /* Base styles */
-
+button.button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 .button {
     /* Variables */
 
@@ -116,10 +121,10 @@ withDefaults(defineProps<Props>(), {
 
 /* States */
 
-.button:not([href]) {
+.button:not([href], button) {
     cursor: not-allowed;
 }
-.button[href]:active {
+.button[href]:active, button.button:active {
     translate: 0 -0.125rem;
 }
 .button:focus-visible {
