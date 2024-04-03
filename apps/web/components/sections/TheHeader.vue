@@ -33,7 +33,7 @@ const { open } = useModal({
         :navigation="navigation"
         :variant="variant"
     >
-        <template #column-1>
+        <KGridCell>
             <NuxtLink
                 :class="$style['logo-link']"
                 to="/"
@@ -43,15 +43,15 @@ const { open } = useModal({
                     :class="$style.logo"
                 />
             </NuxtLink>
-        </template>
-        <template #column-3>
+        </KGridCell>
+        <KGridCell :width="4" :class="$style.middle">
             <KNavigation
                 direction="horizontal"
                 :items="navigation"
                 :variant="variant === 'blank' ? 'light' : 'dark'"
             />
-        </template>
-        <template #column-4>
+        </KGridCell>
+        <KGridCell>
             <div style="display: flex; flex-direction: row; justify-content: flex-end">
                 <KLinkButton
                     :variant="variant === 'blank' ? 'white' : 'secondary'"
@@ -60,7 +60,7 @@ const { open } = useModal({
                     Записаться
                 </KLinkButton>
             </div>
-        </template>
+        </KGridCell>
     </KHeader>
 </template>
 
@@ -75,5 +75,9 @@ const { open } = useModal({
 }
 .logo-link:hover > .logo {
     rotate: 360deg;
+}
+.middle {
+    display: flex;
+    justify-content: center
 }
 </style>
