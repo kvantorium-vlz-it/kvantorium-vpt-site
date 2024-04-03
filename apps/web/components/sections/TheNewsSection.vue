@@ -47,18 +47,15 @@ const { data } = useSanityQuery<{
                         />
                     </NuxtLink>
                 </KGridCell>
-
-                <template #after>
-                    <li :class="$style['link-item']">
-                        <KLinkButton
-                            to="/news"
-                            variant="primary"
-                            :class="$style.button"
-                        >
-                            Все новости
-                        </KLinkButton>
-                    </li>
-                </template>
+                <KGridCell :start-column="3">
+                    <KLinkButton
+                        to="/news"
+                        variant="primary"
+                        :class="$style.button"
+                    >
+                        Все новости
+                    </KLinkButton>
+                </KGridCell>
             </KGrid>
         </KSection>
     </KContainer>
