@@ -74,7 +74,7 @@ const collegeContacts = ref([
 
 <template>
     <KFooter id="footer">
-        <template #column-1>
+        <KGridCell>
             <div :class="$style.info">
                 <div :class="$style['info-top']">
                     <KCircleIcon
@@ -94,8 +94,8 @@ const collegeContacts = ref([
                     Записаться
                 </KLinkButton>
             </div>
-        </template>
-        <template #column-3>
+        </KGridCell>
+        <KGridCell :start-column="3">
             <KNavigation
                 direction="vertical"
                 heading="Навигация"
@@ -116,8 +116,8 @@ const collegeContacts = ref([
                     </NuxtLink>
                 </template>
             </KNavigation>
-        </template>
-        <template #column-4>
+        </KGridCell>
+        <KGridCell>
             <KNavigation
                 direction="vertical"
                 heading="Кванториум"
@@ -129,7 +129,7 @@ const collegeContacts = ref([
                 :items="collegeContacts"
                 :class="$style.college"
             />
-        </template>
+        </KGridCell>
 
         <template #bottom>
             <div :class="$style.copyright">
@@ -142,8 +142,6 @@ const collegeContacts = ref([
 </template>
 
 <style module>
-.info {
-}
 .info-top {
     display: grid;
     grid-template-columns: auto 1fr;

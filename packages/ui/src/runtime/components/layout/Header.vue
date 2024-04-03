@@ -16,16 +16,8 @@ withDefaults(defineProps<Props>(), {
 <template>
     <header :class="[$style.header, $style[variant]]">
         <KContainer is-full-width :class="$style['header-container']">
-            <KGrid :items="[]" :columns="4" :class="$style.grid">
-                <template v-for="index in 4">
-                    <div
-                        v-if="$slots[`column-${index}`]"
-                        :class="$style.column"
-                        :style="{ '--column': index }"
-                    >
-                        <slot :name="`column-${index}`" />
-                    </div>
-                </template>
+            <KGrid :columns="6" :class="$style.grid">
+                <slot></slot>
             </KGrid>
         </KContainer>
     </header>

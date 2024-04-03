@@ -33,8 +33,9 @@ const { data } = useSanityQuery<{
                 v-if="data"
                 :items="data"
                 :columns="3"
+                is="ul"
             >
-                <template #item="{ item: news }">
+                <KGridCell is="li" v-for="news in data" :key="news._id">
                     <NuxtLink :to="`/news/${news.slug}`">
                         <NewsCard
                             :news="{
@@ -45,19 +46,16 @@ const { data } = useSanityQuery<{
                             }"
                         />
                     </NuxtLink>
-                </template>
-
-                <template #after>
-                    <li :class="$style['link-item']">
-                        <KLinkButton
-                            to="/news"
-                            variant="primary"
-                            :class="$style.button"
-                        >
-                            Все новости
-                        </KLinkButton>
-                    </li>
-                </template>
+                </KGridCell>
+                <KGridCell :start-column="3">
+                    <KLinkButton
+                        to="/news"
+                        variant="primary"
+                        :class="$style.button"
+                    >
+                        Все новости
+                    </KLinkButton>
+                </KGridCell>
             </KGrid>
         </KSection>
     </KContainer>

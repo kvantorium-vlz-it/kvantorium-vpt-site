@@ -23,11 +23,9 @@ const { data } = useSanityQuery<{
         <KSection heading="Все новости">
             <KGrid
                 v-if="data"
-                :items="data"
-                is-auto-columns
-                :columns="6"
+                :columns="3"
             >
-                <template #item="{ item: news }">
+                <KGridCell v-for="news in data">
                     <NuxtLink :to="`/news/${news.slug}`">
                         <NewsCard
                             :news="{
@@ -38,7 +36,7 @@ const { data } = useSanityQuery<{
                             }"
                         />
                     </NuxtLink>
-                </template>
+                </KGridCell>
             </KGrid>
         </KSection>
     </KContainer>
