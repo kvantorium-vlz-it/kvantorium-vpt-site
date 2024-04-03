@@ -5,21 +5,8 @@
             is-full-width
         >
             <div :class="$style.inner">
-                <KGrid :columns="4" :items="[]">
-                    <template
-                        v-for="index in 4"
-                        :key="index"
-                    >
-                        <div
-                            v-if="$slots[`column-${index}`]"
-                            :class="$style.column"
-                            :style="{
-                                '--index': index,
-                            }"
-                        >
-                            <slot :name="`column-${index}`"></slot>
-                        </div>
-                    </template>
+                <KGrid :columns="4">
+                    <slot></slot>
                 </KGrid>
 
                 <div
@@ -51,10 +38,6 @@
 
     border-radius: 1rem;
     padding: 2.5rem 4rem 1rem;
-}
-.column {
-    --index: 0;
-    grid-column: var(--index) / var(--index);
 }
 .bottom {
     margin-top: 3.5rem;
