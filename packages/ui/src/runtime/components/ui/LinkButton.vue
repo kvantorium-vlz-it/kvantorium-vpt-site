@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineNuxtLink } from '#imports';
 import type { RouterLinkProps } from '#vue-router'
 
 type ButtonVariants = 'primary' | 'secondary' | 'white'
@@ -20,7 +21,7 @@ withDefaults(defineProps<Props>(), {
         #default="{ classes }"
     >
         <component
-            :is="!to ? 'button' : 'nuxt-link'"
+            :is="!to ? 'button' : defineNuxtLink({})"
             :class="[classes, $style.button, $style[variant]]"
             :="$props, $attrs"
         >
