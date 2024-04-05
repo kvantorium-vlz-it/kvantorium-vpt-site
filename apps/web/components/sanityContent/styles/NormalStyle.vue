@@ -1,3 +1,9 @@
+<script setup lang="ts">
+defineProps<{
+    children: any[]
+}>()
+</script>
+
 <template>
     <KTypography
         font-family="Circe"

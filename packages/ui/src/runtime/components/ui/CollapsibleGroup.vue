@@ -70,11 +70,11 @@ onBeforeUnmount(unregisterEvents)
 .group > *:not(:last-child) > * > summary {
     border-bottom: none;
 }
-.group > *:first-child > * {
+.group > *:first-child:not(:last-child) > * {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.group > *:last-child > * {
+.group > *:last-child:not(:first-child) > * {
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;

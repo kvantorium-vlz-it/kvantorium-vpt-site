@@ -69,78 +69,146 @@ const { data: kvantum } = useSanityQuery<{
     slug,
 })
 
-console.log(kvantum.value);
+const { data: rawKvantums } = useSanityQuery<{
+    minAge: number
+    name: string
+    icon: string
+    slug: string
+    topics: string[]
+}[]>(groq`
+    *[_type == 'kvantum'] {
+        minAge,
+        name,
+        'icon': icon.asset->url,
+        'slug': slug.current,
+        topics,
+    }
+`)
 
+const kvantums = computed(() => rawKvantums.value?.map((kvantum) => ({
+    name: kvantum.name,
+    imageURL: kvantum.icon,
+    slug: kvantum.slug,
+    age: kvantum.minAge,
+    topicsList: kvantum.topics,
+})) || [])
 </script>
 
 <template>
     <div :class="$style.page">
         <template v-if="kvantum">
-            <img :src="kvantum.icon" alt="">
 
-            <h1>
-                {{ kvantum.name }}
-            </h1>
+            <KSection>
+                <template #heading>
+                <img :src="kvantum.icon" style="display: block; max-width: 20rem; width: 100%; margin-inline: auto; margin-bottom: 2rem;" alt="">
+                <h1>
+                    {{ kvantum.name }}
+                </h1>
+                </template>
+                <h2 style="margin-inline: auto; width: fit-content;">
+                    Возрастная категория: {{ kvantum.minAge }}+
+                </h2>
 
-            <p>
-                Возрастная категория: {{ kvantum.minAge }}+
-            </p>
+                <ol :class="$style.topics" style="margin-inline: auto; width: fit-content;" >
+                    <li v-for="topic, index in kvantum.topics" :key="index">
+                        {{ topic }}
+                    </li>
+                </ol>
+            </KSection>
 
-            <ol :class="$style.topics">
-                <li v-for="topic, index in kvantum.topics" :key="index">
-                    {{ topic }}
-                </li>
-            </ol>
+            <KSection heading="Программы">
+                <KGrid :columns="kvantum.teachers.length > 1 ? 2 : 1">
+                <KGridCell v-for="teacher in kvantum.teachers">
+                    <KTypography
+                        font-family="BankGothic"
+                        font-size="h1"
+                        :font-weight="500"
+                        #="{ classes }"
+                    >
+                        <h3 :class="[classes]" style="margin-bottom: 2rem; text-align: center;">
+                            {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
+                        </h3>
+                    </KTypography>
 
-            <h2>
-                Программы
-            </h2>
+                    <KCollapsibleGroup is="ul" is-multiple>
+                        <KCollapsible is="li" v-for="curricula in teacher.curriculas">
+                            <template #trigger>
+                                <h4>
+                                    {{ curricula.name }}
+                                </h4>
+                            </template>
 
-            <div v-for="teacher in kvantum.teachers">
-                <h3>
-                    {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
-                </h3>
+                            <div style="text-align: start;">
+                                <p>
+                                    Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
+                                </p>
 
-                <div v-for="curricula in teacher.curriculas">
+                                <p>
+                                    Уровень: {{ curricula.level }}
+                                </p>
 
-                    <h4>
-                        {{ curricula.name }}
-                    </h4>
+                                <p>
+                                    Собеседование {{ curricula.interview ? 'да' : 'нет' }}
+                                </p>
 
-                    <p>
-                        Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
-                    </p>
+                                <p>
+                                    Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
+                                </p>
 
-                    <p>
-                        Уровень: {{ curricula.level }}
-                    </p>
+                                <p>
+                                    Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
+                                </p>
 
-                    <p>
-                        Собеседование {{ curricula.interview ? 'да' : 'нет' }}
-                    </p>
+                                <p>
+                                    Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
+                                </p>
 
-                    <p>
-                        Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
-                    </p>
-
-                    <p>
-                        Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
-                    </p>
-
-                    <p>
-                        Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
-                    </p>
-
-                    <div>
-                        <NewsContentBlock :blocks="curricula.description" />
-                    </div>
-                </div>
-            </div>
+                                <div>
+                                    <BlockContent v-if="curricula.description" :blocks="curricula.description" />
+                                </div>
+                            </div>
+                        </KCollapsible>
+                    </KCollapsibleGroup>
+                </KGridCell>
+            </KGrid>
+            </KSection>
         </template>
 
         <h1 v-else>
             Квантум не найден
         </h1>
+
+        <KSection heading="Другие квантумы">
+            <KSwiper
+                :items="kvantums"
+                :visibleSlidesCount="5"
+                :class="$style.swiper"
+            >
+                <template #slide="{ item }">
+                    <TheKvantumsSectionKvantumCard :kvantum="item" />
+                </template>
+
+                <template #navigation="{
+                    currentSlide,
+                    slideToNextSlide,
+                    slideToPreviousSlide,
+                    slidesCount,
+                }">
+                    <div :class="$style.navigation">
+                        <button :class="$style['pagination-button']"
+                            @click="slideToPreviousSlide"
+                        >
+                            <Icon name="ph:arrow-left" />
+                        </button>
+                        <button :class="$style['pagination-button']"
+                            @click="slideToNextSlide"
+                        >
+                            <Icon name="ph:arrow-right" />
+                        </button>
+                    </div>
+                </template>
+            </KSwiper>
+        </KSection>
     </div>
 </template>
 
@@ -151,5 +219,26 @@ console.log(kvantum.value);
 }
 .topics {
     list-style-position: inside;
+}
+.pagination-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    outline: 2px solid var(--c-site-primary);
+    border-radius: 100vw;
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    color: var(--c-site-primary);
+    cursor: pointer;
+}
+.navigation {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
 }
 </style>
