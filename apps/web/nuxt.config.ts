@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     css: [
         'modern-normalize/modern-normalize.css',
         'vue-final-modal/style.css',
+        '~/assets/css/index.css',
     ],
     yandexMaps: {
         apikey: '20dfd6f4-545a-43cf-b1c8-96e82339316a',
