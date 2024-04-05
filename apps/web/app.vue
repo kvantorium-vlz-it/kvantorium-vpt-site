@@ -16,6 +16,14 @@ onMounted(() => {
         immediate: true,
     })
 })
+
+const route = useRoute()
+
+watch(() => route.name, () => {
+    const { setCursorComponent } = useGlobalCursor()
+
+    setCursorComponent(null)
+})
 </script>
 
 <template>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useModal } from 'vue-final-modal';
+import EnrollModal from '../EnrollModal.vue';
+
 const siteNavigation = ref([
     {
         label: 'Главная',
@@ -70,6 +73,11 @@ const collegeContacts = ref([
         to: 'https://volpt.ru/',
     },
 ])
+
+
+const { open } = useModal({
+    component: EnrollModal,
+})
 </script>
 
 <template>
@@ -90,7 +98,7 @@ const collegeContacts = ref([
                     Детский технопарк «Кванториум» - это новая форма дополнительного образования, которая реализует научно-технический интерес детей. Это место интеллектуальной смелости и комфортные условия формирования изобретательского мышления.
                 </p>
 
-                <KLinkButton variant="white" :class="$style['info-button']">
+                <KLinkButton variant="white" :class="$style['info-button']" @click="open">
                     Записаться
                 </KLinkButton>
             </div>
