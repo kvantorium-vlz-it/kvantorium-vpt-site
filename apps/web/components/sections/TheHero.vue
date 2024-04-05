@@ -61,7 +61,19 @@ const { data: curriculas } = useSanityQuery<{
                 </address>
             </div>
             <div :class="$style.grid">
-                <div></div>
+                <div>
+                    <KNavigation
+                        heading="Навигация"
+                        :items="[
+                            { label: 'информация', to: '/#info' },
+                            { label: 'квантумы', to: '/#kvantums' },
+                            { label: 'новости', to: '/#news' },
+                            { label: 'часто задаваемые вопросы', to: '/#faq' },
+                            { label: 'мы на карте', to: '/#map' },
+                        ]"
+                        direction="vertical"
+                    />
+                </div>
                 <TheHeroButton :class="$style.button" style="justify-self: center;" to="/#kvantums" />
                 <div :class="$style.curriculas">
                     <h2 :class="$style['curriculas-heading']">
