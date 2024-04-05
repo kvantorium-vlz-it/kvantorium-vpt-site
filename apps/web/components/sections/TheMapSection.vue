@@ -44,8 +44,8 @@ const location = ref({
 <template>
     <KContainer>
         <KSection heading="Мы на карте">
-            <KGrid :columns="4">
-                <KGridCell>
+            <KGrid :columns="6">
+                <KGridCell :start-column="1" :end-column="3">
                     <KNavigation
                         :items="[
                             {
@@ -66,11 +66,11 @@ const location = ref({
                         ]"
                         variant="dark"
                         direction="vertical"
-                        heading="Кванториум Волжский Политех"
+                        heading="Контакты"
                     />
                 </KGridCell>
 
-                <KGridCell :start-column="2" :end-column="5">
+                <KGridCell :start-column="3" :end-column="7">
                     <div :class="[$style['map-wrapper'], { [$style.focused]: isFocused }]">
                         <ClientOnly>
                             <YandexMap
