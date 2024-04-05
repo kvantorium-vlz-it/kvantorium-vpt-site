@@ -6,6 +6,7 @@ import kvantum from "./kvantum"
 import news from "./news"
 import curricula from "./curricula"
 import papers from "./papers"
+import siteSettings from "./siteSettings"
 
 export const schemaTypes = [
     imageBlock,
@@ -16,4 +17,5 @@ export const schemaTypes = [
     kvantum,
     news,
     papers,
+    siteSettings,
 ]
