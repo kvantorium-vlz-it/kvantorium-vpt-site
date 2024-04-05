@@ -48,10 +48,13 @@ function handleToggle(event: ToggleEvent) {
                 <summary :class="[classes, $style.trigger]">
                     <slot name="trigger"></slot>
 
-                    <Icon
-                        name="ph:caret-down"
+                    <div
                         :class="$style['trigger-icon']"
-                    />
+                    >
+                        <Icon
+                            name="ph:caret-down"
+                        />
+                    </div>
                 </summary>
             </KTypography>
 
@@ -102,8 +105,10 @@ function handleToggle(event: ToggleEvent) {
 .trigger-icon {
     position: absolute;
     right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.collapsible[open] > .trigger > .trigger-icon {
+.collapsible[open] > .trigger > .trigger-icon svg {
     rotate: 180deg;
 }
 .content {
