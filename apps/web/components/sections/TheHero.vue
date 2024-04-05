@@ -62,7 +62,7 @@ const { data: curriculas } = useSanityQuery<{
             </div>
             <div :class="$style.grid">
                 <div></div>
-                <TheHeroButton :class="$style.button" style="justify-self: center;" to="/" />
+                <TheHeroButton :class="$style.button" style="justify-self: center;" to="/#kvantums" />
                 <div :class="$style.curriculas">
                     <h2 :class="$style['curriculas-heading']">
                         Направления

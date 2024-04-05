@@ -42,12 +42,18 @@ const deltaXToCenter = computed(() => iconX.value)
         @mouseout="() => toggleCursor(true)"
         :to="to"
         :class="$style.button"
+        title="Ко всем направлениям"
     >
         <!-- <div style="position: fixed; top: 50px; left: 50px; color: white;">
             icon: {{ iconX }}|{{ iconY }}<br>
             wrapper: {{ width }}|{{ height }}<br>
             deltas: {{ deltaXToCenter }}|{{ deltaYToBottom }}
         </div> -->
+        <Icon
+            name="ph:arrow-down"
+            :class="[$style['out-icon']]"
+            size="100%"
+        />
         <div
             :class="$style['icon-wrapper']"
             :style="[iconWrapperTranslate, iconWrapperRotate]"
@@ -73,6 +79,7 @@ const deltaXToCenter = computed(() => iconX.value)
     aspect-ratio: 1;
     border-radius: 100vw;
     width: 4rem;
+    padding: 1rem;
 
     transition: all 0.1s ease-out;
 }
@@ -102,9 +109,15 @@ const deltaXToCenter = computed(() => iconX.value)
 .button:hover .icon-wrapper {
     display: flex;
 }
-
+.out-icon {
+    width: 2.5rem;
+    aspect-ratio: 1;
+    color: var(--c-site-background);
+}
+.button:hover > .out-icon {
+    display: none;
+}
 .icon {
-    width: 100%;
     width: 2.5rem;
     aspect-ratio: 1;
     color: var(--c-site-background);
