@@ -1,20 +1,33 @@
+<script setup lang="ts">
+const { data } = useSanityQuery<{
+    mediaGallery: { image: string, _id: string }[]
+}>(groq`
+    *[_type == 'siteSettings'][0] {
+        mediaGallery[] {
+            _id,
+            'image': asset->url
+        }
+    }
+`)
+</script>
+
 <template>
     <KContainer :class="$style.container">
-        <KSection heading="Медиа" />
-    </KContainer>
-    <KContainer :class="$style.container">
-        <KSection heading="Галерея" />
+        <KSection heading="Галерея">
+            <KGrid :columns="5">
+                <KGridCell v-for="image in data?.mediaGallery" :key="image._id">
+                    <img :class="$style.image" :src="image.image" alt="">
+                </KGridCell>
+            </KGrid>
+        </KSection>
     </KContainer>
 </template>
 
 <style module>
-.container {
-    margin-top: 5rem;
-}
-.heading {
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'BankGothic';
-    margin-bottom: 4rem;
+.image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
 }
 </style>
