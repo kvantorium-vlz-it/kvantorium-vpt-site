@@ -18,17 +18,23 @@ const { data = [] } = useSanityQuery<{
             heading="Часто задаваемые вопросы"
             :class="$style.section"
         >
-            <KAccordion
-                :class="$style.accordion"
-                :items='data?.map((i) => ({ label: i.question, content: i.answer })) || []'
-            ></KAccordion>
+            <KCollapsibleGroup is="ol" :class="$style.accordion">
+                <KCollapsible is="li"v-for="item in data" :key="item._id">
+                    <template #trigger>
+                        {{ item.question }}
+                    </template>
+
+                    {{ item.answer }}
+                </KCollapsible>
+            </KCollapsibleGroup>
         </KSection>
     </KContainer>
 </template>
 
 <style module>
 .accordion {
-    max-width: 40rem;
+    max-width: 50rem;
+    z-index: 4;
     margin-inline: auto;
 }
 .section {
@@ -39,6 +45,7 @@ const { data = [] } = useSanityQuery<{
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -1;
     border-top-right-radius: 5rem;
     margin-left: calc(var(--site-margin) * -1);
     padding-top: 2px;
