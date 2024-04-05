@@ -28,9 +28,13 @@ onMounted(() => {
     })
 })
 
-const { data: curriculas } = useSanityQuery<{ name: string }[]>(groq`
+const { data: curriculas } = useSanityQuery<{
+    name: string,
+    slug: string
+}[]>(groq`
     *[_type == 'kvantum'] {
         name,
+        'slug': slug.current,
     }
 `)
 </script>
@@ -49,12 +53,12 @@ const { data: curriculas } = useSanityQuery<{ name: string }[]>(groq`
                 <span :class="$style['title-bottom']">
                     “КВАНТОРИУМ “ВОЛЖСКИЙ ПОЛИТЕХ”
                 </span>
-                <!-- <address :class="$style.address">
-                    <a href="geo:48.786934,44.772160" :class="$style['address-link']">
+                <address :class="$style.address">
+                    <NuxtLink to="geo:48.786934,44.772160" :class="$style['address-link']">
                         <Icon name="ph:map-pin" />
                         Волжский, ул. Машиностроителей, 15
-                    </a>
-                </address> -->
+                    </NuxtLink>
+                </address>
             </div>
             <div :class="$style.grid">
                 <div></div>
@@ -69,7 +73,9 @@ const { data: curriculas } = useSanityQuery<{ name: string }[]>(groq`
                             v-for="curricula, index in curriculas"
                             :key="index"
                         >
-                            <TheHeroCurricula :name="curricula.name" />
+                            <NuxtLink :to="`/kvantum/${curricula.slug}`">
+                                <TheHeroCurricula :name="curricula.name" />
+                            </NuxtLink>
                         </li>
                     </ul>
                 </div>
