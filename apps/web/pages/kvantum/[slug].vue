@@ -68,9 +68,6 @@ const { data: kvantum } = useSanityQuery<{
 `, {
     slug,
 })
-
-console.log(kvantum.value);
-
 </script>
 
 <template>
@@ -96,46 +93,53 @@ console.log(kvantum.value);
                 Программы
             </h2>
 
-            <div v-for="teacher in kvantum.teachers">
-                <h3>
-                    {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
-                </h3>
+            <KGrid :columns="kvantum.teachers.length > 1 ? 2 : 1">
+                <KGridCell v-for="teacher in kvantum.teachers">
+                    <h3>
+                        {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
+                    </h3>
 
-                <div v-for="curricula in teacher.curriculas">
+                    <KCollapsibleGroup is="ul" is-multiple>
+                        <KCollapsible is="li" v-for="curricula in teacher.curriculas">
+                            <template #trigger>
+                                <h4>
+                                    {{ curricula.name }}
+                                </h4>
+                            </template>
 
-                    <h4>
-                        {{ curricula.name }}
-                    </h4>
+                            <div style="text-align: start;">
+                                <p>
+                                    Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
+                                </p>
 
-                    <p>
-                        Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
-                    </p>
+                                <p>
+                                    Уровень: {{ curricula.level }}
+                                </p>
 
-                    <p>
-                        Уровень: {{ curricula.level }}
-                    </p>
+                                <p>
+                                    Собеседование {{ curricula.interview ? 'да' : 'нет' }}
+                                </p>
 
-                    <p>
-                        Собеседование {{ curricula.interview ? 'да' : 'нет' }}
-                    </p>
+                                <p>
+                                    Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
+                                </p>
 
-                    <p>
-                        Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
-                    </p>
+                                <p>
+                                    Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
+                                </p>
 
-                    <p>
-                        Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
-                    </p>
+                                <p>
+                                    Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
+                                </p>
 
-                    <p>
-                        Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
-                    </p>
-
-                    <div>
-                        <NewsContentBlock :blocks="curricula.description" />
-                    </div>
-                </div>
-            </div>
+                                <div>
+                                    <BlockContent v-if="curricula.description" :blocks="curricula.description" />
+                                </div>
+                            </div>
+                        </KCollapsible>
+                    </KCollapsibleGroup>
+                </KGridCell>
+            </KGrid>
         </template>
 
         <h1 v-else>
