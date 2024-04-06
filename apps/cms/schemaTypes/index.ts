@@ -7,6 +7,7 @@ import news from "./news"
 import curricula from "./curricula"
 import papers from "./papers"
 import siteSettings from "./siteSettings"
+import imageAsset from "./objects/imageAsset"
 
 export const schemaTypes = [
     imageBlock,
@@ -18,4 +19,5 @@ export const schemaTypes = [
     news,
     papers,
     siteSettings,
+    imageAsset,
 ]
