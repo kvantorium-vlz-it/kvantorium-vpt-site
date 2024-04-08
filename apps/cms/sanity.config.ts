@@ -3,6 +3,8 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemaTypes'
 import { myStructure } from './deskStructure'
+import { media } from 'sanity-plugin-media'
+import schemas from './src/schemas'
 
 export default defineConfig({
     name: 'default',
@@ -15,10 +17,11 @@ export default defineConfig({
         structureTool({
             structure: myStructure
         }),
-        visionTool()
+        visionTool(),
+        media(),
     ],
 
     schema: {
-        types: schemaTypes
+        types: [...schemaTypes, ...schemas]
     },
 })
