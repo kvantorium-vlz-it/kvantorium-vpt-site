@@ -13,7 +13,7 @@ export default defineType({
             title: 'Имя',
             validation: (rule) => rule
                 .required()
-                .warning("Поле обязательно для заполнения."),
+                .error("Поле обязательно для заполнения."),
         }),
 
         defineField({
@@ -22,7 +22,7 @@ export default defineType({
             title: 'Фамилия',
             validation: (rule) => rule
                 .required()
-                .warning("Поле обязательно для заполнения."),
+                .error("Поле обязательно для заполнения."),
         }),
 
         defineField({
@@ -37,7 +37,7 @@ export default defineType({
             title: 'О сотруднике',
             validation: (rule) => rule
                 .required()
-                .warning("Поле обязательно для заполнения."),
+                .error("Поле обязательно для заполнения."),
         }),
 
         defineField({
@@ -46,7 +46,7 @@ export default defineType({
             title: 'Является ли педагогом',
             validation: (rule) => rule
                 .required()
-                .warning("Поле обязательно для заполнения."),
+                .error("Поле обязательно для заполнения."),
             initialValue: true,
         }),
 

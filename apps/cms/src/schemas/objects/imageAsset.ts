@@ -14,19 +14,22 @@ export default defineType({
             },
             validation: (rule) => rule
                 .required()
-                .warning('Поле обязательно для заполнения'),
+                .error('Поле обязательно для заполнения'),
         }),
+
         defineField({
             name: 'alt',
             type: 'string',
             title: 'Альтернативный текст',
             description: 'Поле, на случай, если изображение не появится у пользователей',
         }),
+
         defineField({
             name: 'caption',
             type: 'string',
             title: 'Подпись изображения',
         }),
+
         defineField({
             name: 'description',
             type: 'text',
