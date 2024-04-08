@@ -2,8 +2,6 @@ import { StructureBuilder } from "sanity/structure";
 import { API_VERSION } from "../constants";
 import employee from '../schemas/documents/employee'
 
-const DOCUMENT_TYPE_LIST = 'employee'
-
 export default (S: StructureBuilder) => S
     .listItem()
     .id('employees-list-item')
@@ -19,7 +17,7 @@ export default (S: StructureBuilder) => S
                 .title('Все сотрудники')
                 .icon(employee.icon)
                 .child(S
-                    .documentTypeList(DOCUMENT_TYPE_LIST)
+                    .documentTypeList(employee.name)
                     .apiVersion(API_VERSION)
                     .id('all-employees-list')
                     .title('Все сотрудники')
@@ -32,7 +30,7 @@ export default (S: StructureBuilder) => S
                 .title('Педагоги')
                 .icon(employee.icon)
                 .child(S
-                    .documentTypeList(DOCUMENT_TYPE_LIST)
+                    .documentTypeList(employee.name)
                     .apiVersion(API_VERSION)
                     .id('teacher-employees-list')
                     .title('Педагоги')
@@ -43,7 +41,7 @@ export default (S: StructureBuilder) => S
                 .title('Сотрудники')
                 .icon(employee.icon)
                 .child(S
-                    .documentTypeList(DOCUMENT_TYPE_LIST)
+                    .documentTypeList(employee.name)
                     .apiVersion(API_VERSION)
                     .title('Сотрудники')
                     .id('regular-employees-list')
