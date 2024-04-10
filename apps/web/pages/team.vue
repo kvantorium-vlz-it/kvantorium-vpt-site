@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { data: employes } = useSanityQuery<{
     isTeacher: boolean
-    patronymic: string
+    patronymic?: string
     surname: string
     name: string
     description: string
@@ -14,8 +14,8 @@ const { data: employes } = useSanityQuery<{
         surname,
         name,
         description,
-        'image': image.asset->url,
         _id,
+        'image': image.image.asset->url
     }
 `)
 </script>
@@ -77,6 +77,7 @@ const { data: employes } = useSanityQuery<{
     border-top-right-radius: var(--border-radius);
     margin-bottom: 1rem;
     aspect-ratio: 1;
+    object-fit: cover;
 }
 .name {
     font-size: 2rem;
