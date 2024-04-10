@@ -1,3 +1,4 @@
+import curriculum from "./documents/curriculum";
 import employee from "./documents/employee";
 import kvantum from "./documents/kvantum";
 import newsTag from "./documents/newsTag";
@@ -16,6 +17,7 @@ export default [
     employee,
     kvantum,
     newsTag,
+    curriculum,
 
     // Singleton documents
     settings,
