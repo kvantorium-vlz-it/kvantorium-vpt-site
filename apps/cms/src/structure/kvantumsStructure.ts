@@ -1,7 +1,7 @@
 import { StructureBuilder } from "sanity/structure";
 import {  } from '@sanity/icons'
-import kvantum from "../../schemaTypes/kvantum";
 import { API_VERSION } from "../constants";
+import kvantum from "../schemas/documents/kvantum";
 
 export default (S: StructureBuilder) => S
     .listItem()
