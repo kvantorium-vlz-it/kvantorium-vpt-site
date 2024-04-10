@@ -1,22 +1,20 @@
 <script setup lang="ts">
 const { data } = useSanityQuery<{
-    mediaGallery: { image: string, _id: string }[]
-}>(groq`
-    *[_type == 'siteSettings'][0] {
-        mediaGallery[] {
-            _id,
-            'image': asset->url
-        }
+    _key: string
+    url: string
+}[]>(groq`*[_type == 'settings'][0].mediaGallery[] {
+    _key,
+    'url': image.asset->url,
     }
 `)
 </script>
 
 <template>
     <KContainer :class="$style.container">
-        <KSection heading="Галерея">
+        <KSection heading="Галерея" v-if="data">
             <KGrid :columns="5">
-                <KGridCell v-for="image in data?.mediaGallery" :key="image._id">
-                    <img :class="$style.image" :src="image.image" alt="">
+                <KGridCell v-for="image in data" :key="image._key">
+                    <img :class="$style.image" :src="image.url" alt="">
                 </KGridCell>
             </KGrid>
         </KSection>

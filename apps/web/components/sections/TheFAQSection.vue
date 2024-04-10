@@ -1,15 +1,9 @@
 <script setup lang="ts">
 const { data = [] } = useSanityQuery<{
-    _id: string
-    answer: string
     question: string
-}[]>(groq`
-    *[_type == 'frequentlyAskedQuestions'] {
-        _id,
-        answer,
-        question,
-    }
-`)
+    answer: string
+    _key: string
+}[]>(groq`*[_type == 'settings'][0].faq`)
 </script>
 
 <template>
@@ -19,7 +13,7 @@ const { data = [] } = useSanityQuery<{
             :class="$style.section"
         >
             <KCollapsibleGroup is="ol" :class="$style.accordion">
-                <KCollapsible is="li"v-for="item in data" :key="item._id">
+                <KCollapsible is="li" v-for="item in data" :key="item._key">
                     <template #trigger>
                         {{ item.question }}
                     </template>

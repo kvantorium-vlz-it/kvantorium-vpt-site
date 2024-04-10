@@ -1,17 +1,5 @@
 <script setup lang="ts">
-const { data } = useSanityQuery<{
-    about: any[]
-}>(groq`
-    *[_type == 'siteSettings'][0] {
-        about[]{
-            ...,
-            _type == "imageBlock" => {
-                ...,
-                'image': image.asset->url,
-            }
-        }
-    }
-`)
+const { data } = useSanityQuery<any[]>(groq`*[_type == 'settings'][0].about`)
 
 console.log(data);
 </script>
@@ -20,7 +8,7 @@ console.log(data);
     <KContainer>
         <KSection heading="О нас">
             <div style="max-width: 50rem; margin-inline: auto;">
-                <BlockContent v-if="data" :blocks="data.about" />
+                <BlockContent v-if="data" :blocks="data" />
             </div>
         </KSection>
     </KContainer>
