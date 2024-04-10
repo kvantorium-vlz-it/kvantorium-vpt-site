@@ -25,6 +25,9 @@ export default defineType({
             options: {
                 source: 'name',
             },
+            validation: (rule) => rule
+                .required()
+                .error("Поле обязательно для заполнения."),
         }),
 
         defineField({
