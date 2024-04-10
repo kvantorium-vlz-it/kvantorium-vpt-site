@@ -1,6 +1,7 @@
 import curriculum from "./documents/curriculum";
 import employee from "./documents/employee";
 import kvantum from "./documents/kvantum";
+import news from "./documents/news";
 import newsTag from "./documents/newsTag";
 import settings from "./documents/settings";
 import contentBlock from "./objects/contentBlock";
@@ -18,6 +19,7 @@ export default [
     kvantum,
     newsTag,
     curriculum,
+    news,
 
     // Singleton documents
     settings,
