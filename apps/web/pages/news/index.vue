@@ -1,19 +1,30 @@
 <script setup lang="ts">
 const { data } = useSanityQuery<{
-    slug: string
-    previewImage: string
-    tags: string[]
-    heading: string
     _id: string
-    publishDate: string
+    slug: string
+    gallery: string[]
+    tags: string[]
+    date: string
+    title: string
+    content: any[]
+    previewImage: string
 }[]>(groq`
-    *[_type == 'news'] {
-        'slug': slug.current,
-        'previewImage': previewImage.asset->url,
-        'tags': tags[]->{ name }.name,
-        heading,
+    *[_type == 'news'][0..5] {
         _id,
-        publishDate,
+        'gallery': gallery[].image.asset->url,
+        'slug': slug.current,
+        tags,
+        date,
+        title,
+        'content': content[]{
+            ...,
+            _type == "imageBlock" => {
+                ...,
+                'image': image.asset->url,
+            }
+        },
+        'tags': tags[]->name,
+        'previewImage': previewImage.image.asset->url,
     }
 `)
 </script>
@@ -30,9 +41,9 @@ const { data } = useSanityQuery<{
                         <NewsCard
                             :news="{
                                 previewImage: news.previewImage,
-                                publishDate: new Date(news.publishDate),
+                                publishDate: new Date(news.date),
                                 tags: news.tags,
-                                title: news.heading,
+                                title: news.title,
                             }"
                         />
                     </NuxtLink>
