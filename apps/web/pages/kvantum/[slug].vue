@@ -3,174 +3,172 @@ const { params: { slug } } = useRoute()
 
 const { data: kvantum } = useSanityQuery<{
     _id: string
-    name: string
-    topics: string[]
-    minAge: number
     icon: string
     slug: string
+    name: string
+    topics: string[]
+    description: any[]
     teachers: {
+        patronymic: string
         name: string
         surname: string
-        patronymic: string
-        curriculas: {
-            hoursPerYear: {
-                firstHalf: number
-                secondHalf: number
-            }
-            ageFrom: number
-            ageTo: number
+        _id: string
+        curricula: {
             description: any[]
+            isInterview: boolean
+            level: number
+            name: string
             schedule: {
                 count: number
                 hours: number
             }
-            studentsCount: number
-            name: string
-            interview: boolean
-            level: 'Вводный' | 'Углубленный' | 'Проектный'
+            age: {
+                from: number
+                to: number
+            }
+            hoursPerYear: {
+                firstHalf: number
+                secondHalf: number
+            }
+            studentsInGroup: number
         }[]
     }[]
 }>(groq`
 *[_type == 'kvantum' && slug.current == $slug] {
     _id,
+    'icon': icon.image.asset->url,
+    'slug': slug.current,
     name,
     topics,
-    minAge,
-    'icon': icon.asset->url,
-    'slug': slug.current,
+    'description': description[]{
+          ...,
+          _type == "imageAsset" => {
+              ...,
+              'image': image.asset->url,
+          }
+    },
     'teachers': *[_type == 'employee' && isTeacher] {
-        _id,
+        patronymic,
         name,
         surname,
-        patronymic,
-        'curriculas': *[
-            _type == 'curricula' && references(^._id) && ^.^._id == kvantum._ref
+        _id,
+        'curricula': *[
+          _type == 'curriculum'
+          && kvantum._ref == ^.^._id
+          && teacher._ref == ^._id
         ] {
-            _id,
-            ageFrom,
-            ageTo,
-            interview,
-            name,
-            hoursPerYear,
-            studentsCount,
-            schedule,
-            level,
             'description': description[]{
                 ...,
-                _type == "imageBlock" => {
+                _type == "imageAsset" => {
                     ...,
                     'image': image.asset->url,
                 }
             },
-        },
-    }[count(@.curriculas) != 0]
+            isInterview,
+            level,
+            name,
+            schedule,
+            age,
+            hoursPerYear,
+            studentsInGroup,
+        }
+    }[count(@.curricula) != 0]
 }[0]
 `, {
     slug,
 })
 
+console.log(kvantum);
+
 const { data: rawKvantums } = useSanityQuery<{
-    minAge: number
     name: string
     icon: string
     slug: string
     topics: string[]
+    minAge: number
 }[]>(groq`
     *[_type == 'kvantum'] {
-        minAge,
         name,
-        'icon': icon.asset->url,
+        'icon': icon.image.asset->url,
         'slug': slug.current,
         topics,
+        'minAge': math::max([
+            math::min(
+                *[_type == 'curriculum' && references(^._id)].age.from
+            ),
+            12
+        ])
     }
 `)
-
-const kvantums = computed(() => rawKvantums.value?.map((kvantum) => ({
-    name: kvantum.name,
-    imageURL: kvantum.icon,
-    slug: kvantum.slug,
-    age: kvantum.minAge,
-    topicsList: kvantum.topics,
-})) || [])
 </script>
 
 <template>
     <div :class="$style.page">
         <template v-if="kvantum">
-
-            <KSection>
+            <KSection style="max-width: 768px; margin-inline: auto">
                 <template #heading>
-                <img :src="kvantum.icon" style="display: block; max-width: 20rem; width: 100%; margin-inline: auto; margin-bottom: 2rem;" alt="">
-                <h1>
+                    <img :src="kvantum.icon" style="display: block; max-width: 20rem; width: 100%; margin-inline: auto; margin-bottom: 2rem;" alt="">
                     {{ kvantum.name }}
-                </h1>
                 </template>
-                <h2 style="margin-inline: auto; width: fit-content;">
-                    Возрастная категория: {{ kvantum.minAge }}+
-                </h2>
 
-                <ol :class="$style.topics" style="margin-inline: auto; width: fit-content;" >
-                    <li v-for="topic, index in kvantum.topics" :key="index">
-                        {{ topic }}
-                    </li>
-                </ol>
+                <BlockContent :blocks="kvantum.description"/>
             </KSection>
 
             <KSection heading="Программы">
                 <KGrid :columns="kvantum.teachers.length > 1 ? 2 : 1">
-                <KGridCell v-for="teacher in kvantum.teachers">
-                    <KTypography
-                        font-family="BankGothic"
-                        font-size="h1"
-                        :font-weight="500"
-                        #="{ classes }"
-                    >
-                        <h3 :class="[classes]" style="margin-bottom: 2rem; text-align: center;">
-                            {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
-                        </h3>
-                    </KTypography>
+                    <KGridCell v-for="teacher in kvantum.teachers">
+                        <KTypography
+                            font-family="BankGothic"
+                            font-size="h1"
+                            :font-weight="500"
+                            #="{ classes }"
+                        >
+                            <h3 :class="[classes]" style="margin-bottom: 2rem; text-align: center;">
+                                {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
+                            </h3>
+                        </KTypography>
 
-                    <KCollapsibleGroup is="ul" is-multiple>
-                        <KCollapsible is="li" v-for="curricula in teacher.curriculas">
-                            <template #trigger>
-                                <h4>
-                                    {{ curricula.name }}
-                                </h4>
-                            </template>
+                        <KCollapsibleGroup is="ul" is-multiple>
+                            <KCollapsible is="li" v-for="curricula in teacher.curricula">
+                                <template #trigger>
+                                    <h4>
+                                        {{ curricula.name }}
+                                    </h4>
+                                </template>
 
-                            <div style="text-align: start;">
-                                <p>
-                                    Возраст: {{ curricula.ageFrom }}-{{ curricula.ageTo }} лет
-                                </p>
+                                <div style="text-align: start;">
+                                    <p>
+                                        Возраст: {{ curricula.age.from }}-{{ curricula.age.to }} лет
+                                    </p>
 
-                                <p>
-                                    Уровень: {{ curricula.level }}
-                                </p>
+                                    <p>
+                                        Уровень: {{ curricula.level }}
+                                    </p>
 
-                                <p>
-                                    Собеседование {{ curricula.interview ? 'да' : 'нет' }}
-                                </p>
+                                    <p>
+                                        Собеседование {{ curricula.isInterview ? 'да' : 'нет' }}
+                                    </p>
 
-                                <p>
-                                    Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
-                                </p>
+                                    <p>
+                                        Количество часов в год: {{ curricula.hoursPerYear.firstHalf }}/{{ curricula.hoursPerYear.secondHalf }}
+                                    </p>
 
-                                <p>
-                                    Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
-                                </p>
+                                    <p>
+                                        Режим занятий: {{ curricula.schedule.count }} раза в неделю по {{ curricula.schedule.hours }} академических часа
+                                    </p>
 
-                                <p>
-                                    Количество мест – 1 группа - {{ curricula.studentsCount }} чел.
-                                </p>
+                                    <p>
+                                        Количество мест – 1 группа - {{ curricula.studentsInGroup }} чел.
+                                    </p>
 
-                                <div>
-                                    <BlockContent v-if="curricula.description" :blocks="curricula.description" />
+                                    <div>
+                                        <BlockContent v-if="curricula.description" :blocks="curricula.description" />
+                                    </div>
                                 </div>
-                            </div>
-                        </KCollapsible>
-                    </KCollapsibleGroup>
-                </KGridCell>
-            </KGrid>
+                            </KCollapsible>
+                        </KCollapsibleGroup>
+                    </KGridCell>
+                </KGrid>
             </KSection>
         </template>
 
@@ -180,7 +178,8 @@ const kvantums = computed(() => rawKvantums.value?.map((kvantum) => ({
 
         <KSection heading="Другие квантумы">
             <KSwiper
-                :items="kvantums"
+                v-if="rawKvantums"
+                :items="rawKvantums"
                 :visibleSlidesCount="5"
                 :class="$style.swiper"
             >

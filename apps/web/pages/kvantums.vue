@@ -1,30 +1,23 @@
 <script setup lang="ts">
 const { data } = useSanityQuery<{
-    _id: string
-    minAge: number
     name: string
     icon: string
     slug: string
     topics: string[]
+    minAge: number
 }[]>(groq`
     *[_type == 'kvantum'] {
-        _id,
-        minAge,
         name,
-        'icon': icon.asset->url,
+        'icon': icon.image.asset->url,
         'slug': slug.current,
         topics,
-    }
-`)
-
-const kvantums = computed(() => data.value?.map((kvantum) => ({
-    id: kvantum._id,
-    name: kvantum.name,
-    imageURL: kvantum.icon,
-    slug: kvantum.slug,
-    age: kvantum.minAge,
-    topicsList: kvantum.topics,
-})) || [])
+        'minAge': math::max([
+            math::min(
+                *[_type == 'curriculum' && references(^._id)].age.from
+            ),
+        12
+    ])
+}`)
 </script>
 
 <template>
@@ -32,8 +25,8 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
         <KSection heading="Наши направления">
                 <ul :class="$style.list">
                     <li
-                        v-for="kvantum in kvantums"
-                        :key="kvantum.id"
+                        v-for="kvantum, index in data"
+                        :key="index"
                     >
                         <TheKvantumsSectionKvantumCard :kvantum="kvantum" />
                     </li>

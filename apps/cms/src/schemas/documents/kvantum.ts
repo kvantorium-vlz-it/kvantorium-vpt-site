@@ -41,5 +41,12 @@ export default defineType({
             type: contentBlocks.name,
             title: 'Описание квантума',
         }),
+
+        defineField ({
+            name: 'topics',
+            type: 'array',
+            title: 'Основные темы, рассматриваемые на направлении',
+            of: [{ type: 'string' }],
+        })
     ],
 })
