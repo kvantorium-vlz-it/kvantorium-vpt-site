@@ -1,28 +1,25 @@
 <script setup lang="ts">
 // Delete before production
 const { data } = useSanityQuery<{
-    minAge: number
     name: string
     icon: string
     slug: string
     topics: string[]
+    minAge: number
 }[]>(groq`
     *[_type == 'kvantum'] {
-        minAge,
         name,
-        'icon': icon.asset->url,
+        'icon': icon.image.asset->url,
         'slug': slug.current,
         topics,
+        'minAge': math::max([
+            math::min(
+                *[_type == 'curriculum' && references(^._id)].age.from
+            ),
+            12
+        ])
     }
 `)
-
-const kvantums = computed(() => data.value?.map((kvantum) => ({
-    name: kvantum.name,
-    imageURL: kvantum.icon,
-    slug: kvantum.slug,
-    age: kvantum.minAge,
-    topicsList: kvantum.topics,
-})) || [])
 </script>
 
 <template>
@@ -32,7 +29,8 @@ const kvantums = computed(() => data.value?.map((kvantum) => ({
                 <TheKvantumsSectionInfoCard :class="$style.info" />
 
                 <KSwiper
-                    :items="kvantums"
+                    v-if="data"
+                    :items="data"
                     :visibleSlidesCount="4"
                     :class="$style.swiper"
                 >

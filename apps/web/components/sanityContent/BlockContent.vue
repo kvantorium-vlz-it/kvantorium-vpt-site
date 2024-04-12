@@ -26,7 +26,7 @@ defineProps<{
 
 const serializer: SanityContentSerializer = {
     types: {
-        imageBlock: ImageBlock,
+        imageAsset: ImageBlock,
     },
     marks: {
         link: LinkMark,

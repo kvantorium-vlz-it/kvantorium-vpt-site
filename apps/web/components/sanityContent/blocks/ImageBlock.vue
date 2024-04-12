@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
     image: string
-    alt: string
+    alt?: string
 }
 
 defineProps<Props>()

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 interface Kvantum {
     name: string
-    imageURL: string
+    icon: string
     slug: string
-    age: number
-    topicsList: string[]
+    topics: string[]
+    minAge: number
 }
 
 interface Props {
@@ -18,7 +18,7 @@ defineProps<Props>()
     <TheKvantumsSectionCard :class="$style.card">
         <template #header>
             <div :class="$style['header-wrapper']">
-                <img :class="$style.image" :src="kvantum.imageURL" alt="">
+                <img :class="$style.image" :src="kvantum.icon" alt="">
 
                 <NuxtLink
                     :to="`/kvantum/${kvantum.slug}`"
@@ -33,15 +33,15 @@ defineProps<Props>()
             {{ kvantum.name }}
         </h3>
 
-        <ol :class="$style.list">
-            <li v-for="item, index in kvantum.topicsList" :key="index">
-                {{ item }}
+        <ul :class="$style.list">
+            <li v-for="topic in kvantum.topics">
+                {{ topic }}
             </li>
-        </ol>
+        </ul>
 
         <template #footer>
             <div :class="$style['footer-wrapper']">
-                Возрастная категория: {{ kvantum.age }}+
+                Минимальный возраст: {{ kvantum.minAge }}
             </div>
         </template>
     </TheKvantumsSectionCard>
@@ -51,6 +51,7 @@ defineProps<Props>()
 .card {
     border: 2px solid var(--c-site-background-darker-2);
     background-color: var(--c-site-background);
+    overflow: hidden;
 }
 .header-wrapper {
     display: flex;
@@ -75,6 +76,9 @@ defineProps<Props>()
     line-height: 1;
     color: var(--c-site-text);
 }
+.body {
+    overflow: hidden;
+}
 .list {
     list-style-position: inside;
     color: var(--c-site-text);
@@ -83,6 +87,7 @@ defineProps<Props>()
     font-weight: 300;
     font-family: 'Circe';
     line-height: 1.4;
+    overflow-y: hidden;
 }
 .footer-wrapper {
     font-size: 0.75rem;

@@ -2,38 +2,40 @@
 const { params: { slug } } = useRoute()
 
 const { data } = useSanityQuery<{
-    slug: string
-    previewImage: string
-    content: any[]
-    tags: string[]
-    heading: string
-    images: { url: string }[]
     _id: string
-    publishDate: string
+    slug: string
+    gallery: string[]
+    tags: string[]
+    date: string
+    title: string
+    content: any[]
+    previewImage: string
 }>(groq`
     *[_type == 'news' && slug.current == $slug][0] {
+        _id,
+        'gallery': gallery[].image.asset->url,
         'slug': slug.current,
-        'previewImage': previewImage.asset->url,
-        content[]{
+        tags,
+        date,
+        title,
+        'content': content[]{
             ...,
-            _type == "imageBlock" => {
+            _type == "imageAsset" => {
                 ...,
                 'image': image.asset->url,
             }
         },
-        images[] {
-            'url': asset->url
-        },
-        'tags': tags[]->{ name }.name,
-        heading,
-        _id,
-        publishDate,
+        'tags': tags[]->name,
+        'previewImage': previewImage.image.asset->url,
     }
 `, {
     slug,
 })
 
-const date = computed(() => new Date(data.value!.publishDate))
+console.log(data.value);
+
+
+const date = computed(() => new Date(data.value!.date))
 
 const formattedDate = computed(() => {
     const formatter = new Intl.DateTimeFormat('ru-RU', {
@@ -64,7 +66,7 @@ const formattedDate = computed(() => {
 
                 <div :class="$style.info">
                     <h1 :class="$style.heading">
-                        {{ data?.heading }}
+                        {{ data?.title }}
                     </h1>
 
                     <div>
@@ -82,10 +84,10 @@ const formattedDate = computed(() => {
                     <BlockContent :blocks="data.content" />
 
                     <div>
-                        <KSwiper :class="$style.swiper" :visible-slides-count="2" :items="data.images" >
+                        <KSwiper :class="$style.swiper" :visible-slides-count="2" :items="data.gallery" >
                             <template #slide="{ item }">
                                 <img
-                                    :src="item.url"
+                                    :src="item"
                                     :class="$style['swiper-image']"
                                 />
                             </template>

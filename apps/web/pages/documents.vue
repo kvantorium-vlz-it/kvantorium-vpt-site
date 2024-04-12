@@ -1,23 +1,15 @@
 <script setup lang="ts">
 const { data: documents } = useSanityQuery<{
-    _id: string
+    _key: string
+    url: string
+    size: number
     name: string
-    file: {
-        url: string
-        size: number
-    }
-    _updatedAt: string
-    _createdAt: string
 }[]>(groq`
-    *[_type == 'paper'] {
-        _id,
+    *[_type == 'settings'][0].papers[] {
+        _key,
+        'url': file.asset->url,
+        'size': file.asset->size / 1024,
         name,
-        'file': file.asset-> {
-            url,
-            'size': size / 1024
-        },
-        _updatedAt,
-        _createdAt,
     }
 `)
 
@@ -33,23 +25,15 @@ function formatDate(date: Date) {
             <KGrid :columns="4">
                 <KGridCell
                     v-for="document in documents"
-                    :key="document._id"
+                    :key="document._key"
                 >
                     <div :class="$style.card">
                         <div :class="$style.title">
                             {{ document.name }}
                         </div>
-                        <div :class="$style.date">
-                            <template v-if="document._updatedAt">
-                                (Обновлено {{ formatDate(new Date(document._updatedAt)) }})
-                            </template>
-                            <template v-else>
-                                (Создано {{ formatDate(new Date(document._createdAt)) }})
-                            </template>
-                        </div>
-                        <a download target="_blank" :href="document.file.url">
+                        <a download target="_blank" :href="document.url">
                             <Icon name="ph:file"/>
-                            (Скачать/скачать {{ Math.floor(document.file.size * 100) / 100 }} кб.)
+                            (Скачать/скачать {{ Math.floor(document.size * 100) / 100 }} кб.)
                         </a>
                     </div>
                 </KGridCell>
@@ -79,10 +63,9 @@ function formatDate(date: Date) {
 }
 .title {
     font-size: 1.5rem;
-    margin-bottom: 0.25rem
+    margin-bottom: 1.75rem;
 }
 .date {
-    margin-bottom: 1.5rem;
     font-size: 0.75rem;
 }
 </style>
