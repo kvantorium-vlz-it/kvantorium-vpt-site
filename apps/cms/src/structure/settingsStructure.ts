@@ -9,4 +9,5 @@ export default (S: StructureBuilder) => S
     .child(S.document()
         .schemaType('settings')
         .documentId('settings')
+        .title('Настройки сайта')
     )
