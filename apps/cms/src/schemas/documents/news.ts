@@ -80,7 +80,7 @@ export default defineType({
     preview: {
         select: {
             title: 'title',
-            previewImage: 'previewImage',
+            previewImage: 'previewImage.image',
             date: 'date',
         },
 

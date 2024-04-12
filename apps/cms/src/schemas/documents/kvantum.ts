@@ -49,4 +49,17 @@ export default defineType({
             of: [{ type: 'string' }],
         })
     ],
+
+    preview: {
+        select: {
+            name: 'name',
+            icon: 'icon.image',
+        },
+        prepare({ icon, name }) {
+            return {
+                media: icon,
+                title: name,
+            }
+        },
+    }
 })
