@@ -20,7 +20,7 @@ const { data } = useSanityQuery<{
         title,
         'content': content[]{
             ...,
-            _type == "imageBlock" => {
+            _type == "imageAsset" => {
                 ...,
                 'image': image.asset->url,
             }
