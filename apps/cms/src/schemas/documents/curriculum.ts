@@ -2,7 +2,7 @@ import { defineField, defineType, useClient } from "sanity";
 import kvantum from "./kvantum";
 import employee from "./employee";
 import contentBlock from "../objects/contentBlock";
-import { CURRICULUM_LEVEL, DEFAULT_CURRICULUM_HALF_YEAR_HOURS, DEFAULT_CURRICULUM_MAX_AGE, DEFAULT_CURRICULUM_MIN_AGE, DEFAULT_CURRICULUM_SCHEDULE_DAYS_PER_WEEK, DEFAULT_CURRICULUM_SCHEDULE_LESSON_DURATION, MAX_CURRICULUM_AGE } from "../../constants";
+import { CURRICULUM_LEVEL, DEFAULT_CURRICULUM_HALF_YEAR_HOURS, DEFAULT_CURRICULUM_MAX_AGE, DEFAULT_CURRICULUM_MIN_AGE, DEFAULT_CURRICULUM_SCHEDULE_DAYS_PER_WEEK, DEFAULT_CURRICULUM_SCHEDULE_LESSON_DURATION, DEFAULT_CURRICULUM_STUDENTS_COUNT_IN_GROUP, MAX_CURRICULUM_AGE } from "../../constants";
 import { capitalizeFirstLetter, getCurriculumLevelLabel } from "../../utils";
 
 export default defineType({
@@ -140,6 +140,12 @@ export default defineType({
         }),
 
         defineField({
+            name: 'studentsInGroup',
+            type: 'number',
+            initialValue: DEFAULT_CURRICULUM_STUDENTS_COUNT_IN_GROUP,
+        }),
+
+        defineField({
             name: 'description',
             title: 'Описание программы',
             type: contentBlock.name,
@@ -153,7 +159,7 @@ export default defineType({
         select: {
             name: 'name',
             kvantumName: 'kvantum.name',
-            kvantumImage: 'kvantum.icon',
+            kvantumImage: 'kvantum.icon.image',
             level: 'level',
             teacherName: 'teacher.name',
             teacherSurname: 'teacher.surname',
