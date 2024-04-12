@@ -142,6 +142,7 @@ export default defineType({
         defineField({
             name: 'studentsInGroup',
             type: 'number',
+            title: 'Количество учеников в одной группе',
             initialValue: DEFAULT_CURRICULUM_STUDENTS_COUNT_IN_GROUP,
         }),
 
