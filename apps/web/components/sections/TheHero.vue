@@ -85,9 +85,10 @@ const { data: curriculas } = useSanityQuery<{
                             v-for="curricula, index in curriculas"
                             :key="index"
                         >
-                            <NuxtLink :to="`/kvantum/${curricula.slug}`">
-                                <TheHeroCurricula :name="curricula.name" />
-                            </NuxtLink>
+                            <TheHeroCurricula
+                                :name="curricula.name"
+                                :to="`/kvantum/${curricula.slug}`"
+                            />
                         </li>
                     </ul>
                 </div>

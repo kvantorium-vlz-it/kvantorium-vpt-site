@@ -37,7 +37,7 @@ watch(() => route.name, () => {
 
         <TheFooter :class="$style.footer" />
 
-        <TheCursor />
+        <TheCursor :class="$style.cursor"/>
 
         <ModalsContainer />
     </div>
@@ -57,5 +57,14 @@ watch(() => route.name, () => {
 .footer {
     margin-bottom: var(--site-margin);
     margin-top: 6rem;
+}
+.cursor {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .cursor {
+        display: block;
+    }
 }
 </style>
