@@ -1,5 +1,5 @@
 import { StructureBuilder } from "sanity/structure";
-import { TagsIcon } from '@sanity/icons'
+import { TagIcon } from '@sanity/icons'
 import { API_VERSION } from "../constants";
 import newsTag from "../schemas/documents/newsTag";
 
@@ -7,7 +7,7 @@ export default (S: StructureBuilder) => S
     .listItem()
     .id('tags-list-item')
     .title('Теги')
-    .icon(TagsIcon)
+    .icon(TagIcon)
     .child(S
         .list()
         .id('tags-groups-list')
@@ -16,7 +16,7 @@ export default (S: StructureBuilder) => S
             S.listItem()
                 .id('media-tags-group')
                 .title('Медиа-теги')
-                .icon(TagsIcon)
+                .icon(TagIcon)
                 .child(S
                     .documentTypeList('media.tag')
                     .id('media-tags-list')
@@ -27,7 +27,7 @@ export default (S: StructureBuilder) => S
             S.listItem()
                 .id('news-tags-group')
                 .title('Новостные теги')
-                .icon(TagsIcon)
+                .icon(TagIcon)
                 .child(S
                     .documentTypeList(newsTag.name)
                     .id('news-tags-list')
