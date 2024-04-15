@@ -23,8 +23,8 @@ const { data: employes } = useSanityQuery<{
 <template>
     <KContainer :class="$style.container">
         <KSection heading="Наша команда">
-            <ul :class="$style.list">
-                <li v-for="employee in employes" :key="employee._id">
+            <KGrid :class="$style.grid">
+                <KGridCell v-for="employee in employes" :key="employee._id">
                     <div :class="$style.card">
                         <img :src="employee.image" :alt="`${employee.name} ${employee.surname} ${employee.patronymic}`" :class="$style.image">
                         <div :class="$style.name">
@@ -37,8 +37,8 @@ const { data: employes } = useSanityQuery<{
                             {{ employee.description }}
                         </div>
                     </div>
-                </li>
-            </ul>
+                </KGridCell>
+            </KGrid>
         </KSection>
     </KContainer>
 </template>
@@ -52,14 +52,14 @@ const { data: employes } = useSanityQuery<{
     font-family: 'BankGothic';
     margin-bottom: 4rem;
 }
-.list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+.grid {
+    --columns: 1;
+}
+
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 3;
+    }
 }
 .card {
     --padding: 1rem;
