@@ -31,7 +31,7 @@ const { data } = useSanityQuery<{
                 <KSwiper
                     v-if="data"
                     :items="data"
-                    :visibleSlidesCount="4"
+                    :visibleSlidesCount="3"
                     :class="$style.swiper"
                 >
                     <template #slide="{ item }">
@@ -45,11 +45,6 @@ const { data } = useSanityQuery<{
                         slidesCount,
                     }">
                         <div :class="$style.navigation">
-                            <KProgress
-                                :value="currentSlide"
-                                :max="slidesCount - 4"
-                                :class="$style.progress"
-                            />
 
                             <div :class="$style.buttons">
                                 <button :class="$style['pagination-button']"
@@ -90,10 +85,20 @@ const { data } = useSanityQuery<{
     padding-bottom: 5rem;
 }
 .info {
-    width: calc(20% - 0.5rem + 0.5rem / 5);
+    width: calc(50% - 0.5rem + 0.5rem);
 }
 .swiper {
-    width: calc(4 * 20% - 0.5rem + 0.5rem / 5);
+    --slides: 1;
+    width: calc(1 * 50% - 0.5rem + 0.5rem);
+}
+@media screen and (min-width: 768px) {
+    .info {
+        width: calc(25% - 0.5rem + 0.5rem / 4);
+    }
+    .swiper {
+        width: calc(3 * 25% - 0.5rem + 0.5rem / 4);
+        --slides: 3;
+    }
 }
 .pagination-button {
     display: inline-flex;
@@ -111,7 +116,7 @@ const { data } = useSanityQuery<{
     cursor: pointer;
 }
 .progress {
-    width: calc(20% - 0.5rem + 0.5rem / 5);
+    width: calc(25% - 0.5rem + 0.5rem / 4);
     margin-bottom: 0.5rem;
 }
 .navigation {
