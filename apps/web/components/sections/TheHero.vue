@@ -161,23 +161,12 @@ const { data: curriculas } = useSanityQuery<{
 .container {
     padding: 10rem 1rem 1rem;
 }
-@media screen and (min-width: 768px) {
-    .container {
-        padding-inline: 4rem;
-    }
-}
 .grid {
     align-items: center;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr;
     gap: 1rem;
-}
-@media screen and (min-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr minmax(auto, 18rem) 1fr;
-        grid-template-rows: 18rem;
-    }
 }
 .address {
     display: flex;
@@ -209,14 +198,6 @@ const { data: curriculas } = useSanityQuery<{
     row-gap: 0.125rem;
     column-gap: 0.25rem;
 }
-@media screen and (min-width: 768px) {
-    .curriculas-list {
-        justify-content: end;
-    }
-    .curriculas-heading {
-        text-align: end;
-    }
-}
 .curriculas-heading {
     font-size: 3rem;
     color: var(--c-site-background);
@@ -244,6 +225,26 @@ const { data: curriculas } = useSanityQuery<{
 @media screen and (min-width: 768px) {
     .button {
         display: flex;
+    }
+    .curriculas-list {
+        justify-content: end;
+    }
+    .curriculas-heading {
+        text-align: end;
+    }
+    .grid {
+        grid-template-columns: 1fr minmax(auto, 18rem) 1fr;
+        grid-template-rows: 18rem;
+    }
+    .container {
+        padding-inline: 4rem;
+    }
+    .navigation {
+        text-align: start;
+        justify-self: start;
+    }
+    .curriculas-heading {
+        text-align: end;
     }
 }
 @keyframes button {
