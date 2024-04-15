@@ -23,24 +23,25 @@ const { data } = useSanityQuery<{
 <template>
     <KContainer>
         <KSection heading="Наши направления">
-                <ul :class="$style.list">
-                    <li
+                <KGrid :class="$style.grid">
+                    <KGridCell
                         v-for="kvantum, index in data"
                         :key="index"
                     >
                         <TheKvantumsSectionKvantumCard :kvantum="kvantum" />
-                    </li>
-                </ul>
+                    </KGridCell>
+                </KGrid>
         </KSection>
     </KContainer>
 </template>
 
 <style module>
-.list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap: 1rem;
-    list-style: none;
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 3;
+    }
 }
 </style>
