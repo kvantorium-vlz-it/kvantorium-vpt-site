@@ -82,7 +82,7 @@ const { open } = useModal({
 
 <template>
     <KFooter id="footer">
-        <KGridCell>
+        <KGridCell :class="$style.column">
             <div :class="$style.info">
                 <div :class="$style['info-top']">
                     <KCircleIcon
@@ -103,7 +103,7 @@ const { open } = useModal({
                 </KLinkButton>
             </div>
         </KGridCell>
-        <KGridCell :start-column="3">
+        <KGridCell :class="$style.column">
             <KNavigation
                 direction="vertical"
                 heading="Навигация"
@@ -125,7 +125,7 @@ const { open } = useModal({
                 </template>
             </KNavigation>
         </KGridCell>
-        <KGridCell>
+        <KGridCell :class="$style.column">
             <KNavigation
                 direction="vertical"
                 heading="Кванториум"
@@ -150,6 +150,15 @@ const { open } = useModal({
 </template>
 
 <style module>
+.column {
+    --start-column: auto;
+}
+
+@media screen and (min-width: 767px) {
+    .column:nth-of-type(2) {
+        --start-column: 3;
+    }
+}
 .info-top {
     display: grid;
     grid-template-columns: auto 1fr;

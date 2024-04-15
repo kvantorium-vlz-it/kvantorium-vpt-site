@@ -34,7 +34,7 @@ const { data } = useSanityQuery<{
         <KSection heading="Все новости">
             <KGrid
                 v-if="data"
-                :columns="3"
+                :class="$style.grid"
             >
                 <KGridCell v-for="news in data">
                     <NuxtLink :to="`/news/${news.slug}`">
@@ -52,3 +52,14 @@ const { data } = useSanityQuery<{
         </KSection>
     </KContainer>
 </template>
+
+<style module>
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 3;
+    }
+}
+</style>

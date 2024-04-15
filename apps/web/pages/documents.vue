@@ -22,7 +22,7 @@ function formatDate(date: Date) {
 <template>
     <KContainer>
         <KSection heading="Документы">
-            <KGrid :columns="4">
+            <KGrid :class="$style.grid">
                 <KGridCell
                     v-for="document in documents"
                     :key="document._key"
@@ -51,6 +51,14 @@ function formatDate(date: Date) {
 }
 .link {
     text-decoration: none;
+}
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 4;
+    }
 }
 .card {
     border-radius: 1rem;

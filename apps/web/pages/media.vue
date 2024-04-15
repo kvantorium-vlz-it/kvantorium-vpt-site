@@ -12,7 +12,7 @@ const { data } = useSanityQuery<{
 <template>
     <KContainer :class="$style.container">
         <KSection heading="Галерея" v-if="data">
-            <KGrid :columns="5">
+            <KGrid :class="$style.grid">
                 <KGridCell v-for="image in data" :key="image._key">
                     <img :class="$style.image" :src="image.url" alt="">
                 </KGridCell>
@@ -27,5 +27,13 @@ const { data } = useSanityQuery<{
     width: 100%;
     object-fit: cover;
     height: 100%;
+}
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 5;
+    }
 }
 </style>

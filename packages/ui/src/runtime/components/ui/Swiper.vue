@@ -98,9 +98,6 @@ onUnmounted(() => {
 <template>
     <div
         :class="$style.swiper"
-        :style="{
-            '--slides': visibleSlidesCount,
-        }"
     >
         <ul :class="$style.slides" ref="list">
             <li
@@ -133,7 +130,7 @@ onUnmounted(() => {
 <style module>
 .swiper {
     --gap: 0.5rem;
-    --slides: 5;
+    --slides: v-bind(visibleSlidesCount);
 
     --_gaps-size: var(--gap) + var(--gap) / var(--slides);
     --_column-width: 100% / var(--slides);

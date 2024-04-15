@@ -61,19 +61,18 @@ const { data: curriculas } = useSanityQuery<{
                 </address>
             </div>
             <div :class="$style.grid">
-                <div>
-                    <KNavigation
-                        heading="Навигация"
-                        :items="[
-                            { label: 'информация', to: '/#info' },
-                            { label: 'квантумы', to: '/#kvantums' },
-                            { label: 'новости', to: '/#news' },
-                            { label: 'часто задаваемые вопросы', to: '/#faq' },
-                            { label: 'мы на карте', to: '/#map' },
-                        ]"
-                        direction="vertical"
-                    />
-                </div>
+                <KNavigation
+                    :class="$style.navigation"
+                    heading="Навигация"
+                    :items="[
+                        { label: 'информация', to: '/#info' },
+                        { label: 'квантумы', to: '/#kvantums' },
+                        { label: 'новости', to: '/#news' },
+                        { label: 'часто задаваемые вопросы', to: '/#faq' },
+                        { label: 'мы на карте', to: '/#map' },
+                    ]"
+                    direction="vertical"
+                />
                 <TheHeroButton :class="$style.button" style="justify-self: center;" to="/#kvantums" />
                 <div :class="$style.curriculas">
                     <h2 :class="$style['curriculas-heading']">
@@ -85,9 +84,10 @@ const { data: curriculas } = useSanityQuery<{
                             v-for="curricula, index in curriculas"
                             :key="index"
                         >
-                            <NuxtLink :to="`/kvantum/${curricula.slug}`">
-                                <TheHeroCurricula :name="curricula.name" />
-                            </NuxtLink>
+                            <TheHeroCurricula
+                                :name="curricula.name"
+                                :to="`/kvantum/${curricula.slug}`"
+                            />
                         </li>
                     </ul>
                 </div>
@@ -150,18 +150,34 @@ const { data: curriculas } = useSanityQuery<{
 }
 .title-top {
     text-transform: uppercase;
-    font-size: 6rem;
+    /* font-size: 6rem; */
+    font-size: clamp(1rem, -0.4286rem + 7.1429vw, 6rem);
+}
+.navigation {
+    justify-self: center;
+    text-align: center;
+    width: fit-content;
 }
 .container {
-    padding: 10rem 4rem 1rem;
+    padding: 10rem 1rem 1rem;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        padding-inline: 4rem;
+    }
 }
 .grid {
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr minmax(auto, 18rem) 1fr;
-    grid-template-rows: 18rem;
     align-items: center;
+    grid-template-columns: 1fr;
     gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr minmax(auto, 18rem) 1fr;
+        grid-template-rows: 18rem;
+    }
 }
 .address {
     display: flex;
@@ -181,23 +197,32 @@ const { data: curriculas } = useSanityQuery<{
     text-decoration: none;
 }
 .title-bottom {
-    font-size: 3.5rem;
+    /* font-size: 3.5rem; */
+    font-size: clamp(0.75rem, -0.0357rem + 3.9286vw, 3.5rem);
     text-transform: uppercase;
 }
 .curriculas-list {
     display: flex;
     list-style: none;
-    justify-content: end;
+    justify-content: center;
     flex-wrap: wrap;
     row-gap: 0.125rem;
     column-gap: 0.25rem;
+}
+@media screen and (min-width: 768px) {
+    .curriculas-list {
+        justify-content: end;
+    }
+    .curriculas-heading {
+        text-align: end;
+    }
 }
 .curriculas-heading {
     font-size: 3rem;
     color: var(--c-site-background);
     font-family: 'BankGothic';
     margin-bottom: 1.5rem;
-    text-align: end;
+    text-align: center;
 }
 .curriculas {
     animation: curriculas 0.2s ease-out;
@@ -214,6 +239,12 @@ const { data: curriculas } = useSanityQuery<{
 }
 .button {
     animation: button 0.2s ease-out;
+    display: none;
+}
+@media screen and (min-width: 768px) {
+    .button {
+        display: flex;
+    }
 }
 @keyframes button {
     0% {
