@@ -9,11 +9,13 @@ type CssNumberValue = UnionStringLiteralsWithNumber<'auto'>
 
 interface Props {
     is?: UnionStringLiteralsWithString<'li' | 'div'>
+
     startColumn?: CssNumberValue
-    endColumn?: CssNumberValue
     startRow?: CssNumberValue
+
+    endColumn?: CssNumberValue
     endRow?: CssNumberValue
-    offset?: number
+
     width?: number
     height?: number
 }
@@ -21,36 +23,24 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     is: 'div',
     startColumn: 'auto',
-    endColumn: 'auto',
     startRow: 'auto',
-    endRow: 'auto',
+
+    height: 1,
+    width: 1,
 })
 
-function generateCellStyles(
-    start: Props['startColumn'],
-    end: Props['endColumn'],
-    width: Props['width'],
-): string
-function generateCellStyles(
-    start: Props['startRow'],
-    end: Props['endRow'],
-    size: Props['height'],
-): string {
-    return size === undefined
-        ? `${start} / ${end}`
-        : `${start} / span ${size}`
-}
 
-const gridColumn = computed(() => generateCellStyles(
-    props.startColumn,
-    props.endColumn,
-    props.width
-))
-const gridRow = computed(() => generateCellStyles(
-    props.startRow,
-    props.endRow,
-    props.height
-))
+/* Variables for sync js and css
+ * css variables is overrides js variables for using with media queries
+ */
+const _endRow = computed(() => props.endRow === undefined
+    ? 'var(--end-row)'
+    : props.endRow
+)
+const _endColumn = computed(() => props.endColumn === undefined
+    ? 'var(--end-column)'
+    : props.endColumn
+)
 </script>
 
 <template>
@@ -64,10 +54,19 @@ const gridRow = computed(() => generateCellStyles(
 
 <style module>
 .column {
-    --grid-column: v-bind(gridColumn);
-    --grid-row: v-bind(gridRow);
+    /* Variables for sync js and css
+     * css variables is overrides js variables for using with media queries
+     */
+    --_end-column: var(--end-column, v-bind(_endColumn));
+    --_end-row: var(--end-row, v-bind(_endRow));
 
-    grid-column: var(--grid-column);
-    grid-row: var(--grid-row);
+    --_start-column: var(--start-column, v-bind(startColumn));
+    --_start-row: var(--start-row, v-bind(startRow));
+
+    --_cell-width: var(--cell-width, v-bind(width));
+    --_cell-height: var(--cell-height, v-bind(height));
+
+    grid-column: var(--_start-column) / var(--_end-column, span var(--_cell-width, 1));
+    grid-row: var(--_start-row) / var(--_end-row, span var(--_cell-height, 1));
 }
 </style>
