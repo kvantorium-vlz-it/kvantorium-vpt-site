@@ -1,4 +1,4 @@
-export const API_VERSION = "2022-03-07"
+export const API_VERSION = process.env.SANITY_API_VERSION
 
 export const CURRICULUM_LEVEL = {
     'INTRODUCTORY': 1,
