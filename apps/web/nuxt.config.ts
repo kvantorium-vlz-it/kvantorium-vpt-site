@@ -23,11 +23,11 @@ export default defineNuxtConfig({
         '~/assets/css/index.css',
     ],
     yandexMaps: {
-        apikey: '20dfd6f4-545a-43cf-b1c8-96e82339316a',
+        apikey: process.env.YANDEX_MAPS_API_KEY,
     },
     sanity: {
-        projectId: 'ez4gpfpj',
-        dataset: 'production',
-        apiVersion: '2022-03-07',
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        apiVersion: process.env.SANITY_API_VERSION,
     }
 })
