@@ -44,8 +44,10 @@ const location = ref({
 <template>
     <KContainer>
         <KSection heading="Мы на карте">
-            <KGrid :columns="6">
-                <KGridCell :start-column="1" :end-column="3">
+            <KGrid :class="$style.grid">
+                <KGridCell
+                    :class="$style['grid-contacts-cell']"
+                >
                     <KNavigation
                         :items="[
                             {
@@ -70,7 +72,7 @@ const location = ref({
                     />
                 </KGridCell>
 
-                <KGridCell :start-column="3" :end-column="7">
+                <KGridCell :class="$style['map-grid-cell']">
                     <div :class="[$style['map-wrapper'], { [$style.focused]: isFocused }]">
                         <ClientOnly>
                             <YandexMap
@@ -161,6 +163,22 @@ const location = ref({
     outline: 4px dashed var(--c-site-background-darker-2);
     outline-offset: 4px;
     border-radius: 0.75rem;
+}
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 6;
+    }
+    .grid-contacts-cell {
+        --start-column: 1;
+        --end-column: 3;
+    }
+    .map-grid-cell {
+        --start-column: 3;
+        --end-column: 7;
+    }
 }
 .map {
     height: 100%;
