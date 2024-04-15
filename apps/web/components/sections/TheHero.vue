@@ -158,6 +158,12 @@ const { data: curriculas } = useSanityQuery<{
     text-align: center;
     width: fit-content;
 }
+@media screen and (min-width: 768px) {
+    .navigation {
+        text-align: start;
+        justify-self: start;
+    }
+}
 .container {
     padding: 10rem 1rem 1rem;
 }
