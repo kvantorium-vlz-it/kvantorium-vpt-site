@@ -34,8 +34,7 @@ const { data } = useSanityQuery<{
         <KSection heading="Новости">
             <KGrid
                 v-if="data"
-                :items="data"
-                :columns="3"
+                :class="$style.grid"
                 is="ul"
             >
                 <KGridCell is="li" v-for="news in data" :key="news._id">
@@ -50,7 +49,7 @@ const { data } = useSanityQuery<{
                         />
                     </NuxtLink>
                 </KGridCell>
-                <KGridCell :start-column="3">
+                <KGridCell :class="$style['grid-button-cell']">
                     <KLinkButton
                         to="/news"
                         variant="primary"
@@ -71,6 +70,17 @@ const { data } = useSanityQuery<{
     font-family: 'BankGothic';
     text-align: center;
     margin-bottom: 2rem;
+}
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 3;
+    }
+    .grid-button-cell {
+        --start-column: 3;
+    }
 }
 .list {
     padding: 0;
