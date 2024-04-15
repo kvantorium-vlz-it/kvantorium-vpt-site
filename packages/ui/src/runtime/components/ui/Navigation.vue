@@ -119,6 +119,7 @@ function isGroupNavigationItem(
     list-style: none;
     display: flex;
     width: fit-content;
+    flex-wrap: wrap;
 }
 .heading {
     color: var(--heading-color);
