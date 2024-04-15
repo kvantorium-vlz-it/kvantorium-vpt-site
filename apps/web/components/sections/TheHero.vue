@@ -159,7 +159,12 @@ const { data: curriculas } = useSanityQuery<{
     width: fit-content;
 }
 .container {
-    padding: 10rem 4rem 1rem;
+    padding: 10rem 1rem 1rem;
+}
+@media screen and (min-width: 768px) {
+    .container {
+        padding-inline: 4rem;
+    }
 }
 .grid {
     align-items: center;
