@@ -5,7 +5,7 @@
             is-full-width
         >
             <div :class="$style.inner">
-                <KGrid :columns="4">
+                <KGrid :class="$style.grid">
                     <slot></slot>
                 </KGrid>
 
@@ -44,5 +44,13 @@
     text-align: center;
     border-top: 2px solid var(--text-color);
     padding-top: 1rem;
+}
+.grid {
+    --columns: 1;
+}
+@media screen and (min-width: 768px) {
+    .grid {
+        --columns: 4;
+    }
 }
 </style>
