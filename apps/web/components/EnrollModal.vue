@@ -65,7 +65,12 @@ import { YandexMap, YandexMapDefaultSchemeLayer, YandexMapZoomControl, YandexMap
     background-color: var(--c-site-background);
     padding: 1.5rem 2.5rem;
     border-radius: 1rem;
-    width: 50vw;
+    width: 90vw;
+}
+@media screen and (min-width: 768px) {
+    .section {
+        width: 50vw;
+    }
 }
 .content {
     display: grid;
