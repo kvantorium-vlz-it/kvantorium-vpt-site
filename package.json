@@ -8,9 +8,15 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "dotenv -- turbo run build",
+    "install:root": "pnpm install --filter=\"{.}\"",
+    "install:packages": "pnpm install --filter=\"{packages/**}\" && pnpm run dev:prepare",
+    "install:apps": "pnpm install --filter=\"{apps/**}\"",
+    "install:deps": "pnpm run install:root && pnpm install:packages && pnpm install:apps",
+
     "dev": "dotenv -- turbo run dev --parallel",
-    "dev:prepare": "dotenv -- turbo run dev:prepare --parallel"
+    "dev:prepare": "dotenv -- turbo run dev:prepare --parallel",
+
+    "build": "dotenv -- turbo run build"
   },
   "devDependencies": {
     "turbo": "latest",
