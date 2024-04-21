@@ -12,15 +12,23 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./constants": {
       "import": "./dist/constants/index.js",
-      "require": "./dist/constants/index.cjs"
+      "require": "./dist/constants/index.cjs",
+      "types": "./dist/constants/index.d.ts"
     },
     "./enums": {
       "import": "./dist/enums.js",
-      "require": "./dist/enums.cjs"
+      "require": "./dist/enums.cjs",
+      "types": "./dist/enums.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.cjs",
+      "types": "./dist/utils.d.ts"
     }
   },
   "main": "./dist/index.cjs",

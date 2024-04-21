@@ -6,6 +6,7 @@ export default defineConfig((options) => {
             'src/index.ts',
             'src/constants/index.ts',
             'src/enums.ts',
+            'src/utils.ts',
         ],
         outDir: 'dist',
         clean: !options.watch,
