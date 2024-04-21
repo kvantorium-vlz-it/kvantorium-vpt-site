@@ -129,9 +129,9 @@ importers:
       nuxt-icon:
         specifier: ^0.6.10
         version: 0.6.10(nuxt@3.11.2)(rollup@3.29.4)(vite@5.2.9)(vue@3.4.23)
-      ui:
+      shared:
         specifier: '*'
-        version: 'link:'
+        version: link:../shared
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
