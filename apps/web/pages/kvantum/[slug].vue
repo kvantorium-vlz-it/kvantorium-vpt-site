@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { CurriculumLevelKey } from 'shared';
+import { getCurriculumLevelLabel, capitalizeFirstLetter } from 'shared/utils'
+
 const { params: { slug } } = useRoute()
 
 const { data: kvantum } = useSanityQuery<{
@@ -16,7 +19,7 @@ const { data: kvantum } = useSanityQuery<{
         curricula: {
             description: any[]
             isInterview: boolean
-            level: number
+            level: CurriculumLevelKey
             name: string
             schedule: {
                 count: number
@@ -142,7 +145,7 @@ const { data: rawKvantums } = useSanityQuery<{
                                     </p>
 
                                     <p>
-                                        Уровень: {{ curricula.level }}
+                                        Уровень: {{ capitalizeFirstLetter(getCurriculumLevelLabel(curricula.level)) }}
                                     </p>
 
                                     <p>

@@ -1,3 +1,5 @@
+import { MetaConstants } from 'shared/constants'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
@@ -28,6 +30,6 @@ export default defineNuxtConfig({
     sanity: {
         projectId: process.env.SANITY_PROJECT_ID,
         dataset: process.env.SANITY_DATASET,
-        apiVersion: process.env.SANITY_API_VERSION,
+        apiVersion: MetaConstants.SANITY_API_VERSION,
     }
 })
