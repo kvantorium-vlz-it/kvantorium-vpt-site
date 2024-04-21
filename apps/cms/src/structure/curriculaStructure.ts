@@ -1,9 +1,10 @@
 import { StructureBuilder } from "sanity/structure";
 import curriculum from "../schemas/documents/curriculum";
-import { API_VERSION, CURRICULUM_LEVEL } from "../constants";
 import kvantum from "../schemas/documents/kvantum";
 import employee from "../schemas/documents/employee";
-import { capitalizeFirstLetter, getCurriculumLevelLabel } from "../utils";
+
+import { CURRICULUM_LEVEL } from 'shared/enums'
+import { capitalizeFirstLetter, getCurriculumLevelLabel } from "shared/utils";
 
 export default (S: StructureBuilder) => S
     .listItem()
@@ -19,7 +20,7 @@ export default (S: StructureBuilder) => S
                 .title('Все учебные программы')
                 .child(S
                     .documentTypeList(curriculum.name)
-                    .apiVersion(API_VERSION)
+                    .apiVersion("")
                     .id('all-curricula-list')
                     .title('Все учебные программы')
                 ),
@@ -31,12 +32,12 @@ export default (S: StructureBuilder) => S
                 .title('По квантумам')
                 .child(S
                     .documentTypeList(kvantum.name)
-                    .apiVersion(API_VERSION)
+                    .apiVersion("")
                     .id('kvantums-list')
                     .title('Учебные программы по квантумам')
                     .child((kvantumId) => S
                         .documentTypeList(curriculum.name)
-                        .apiVersion(API_VERSION)
+                        .apiVersion("")
                         .id('kvantum-curricula-list')
                         .filter('references($id)')
                         .params({ id: kvantumId })
@@ -49,13 +50,13 @@ export default (S: StructureBuilder) => S
                 .title('По педагогам')
                 .child(S
                     .documentTypeList(employee.name)
-                    .apiVersion(API_VERSION)
+                    .apiVersion("")
                     .filter('isTeacher')
                     .id('teachers-list')
                     .title("Учебные программы по педагогам")
                     .child((employeeId) => S.
                         documentTypeList(curriculum.name)
-                        .apiVersion(API_VERSION)
+                        .apiVersion("")
                         .id('teacher-curricula-list')
                         .filter('references($id)')
                         .params({ id: employeeId })
@@ -78,7 +79,7 @@ export default (S: StructureBuilder) => S
                             .title(`${capitalizeFirstLetter(getCurriculumLevelLabel(level))} уровень`)
                             .child(S
                                 .documentTypeList(curriculum.name)
-                                .apiVersion(API_VERSION)
+                                .apiVersion("")
                                 .id('a1')
                                 .filter(`level == ${level}`)
                                 .title(`${capitalizeFirstLetter(getCurriculumLevelLabel(level))} уровень`)

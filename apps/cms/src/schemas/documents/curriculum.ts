@@ -2,8 +2,10 @@ import { defineField, defineType, useClient } from "sanity";
 import kvantum from "./kvantum";
 import employee from "./employee";
 import contentBlock from "../objects/contentBlock";
-import { CURRICULUM_LEVEL, DEFAULT_CURRICULUM_HALF_YEAR_HOURS, DEFAULT_CURRICULUM_MAX_AGE, DEFAULT_CURRICULUM_MIN_AGE, DEFAULT_CURRICULUM_SCHEDULE_DAYS_PER_WEEK, DEFAULT_CURRICULUM_SCHEDULE_LESSON_DURATION, DEFAULT_CURRICULUM_STUDENTS_COUNT_IN_GROUP, MAX_CURRICULUM_AGE } from "../../constants";
-import { capitalizeFirstLetter, getCurriculumLevelLabel } from "../../utils";
+
+import { DefaultCurriculumConstants } from 'shared/constants'
+import { CURRICULUM_LEVEL } from 'shared/enums'
+import { capitalizeFirstLetter, getCurriculumLevelLabel } from 'shared/utils'
 
 export default defineType({
     name: 'curriculum',
@@ -51,17 +53,17 @@ export default defineType({
                     name: 'from',
                     type: 'number',
                     title: 'Минимальный возраст',
-                    initialValue: DEFAULT_CURRICULUM_MIN_AGE,
+                    initialValue: DefaultCurriculumConstants.STUDENTS_MIN_AGE,
                 }),
 
                 defineField({
                     name: 'to',
                     type: 'number',
                     title: 'Максимальный возраст',
-                    initialValue: DEFAULT_CURRICULUM_MAX_AGE,
+                    initialValue: DefaultCurriculumConstants.STUDENTS_MAX_AGE,
                     validation: (rule) => rule
-                        .max(MAX_CURRICULUM_AGE)
-                        .error(`Возраст должен быть до ${MAX_CURRICULUM_AGE}`),
+                        .max(DefaultCurriculumConstants.STUDENTS_MAX_AGE)
+                        .error(`Возраст должен быть до ${DefaultCurriculumConstants.STUDENTS_MAX_AGE}`),
                 }),
             ],
             validation: (rule) => rule
@@ -100,14 +102,14 @@ export default defineType({
                     name: 'firstHalf',
                     title: 'Первое полугодие',
                     type: 'number',
-                    initialValue: DEFAULT_CURRICULUM_HALF_YEAR_HOURS,
+                    initialValue: DefaultCurriculumConstants.ACADEMIC_HOURS_PER_HALF_YEAR,
                 }),
 
                 defineField({
                     name: 'secondHalf',
                     title: 'Второе полугодие',
                     type: 'number',
-                    initialValue: DEFAULT_CURRICULUM_HALF_YEAR_HOURS
+                    initialValue: DefaultCurriculumConstants.ACADEMIC_HOURS_PER_HALF_YEAR
                 }),
             ],
             validation: (rule) => rule
@@ -124,14 +126,14 @@ export default defineType({
                     name: 'count',
                     type: 'number',
                     title: 'Количество дней в неделю',
-                    initialValue: DEFAULT_CURRICULUM_SCHEDULE_DAYS_PER_WEEK,
+                    initialValue: DefaultCurriculumConstants.SCHEDULE_DAYS_PER_WEEK,
                 }),
 
                 defineField({
                     name: 'hours',
                     type: 'number',
                     title: 'Длительность одного занятия (в академических часах)',
-                    initialValue: DEFAULT_CURRICULUM_SCHEDULE_LESSON_DURATION,
+                    initialValue: DefaultCurriculumConstants.SCHEDULE_LESSON_DURATION_IN_ACADEMIC_HOURS,
                 }),
             ],
             validation: (rule) => rule
@@ -143,7 +145,7 @@ export default defineType({
             name: 'studentsInGroup',
             type: 'number',
             title: 'Количество учеников в одной группе',
-            initialValue: DEFAULT_CURRICULUM_STUDENTS_COUNT_IN_GROUP,
+            initialValue: DefaultCurriculumConstants.STUDENTS_COUNT_IN_GROUP,
         }),
 
         defineField({
