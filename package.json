@@ -9,8 +9,6 @@
   ],
   "scripts": {
     "dev": "dotenv -- turbo run dev --parallel",
-    "dev:prepare": "dotenv -- turbo run dev:prepare --parallel",
-
     "build": "dotenv -- turbo run build"
   },
   "devDependencies": {
