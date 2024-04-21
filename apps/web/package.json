@@ -27,6 +27,7 @@
     "floating-vue": "^5.2.2",
     "modern-normalize": "^2.0.0",
     "vue-final-modal": "^4.5.4",
-    "vue-yandex-maps": "^2.1.2"
+    "vue-yandex-maps": "^2.1.2",
+    "shared": "*"
   }
 }

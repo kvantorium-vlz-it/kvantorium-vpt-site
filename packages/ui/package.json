@@ -29,7 +29,8 @@
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "floating-vue": "^5.2.2",
-    "nuxt-icon": "^0.6.10"
+    "nuxt-icon": "^0.6.10",
+    "ui": "*"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
