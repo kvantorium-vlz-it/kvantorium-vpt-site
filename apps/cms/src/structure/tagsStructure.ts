@@ -1,6 +1,5 @@
 import { StructureBuilder } from "sanity/structure";
 import { TagIcon } from '@sanity/icons'
-import { API_VERSION } from "../constants";
 import newsTag from "../schemas/documents/newsTag";
 
 export default (S: StructureBuilder) => S
@@ -20,7 +19,7 @@ export default (S: StructureBuilder) => S
                 .child(S
                     .documentTypeList('media.tag')
                     .id('media-tags-list')
-                    .apiVersion(API_VERSION)
+                    .apiVersion("API_VERSION")
                     .title('Медиа теги')
                 ),
             S.divider(),
@@ -31,7 +30,7 @@ export default (S: StructureBuilder) => S
                 .child(S
                     .documentTypeList(newsTag.name)
                     .id('news-tags-list')
-                    .apiVersion(API_VERSION)
+                    .apiVersion("API_VERSION")
                     .title('Новостные теги')
                 )
         ])

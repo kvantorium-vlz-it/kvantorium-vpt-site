@@ -1,10 +1,11 @@
-import { CURRICULUM_LEVEL } from "./constants";
+import { CURRICULUM_LEVEL } from './enums.js'
+import { CurriculumLevelKey } from './types.js'
 
 export function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export function getCurriculumLevelLabel(level: typeof CURRICULUM_LEVEL[keyof typeof CURRICULUM_LEVEL]) {
+export function getCurriculumLevelLabel(level: CurriculumLevelKey) {
     switch (level) {
         case CURRICULUM_LEVEL.INTRODUCTORY:
             return 'вводный'

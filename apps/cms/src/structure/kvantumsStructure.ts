@@ -1,6 +1,5 @@
 import { StructureBuilder } from "sanity/structure";
 import {  } from '@sanity/icons'
-import { API_VERSION } from "../constants";
 import kvantum from "../schemas/documents/kvantum";
 
 export default (S: StructureBuilder) => S
@@ -10,7 +9,7 @@ export default (S: StructureBuilder) => S
     // TODO: add kvantum icon
     .child(S
         .documentTypeList(kvantum.name)
-        .apiVersion(API_VERSION)
+        .apiVersion("")
         .title("Квантумы")
         .id('all-kvantums-list')
     )

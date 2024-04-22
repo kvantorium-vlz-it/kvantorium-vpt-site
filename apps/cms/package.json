@@ -22,7 +22,9 @@
     "react-is": "^18.2.0",
     "sanity": "^3.38.0",
     "sanity-plugin-media": "^2.2.5",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "shared": "*",
+    "@kvantorium-vpt-site/tsconfig": "*"
   },
   "devDependencies": {
     "@types/react": "^18.2.79",

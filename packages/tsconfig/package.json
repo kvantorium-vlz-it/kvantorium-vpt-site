@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "files": [
-    "sanity.json"
-  ]
+    "base.json",
+    "enviroments.d.ts"
+  ],
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "^5.0.0"
+  }
 }
