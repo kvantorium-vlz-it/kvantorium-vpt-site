@@ -73,7 +73,18 @@ const {
         </button>
 
         <hr>
+
         Visible slides: {{ viewSlides }}
+
+        <hr>
+
+        <br>
+
+        <KSwiper :visible-slides-count="slidesPerView">
+            <KSwiperSlide v-for="slide in slides">
+                Slide {{ slide }}
+            </KSwiperSlide>
+        </KSwiper>
     </div>
 </template>
 
