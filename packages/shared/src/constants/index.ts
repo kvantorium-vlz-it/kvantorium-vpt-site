@@ -1,1 +1,1 @@
-export { DefaultCurriculumConstants } from './curriculum'
+export { DefaultCurriculumConstants } from './curriculum.js'

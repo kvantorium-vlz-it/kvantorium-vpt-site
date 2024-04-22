@@ -37,7 +37,8 @@
     "dist"
   ],
   "devDependencies": {
-    "tsup": "^8.0.2"
+    "tsup": "^8.0.2",
+    "@kvantorium-vpt-site/tsconfig": "*"
   },
   "type": "module"
 }

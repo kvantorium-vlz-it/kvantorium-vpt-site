@@ -1,5 +1,5 @@
-import { CURRICULUM_LEVEL } from './enums'
-import { CurriculumLevelKey } from './types'
+import { CURRICULUM_LEVEL } from './enums.js'
+import { CurriculumLevelKey } from './types.js'
 
 export function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1)

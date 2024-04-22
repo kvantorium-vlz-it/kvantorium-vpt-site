@@ -109,11 +109,18 @@ importers:
 
   packages/shared:
     devDependencies:
+      '@kvantorium-vpt-site/tsconfig':
+        specifier: '*'
+        version: link:../tsconfig
       tsup:
         specifier: ^8.0.2
         version: 8.0.2
 
-  packages/tsconfig: {}
+  packages/tsconfig:
+    devDependencies:
+      '@sindresorhus/tsconfig':
+        specifier: ^5.0.0
+        version: 5.0.0
 
   packages/ui:
     dependencies:
@@ -4431,6 +4438,11 @@ packages:
   /@sindresorhus/merge-streams@2.3.0:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
+
+  /@sindresorhus/tsconfig@5.0.0:
+    resolution: {integrity: sha512-LvvySslVPhAwo7dT+iovKXKCmJD82yYAsH/3D5BSyT3YP9Dvhdlhy0eQr0DBE0CxeFO6Wdbco3+nB+c2QYcAaA==}
+    engines: {node: '>=18'}
+    dev: true
 
   /@tanem/react-nprogress@5.0.51(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-YxNUCpznuBVA+PhjEzFmxaa1czXgU+5Ojchw5JBK7DQS6SHIgNudpFohWpNBWMu2KWByGJ2OLH2OwbM/XyP18Q==}
