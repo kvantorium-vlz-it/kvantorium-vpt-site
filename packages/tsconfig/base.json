@@ -6,7 +6,6 @@
     "module": "Node16",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "allowJs": true,
     "noUnusedLocals": false,
     "allowUnusedLabels": true,
     "allowArbitraryExtensions": true,

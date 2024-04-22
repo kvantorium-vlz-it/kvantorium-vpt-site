@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": "dist",
   },
-  "include": ["**/*.ts", "@kvantorium-vpt-site/tsconfig/enviroments.d.ts"]
+  "include": ["src/**/*.ts", "@kvantorium-vpt-site/tsconfig/enviroments.d.ts"]
 }
