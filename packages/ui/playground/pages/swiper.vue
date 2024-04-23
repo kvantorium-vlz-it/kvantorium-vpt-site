@@ -80,18 +80,22 @@ const {
 
         <br>
 
+        <div style="aspect-ratio: 1; border: 1px solid black; width: fit-content; block-size: fit-content;">
+            +
+        </div>
+
         <KSwiper :visible-slides-count="slidesPerView">
             <KSwiperSlide v-for="slide in slides">
                 Slide {{ slide - 1 }}
             </KSwiperSlide>
 
-            <template #navigation="{ slideToNextView, slideToPreviousView }">
-                <button @click="slideToPreviousView">
-                    -
-                </button>
-                <button @click="slideToNextView">
-                    +
-                </button>
+            <template #navigation="{ slideToNextView, slideToPreviousView, isFirstView, isLastView }">
+                <KCircleButton @click="slideToPreviousView" :is-disabled="isFirstView">
+                    <Icon name="ph:arrow-left" />
+                </KCircleButton>
+                <KCircleButton @click="slideToNextView" :is-disabled="isLastView">
+                    <Icon name="ph:arrow-right" />
+                </KCircleButton>
             </template>
         </KSwiper>
     </div>
