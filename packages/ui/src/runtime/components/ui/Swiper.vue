@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { computed, onMounted, onUnmounted, ref, useIntersectionObserver, useSwiper } from '#imports'
+import { computed, onMounted, onUnmounted, ref, useIntersectionObserver, useIntervalFn, useSwiper } from '#imports'
 import type { UseIntersectionObserverReturn } from '@vueuse/core';
 import type { UnionStringLiteralsWithString } from '../../assets/ts/types';
 
@@ -8,6 +8,8 @@ interface Props {
     isLooped?: boolean
     is?: UnionStringLiteralsWithString<'ul' | 'ol' | 'div'>
     showScrollbar?: boolean
+    isAutoPlay?: boolean
+    autoPlayInterval?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,6 +17,8 @@ const props = withDefaults(defineProps<Props>(), {
     visibleSlidesCount: 1,
     is: 'div',
     showScrollbar: false,
+    isAutoPlay: false,
+    autoPlayInterval: 10000,
 })
 
 const list = ref<HTMLUListElement | HTMLOListElement | HTMLElement>()
@@ -88,6 +92,12 @@ onMounted(() => {
     })
 
     slidesIntersectionResults.value?.map(({ resume }) => resume())
+})
+
+useIntervalFn(() => {
+    _slideToNextView()
+}, props.autoPlayInterval, {
+    immediate: props.isAutoPlay,
 })
 
 onUnmounted(() => {
