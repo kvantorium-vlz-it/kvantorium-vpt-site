@@ -25,13 +25,17 @@ const { data } = useSanityQuery<{
 <template>
     <KContainer :class="$style.container">
         <KSection heading="Квантумы">
-            <div :class="$style.kvantums">
-                <TheKvantumsSectionInfoCard :class="$style.info" />
+            <KGrid :columns="5">
+                <KGridCell>
+                    <TheKvantumsSectionInfoCard />
+                </KGridCell>
 
-                <KvantumsSwiper
-                    :kvantums="data || []"
-                />
-            </div>
+                <KGridCell :width="4">
+                    <KvantumsSwiper
+                        :kvantums="data || []"
+                    />
+                </KGridCell>
+            </KGrid>
         </KSection>
     </KContainer>
 </template>
@@ -60,6 +64,12 @@ const { data } = useSanityQuery<{
 .swiper {
     --slides: 1;
     width: calc(1 * 50% - 0.5rem + 0.5rem);
+}
+.paragraph {
+    max-width: 40rem;
+    margin-block-end: 1rem;
+    margin-inline: auto;
+    text-align: center
 }
 @media screen and (min-width: 768px) {
     .info {
