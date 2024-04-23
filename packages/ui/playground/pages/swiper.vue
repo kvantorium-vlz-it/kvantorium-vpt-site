@@ -82,8 +82,17 @@ const {
 
         <KSwiper :visible-slides-count="slidesPerView">
             <KSwiperSlide v-for="slide in slides">
-                Slide {{ slide }}
+                Slide {{ slide - 1 }}
             </KSwiperSlide>
+
+            <template #navigation="{ slideToNextView, slideToPreviousView }">
+                <button @click="slideToPreviousView">
+                    -
+                </button>
+                <button @click="slideToNextView">
+                    +
+                </button>
+            </template>
         </KSwiper>
     </div>
 </template>

@@ -38,27 +38,30 @@ function useSwiper({
             ? modulusLoop(view, options)
             : clamp(view, options)
 
+        const oldView = currentView.value
         currentView.value = newSlidesOffset
+
+        return oldView
     }
 
     function slideDelta(delta: number) {
-        slideToView(currentView.value + delta)
+        return slideToView(currentView.value + delta)
     }
 
     function slideToNextView() {
-        slideDelta(1)
+        return slideDelta(1)
     }
 
     function slideToPreviousView() {
-        slideDelta(-1)
+        return slideDelta(-1)
     }
 
     function slideToFirstView() {
-        slideToView(0)
+        return slideToView(0)
     }
 
     function slideToLastView() {
-        slideToView(viewsCount.value)
+        return slideToView(viewsCount.value)
     }
 
     return {

@@ -7,17 +7,19 @@ interface Props {
     visibleSlidesCount?: number
     isLooped?: boolean
     is?: UnionStringLiteralsWithString<'ul' | 'ol' | 'div'>
+    showScrollbar?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
     isLooped: false,
     visibleSlidesCount: 1,
-    is: 'div'
+    is: 'div',
+    showScrollbar: false,
 })
 
 const list = ref<HTMLUListElement | HTMLOListElement | HTMLElement>()
 const slides = computed(() => [...list.value?.children || []] as HTMLElement[])
-const slidesCount = computed(() => slides.value.length || 0)
+const slidesCount = computed(() => slides.value.length)
 
 const {
     currentView,
@@ -32,38 +34,29 @@ const {
     slidesPerView: props.visibleSlidesCount,
 })
 
-function _slideToNextSlide() {
+function _updateScrolling() {
+    if (!slides.value) {
+        return
+    }
+
+    const slide = slides.value[currentView.value]
+
+    slide.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+    })
+}
+
+function _slideToNextView() {
     slideToNextView()
-
-    if (!slides.value) {
-        return
-    }
-
-    const slide = slides.value[currentView.value]
-
-    slide.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-    })
+    _updateScrolling()
 }
 
-function _slideToPreviousSlide() {
+function _slideToPreviousView() {
     slideToPreviousView()
-
-    if (!slides.value) {
-        return
-    }
-
-    const slide = slides.value[currentView.value]
-
-    slide.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-    })
+    _updateScrolling()
 }
-
 
 const slidesIntersectionResults = ref<UseIntersectionObserverReturn[]>()
 
@@ -80,12 +73,12 @@ onMounted(() => {
             const isSlideLeft = currentView.value - 1 === index
 
             if (isSlideRight) {
-                _slideToNextSlide()
+                _slideToNextView()
                 return
             }
 
             if (isSlideLeft) {
-                _slideToPreviousSlide()
+                _slideToPreviousView()
                 return
             }
         }, {
@@ -104,7 +97,12 @@ onUnmounted(() => {
 
 <template>
     <div
-        :class="$style.swiper"
+        :class="[
+            $style.swiper,
+            {
+                [$style['show-scrollbar']]: showScrollbar,
+            }
+        ]"
     >
         <component
             :class="$style.slides"
@@ -114,18 +112,6 @@ onUnmounted(() => {
             <slot></slot>
         </component>
 
-        <hr>
-        {{ viewsCount }}
-        {{ currentView }}
-        <hr>
-
-        <button @click="_slideToPreviousSlide">
-            -
-        </button>
-        <button @click="_slideToNextSlide">
-            +
-        </button>
-
         <div :class="$style.addons">
             <slot
                 name="navigation"
@@ -134,8 +120,8 @@ onUnmounted(() => {
                 :slidesCount="slidesCount"
                 :isFirstView="isFirstView"
                 :isLastView="isLastView"
-                :slideToPreviousView="_slideToPreviousSlide"
-                :slideToNextView="_slideToNextSlide"
+                :slideToPreviousView="_slideToPreviousView"
+                :slideToNextView="_slideToNextView"
             ></slot>
         </div>
     </div>
@@ -145,8 +131,6 @@ onUnmounted(() => {
 .swiper {
     --gap: 0.5rem;
     --slides-per-view: v-bind(visibleSlidesCount);
-
-    width: 100%;
 }
 .slides {
     --gaps-size: calc(var(--gap) - var(--gap) / var(--slides-per-view));
@@ -168,7 +152,12 @@ onUnmounted(() => {
 .slides::-webkit-scrollbar {
     display: none;
 }
-/* :not(.swiper:hover) > .slides::-webkit-scrollbar {
-    display: none;
-} */
+
+.show-scrollbar > .slides::-webkit-scrollbar {
+    display: block;
+}
+.show-scrollbar > .slides {
+    scrollbar-color: var(--c-site-background-darker-2) var(--c-site-background-darker-1);
+    scrollbar-width: thin;
+}
 </style>
