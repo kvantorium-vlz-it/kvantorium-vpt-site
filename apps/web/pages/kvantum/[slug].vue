@@ -180,36 +180,7 @@ const { data: rawKvantums } = useSanityQuery<{
         </h1>
 
         <KSection heading="Другие квантумы">
-            <KSwiper
-                v-if="rawKvantums"
-                :items="rawKvantums"
-                :visibleSlidesCount="5"
-                :class="$style.swiper"
-            >
-                <template #slide="{ item }">
-                    <TheKvantumsSectionKvantumCard :kvantum="item" />
-                </template>
-
-                <template #navigation="{
-                    currentSlide,
-                    slideToNextSlide,
-                    slideToPreviousSlide,
-                    slidesCount,
-                }">
-                    <div :class="$style.navigation">
-                        <button :class="$style['pagination-button']"
-                            @click="slideToPreviousSlide"
-                        >
-                            <Icon name="ph:arrow-left" />
-                        </button>
-                        <button :class="$style['pagination-button']"
-                            @click="slideToNextSlide"
-                        >
-                            <Icon name="ph:arrow-right" />
-                        </button>
-                    </div>
-                </template>
-            </KSwiper>
+            <KvantumsSwiper :kvantums="rawKvantums || []" />
         </KSection>
     </div>
 </template>
