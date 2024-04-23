@@ -1,36 +1,49 @@
 <script setup lang="ts" generic="T">
-import { onMounted, onUnmounted, ref, useIntersectionObserver, useSupported } from '#imports'
+import { computed, onMounted, onUnmounted, ref, useIntersectionObserver, useIntervalFn, useSwiper } from '#imports'
 import type { UseIntersectionObserverReturn } from '@vueuse/core';
-import { useSwiper } from '#imports';
+import type { UnionStringLiteralsWithString } from '../../assets/ts/types';
 
 interface Props {
     visibleSlidesCount?: number
-    isLoop?: boolean
-    items: T[]
+    isLooped?: boolean
+    is?: UnionStringLiteralsWithString<'ul' | 'ol' | 'div'>
+    showScrollbar?: boolean
+    isAutoPlay?: boolean
+    autoPlayInterval?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    isLooped: false,
     visibleSlidesCount: 1,
-    isLoop: false,
-    items: () => [],
+    is: 'div',
+    showScrollbar: false,
+    isAutoPlay: false,
+    autoPlayInterval: 10000,
 })
+
+const list = ref<HTMLUListElement | HTMLOListElement | HTMLElement>()
+const slides = computed(() => [...list.value?.children || []] as HTMLElement[])
+const slidesCount = computed(() => slides.value.length)
 
 const {
-    currentSlidesOffset,
-    slideToPrevious,
-    slideToNext,
+    currentView,
+    isFirstView,
+    isLastView,
+    viewsCount,
+    slideToNextView,
+    slideToPreviousView,
 } = useSwiper({
-    ...props,
+    slidesCount: slidesCount,
+    isLooped: props.isLooped,
+    slidesPerView: props.visibleSlidesCount,
 })
 
-function _slideToNextSlide() {
-    slideToNext()
-
-    if (!slidesList.value) {
+function _updateScrolling() {
+    if (!slides.value) {
         return
     }
 
-    const slide = slidesList.value[currentSlidesOffset.value]
+    const slide = slides.value[currentView.value]
 
     slide.scrollIntoView({
         behavior: 'smooth',
@@ -39,46 +52,37 @@ function _slideToNextSlide() {
     })
 }
 
-function _slideToPreviousSlide() {
-    slideToPrevious()
-
-    if (!slidesList.value) {
-        return
-    }
-
-    const slide = slidesList.value[currentSlidesOffset.value]
-
-    slide.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-    })
+function _slideToNextView() {
+    slideToNextView()
+    _updateScrolling()
 }
 
-const slidesList = ref<HTMLLIElement[]>()
-const list = ref<HTMLUListElement>()
+function _slideToPreviousView() {
+    slideToPreviousView()
+    _updateScrolling()
+}
 
 const slidesIntersectionResults = ref<UseIntersectionObserverReturn[]>()
 
 onMounted(() => {
-    slidesIntersectionResults.value = slidesList.value?.map((slide) => {
+    slidesIntersectionResults.value = slides.value?.map((slide) => {
         return useIntersectionObserver(slide, ([{ isIntersecting, target }]) => {
-            const index = +target.id.split('-')[1]
+            const index = Array.from(list.value?.children || []).indexOf(slide)
 
             if (!isIntersecting) {
                 return
             }
 
-            const isSlideRight = currentSlidesOffset.value + props.visibleSlidesCount === index
-            const isSlideLeft = currentSlidesOffset.value - 1 === index
+            const isSlideRight = currentView.value + props.visibleSlidesCount === index
+            const isSlideLeft = currentView.value - 1 === index
 
             if (isSlideRight) {
-                slideToNext()
+                _slideToNextView()
                 return
             }
 
             if (isSlideLeft) {
-                slideToPrevious()
+                _slideToPreviousView()
                 return
             }
         }, {
@@ -90,6 +94,12 @@ onMounted(() => {
     slidesIntersectionResults.value?.map(({ resume }) => resume())
 })
 
+useIntervalFn(() => {
+    _slideToNextView()
+}, props.autoPlayInterval, {
+    immediate: props.isAutoPlay,
+})
+
 onUnmounted(() => {
     slidesIntersectionResults.value?.forEach((result) => result.stop())
 })
@@ -97,31 +107,31 @@ onUnmounted(() => {
 
 <template>
     <div
-        :class="$style.swiper"
+        :class="[
+            $style.swiper,
+            {
+                [$style['show-scrollbar']]: showScrollbar,
+            }
+        ]"
     >
-        <ul :class="$style.slides" ref="list">
-            <li
-                v-for="item, index in items"
-                :class="$style.slide"
-                :key="index"
-                ref="slidesList"
-                :id="`swiper-${index}`"
-            >
-                <slot
-                    name="slide"
-                    :item="item"
-                ></slot>
-            </li>
-        </ul>
+        <component
+            :class="$style.slides"
+            :is="is"
+            ref="list"
+        >
+            <slot></slot>
+        </component>
 
         <div :class="$style.addons">
             <slot
                 name="navigation"
-                :slideToPreviousSlide="_slideToPreviousSlide"
-                :slideToNextSlide="_slideToNextSlide"
-                :slidesCount="items.length"
-                :currentSlide="currentSlidesOffset"
-                :visibleSlidesCount="visibleSlidesCount"
+                :currentView="currentView"
+                :viewsCount="viewsCount"
+                :slidesCount="slidesCount"
+                :isFirstView="isFirstView"
+                :isLastView="isLastView"
+                :slideToPreviousView="_slideToPreviousView"
+                :slideToNextView="_slideToNextView"
             ></slot>
         </div>
     </div>
@@ -130,14 +140,12 @@ onUnmounted(() => {
 <style module>
 .swiper {
     --gap: 0.5rem;
-    --slides: v-bind(visibleSlidesCount);
-
-    --_gaps-size: var(--gap) + var(--gap) / var(--slides);
-    --_column-width: 100% / var(--slides);
-
-    width: 100%;
+    --slides-per-view: v-bind(visibleSlidesCount);
 }
 .slides {
+    --gaps-size: calc(var(--gap) - var(--gap) / var(--slides-per-view));
+    --slide-width: calc(100% / var(--slides-per-view));
+
     display: flex;
     gap: var(--gap);
     flex-wrap: nowrap;
@@ -145,13 +153,21 @@ onUnmounted(() => {
     scroll-snap-type: x mandatory;
     list-style: none;
 }
-.slide {
+.slides > * {
     scroll-snap-align: start;
     flex-grow: 0;
     flex-shrink: 0;
-    flex-basis: calc(var(--_column-width) - var(--_gaps-size));
+    flex-basis: calc(var(--slide-width) - var(--gaps-size));
 }
 .slides::-webkit-scrollbar {
     display: none;
+}
+
+.show-scrollbar > .slides::-webkit-scrollbar {
+    display: block;
+}
+.show-scrollbar > .slides {
+    scrollbar-color: var(--c-site-background-darker-2) var(--c-site-background-darker-1);
+    scrollbar-width: thin;
 }
 </style>

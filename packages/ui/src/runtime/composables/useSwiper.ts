@@ -1,53 +1,82 @@
-import { computed, isRef, ref, toValue, type MaybeRef } from "#imports"
-import { clamp, modulusLoop } from "../assets/ts/utils"
+import { computed, readonly, ref, toValue, type MaybeRef } from "#imports"
+import { modulusLoop, clamp } from 'shared/utils'
 
-interface UseSwiperOptions<T> {
-    items: MaybeRef<T[]>
-    visibleSlidesCount?: MaybeRef<number>
-    isLoop?: MaybeRef<boolean>
+interface UseSwiperOptions {
+    slidesCount: MaybeRef<number>
+    slidesPerView?: MaybeRef<number>
+    isLooped?: MaybeRef<boolean>
 }
 
-function useSwiper<T>({
-    items,
-    isLoop = false,
-    visibleSlidesCount = 1,
-}: UseSwiperOptions<T>) {
+function useSwiper({
+    isLooped = false,
+    slidesPerView = 1,
+    slidesCount,
+}: UseSwiperOptions) {
+    const _isLooped = computed(() => toValue(isLooped))
+    const _slidesCount = computed(() => toValue(slidesCount))
+    const _slidesPerView = computed(() => toValue(slidesPerView))
 
-    const _items = toValue(items)
-    const _visibleSlidesCount = toValue(visibleSlidesCount)
+    const currentView = ref(0)
+    const viewsCount = computed(() => _slidesCount.value - _slidesPerView.value)
 
-    const currentSlidesOffset = ref(0)
-    const maxSlidesOffset = computed(() => {
-        return _items.length - _visibleSlidesCount
-    })
+    const viewSlides = computed(() => Array
+        .from({ length: _slidesPerView.value })
+        .map((_, index) => currentView.value + index)
+    )
 
-    function slideTo(slideIndex: number) {
-        const newSlidesOffset = isLoop
-            ? modulusLoop(0, _items.length - 1, slideIndex)
-            : clamp(slideIndex, 0, maxSlidesOffset.value)
+    const isFirstView = computed(() => currentView.value === 0)
+    const isLastView = computed(() => currentView.value === viewsCount.value)
 
-        currentSlidesOffset.value = newSlidesOffset
+    function slideToView(view: number) {
+        const options = {
+            max: {
+                bound: viewsCount.value,
+            }
+        }
+
+        const newSlidesOffset = _isLooped.value
+            ? modulusLoop(view, options)
+            : clamp(view, options)
+
+        const oldView = currentView.value
+        currentView.value = newSlidesOffset
+
+        return oldView
     }
 
-    function slideDelta(offset: number) {
-        slideTo(currentSlidesOffset.value + offset)
+    function slideDelta(delta: number) {
+        return slideToView(currentView.value + delta)
     }
 
-    function slideToNext() {
-        slideDelta(1)
+    function slideToNextView() {
+        return slideDelta(1)
     }
 
-    function slideToPrevious() {
-        slideDelta(-1)
+    function slideToPreviousView() {
+        return slideDelta(-1)
+    }
+
+    function slideToFirstView() {
+        return slideToView(0)
+    }
+
+    function slideToLastView() {
+        return slideToView(viewsCount.value)
     }
 
     return {
-        currentSlidesOffset,
-        maxSlidesOffset,
-        slideTo,
+        isFirstView,
+        isLastView,
+        currentView: readonly(currentView),
+        viewsCount,
+        viewSlides: readonly(viewSlides),
+
+        slideToView,
+        slideToFirstView,
+        slideToLastView,
         slideDelta,
-        slideToNext,
-        slideToPrevious,
+        slideToNextView,
+        slideToPreviousView,
     }
 }
 
