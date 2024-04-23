@@ -28,39 +28,9 @@ const { data } = useSanityQuery<{
             <div :class="$style.kvantums">
                 <TheKvantumsSectionInfoCard :class="$style.info" />
 
-                <KSwiper
-                    v-if="data"
-                    :items="data"
-                    :visibleSlidesCount="3"
-                    :class="$style.swiper"
-                >
-                    <template #slide="{ item }">
-                        <TheKvantumsSectionKvantumCard :kvantum="item" />
-                    </template>
-
-                    <template #navigation="{
-                        currentSlide,
-                        slideToNextSlide,
-                        slideToPreviousSlide,
-                        slidesCount,
-                    }">
-                        <div :class="$style.navigation">
-
-                            <div :class="$style.buttons">
-                                <button :class="$style['pagination-button']"
-                                    @click="slideToPreviousSlide"
-                                >
-                                    <Icon name="ph:arrow-left" />
-                                </button>
-                                <button :class="$style['pagination-button']"
-                                    @click="slideToNextSlide"
-                                >
-                                    <Icon name="ph:arrow-right" />
-                                </button>
-                            </div>
-                        </div>
-                    </template>
-                </KSwiper>
+                <KvantumsSwiper
+                    :kvantums="data || []"
+                />
             </div>
         </KSection>
     </KContainer>
