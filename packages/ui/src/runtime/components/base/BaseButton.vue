@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { defineNuxtLink } from '#imports';
-import type { RouterLinkProps } from '#vue-router'
+import type { LinkProps } from '../../assets/ts/types'
 
-interface Props extends Omit<RouterLinkProps, 'to'> {
-    to?: RouterLinkProps['to']
-}
+type Props = LinkProps & {}
 
 defineProps<Props>()
 </script>
