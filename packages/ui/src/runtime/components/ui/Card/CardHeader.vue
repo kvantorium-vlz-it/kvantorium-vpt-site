@@ -1,5 +1,5 @@
 <template>
-    <KCardBody is-highlighted>
+    <KCardSection is-bottom-border>
         <slot></slot>
-    </KCardBody>
+    </KCardSection>
 </template>
