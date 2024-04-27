@@ -1,27 +1,23 @@
 <script setup lang="ts">
-interface Props {
+import type { LinkProps } from '../../assets/ts/types';
+
+interface Props extends LinkProps {
     isDisabled?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
     isDisabled: false,
 })
-
-interface Emits {
-    (e: 'click', event: MouseEvent): void
-}
-
-defineEmits<Emits>()
 </script>
 
 <template>
-    <button
+    <KBaseButton
         :class="$style.button"
         :disabled="isDisabled"
-        @click="(event) => $emit('click', event)"
+        :="$props, $attrs"
     >
         <slot></slot>
-    </button>
+    </KBaseButton>
 </template>
 
 <style module>
@@ -41,6 +37,8 @@ defineEmits<Emits>()
     min-height: calc(1rem + 1.5em);
     color: var(--c-site-primary);
     font-size: 1rem;
+
+    text-decoration: none;
 }
 .button:focus-visible {
     outline: 2px dashed var(--c-site-background-darker-2);
