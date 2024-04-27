@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { UnionStringLiteralsWithString } from '../../assets/ts/types';
+import type { UnionStringLiteralsWithString } from '../../../assets/ts/types';
 
 interface Props {
     is?: UnionStringLiteralsWithString<'li' | 'div'>
