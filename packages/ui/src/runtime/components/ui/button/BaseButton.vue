@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineNuxtLink } from '#imports';
-import type { LinkProps } from '../../assets/ts/types'
+import type { LinkProps } from '../../../assets/ts/types'
 
 type Props = LinkProps & {}
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LinkProps } from '../../assets/ts/types';
+import type { LinkProps } from '../../../assets/ts/types';
 
 interface Props extends LinkProps {
     isDisabled?: boolean
