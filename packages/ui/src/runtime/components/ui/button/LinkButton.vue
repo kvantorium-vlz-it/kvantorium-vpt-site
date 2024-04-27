@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { defineNuxtLink } from '#imports';
-import type { RouterLinkProps } from '#vue-router'
+import type { LinkProps } from '../../../assets/ts/types';
 
 type ButtonVariants = 'primary' | 'secondary' | 'white'
 
-interface Props extends Omit<RouterLinkProps, 'to'> {
+interface Props extends LinkProps {
     variant?: ButtonVariants
-    to?: RouterLinkProps['to']
 }
 
 withDefaults(defineProps<Props>(), {
@@ -20,13 +18,12 @@ withDefaults(defineProps<Props>(), {
         font-size="h4"
         #default="{ classes }"
     >
-        <component
-            :is="!to ? 'button' : defineNuxtLink({})"
+        <KBaseButton
             :class="[classes, $style.button, $style[variant]]"
             :="$props, $attrs"
         >
             <slot></slot>
-        </component>
+        </KBaseButton>
     </KTypography>
 </template>
 
