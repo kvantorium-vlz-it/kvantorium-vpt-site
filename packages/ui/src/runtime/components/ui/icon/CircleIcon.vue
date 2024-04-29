@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
             variant && $style[variant],
         ]"
     >
-        <slot :iconClass="$style.icon">
+        <slot>
             <Icon
                 :class="$style.icon"
                 :name="iconName"
