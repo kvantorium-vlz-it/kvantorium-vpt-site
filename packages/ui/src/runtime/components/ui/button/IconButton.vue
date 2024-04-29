@@ -3,6 +3,7 @@ import type { LinkProps } from '../../../assets/ts/types';
 
 interface Props extends LinkProps {
     isDisabled?: boolean
+    iconName: string
 }
 
 withDefaults(defineProps<Props>(), {
@@ -16,29 +17,26 @@ withDefaults(defineProps<Props>(), {
         :disabled="isDisabled"
         :="$props, $attrs"
     >
-        <slot></slot>
+        <KCircleIcon
+            :icon-name="iconName"
+            variant="primary"
+            :class="$style.icon"
+        >
+            <slot></slot>
+        </KCircleIcon>
     </KBaseButton>
 </template>
 
 <style module>
 .button {
-    aspect-ratio: 1;
-
     display: inline-flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 100vw;
-    border: 2px solid var(--c-site-primary);
-
-    background-color: transparent;
-    padding: 0.5rem;
-    min-width: calc(1rem + 1.5em);
-    min-height: calc(1rem + 1.5em);
-    color: var(--c-site-primary);
-    font-size: 1rem;
-
     text-decoration: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 100vw;
 }
 .button:focus-visible {
     outline: 2px dashed var(--c-site-background-darker-2);
@@ -52,13 +50,17 @@ withDefaults(defineProps<Props>(), {
 .button:not(:disabled):hover {
     translate: 0 -0.125rem;
 }
-.button:not(:disabled):active {
-    background-color: var(--c-site-primary);
-    color: var(--c-site-background);
+.button > .icon {
+    transition: all 0.1s ease-in-out;
 }
-.button:disabled {
+.button:not(:disabled):active > .icon {
+    --background-color: var(--c-site-primary);
+    --icon-color: var(--c-site-background);
+}
+.button:disabled > .icon {
     cursor: not-allowed;
-    background-color: var(--c-site-background-darker-1);
-    border: 2px solid var(--c-site-background-darker-2);
+    --background-color: var(--c-site-background-darker-1);
+    --border-color: var(--c-site-background-darker-2);
+    --icon-color: var(--c-site-text-lighter-2);
 }
 </style>

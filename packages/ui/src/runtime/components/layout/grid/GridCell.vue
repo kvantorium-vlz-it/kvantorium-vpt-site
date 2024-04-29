@@ -2,7 +2,7 @@
 import type {
     UnionStringLiteralsWithNumber,
     UnionStringLiteralsWithString
-} from '../../assets/ts/types';
+} from '../../../assets/ts/types';
 import { computed } from '#imports';
 
 type CssNumberValue = UnionStringLiteralsWithNumber<'auto'>

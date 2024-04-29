@@ -7,20 +7,26 @@ interface Props {
         topics: string[]
         minAge: number
     }[]
+
+    visibleViews?: number
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+    visibleViews: 1
+})
 </script>
 
 <template>
     <KSwiper
-        :visibleSlidesCount="4"
+        :visibleSlidesCount="visibleViews"
     >
         <KSwiperSlide
             v-for="kvantum, index in kvantums"
             :key="index"
+            style="align-self: stretch;"
         >
-            <TheKvantumsSectionKvantumCard
+            <KvantumCard
+                style="height: 100%;"
                 :kvantum="kvantum"
             />
         </KSwiperSlide>
@@ -42,18 +48,16 @@ defineProps<Props>()
             />
 
             <div :class="$style.buttons">
-                <KCircleButton
+                <KIconButton
                     @click="slideToPreviousView"
                     :is-disabled="isFirstView"
-                >
-                    <Icon name="ph:arrow-left" />
-                </KCircleButton>
-                <KCircleButton
+                    icon-name="ph:arrow-left"
+                />
+                <KIconButton
                     @click="slideToNextView"
                     :is-disabled="isLastView"
-                >
-                    <Icon name="ph:arrow-right" />
-                </KCircleButton>
+                    icon-name="ph:arrow-right"
+                />
             </div>
         </template>
     </KSwiper>

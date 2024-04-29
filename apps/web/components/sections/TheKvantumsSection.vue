@@ -20,19 +20,37 @@ const { data } = useSanityQuery<{
         ])
     }
 `)
+
+const {
+    desktop,
+    tablet,
+} = useCssBreakpoints()
+
+const visibleViews = computed(() => {
+    if (desktop.value) {
+        return 3
+    }
+
+    if (tablet.value) {
+        return 2
+    }
+
+    return 1
+})
 </script>
 
 <template>
     <KContainer :class="$style.container">
         <KSection heading="Квантумы">
-            <KGrid :columns="5">
+            <KGrid :columns="visibleViews + 1">
                 <KGridCell>
                     <TheKvantumsSectionInfoCard />
                 </KGridCell>
 
-                <KGridCell :width="4">
+                <KGridCell :width="visibleViews">
                     <KvantumsSwiper
                         :kvantums="data || []"
+                        :visible-views="visibleViews"
                     />
                 </KGridCell>
             </KGrid>

@@ -1,5 +1,6 @@
 // TODO: declare module for breakpoints.module.css
 import styles from '../assets/css/breakpoints.module.css'
+import { useBreakpoints } from '@vueuse/core'
 
 interface Breakpoints {
     mobileBreakpoint: string
@@ -18,9 +19,9 @@ export function useCssBreakpoints() {
     const tabletBreakpoint = parseCssBreakpointValue(_styles.tabletBreakpoint)
     const desktopBreakpoint = parseCssBreakpointValue(_styles.desktopBreakpoint)
 
-    return {
-        mobileBreakpoint,
-        tabletBreakpoint,
-        desktopBreakpoint,
-    }
+    return useBreakpoints({
+        mobile: 0,
+        tablet: mobileBreakpoint,
+        desktop: tabletBreakpoint,
+    })
 }

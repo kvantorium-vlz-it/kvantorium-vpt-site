@@ -68,10 +68,12 @@ const { open } = useModal({
 .logo-link {
     width: fit-content;
     border-radius: 100vw;
+    display: block;
 }
 .logo {
     --width: 2.5rem;
     transition: 0.5s ease;
+    --background-color: var(--c-site-background);
 }
 .logo-link:hover > .logo {
     rotate: 360deg;

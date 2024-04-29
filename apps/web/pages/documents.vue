@@ -27,15 +27,7 @@ function formatDate(date: Date) {
                     v-for="document in documents"
                     :key="document._key"
                 >
-                    <div :class="$style.card">
-                        <div :class="$style.title">
-                            {{ document.name }}
-                        </div>
-                        <a download target="_blank" :href="document.url">
-                            <Icon name="ph:file"/>
-                            (Скачать/скачать {{ Math.floor(document.size * 100) / 100 }} кб.)
-                        </a>
-                    </div>
+                    <DocumentCard :document="document" />
                 </KGridCell>
             </KGrid>
         </KSection>
