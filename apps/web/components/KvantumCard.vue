@@ -63,6 +63,7 @@ defineProps<{
     text-decoration: none;
     color: var(--c-site-text);
     display: inline-block;
+    width: 100%;
 }
 .name {
     margin-bottom: 0.5rem;
@@ -96,6 +97,7 @@ defineProps<{
 }
 .card {
     height: 100%;
+    width: 100%;
 }
 .icon-wrapper {
     align-self: center;

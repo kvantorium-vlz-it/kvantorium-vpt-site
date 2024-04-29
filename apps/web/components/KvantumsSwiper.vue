@@ -7,14 +7,18 @@ interface Props {
         topics: string[]
         minAge: number
     }[]
+
+    visibleViews?: number
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+    visibleViews: 1
+})
 </script>
 
 <template>
     <KSwiper
-        :visibleSlidesCount="3"
+        :visibleSlidesCount="visibleViews"
     >
         <KSwiperSlide
             v-for="kvantum, index in kvantums"
