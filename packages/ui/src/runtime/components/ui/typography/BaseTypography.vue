@@ -1,38 +1,7 @@
 <script setup lang="ts">
-type DisplayVariant =
-      'display-1'
-    | 'display-2'
-    | 'display-3'
+import type { BaseTypographyProps } from '../../../assets/ts/props'
 
-type HeadingVariant =
-      'heading-1'
-    | 'heading-2'
-    | 'heading-3'
-    | 'heading-4'
-    | 'heading-5'
-    | 'heading-6'
-
-type BodyVariant =
-      'body-1'
-    | 'body-2'
-    | 'body-3'
-
-type LabelVariant =
-      'label-1'
-    | 'label-2'
-
-type Variant =
-      DisplayVariant
-    | HeadingVariant
-    | BodyVariant
-    | LabelVariant
-
-interface Props {
-    isItalic?: boolean
-    variant?: Variant | null
-}
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<BaseTypographyProps>(), {
     isItalic: false,
     variant: null,
 })
