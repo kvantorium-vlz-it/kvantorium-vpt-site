@@ -9,7 +9,7 @@ defineProps<Props>()
 <template>
     <div>
         <KBaseTypography
-            variant="heading-2"
+            variant="heading-3"
             #="{ classes }"
         >
             <h3 :class="[$style.label, classes]">
