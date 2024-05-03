@@ -50,14 +50,17 @@ const serializer: SanityContentSerializer = {
 </script>
 
 <template>
-    <KTypography font-size="h4" #="{ classes }">
+    <KBaseTypography
+        variant="body-2"
+        #="{ classes }"
+    >
         <div :class="[classes, $style.content]" :="{...$attrs}">
             <SanityContent
                 :blocks="blocks"
                 :serializers="serializer"
             />
         </div>
-    </KTypography>
+    </KBaseTypography>
 </template>
 
 <style module>
@@ -69,7 +72,7 @@ const serializer: SanityContentSerializer = {
 .content ol {
     padding-left: 1.5rem;
     list-style-position: inside;
-    line-height: 1.5;
+    color: var(--c-site-text-lighter-2);
 }
 .content > ul,
 .content > ol {

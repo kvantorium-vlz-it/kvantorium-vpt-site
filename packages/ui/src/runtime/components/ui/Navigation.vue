@@ -43,9 +43,8 @@ function isGroupNavigationItem(
             $style[variant],
         ]"
     >
-        <KTypography
-            fontFamily="BankGothic"
-            fontSize="h2"
+        <KBaseTypography
+            variant="heading-5"
             #default="{ classes }"
         >
             <h3
@@ -54,7 +53,7 @@ function isGroupNavigationItem(
             >
                 {{ heading }}
             </h3>
-        </KTypography>
+        </KBaseTypography>
 
         <ul
             v-if="items.length > 0"

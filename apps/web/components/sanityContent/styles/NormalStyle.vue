@@ -5,20 +5,19 @@ defineProps<{
 </script>
 
 <template>
-    <KTypography
-        font-family="Circe"
-        :font-weight="400"
+    <KBaseTypography
+        variant="body-2"
         #="{ classes }"
     >
         <p :class="[classes, $style.paragraph]" v-bind="$attrs">
             <slot></slot>
         </p>
-    </KTypography>
+    </KBaseTypography>
 </template>
 
 <style module>
 .paragraph {
     margin-block: 0.5em;
-    text-indent: 1.5rem;
+    text-wrap: balance;
 }
 </style>

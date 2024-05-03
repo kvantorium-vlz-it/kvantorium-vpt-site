@@ -17,22 +17,25 @@ defineProps<{
         <KCard :class="$style.card">
             <KCardSection :class="$style.info">
                 <div>
-                    <KTypography
-                        font-family="BankGothic"
-                        font-size="h2"
+                    <KBaseTypography
+                        variant="heading-5"
+                        #="{ classes }"
                     >
-                        <template #="{ classes }">
-                            <h3 :class="[classes, $style.name]">
-                                {{ kvantum.name }}
-                            </h3>
-                        </template>
-                    </KTypography>
+                        <h3 :class="[classes, $style.name]">
+                            {{ kvantum.name }}
+                        </h3>
+                    </KBaseTypography>
 
-                    <ol :class="$style.list">
-                        <li v-for="topic in kvantum.topics">
-                            {{ topic }}
-                        </li>
-                    </ol>
+                    <KBaseTypography
+                        variant="body-3"
+                        #="{ classes }"
+                    >
+                        <ol :class="$style.list">
+                            <li :class="classes" v-for="topic in kvantum.topics">
+                                {{ topic }}
+                            </li>
+                        </ol>
+                    </KBaseTypography>
                 </div>
 
                 <div :class="$style['icon-wrapper']">
@@ -67,7 +70,7 @@ defineProps<{
 }
 .name {
     margin-bottom: 0.5rem;
-    line-height: 1;
+    /* line-height: 1; */
 }
 .info {
     display: grid;
@@ -78,6 +81,7 @@ defineProps<{
 .footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
 }
 .list {

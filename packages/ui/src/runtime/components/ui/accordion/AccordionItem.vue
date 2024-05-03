@@ -8,7 +8,7 @@ defineProps<Props>()
 
 <template>
     <details :class="$style['accordion-item']">
-        <KTypography
+        <KBaseTypography
             font-family="Circe"
             font-size="h4"
             #default="{ classes }"
@@ -17,11 +17,11 @@ defineProps<Props>()
                 {{ label }}
 
                 <Icon
-                    name="ph:caret-down"
+                    name="ph:caret-down-bold"
                     :class="$style['trigger-icon']"
                 />
             </summary>
-        </KTypography>
+        </KBaseTypography>
 
         <div :class="$style.content">
             <slot></slot>

@@ -28,7 +28,7 @@ const { data } = useSanityQuery<{
                         v-for="kvantum, index in data"
                         :key="index"
                     >
-                        <TheKvantumsSectionKvantumCard :kvantum="kvantum" />
+                        <KvantumCard :kvantum="kvantum" />
                     </KGridCell>
                 </KGrid>
         </KSection>

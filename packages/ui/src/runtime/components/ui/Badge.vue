@@ -1,16 +1,15 @@
 <template>
-    <KTypography
-        font-family="Circe"
-        font-size="h4"
-        #default="{ classes }"
+    <KBaseTypography
+        variant="label-2"
+        #="{ classes }"
     >
-        <div
+        <span
             :class="[classes, $style.badge]"
             :="$attrs"
         >
             <slot></slot>
-        </div>
-    </KTypography>
+        </span>
+    </KBaseTypography>
 </template>
 
 <style module>
@@ -18,14 +17,16 @@
     --text-color: var(--c-site-background);
     --border-color: var(--c-site-background);
 
-    border: 2px solid var(--border-color);
+    border: 0.125rem solid var(--border-color);
     border-radius: 100vw;
-    padding: 0.25rem 1rem;
+    padding: 0.125rem 1.25rem;
 
     color: var(--text-color);
 
     display: inline-flex;
     gap: 0.5rem;
     align-items: center;
+
+    --weight: 500;
 }
 </style>

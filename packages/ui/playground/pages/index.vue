@@ -21,12 +21,12 @@ const isClicked = ref(false)
 
 <template>
     <div>
-        <KTypography font-family="BankGothic" #default="{ classes }">
+        <KBaseTypography font-family="BankGothic" #default="{ classes }">
             <span :class="classes">
                 Lorem, ipsum.
             </span>
-        </KTypography>
-        <KTypography
+        </KBaseTypography>
+        <KBaseTypography
             font-family="Circe"
             font-size="h00"
             :font-weight="900"
@@ -36,7 +36,7 @@ const isClicked = ref(false)
             <span :class="classes">
                 Lorem, ipsum.
             </span>
-        </KTypography>
+        </KBaseTypography>
 
         <KHeader
             variant="white"
