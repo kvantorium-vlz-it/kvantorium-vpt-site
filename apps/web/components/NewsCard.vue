@@ -37,14 +37,22 @@ const formatter = Intl.DateTimeFormat('ru', {
                         border-radius: 0.75rem;
                     "
                 >
-                    <KTypography fontFamily="BankGothic" fontSize="h2" #="{ classes }">
+                    <KBaseTypography
+                        variant="heading-4"
+                        #="{ classes }"
+                    >
                         <h3 :class="[$style.title, ...classes]">
                             {{ news.title }}
                         </h3>
-                    </KTypography>
-                    <div style="color: var(--c-site-text-lighter-2); margin-bottom: 0.75rem;">
-                        {{ formatter.format(news.publishDate) }}
-                    </div>
+                    </KBaseTypography>
+                    <KBaseTypography
+                        variant="label-2"
+                        #="{ classes }"
+                    >
+                        <div :class="classes" style="color: var(--c-site-text-lighter-2); margin-bottom: 0.75rem;">
+                            {{ formatter.format(news.publishDate) }}
+                        </div>
+                    </KBaseTypography>
 
                     <div style="display: flex; justify-content: space-between; gap: 0.5rem;">
                         <div :class="$style.tags">
@@ -140,7 +148,5 @@ const formatter = Intl.DateTimeFormat('ru', {
 .tag {
     --border-color: var(--c-site-text-lighter-2);
     --text-color: var(--c-site-text);
-    line-height: 1;
-    font-size: 0.75rem;
 }
 </style>

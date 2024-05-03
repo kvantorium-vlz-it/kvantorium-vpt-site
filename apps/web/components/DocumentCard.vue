@@ -23,15 +23,14 @@ defineProps<Props>()
     >
         <KCard>
             <KCardSection>
-                <KTypography
-                    font-family="Circe"
-                    font-size="h3"
+                <KBaseTypography
+                    variant="body-1"
                     #="{ classes }"
                 >
                     <h3 :class="[classes, $style.name]">
                         {{ document.name }}
                     </h3>
-                </KTypography>
+                </KBaseTypography>
             </KCardSection>
             <KCardSection style="text-align: end; font-size: 1.5rem;">
                 <Icon :class="$style.icon" name="tabler:download" />
