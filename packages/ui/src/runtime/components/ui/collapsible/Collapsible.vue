@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from '#imports';
-import type { UnionStringLiteralsWithString } from '../../assets/ts/types';
+import type { UnionStringLiteralsWithString } from '../../../assets/ts/types';
 
 interface Props {
     is?: UnionStringLiteralsWithString<'li' | 'div'>
@@ -39,10 +39,8 @@ function handleToggle(event: ToggleEvent) {
             :class="$style.collapsible"
             @toggle="handleToggle"
         >
-            <KTypography
-                font-family="Circe"
-                font-size="h3"
-                :font-weight="400"
+            <KBaseTypography
+                variant="body-1"
                 #="{ classes }"
             >
                 <summary :class="[classes, $style.trigger]">
@@ -56,17 +54,16 @@ function handleToggle(event: ToggleEvent) {
                         />
                     </div>
                 </summary>
-            </KTypography>
+            </KBaseTypography>
 
-            <KTypography
-                font-family="Circe"
-                font-size="h4"
+            <KBaseTypography
+                variant="body-2"
                 #="{ classes }"
             >
                 <div :class="[classes, $style.content]">
                     <slot></slot>
                 </div>
-            </KTypography>
+            </KBaseTypography>
         </details>
     </component>
 </template>
