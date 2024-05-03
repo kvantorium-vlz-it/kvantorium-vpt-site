@@ -8,10 +8,8 @@ defineProps<Props>()
 
 <template>
     <div :class="$style.section">
-        <KTypography
-            font-family="BankGothic"
-            font-size="h0"
-            :font-weight="500"
+        <KBaseTypography
+            variant="heading-1"
             #default="{ classes }"
         >
             <h2
@@ -22,7 +20,7 @@ defineProps<Props>()
                     {{ heading }}
                 </slot>
             </h2>
-        </KTypography>
+        </KBaseTypography>
 
         <slot></slot>
     </div>
