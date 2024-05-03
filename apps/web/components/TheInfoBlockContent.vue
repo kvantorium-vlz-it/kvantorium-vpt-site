@@ -8,30 +8,40 @@ defineProps<Props>()
 
 <template>
     <div>
-        <h3 :class="$style.label">
-            {{ label }}
-        </h3>
+        <KBaseTypography
+            variant="heading-2"
+            #="{ classes }"
+        >
+            <h3 :class="[$style.label, classes]">
+                {{ label }}
+            </h3>
+        </KBaseTypography>
 
-        <div :class="$style.content">
-            <slot></slot>
-        </div>
+        <KBaseTypography
+            variant="body-3"
+            #="{ classes }"
+        >
+            <div :class="[$style.content, classes]">
+                <slot></slot>
+            </div>
+        </KBaseTypography>
     </div>
 </template>
 
 <style module>
 .label {
-    font-size: 2rem;
-    font-weight: 400;
-    font-family: 'BankGothic';
-    margin-bottom: 1.5rem;
+    /* font-size: 2rem; */
+    /* font-weight: 400; */
+    /* font-family: 'BankGothic'; */
+    /* margin-bottom: 1.5rem; */
     color: var(--c-site-text);
-    line-height: 1;
+    /* line-height: 1; */
 }
 .content {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--c-site-text);
-    line-height: 1.3;
-    font-family: 'Circe';
+    /* font-size: 1rem; */
+    /* font-weight: 300; */
+    color: var(--c-site-text-lighter-2);
+    /* line-height: 1.3; */
+    /* font-family: 'Circe'; */
 }
 </style>
