@@ -13,9 +13,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <KTypography
-        font-family="Circe"
-        font-size="h4"
+    <KBaseTypography
+        variant="body-3"
         #default="{ classes }"
     >
         <KBaseButton
@@ -24,7 +23,7 @@ withDefaults(defineProps<Props>(), {
         >
             <slot></slot>
         </KBaseButton>
-    </KTypography>
+    </KBaseTypography>
 </template>
 
 <style module>
@@ -64,7 +63,7 @@ button.button {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.25rem 2rem;
+    padding: 0.125rem 2rem;
 
     border-radius: 100vw;
     box-shadow: var(--_border-shadow), var(--shadow);

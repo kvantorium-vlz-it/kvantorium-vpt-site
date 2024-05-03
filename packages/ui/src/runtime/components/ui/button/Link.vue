@@ -14,9 +14,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-    <KTypography
-        font-family="Circe"
-        font-size="h4"
+    <KBaseTypography
+        variant="body-3"
         #default="{ classes }"
     >
         <NuxtLink
@@ -25,7 +24,7 @@ withDefaults(defineProps<Props>(), {
         >
             <slot></slot>
         </NuxtLink>
-    </KTypography>
+    </KBaseTypography>
 </template>
 
 <style module>
