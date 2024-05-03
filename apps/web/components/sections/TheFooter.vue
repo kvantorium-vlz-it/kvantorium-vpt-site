@@ -119,6 +119,7 @@ const { open } = useModal({
                     <NuxtLink :to="link.to">
                         <KCircleIcon
                             :icon-name="link.iconName"
+                            style="--background-color: var(--c-site-background);"
                             :color="link.label === 'telegram' ? '#30A3E6' : link.label === 'vk' ? '#0077FF' : '#FF7700'"
                         />
                     </NuxtLink>
@@ -178,6 +179,7 @@ const { open } = useModal({
 }
 .logo {
     --width: 3rem;
+    --background-color: var(--c-site-background);
 }
 .socials {
     --gap: 0.5rem;
