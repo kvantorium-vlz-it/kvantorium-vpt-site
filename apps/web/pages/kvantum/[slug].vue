@@ -120,16 +120,14 @@ const { data: rawKvantums } = useSanityQuery<{
             <KSection heading="Программы">
                 <KGrid :columns="kvantum.teachers.length > 1 ? 2 : 1">
                     <KGridCell v-for="teacher in kvantum.teachers">
-                        <KTypography
-                            font-family="BankGothic"
-                            font-size="h1"
-                            :font-weight="500"
+                        <KBaseTypography
+                            variant="heading-1"
                             #="{ classes }"
                         >
                             <h3 :class="[classes]" style="margin-bottom: 2rem; text-align: center;">
                                 {{ teacher.name }} {{ teacher.surname }} {{ teacher.patronymic }}
                             </h3>
-                        </KTypography>
+                        </KBaseTypography>
 
                         <KCollapsibleGroup is="ul" is-multiple>
                             <KCollapsible is="li" v-for="curricula in teacher.curricula">

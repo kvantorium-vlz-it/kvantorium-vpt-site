@@ -37,16 +37,15 @@ const { data } = useSanityQuery<{
                 :class="$style.grid"
             >
                 <KGridCell v-for="news in data">
-                    <NuxtLink :to="`/news/${news.slug}`">
-                        <NewsCard
-                            :news="{
-                                previewImage: news.previewImage,
-                                publishDate: new Date(news.date),
-                                tags: news.tags,
-                                title: news.title,
-                            }"
-                        />
-                    </NuxtLink>
+                    <NewsCard
+                        :news="{
+                            previewImage: news.previewImage,
+                            publishDate: new Date(news.date),
+                            tags: news.tags,
+                            title: news.title,
+                            slug: news.slug
+                        }"
+                    />
                 </KGridCell>
             </KGrid>
         </KSection>

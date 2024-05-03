@@ -85,12 +85,12 @@ const formattedDate = computed(() => {
 
                     <div>
                         <KSwiper :class="$style.swiper" :visible-slides-count="2" :items="data.gallery" >
-                            <template #slide="{ item }">
+                            <KSwiperSlide v-for="image in data.gallery">
                                 <img
-                                    :src="item"
+                                    :src="image"
                                     :class="$style['swiper-image']"
                                 />
-                            </template>
+                            </KSwiperSlide>
                         </KSwiper>
                     </div>
                 </div>
