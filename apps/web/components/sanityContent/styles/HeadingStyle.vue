@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import type { KBaseTypography } from '#components'
+import type { BaseTypographyProps } from 'ui/props'
+
 type Style = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+const typographyMapping = new Map<Style, BaseTypographyProps['variant']>([
+    ['h1', 'heading-1'],
+    ['h2', 'heading-2'],
+    ['h3', 'heading-3'],
+    ['h4', 'heading-4'],
+    ['h5', 'heading-5'],
+    ['h6', 'heading-6'],
+])
 
 interface Props {
     style: Style
@@ -9,10 +21,8 @@ defineProps<Props>()
 </script>
 
 <template>
-    <KTypography
-        font-family="BankGothic"
-        :font-weight="700"
-        :font-size="style"
+    <KBaseTypography
+        :variant="typographyMapping.get(style)"
         #="{ classes }"
     >
         <component
@@ -23,12 +33,11 @@ defineProps<Props>()
 
             <slot></slot>
         </component>
-    </KTypography>
+    </KBaseTypography>
 </template>
 
 <style module>
 .heading {
-    text-indent: 1.5rem;
-    margin-block: 1em;
+    margin-block: 0.75em;
 }
 </style>
