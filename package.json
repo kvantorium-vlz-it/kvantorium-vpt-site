@@ -3,19 +3,16 @@
   "version": "3.0.0",
   "private": true,
   "license": "MIT",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "dev": "dotenv -- turbo run dev --parallel",
     "build": "dotenv -- turbo run build"
   },
   "devDependencies": {
-    "turbo": "latest",
+    "turbo": "^2.1.2",
     "dotenv-cli": "latest"
   },
   "engines": {
     "node": ">=v16.18.1"
-  }
+  },
+  "packageManager": "pnpm@8.15.6"
 }

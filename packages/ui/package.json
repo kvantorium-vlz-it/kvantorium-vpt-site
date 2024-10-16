@@ -33,7 +33,7 @@
     "@vueuse/nuxt": "^10.9.0",
     "floating-vue": "^5.2.2",
     "nuxt-icon": "^0.6.10",
-    "shared": "*"
+    "shared": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
