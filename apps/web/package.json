@@ -17,8 +17,8 @@
     "nuxt-icon": "^0.6.10",
     "vue": "^3.4.23",
     "vue-router": "^4.3.2",
-    "ui": "*",
-    "@kvantorium-vpt-site/tsconfig": "*"
+    "ui": "workspace:*",
+    "@kvantorium-vpt-site/tsconfig": "workspace:*"
   },
   "dependencies": {
     "@floating-ui/vue": "^1.0.6",
@@ -29,6 +29,6 @@
     "modern-normalize": "^2.0.0",
     "vue-final-modal": "^4.5.4",
     "vue-yandex-maps": "^2.1.2",
-    "shared": "*"
+    "shared": "workspace:*"
   }
 }
