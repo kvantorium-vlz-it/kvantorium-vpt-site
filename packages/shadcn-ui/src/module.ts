@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addComponentsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, installModule } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
@@ -10,16 +10,29 @@ export default defineNuxtModule<ModuleOptions>({
     },
     // Default configuration options of the Nuxt module
     defaults: {},
-    setup(_options, _nuxt) {
+    async setup(_options, _nuxt) {
         const resolver = createResolver(import.meta.url)
 
-        addComponentsDir({
-            path: resolver.resolve('runtime/components'),
-            prefix: 'k',
-            pathPrefix: false,
+        // Used for adding shadcn-vue components and resolve paths
+        // _nuxt.options.alias['@sh-module/'] = resolver.resolve('./runtime/')
+        _nuxt.options.alias['@sh-module/*'] = resolver.resolve('./runtime/*')
+
+        await installModule('@nuxtjs/tailwindcss', {
+            configPath: resolver.resolve('./runtime/tailwind.config.js'),
+            cssPath: resolver.resolve('./runtime/assets/css/tailwind.css'),
+            config: {
+                content: [
+                    resolver.resolve('./runtime/components/**/*.{vue,ts}'),
+                ]
+            }
+        })
+
+        await installModule('shadcn-nuxt', {
+            prefix: 'sh',
+            componentDir: resolver.resolve('./runtime/components/ui'),
         })
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-        addPlugin(resolver.resolve('./runtime/plugin'))
+        // addPlugin(resolver.resolve('./runtime/plugin'))
     },
 })
