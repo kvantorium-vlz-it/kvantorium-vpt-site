@@ -16,6 +16,7 @@ export default defineNuxtModule<ModuleOptions>({
         // Used for adding shadcn-vue components and resolve paths
         // _nuxt.options.alias['@sh-module/'] = resolver.resolve('./runtime/')
         _nuxt.options.alias['@sh-module/*'] = resolver.resolve('./runtime/*')
+        _nuxt.options.css.push(resolver.resolve('./runtime/assets/css/fonts.css'))
 
         await installModule('@nuxtjs/tailwindcss', {
             configPath: resolver.resolve('./runtime/tailwind.config.js'),
