@@ -1,6 +1,7 @@
 {
   "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([\\s\\S]*?)\\)", "'([^']*)'"],
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "editor.quickSuggestions": {
     "strings": true
