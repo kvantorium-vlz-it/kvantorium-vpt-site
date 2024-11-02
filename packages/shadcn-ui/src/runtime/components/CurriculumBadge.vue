@@ -7,7 +7,10 @@ defineProps<{
 </script>
 
 <template>
-    <ShBadge variant="outline" :class="$style.badge">
+    <ShBadge
+        variant="outline"
+        class="font-body text-white font-normal text-base py-0"
+    >
         <span>
             {{ curriculum }}
         </span>
@@ -18,11 +21,3 @@ defineProps<{
         />
     </ShBadge>
 </template>
-
-<style module>
-.badge {
-    font-family: 'Circe';
-    font-weight: 400;
-    font-size: 1rem;
-}
-</style>
