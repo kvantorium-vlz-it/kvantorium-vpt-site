@@ -34,8 +34,9 @@ export default defineNuxtModule<ModuleOptions>({
             componentDir: resolver.resolve('./runtime/shadcn/ui'),
         })
 
-        addComponentsDir({
+        await addComponentsDir({
             path: resolver.resolve('./runtime/components'),
+            pathPrefix: false,
         })
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
