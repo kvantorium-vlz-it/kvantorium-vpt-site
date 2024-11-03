@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useElementSize, useScroll, useWindowScroll } from '@vueuse/core'
+import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
+
 // ============================================================================
 // Links for future
 const siteNavigationLinks = [
@@ -19,10 +22,29 @@ const kvantumsNavigationLinks = [
     { label: 'робо-квантум', to: '/' },
 ]
 // ============================================================================
+
+const hero = useTemplateRef('hero')
+
+const { y } = useWindowScroll()
+const { height } = useElementSize(hero)
+
+const scrollPercentage = computed(() => Math.min(y.value / (height.value), 1))
+
+const margin = ref(0 + 'px')
+
+onMounted(() => {
+    watch(scrollPercentage, () => {
+        margin.value = scrollPercentage.value * 16 + 'px'
+    })
+})
 </script>
 
 <template>
-    <div class="overflow-hidden">
+    <div
+        class="overflow-hidden"
+        ref="hero"
+        :style="{ marginInline: margin, borderRadius: margin }"
+    >
         <div
             class="
                 bg-black h-full p-9 bg-no-repeat bg-cover bg-top min-h-screen
