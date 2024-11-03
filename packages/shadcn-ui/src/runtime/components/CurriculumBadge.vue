@@ -9,7 +9,7 @@ defineProps<{
 <template>
     <ShBadge
         variant="outline"
-        class="font-body text-white font-normal text-base py-0"
+        class="font-body text-white font-normal text-base py-0 gap-2"
     >
         <span>
             {{ curriculum }}
@@ -17,7 +17,6 @@ defineProps<{
 
         <ArrowUpRightIcon
             :size="16"
-            stroke-width="1"
         />
     </ShBadge>
 </template>
