@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver, installModule, addComponent, addComponentsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, installModule, addComponentsDir } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
@@ -28,6 +28,8 @@ export default defineNuxtModule<ModuleOptions>({
                 ]
             }
         })
+
+        await installModule('@vueuse/nuxt')
 
         await installModule('shadcn-nuxt', {
             prefix: 'sh',
