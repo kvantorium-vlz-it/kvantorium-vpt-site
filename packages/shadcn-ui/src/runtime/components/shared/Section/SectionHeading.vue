@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<PrimitiveProps>(), {
 <template>
     <Primitive
         :="props"
-        class="font-display text-6xl text-center mb-12"
+        class="font-display text-6xl text-center mb-12 uppercase"
     >
         <slot></slot>
     </Primitive>
