@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver, installModule, addComponent, addComponentsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, installModule, addComponentsDir } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {}
@@ -29,13 +29,16 @@ export default defineNuxtModule<ModuleOptions>({
             }
         })
 
+        await installModule('@vueuse/nuxt')
+
         await installModule('shadcn-nuxt', {
             prefix: 'sh',
             componentDir: resolver.resolve('./runtime/shadcn/ui'),
         })
 
-        addComponentsDir({
+        await addComponentsDir({
             path: resolver.resolve('./runtime/components'),
+            pathPrefix: false,
         })
 
         // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`

@@ -1,4 +1,5 @@
 const animate = require("tailwindcss-animate")
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -14,7 +15,18 @@ module.exports = {
                 "2xl": "1400px",
             },
         },
+
+        fontFamily: {
+            'body': ['circe', ...defaultTheme.fontFamily.sans],
+            'display': ['BankGothic', ...defaultTheme.fontFamily.serif],
+        },
+
         extend: {
+            backgroundImage: {
+                'hero-image': "url('https://kvantoriumvlz.ru/hero-background-alpha.png')",
+                'hero-noice': "url('https://kvantoriumvlz.ru/noise.png')",
+            },
+
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
