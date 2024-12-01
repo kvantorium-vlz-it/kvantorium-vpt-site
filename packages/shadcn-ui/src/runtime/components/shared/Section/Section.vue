@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<PrimitiveProps>(), {
 
 <template>
     <Primitive
-        class="my-24"
+        class="my-4 py-6 lg:my-6 lg:py-8"
         :="props"
     >
         <slot></slot>
