@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import { cn } from '../../lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '../../shadcn/ui/carousel'
 import { watchOnce } from '@vueuse/core';
+import Progress from '../../shadcn/ui/progress/Progress.vue';
 
 const api = ref<CarouselApi>()
 const progress = ref(0)
@@ -47,6 +48,23 @@ watchOnce(api, (api) => {
                         />
                     </CarouselItem>
                 </CarouselContent>
+
+                <div class="relative grid grid-cols-3 mt-6 gap-y-2">
+                    <Progress :model-value="progress * 100" class="h-1 row-start-1 col-start-2" />
+
+                    <div class="row-start-2 col-start-2 w-fit mx-auto inline-flex gap-2">
+                        <CarouselPrevious
+                            :disabled="!canScrollPrev"
+                            :class="cn(
+                                `top-auto right-auto bottom-auto left-auto translate-x-0 translate-y-0 relative`,
+                            )"
+                        />
+                        <CarouselNext
+                            :disabled="!canScrollNext"
+                            class="top-auto right-auto bottom-auto left-auto translate-x-0 translate-y-0 relative"
+                        />
+                    </div>
+                </div>
             </Carousel>
         </SectionContainer>
     </Section>
