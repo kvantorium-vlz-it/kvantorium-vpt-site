@@ -1,5 +1,5 @@
-import { curseurPlugin } from 'curseur-vif'
+// import { curseurPlugin } from 'curseur-vif'
 
-export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(curseurPlugin, {})
-})
+// export default defineNuxtPlugin((nuxtApp) => {
+//     nuxtApp.vueApp.use(curseurPlugin, {})
+// })

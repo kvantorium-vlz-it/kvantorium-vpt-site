@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TheCursor } from 'curseur-vif';
+// import { TheCursor } from 'curseur-vif';
 import TestCursor from './components/TestCursor.vue';
 </script>
 
@@ -11,11 +11,11 @@ import TestCursor from './components/TestCursor.vue';
             </CurriculumBadge>
         </NuxtLink>
 
-        <ClientOnly>
+        <!-- <ClientOnly>
             <TheCursor set-visible-on-mounted>
 
                 <div style="width: 32px; height: 32px; background-color: red;"></div>
             </TheCursor>
-        </ClientOnly>
+        </ClientOnly> -->
     </div>
 </template>
