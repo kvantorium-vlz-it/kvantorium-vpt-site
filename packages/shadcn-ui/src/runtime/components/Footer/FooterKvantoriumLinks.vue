@@ -11,7 +11,7 @@ const links = [
 <template>
     <section>
         <h2 class="font-display text-3xl mb-2 tracking-tighter leading-none">
-            Навигация
+            Кванториум
         </h2>
 
         <ul class="flex flex-col gap-y-0.5">
