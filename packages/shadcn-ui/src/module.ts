@@ -36,6 +36,10 @@ export default defineNuxtModule<ModuleOptions>({
             componentDir: resolver.resolve('./runtime/shadcn/ui'),
         })
 
+        await installModule('vue-yandex-maps/nuxt', {
+            apikey: ''
+        })
+
         await addComponentsDir({
             path: resolver.resolve('./runtime/components'),
             pathPrefix: false,
