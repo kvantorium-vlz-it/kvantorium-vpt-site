@@ -1,7 +1,6 @@
 {
-  "extends": ["@kvantorium-vpt-site/tsconfig/base.json"],
   "compilerOptions": {
     "outDir": "dist",
   },
-  "include": ["src/**/*.ts", "@kvantorium-vpt-site/tsconfig/enviroments.d.ts"]
+  "include": ["src/**/*.ts"]
 }

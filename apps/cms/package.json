@@ -23,8 +23,7 @@
     "sanity": "^3.38.0",
     "sanity-plugin-media": "^2.2.5",
     "styled-components": "^6.1.8",
-    "shared": "workspace:*",
-    "@kvantorium-vpt-site/tsconfig": "workspace:*"
+    "shared": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.2.79",
