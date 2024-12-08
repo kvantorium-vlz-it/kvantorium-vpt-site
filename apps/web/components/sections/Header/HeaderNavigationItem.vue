@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navigationMenuTriggerStyle } from '../../shadcn/ui/navigation-menu/index'
+import { navigationMenuTriggerStyle } from '@/components/shadcn/navigation-menu/index'
 
 defineProps<{
     label: string

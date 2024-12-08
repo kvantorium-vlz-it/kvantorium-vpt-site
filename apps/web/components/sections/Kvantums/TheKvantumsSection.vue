@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { cn } from '../../lib/utils';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '../../shadcn/ui/carousel'
+import { cn } from '@/lib/utils';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/shadcn/carousel'
 import { watchOnce } from '@vueuse/core';
-import Progress from '../../shadcn/ui/progress/Progress.vue';
+import Progress from '@/components/shadcn/progress/Progress.vue';
 
 const api = ref<CarouselApi>()
 const progress = ref(0)
