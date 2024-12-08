@@ -15,12 +15,16 @@
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/tailwindcss": "6.12.2",
     "nuxt": "^3.14.1592",
-    "vue": "^3.4.23",
-    "vue-router": "^4.3.2",
-    "ui": "workspace:*",
-    "@kvantorium-vpt-site/tsconfig": "workspace:*"
+    "shadcn-nuxt": "0.11.3",
+    "typescript": "^5.4.5",
+    "vue": "latest",
+    "vue-router": "latest"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.468.0",
+    "radix-vue": "^1.9.11",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   }
