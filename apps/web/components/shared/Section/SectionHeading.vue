@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive, type PrimitiveProps } from 'radix-vue'
-import { cn } from '../../../../runtime/lib/utils'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(defineProps<PrimitiveProps>(), {
     as: 'div'
