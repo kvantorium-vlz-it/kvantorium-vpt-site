@@ -12,23 +12,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "normalize.css": "^8.0.1",
-    "nuxt": "^3.11.2",
-    "nuxt-icon": "^0.6.10",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@nuxtjs/tailwindcss": "6.12.2",
+    "nuxt": "^3.14.1592",
     "vue": "^3.4.23",
     "vue-router": "^4.3.2",
     "ui": "workspace:*",
     "@kvantorium-vpt-site/tsconfig": "workspace:*"
   },
   "dependencies": {
-    "@floating-ui/vue": "^1.0.6",
-    "@nuxtjs/sanity": "^1.11.0",
-    "@vueuse/core": "^10.9.0",
-    "@vueuse/nuxt": "^10.9.0",
-    "floating-vue": "^5.2.2",
-    "modern-normalize": "^2.0.0",
-    "vue-final-modal": "^4.5.4",
-    "vue-yandex-maps": "^2.1.2",
-    "shared": "workspace:*"
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
