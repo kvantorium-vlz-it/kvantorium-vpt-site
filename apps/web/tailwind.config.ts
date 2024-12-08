@@ -1,11 +1,10 @@
-const animate = require("tailwindcss-animate")
+import type { Config } from "tailwindcss"
+import animate from "tailwindcss-animate"
+import defaultTheme from 'tailwindcss/defaultTheme'
 
-/** @type {import('tailwindcss').Config} */
-    module.exports = {
+const config: Partial<Config> = {
     darkMode: ["class"],
     safelist: ["dark"],
-    // prefix: "tw",
-
     theme: {
         container: {
             center: true,
@@ -14,7 +13,18 @@ const animate = require("tailwindcss-animate")
                 "2xl": "1400px",
             },
         },
+
+        fontFamily: {
+            'body': ['circe', ...defaultTheme.fontFamily.sans],
+            'display': ['BankGothic', ...defaultTheme.fontFamily.serif],
+        },
+
         extend: {
+            backgroundImage: {
+                'hero-image': "url('https://kvantoriumvlz.ru/hero-background-alpha.png')",
+                'hero-noice': "url('https://kvantoriumvlz.ru/noise.png')",
+            },
+
             colors: {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
@@ -50,28 +60,30 @@ const animate = require("tailwindcss-animate")
                     foreground: "hsl(var(--card-foreground))",
                 },
             },
+
             borderRadius: {
                 xl: "calc(var(--radius) + 4px)",
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
                 sm: "calc(var(--radius) - 4px)",
             },
+
             keyframes: {
                 "accordion-down": {
-                    from: { height: 0 },
+                    from: { height: '0px' },
                     to: { height: "var(--radix-accordion-content-height)" },
                 },
                 "accordion-up": {
                     from: { height: "var(--radix-accordion-content-height)" },
-                    to: { height: 0 },
+                    to: { height: '0px' },
                 },
                 "collapsible-down": {
-                    from: { height: 0 },
+                    from: { height: '0px' },
                     to: { height: 'var(--radix-collapsible-content-height)' },
                 },
                 "collapsible-up": {
                     from: { height: 'var(--radix-collapsible-content-height)' },
-                    to: { height: 0 },
+                    to: { height: '0px' },
                 },
             },
             animation: {
@@ -80,7 +92,9 @@ const animate = require("tailwindcss-animate")
                 "collapsible-down": "collapsible-down 0.2s ease-in-out",
                 "collapsible-up": "collapsible-up 0.2s ease-in-out",
             },
-        },
+        }
     },
     plugins: [animate],
 }
+
+export default config
