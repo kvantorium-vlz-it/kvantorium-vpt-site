@@ -8,7 +8,10 @@ const config: Partial<Config> = {
     theme: {
         container: {
             center: true,
-            padding: "2rem",
+            padding: {
+                DEFAULT: "1rem",
+                lg: '1.5rem',
+            },
             screens: {
                 "2xl": "1400px",
             },
@@ -21,8 +24,8 @@ const config: Partial<Config> = {
 
         extend: {
             backgroundImage: {
-                'hero-image': "url('https://kvantoriumvlz.ru/hero-background-alpha.png')",
-                'hero-noice': "url('https://kvantoriumvlz.ru/noise.png')",
+                'hero-image': "url('/hero-background-alpha.png')",
+                'hero-noice': "url('/noise.png')",
             },
 
             colors: {
