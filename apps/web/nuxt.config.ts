@@ -7,9 +7,10 @@ export default defineNuxtConfig({
     },
 
     modules: [
+        '@vueuse/nuxt',
+        "@nuxtjs/color-mode",
         "@nuxtjs/tailwindcss",
         "shadcn-nuxt",
-        "@nuxtjs/color-mode",
     ],
 
     css: [
@@ -19,17 +20,16 @@ export default defineNuxtConfig({
     components: {
         dirs: [
             {
-                path: '~/components/shadcn',
-                prefix: 'sh',
-                pathPrefix: false,
-                extensions: ['vue'],
-            },
-            {
                 path: "~/components",
                 pathPrefix: false,
                 ignore: ['~/components/shadcn'],
             },
         ],
+    },
+
+    shadcn: {
+        componentDir: './components/shadcn',
+        prefix: 'sh',
     },
 
     tailwindcss: {
@@ -38,9 +38,6 @@ export default defineNuxtConfig({
             { injectPosition: "first" },
         ],
         configPath: './tailwind.config.js',
-        // exposeConfig: {
-        //     level: 2
-        // },
         config: {
             content: [
                 './components/**/*.{vue,ts}',
