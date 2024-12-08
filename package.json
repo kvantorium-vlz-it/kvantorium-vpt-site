@@ -4,12 +4,11 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "dotenv -- turbo run dev --parallel",
-    "build": "dotenv -- turbo run build"
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build"
   },
   "devDependencies": {
-    "turbo": "^2.1.2",
-    "dotenv-cli": "latest"
+    "turbo": "^2.1.2"
   },
   "engines": {
     "node": ">=v16.18.1"

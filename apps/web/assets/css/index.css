@@ -1,7 +1,0 @@
-:root {
-    scroll-behavior: smooth;
-}
-.ymaps3x0--main-engine-container > canvas,
-.ymaps3x0--map {
-    width: 100% !important;
-}

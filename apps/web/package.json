@@ -5,30 +5,32 @@
   "license": "MIT",
   "version": "3.0.0",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "dotenvx run -- nuxt build",
+    "dev": "dotenvx run -- nuxt dev",
+    "generate": "dotenvx run -- nuxt generate",
+    "preview": "dotenvx run -- nuxt preview",
+    "postinstall": "dotenvx run -- nuxt prepare"
   },
   "devDependencies": {
-    "normalize.css": "^8.0.1",
-    "nuxt": "^3.11.2",
-    "nuxt-icon": "^0.6.10",
-    "vue": "^3.4.23",
-    "vue-router": "^4.3.2",
-    "ui": "workspace:*",
-    "@kvantorium-vpt-site/tsconfig": "workspace:*"
+    "@dotenvx/dotenvx": "^1.28.0",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@nuxtjs/tailwindcss": "6.12.2",
+    "@vueuse/core": "^12.0.0",
+    "@vueuse/nuxt": "^12.0.0",
+    "nuxt": "^3.14.1592",
+    "shadcn-nuxt": "0.11.3",
+    "typescript": "^5.4.5",
+    "vue": "latest",
+    "vue-router": "latest"
   },
   "dependencies": {
-    "@floating-ui/vue": "^1.0.6",
-    "@nuxtjs/sanity": "^1.11.0",
-    "@vueuse/core": "^10.9.0",
-    "@vueuse/nuxt": "^10.9.0",
-    "floating-vue": "^5.2.2",
-    "modern-normalize": "^2.0.0",
-    "vue-final-modal": "^4.5.4",
-    "vue-yandex-maps": "^2.1.2",
-    "shared": "workspace:*"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-vue": "^8.5.1",
+    "lucide-vue-next": "^0.468.0",
+    "radix-vue": "^1.9.11",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "vue-yandex-maps": "^2.1.4"
   }
 }

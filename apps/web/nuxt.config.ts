@@ -1,39 +1,58 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: { enabled: true },
+    devtools: {
+        enabled: true,
+    },
+
     modules: [
         '@vueuse/nuxt',
-        'nuxt-icon',
-        'floating-vue/nuxt',
+        "@nuxtjs/color-mode",
+        "@nuxtjs/tailwindcss",
+        "shadcn-nuxt",
         'vue-yandex-maps/nuxt',
-        '@nuxtjs/sanity',
-        'ui',
     ],
+
+    css: [
+        './assets/css/fonts.css',
+        './assets/css/tailwind.css',
+    ],
+
     components: {
         dirs: [
             {
                 path: "~/components",
                 pathPrefix: false,
-            }
-        ]
+                ignore: ['~/components/shadcn'],
+            },
+        ],
     },
-    css: [
-        'modern-normalize/modern-normalize.css',
-        'vue-final-modal/style.css',
-        '~/assets/css/index.css',
-    ],
-    typescript: {
-        includeWorkspace: true,
-        tsConfig: {
-            include: ["@kvantorium-vpt-site/tsconfig/enviroments.d.ts"]
-        }
+
+    shadcn: {
+        componentDir: './components/shadcn',
+        prefix: 'sh',
     },
+
+    tailwindcss: {
+        cssPath: [
+            './assets/css/tailwind.css',
+            { injectPosition: "first" },
+        ],
+        configPath: './tailwind.config.ts',
+        config: {
+            content: [
+                './components/**/*.{vue,ts}',
+            ],
+        },
+        viewer: true,
+    },
+
     yandexMaps: {
         apikey: process.env.YANDEX_MAPS_API_KEY,
     },
-    sanity: {
-        projectId: process.env.NUXT_SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        apiVersion: process.env.SANITY_API_VERSION,
-    },
+
+    // sanity: {
+    //     projectId: process.env.NUXT_SANITY_PROJECT_ID,
+    //     dataset: process.env.SANITY_DATASET,
+    //     apiVersion: process.env.SANITY_API_VERSION,
+    // },
 })
