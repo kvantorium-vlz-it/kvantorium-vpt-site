@@ -20,9 +20,6 @@ importers:
       '@formkit/tempo':
         specifier: ^0.1.1
         version: 0.1.2
-      '@kvantorium-vpt-site/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@sanity/vision':
         specifier: ^3.38.0
         version: 3.66.1(@babel/runtime@7.26.0)(@codemirror/lint@6.8.4)(@codemirror/theme-one-dark@6.1.2)(@emotion/is-prop-valid@1.2.2)(@lezer/common@1.2.3)(codemirror@6.0.1(@lezer/common@1.2.3))(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -115,18 +112,9 @@ importers:
 
   packages/shared:
     devDependencies:
-      '@kvantorium-vpt-site/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
       tsup:
         specifier: ^8.0.2
         version: 8.3.5(jiti@2.4.1)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
-
-  packages/tsconfig:
-    devDependencies:
-      '@sindresorhus/tsconfig':
-        specifier: ^5.0.0
-        version: 5.1.1
 
 packages:
 
@@ -1963,10 +1951,6 @@ packages:
 
   '@sindresorhus/merge-streams@2.3.0':
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
-    engines: {node: '>=18'}
-
-  '@sindresorhus/tsconfig@5.1.1':
-    resolution: {integrity: sha512-+2oF5II0d+0qKykD4GoM6hak0fpBgBMlQjpMF/xKReztc9MTMeldESdbhHo0rI/Iq3cEuhPy4/RStYbVFtWfog==}
     engines: {node: '>=18'}
 
   '@swc/helpers@0.5.15':
@@ -9179,8 +9163,6 @@ snapshots:
       react: 18.3.1
 
   '@sindresorhus/merge-streams@2.3.0': {}
-
-  '@sindresorhus/tsconfig@5.1.1': {}
 
   '@swc/helpers@0.5.15':
     dependencies:
