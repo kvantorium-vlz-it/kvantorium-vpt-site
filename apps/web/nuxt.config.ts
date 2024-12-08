@@ -1,5 +1,3 @@
-import { resolve } from 'path'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {
@@ -11,9 +9,11 @@ export default defineNuxtConfig({
         "@nuxtjs/color-mode",
         "@nuxtjs/tailwindcss",
         "shadcn-nuxt",
+        'vue-yandex-maps/nuxt',
     ],
 
     css: [
+        './assets/css/fonts.css',
         './assets/css/tailwind.css',
     ],
 
@@ -37,7 +37,7 @@ export default defineNuxtConfig({
             './assets/css/tailwind.css',
             { injectPosition: "first" },
         ],
-        configPath: './tailwind.config.js',
+        configPath: './tailwind.config.ts',
         config: {
             content: [
                 './components/**/*.{vue,ts}',
@@ -46,9 +46,9 @@ export default defineNuxtConfig({
         viewer: true,
     },
 
-    // yandexMaps: {
-    //     apikey: process.env.YANDEX_MAPS_API_KEY,
-    // },
+    yandexMaps: {
+        apikey: process.env.YANDEX_MAPS_API_KEY,
+    },
 
     // sanity: {
     //     projectId: process.env.NUXT_SANITY_PROJECT_ID,
