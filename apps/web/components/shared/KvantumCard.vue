@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { ArrowRightIcon } from 'lucide-vue-next'
+import type { Kvantum } from '~/assets/typescript/types'
 
 defineProps<{
-    kvantumName: string
-    topics: string[]
-    fromAge: number
-    kvantumImage: string
-    to?: string
+    kvantum: Kvantum
 }>()
 </script>
 
@@ -15,11 +12,11 @@ defineProps<{
         <ShCardHeader>
             <ShCardTitle class="flex items-center justify-between">
                 <div class="font-display text-2xl leading-[0.75] tracking-tighter font-bold">
-                    {{ kvantumName }}
+                    {{ kvantum.name }}
                 </div>
                 <img
                     class="w-16 aspect-square object-cover"
-                    :src="kvantumImage"
+                    :src="kvantum.icon"
                     alt=""
                 >
             </ShCardTitle>
@@ -27,19 +24,19 @@ defineProps<{
 
         <ShCardContent>
             <ol class="list-decimal list-inside">
-                <li v-for="topic in topics">
+                <li v-for="topic in kvantum.topics">
                     {{ topic }}
                 </li>
             </ol>
 
             <div class="mt-2">
-                Возрастная категория: {{ fromAge }}+
+                Возрастная категория: {{ 0 }}+
             </div>
         </ShCardContent>
 
         <ShCardFooter>
             <ShButton class="flex items-center group/button" as-child>
-                <NuxtLink :to="to">
+                <NuxtLink :to="`/kvantum/${kvantum.slug}`">
                     <span>
                         Подробнее о квантуме
                     </span>
