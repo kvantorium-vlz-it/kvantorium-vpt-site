@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Kvantum } from '~/assets/typescript/types'
+import { TrendingUpIcon } from 'lucide-vue-next'
 
 withDefaults(defineProps<{
     kvantums: Kvantum[]
@@ -17,8 +18,15 @@ withDefaults(defineProps<{
 
             <KvantumsCarousel :kvantums="kvantums">
                 <template #before-slides>
-                    <ShCarouselItem class="basis-full lg:basis-1/2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, pariatur.
+                    <ShCarouselItem class="basis-full lg:basis-1/3">
+                        <ShCard class="flex flex-col justify-end items-end from-blue-800 to-blue-600 bg-gradient-to-br text-white h-full">
+                            <ShCardHeader>
+                                <TrendingUpIcon :size="56" />
+                            </ShCardHeader>
+                            <ShCardContent class="text-lg">
+                                Волжский кванториум предлагает множество различных направлений подготовки, которые помогут раскрыть способности ребенка
+                            </ShCardContent>
+                        </ShCard>
                     </ShCarouselItem>
                 </template>
             </KvantumsCarousel>
