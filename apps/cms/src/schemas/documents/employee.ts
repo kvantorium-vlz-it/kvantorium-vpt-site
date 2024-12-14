@@ -1,8 +1,9 @@
 import { defineField, defineType } from "sanity"
 import { UsersIcon } from '@sanity/icons'
+import { DOCUMENT_TYPES } from "../../constants"
 
 export default defineType({
-    name: 'employee',
+    name: DOCUMENT_TYPES.EMPLOYEE,
     type: 'document',
     title: 'Сотрудники',
     icon: UsersIcon,
@@ -13,7 +14,7 @@ export default defineType({
             title: 'Имя',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
@@ -22,7 +23,7 @@ export default defineType({
             title: 'Фамилия',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
@@ -35,57 +36,22 @@ export default defineType({
             name: 'description',
             type: 'text',
             title: 'О сотруднике',
-            validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
         }),
 
         defineField({
             name: 'isTeacher',
             type: 'boolean',
             title: 'Является ли педагогом',
-            validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
             initialValue: true,
         }),
 
         defineField({
             name: 'image',
-            type: 'imageAsset',
+            type: 'image',
             title: 'Изображение сотрудника',
             validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
+                .assetRequired()
+                .error("Поле не может быть пустым"),
         }),
     ],
-
-    preview: {
-        select: {
-            name: 'name',
-            surname: 'surname',
-            patronymic: 'patronymic',
-            image: 'image',
-            description: 'description',
-            isTeacher: 'isTeacher',
-        },
-
-        prepare(selection) {
-            const {
-                name,
-                surname,
-                patronymic,
-                image,
-                description,
-                isTeacher,
-            } = selection
-
-            return {
-              title: `${surname} ${name} ${patronymic}`,
-              media: image.image,
-              description: description,
-              subtitle: isTeacher && 'Педагог' || undefined,
-            }
-        },
-    }
 })

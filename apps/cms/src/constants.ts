@@ -11,8 +11,13 @@ const arrayToConstants = <C extends ReadonlyArray<string>>(constants: C) => {
     }
 }
 
-const RAW_DOCUMENT_TYPES = ['kvantum'] as const
-const RAW_OBJECT_TYPES = ['portableText'] as const
+const RAW_DOCUMENT_TYPES = [
+    'kvantum',
+    'employee',
+] as const
+const RAW_OBJECT_TYPES = [
+    'portableText',
+] as const
 
 export const DOCUMENT_TYPES = arrayToConstants(RAW_DOCUMENT_TYPES)
 export const OBJECT_TYPES = arrayToConstants(RAW_OBJECT_TYPES)
