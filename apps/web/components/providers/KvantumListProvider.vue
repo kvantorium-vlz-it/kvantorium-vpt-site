@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import type { Kvantum } from '~/assets/typescript/types'
 
-const query = groq`*[_type == 'kvantorium.kvantum'] {
-    ...,
-    "icon": icon.asset->url,
-    "slug": slug.current,
-}`
+const query = groq`
+    *[_type == 'kvantorium.kvantum'] {
+        "slug": slug.current,
+        name,
+        _id,
+        "icon": icon.asset->url,
+        description,
+        topics,
+    }
+`
 
 const {
     data,

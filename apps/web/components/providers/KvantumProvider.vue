@@ -12,18 +12,22 @@ const props =withDefaults(defineProps<{
 })
 
 const query = groq`
-*[
-    _type == 'kvantorium.kvantum'
-    && (
-        slug.current == $slug
-        || name == $name
-        || _id == $id
-    )
-] {
-    ...,
-    "icon": icon.asset->url,
-    "slug": slug.current,
-}`
+    *[
+        _type == 'kvantorium.kvantum'
+        && (
+            slug.current == $slug
+            || name == $name
+            || _id == $id
+        )
+    ] {
+        "slug": slug.current,
+        name,
+        _id,
+        "icon": icon.asset->url,
+        description,
+        topics,
+    }
+`
 
 const { data } = await useSanityQuery<Kvantum[]>(query, {
     slug: props.slug,
