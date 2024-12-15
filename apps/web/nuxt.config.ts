@@ -1,3 +1,5 @@
+import process from 'process'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {
@@ -5,11 +7,12 @@ export default defineNuxtConfig({
     },
 
     modules: [
-        '@vueuse/nuxt',
-        "@nuxtjs/color-mode",
-        "@nuxtjs/tailwindcss",
-        "shadcn-nuxt",
-        'vue-yandex-maps/nuxt',
+      '@vueuse/nuxt',
+      "@nuxtjs/color-mode",
+      "@nuxtjs/tailwindcss",
+      "shadcn-nuxt",
+      'vue-yandex-maps/nuxt',
+      '@nuxtjs/sanity',
     ],
 
     css: [
@@ -49,6 +52,11 @@ export default defineNuxtConfig({
     yandexMaps: {
         apikey: process.env.YANDEX_MAPS_API_KEY,
     },
+
+    sanity: {
+        projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
+        dataset: process.env.SANITY_STUDIO_DATASET!,
+    }
 
     // sanity: {
     //     projectId: process.env.NUXT_SANITY_PROJECT_ID,

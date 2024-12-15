@@ -2,7 +2,11 @@
     <div>
         <TheHero />
         <NewsSection />
-        <TheKvantumsSection />
+
+        <KvantumsProvider #="{ kvantums }">
+            <TheKvantumsSection :kvantums="kvantums" />
+        </KvantumsProvider>
+
         <TheMapSection />
     </div>
 </template>
