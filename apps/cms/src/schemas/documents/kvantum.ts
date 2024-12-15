@@ -18,7 +18,7 @@ export default defineType({
         }),
 
         defineField({
-            name: 'url',
+            name: 'slug',
             title: 'Человекочитаемая ссылка',
             type: 'slug',
             options: {
