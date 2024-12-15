@@ -4,14 +4,14 @@ import { DOCUMENT_TYPES } from "../../constants"
 
 export default defineType({
     name: DOCUMENT_TYPES.EMPLOYEE,
-    type: 'document',
     title: 'Сотрудники',
+    type: 'document',
     icon: UsersIcon,
     fields: [
         defineField({
             name: 'name',
-            type: 'string',
             title: 'Имя',
+            type: 'string',
             validation: (rule) => rule
                 .required()
                 .error("Поле не может быть пустым"),
@@ -19,8 +19,8 @@ export default defineType({
 
         defineField({
             name: 'surname',
-            type: 'string',
             title: 'Фамилия',
+            type: 'string',
             validation: (rule) => rule
                 .required()
                 .error("Поле не может быть пустым"),
@@ -28,27 +28,30 @@ export default defineType({
 
         defineField({
             name: 'patronymic',
-            type: 'string',
             title: 'Отчество',
+            type: 'string',
         }),
 
         defineField({
             name: 'description',
-            type: 'text',
             title: 'О сотруднике',
+            type: 'text',
         }),
 
         defineField({
             name: 'isTeacher',
-            type: 'boolean',
             title: 'Является ли педагогом',
+            type: 'boolean',
             initialValue: true,
+            validation: (rule) => rule
+                .required()
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'image',
-            type: 'image',
             title: 'Изображение сотрудника',
+            type: 'image',
             validation: (rule) => rule
                 .assetRequired()
                 .error("Поле не может быть пустым"),
