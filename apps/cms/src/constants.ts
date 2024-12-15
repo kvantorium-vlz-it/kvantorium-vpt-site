@@ -14,6 +14,9 @@ const arrayToConstants = <C extends ReadonlyArray<string>>(constants: C) => {
 const RAW_DOCUMENT_TYPES = [
     'kvantum',
     'employee',
+    'curriculum',
+    'newsTag',
+    'news',
 ] as const
 const RAW_OBJECT_TYPES = [
     'portableText',
@@ -21,3 +24,9 @@ const RAW_OBJECT_TYPES = [
 
 export const DOCUMENT_TYPES = arrayToConstants(RAW_DOCUMENT_TYPES)
 export const OBJECT_TYPES = arrayToConstants(RAW_OBJECT_TYPES)
+
+export const CURRICULUM_LEVEL = {
+    INTRODUCTORY: 1,
+    ADVANCED: 2,
+    PROJECT: 3,
+} as const
