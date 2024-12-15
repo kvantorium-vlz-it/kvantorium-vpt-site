@@ -6,9 +6,9 @@
             <NewsSection :news="news || []" />
         </NewsListProvider>
 
-        <KvantumsProvider #="{ kvantums }">
+        <KvantumListProvider #="{ kvantums }">
             <TheKvantumsSection :kvantums="kvantums" />
-        </KvantumsProvider>
+        </KvantumListProvider>
 
         <TheMapSection />
     </div>
