@@ -1,91 +1,60 @@
 import { defineField, defineType } from "sanity"
 import { UsersIcon } from '@sanity/icons'
+import { DOCUMENT_TYPES } from "../../constants"
 
 export default defineType({
-    name: 'employee',
-    type: 'document',
+    name: DOCUMENT_TYPES.EMPLOYEE,
     title: 'Сотрудники',
+    type: 'document',
     icon: UsersIcon,
     fields: [
         defineField({
             name: 'name',
-            type: 'string',
             title: 'Имя',
+            type: 'string',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'surname',
-            type: 'string',
             title: 'Фамилия',
+            type: 'string',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'patronymic',
-            type: 'string',
             title: 'Отчество',
+            type: 'string',
         }),
 
         defineField({
             name: 'description',
-            type: 'text',
             title: 'О сотруднике',
-            validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
+            type: 'text',
         }),
 
         defineField({
             name: 'isTeacher',
-            type: 'boolean',
             title: 'Является ли педагогом',
+            type: 'boolean',
+            initialValue: true,
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
-            initialValue: true,
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'image',
-            type: 'imageAsset',
             title: 'Изображение сотрудника',
+            type: 'image',
             validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
+                .assetRequired()
+                .error("Поле не может быть пустым"),
         }),
     ],
-
-    preview: {
-        select: {
-            name: 'name',
-            surname: 'surname',
-            patronymic: 'patronymic',
-            image: 'image',
-            description: 'description',
-            isTeacher: 'isTeacher',
-        },
-
-        prepare(selection) {
-            const {
-                name,
-                surname,
-                patronymic,
-                image,
-                description,
-                isTeacher,
-            } = selection
-
-            return {
-              title: `${surname} ${name} ${patronymic}`,
-              media: image.image,
-              description: description,
-              subtitle: isTeacher && 'Педагог' || undefined,
-            }
-        },
-    }
 })

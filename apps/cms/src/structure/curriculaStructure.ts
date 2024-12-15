@@ -1,91 +1,88 @@
-import { StructureBuilder } from "sanity/structure";
-import curriculum from "../schemas/documents/curriculum";
-import kvantum from "../schemas/documents/kvantum";
-import employee from "../schemas/documents/employee";
-
-import { CURRICULUM_LEVEL } from 'shared/enums'
-import { capitalizeFirstLetter, getCurriculumLevelLabel } from "shared/utils";
+import { StructureBuilder } from "sanity/structure"
+import { API_VERSION, CURRICULUM_LEVEL, DOCUMENT_TYPES } from "../constants"
+import { upperFirst } from "scule"
+import { getCurriculumLevelLabel } from "../schemas/utils"
 
 export default (S: StructureBuilder) => S
     .listItem()
-    .id('curricula-list-item')
     .title('Учебные программы')
+    .id('curricula')
     .child(S
         .list()
-        .id('curricula-groups-list')
         .title('Учебные программы')
+        .id('curricula-groups')
         .items([
             S.listItem()
-                .id('all-curricula-group')
                 .title('Все учебные программы')
+                .id('all-group')
                 .child(S
-                    .documentTypeList(curriculum.name)
-                    .apiVersion("")
-                    .id('all-curricula-list')
+                    .documentTypeList(DOCUMENT_TYPES.CURRICULUM)
                     .title('Все учебные программы')
+                    .id('curricula')
+                    .apiVersion(API_VERSION),
                 ),
 
             S.divider(),
 
             S.listItem()
-                .id('kvantums-curricula-group')
+                .id('kvantum-group')
                 .title('По квантумам')
                 .child(S
-                    .documentTypeList(kvantum.name)
-                    .apiVersion("")
-                    .id('kvantums-list')
+                    .documentTypeList(DOCUMENT_TYPES.KVANTUM)
                     .title('Учебные программы по квантумам')
+                    .id('kvantums-list')
+                    .apiVersion(API_VERSION)
                     .child((kvantumId) => S
-                        .documentTypeList(curriculum.name)
-                        .apiVersion("")
-                        .id('kvantum-curricula-list')
-                        .filter('references($id)')
-                        .params({ id: kvantumId })
+                        .documentTypeList(DOCUMENT_TYPES.CURRICULUM)
                         .title('Учебные программы')
-                    )
+                        .id('curricula')
+                        .apiVersion(API_VERSION)
+                        .filter('references($id)')
+                        .params({ id: kvantumId }),
+                    ),
                 ),
 
             S.listItem()
-                .id('teachers-curricula-group')
+                .id('teacher-group')
                 .title('По педагогам')
                 .child(S
-                    .documentTypeList(employee.name)
-                    .apiVersion("")
-                    .filter('isTeacher')
-                    .id('teachers-list')
+                    .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
                     .title("Учебные программы по педагогам")
-                    .child((employeeId) => S.
-                        documentTypeList(curriculum.name)
-                        .apiVersion("")
-                        .id('teacher-curricula-list')
-                        .filter('references($id)')
-                        .params({ id: employeeId })
+                    .id('teachers-list')
+                    .apiVersion(API_VERSION)
+                    .filter('isTeacher')
+                    .child((employeeId) => S
+                        .documentTypeList(DOCUMENT_TYPES.CURRICULUM)
                         .title('Учебные программы по педагогам')
-                    )
+                        .id('currcula')
+                        .apiVersion(API_VERSION)
+                        .filter('references($id)')
+                        .params({ id: employeeId }),
+                    ),
                 ),
 
             S.listItem()
-                .id('levels-curricula-group')
+                .id('level-group')
                 .title('По уровню обучения')
                 .child(S
                     .list()
-                    .id('levels-list')
                     .title('Учебные программы по уровню обучения')
+                    .id('levels-list')
                     .items(Object
                         .entries(CURRICULUM_LEVEL)
                         .map(([_, level]) => S
                             .listItem()
-                            .id(`level-${level}-curricula-list`)
-                            .title(`${capitalizeFirstLetter(getCurriculumLevelLabel(level))} уровень`)
+                            .title(`${upperFirst(getCurriculumLevelLabel(level))} уровень`)
+                            .id(`level-${level}`)
                             .child(S
-                                .documentTypeList(curriculum.name)
-                                .apiVersion("")
-                                .id('a1')
+                                .documentTypeList(DOCUMENT_TYPES.CURRICULUM)
+                                .title(`${upperFirst(getCurriculumLevelLabel(level))} уровень`)
+                                .id('curricula')
                                 .filter(`level == ${level}`)
-                                .title(`${capitalizeFirstLetter(getCurriculumLevelLabel(level))} уровень`)
-                            )
-                        )
-                    )
+                                .apiVersion(API_VERSION)
+                            ),
+                        ),
+                    ),
                 ),
-        ])
+        ]),
     )

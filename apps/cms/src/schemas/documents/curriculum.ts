@@ -1,189 +1,160 @@
-import { defineField, defineType, useClient } from "sanity";
-import kvantum from "./kvantum";
-import employee from "./employee";
-import contentBlock from "../objects/contentBlock";
-
-import { DefaultCurriculumConstants } from 'shared/constants'
-import { CURRICULUM_LEVEL } from 'shared/enums'
-import { capitalizeFirstLetter, getCurriculumLevelLabel } from 'shared/utils'
+import { defineField, defineType } from "sanity";
+import { CURRICULUM_LEVEL, DOCUMENT_TYPES, OBJECT_TYPES } from "../../constants"
+import { getCurriculumLevelLabel } from "../utils"
+import { upperFirst } from "scule"
 
 export default defineType({
-    name: 'curriculum',
-    type: 'document',
+    name: DOCUMENT_TYPES.CURRICULUM,
     title: 'Учебные программы',
+    type: 'document',
     fields: [
         defineField({
-            name: 'kvantum',
-            type: 'reference',
-            title: 'Квантум',
-            to: [{ type: kvantum.name }],
+            name: 'name',
+            title: 'Название программы',
+            type: 'string',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
-            name: 'name',
-            type: 'string',
-            title: 'Название программы',
+            name: 'kvantum',
+            title: 'Квантум',
+            type: 'reference',
+            to: [{ type: DOCUMENT_TYPES.KVANTUM }],
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'teacher',
-            type: 'reference',
             title: 'Педагог',
-            to: [{ type: employee.name }],
+            type: 'reference',
+            to: [{ type: DOCUMENT_TYPES.EMPLOYEE }],
             options: {
                 filter: 'isTeacher',
             },
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
-            name: 'age',
-            type: 'object',
-            title: 'Возраст обучающихся',
-            fields: [
-                defineField({
-                    name: 'from',
-                    type: 'number',
-                    title: 'Минимальный возраст',
-                    initialValue: DefaultCurriculumConstants.STUDENTS_MIN_AGE,
-                }),
-
-                defineField({
-                    name: 'to',
-                    type: 'number',
-                    title: 'Максимальный возраст',
-                    initialValue: DefaultCurriculumConstants.STUDENTS_MAX_AGE,
-                    validation: (rule) => rule
-                        .max(DefaultCurriculumConstants.STUDENTS_MAX_AGE)
-                        .error(`Возраст должен быть до ${DefaultCurriculumConstants.STUDENTS_MAX_AGE}`),
-                }),
-            ],
+            name: 'description',
+            title: 'Описание программы',
+            type: OBJECT_TYPES.PORTABLE_TEXT,
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
+        }),
+
+        defineField({
+            name: 'minimalAge',
+            title: 'Минимальный возраст',
+            type: 'number',
+            initialValue: () => 12,
+            validation: (rule) => rule
+                .required()
+                .error("Поле не может быть пустым")
+                .positive()
+                .error('Значение не может быть отрицательным'),
         }),
 
         defineField({
             name: 'level',
+            title: 'Уровень учебной программы',
             type: 'number',
-            title: 'уровень учебной программы',
             options: {
+                layout: 'radio',
                 list: Object
                     .entries(CURRICULUM_LEVEL)
                     .map(([_, level]) => ({
-                        title: capitalizeFirstLetter(getCurriculumLevelLabel(level)),
+                        title: upperFirst(getCurriculumLevelLabel(level)),
                         value: level,
-                    }))
+                    })),
             },
             initialValue: CURRICULUM_LEVEL.INTRODUCTORY,
+            validation: (rule) => rule
+                .required()
+                .error("Поле не может быть пустым"),
         }),
 
-        defineField({
-            name: 'isInterview',
-            type: 'boolean',
-            title: 'Обучение по собеседованию',
-            initialValue: false,
-        }),
+        // defineField({
+        //     name: 'isInterview',
+        //     title: 'Обучение по собеседованию',
+        //     type: 'boolean',
+        //     initialValue: false,
+        // }),
 
         defineField({
             name: 'hoursPerYear',
-            type: 'object',
             title: 'Длительность программы',
+            type: 'object',
             fields: [
                 defineField({
                     name: 'firstHalf',
                     title: 'Первое полугодие',
                     type: 'number',
-                    initialValue: DefaultCurriculumConstants.ACADEMIC_HOURS_PER_HALF_YEAR,
+                    initialValue: 72,
+                    validation: (rule) => rule
+                        .positive()
+                        .error('Значение не может быть отрицательным'),
                 }),
 
                 defineField({
                     name: 'secondHalf',
                     title: 'Второе полугодие',
                     type: 'number',
-                    initialValue: DefaultCurriculumConstants.ACADEMIC_HOURS_PER_HALF_YEAR
+                    initialValue: 72,
+                    validation: (rule) => rule
+                        .positive()
+                        .error('Значение не может быть отрицательным'),
                 }),
             ],
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'schedule',
-            type: 'object',
             title: 'Расписание занятий',
+            type: 'object',
             fields: [
                 defineField({
                     name: 'count',
-                    type: 'number',
                     title: 'Количество дней в неделю',
-                    initialValue: DefaultCurriculumConstants.SCHEDULE_DAYS_PER_WEEK,
+                    type: 'number',
+                    initialValue: 2,
+                    validation: (rule) => rule
+                        .positive()
+                        .error('Значение не может быть отрицательным'),
                 }),
 
                 defineField({
                     name: 'hours',
-                    type: 'number',
                     title: 'Длительность одного занятия (в академических часах)',
-                    initialValue: DefaultCurriculumConstants.SCHEDULE_LESSON_DURATION_IN_ACADEMIC_HOURS,
+                    type: 'number',
+                    initialValue: 2,
+                    validation: (rule) => rule
+                        .positive()
+                        .error('Значение не может быть отрицательным'),
                 }),
             ],
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'studentsInGroup',
-            type: 'number',
             title: 'Количество учеников в одной группе',
-            initialValue: DefaultCurriculumConstants.STUDENTS_COUNT_IN_GROUP,
-        }),
-
-        defineField({
-            name: 'description',
-            title: 'Описание программы',
-            type: contentBlock.name,
+            type: 'number',
+            initialValue: 12,
             validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
+                .positive()
+                .error('Значение не может быть отрицательным'),
         }),
     ],
-
-    preview: {
-        select: {
-            name: 'name',
-            kvantumName: 'kvantum.name',
-            kvantumImage: 'kvantum.icon.image',
-            level: 'level',
-            teacherName: 'teacher.name',
-            teacherSurname: 'teacher.surname',
-            teacherPatronymic: 'teacher.patronymic',
-        },
-        prepare({
-            kvantumImage,
-            name,
-            level,
-            teacherName,
-            teacherSurname,
-            teacherPatronymic,
-        }) {
-            const levelLabel = capitalizeFirstLetter(getCurriculumLevelLabel(level))
-            const teacherLabel = `${teacherSurname} ${teacherName} ${teacherPatronymic}`
-
-            return {
-                title: `${name} (${levelLabel} уровень)`,
-                media: kvantumImage,
-                subtitle: `${teacherLabel}`
-            }
-        },
-    }
 })

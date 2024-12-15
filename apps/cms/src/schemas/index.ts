@@ -1,26 +1,21 @@
-import curriculum from "./documents/curriculum";
-import employee from "./documents/employee";
-import kvantum from "./documents/kvantum";
-import news from "./documents/news";
-import newsTag from "./documents/newsTag";
-import settings from "./documents/settings";
-import contentBlock from "./objects/contentBlock";
-import fileAsset from "./objects/fileAsset";
-import imageAsset from "./objects/imageAsset";
+import curriculum from "./documents/curriculum"
+import employee from "./documents/employee"
+import kvantum from "./documents/kvantum"
+import news from "./documents/news"
+import newsTag from "./documents/newsTag"
+import portableText from "./objects/portableText"
 
 export default [
-    // Helper Objects
-    imageAsset,
-    fileAsset,
-    contentBlock,
+    // // Helper Objects
+    portableText,
 
-    // Document schemas
+    // // Document schemas
     employee,
     kvantum,
     newsTag,
     curriculum,
     news,
 
-    // Singleton documents
-    settings,
+    // // Singleton documents
+    // settings,
 ]

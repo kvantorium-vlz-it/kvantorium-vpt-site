@@ -1,55 +1,56 @@
 import { defineField, defineType } from "sanity";
 import newsTag from "./newsTag";
+import { DOCUMENT_TYPES, OBJECT_TYPES } from "../../constants";
 
 export default defineType({
-    name: 'news',
-    type: 'document',
+    name: DOCUMENT_TYPES.NEWS,
     title: 'Новости',
+    type: 'document',
     fields: [
         defineField({
             name: 'title',
-            type: 'string',
             title: 'Заголовок',
+            type: 'string',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'previewImage',
-            type: 'imageAsset',
             title: 'Превью',
-            description: 'Изображение для предварительного просмотра новости.',
+            description: 'Главное изображение новости',
+            type: 'image',
             validation: (rule) => rule
-                .required()
-                .error("Поле обязательно для заполнения."),
+                .assetRequired()
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'content',
-            type: 'contentBlock',
             title: 'Контент',
+            type: OBJECT_TYPES.PORTABLE_TEXT,
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'slug',
+            title: 'Человекочитаемая ссылка',
             type: 'slug',
-            title: 'человекочитаемая ссылка',
             options: {
                 source: 'title',
             },
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error("Поле не может быть пустым"),
         }),
 
         defineField({
             name: 'date',
-            type: 'date',
             title: 'Дата публикации',
+            type: 'date',
             options: {
                 dateFormat: 'DD-MM-YYYY',
             },
@@ -58,37 +59,22 @@ export default defineType({
 
         defineField({
             name: 'tags',
-            type: 'array',
             title: 'Теги',
+            type: 'array',
             of: [{
                 type: 'reference',
-                to: [{
-                    type: newsTag.name,
-                }],
+                to: [
+                    { type: DOCUMENT_TYPES.NEWS_TAG },
+                ],
             }],
         }),
 
         defineField({
             name: 'gallery',
-            type: 'array',
             title: 'Галерея',
-            of: [{ type: 'imageAsset' }],
             description: 'Изображения, которые относятся к новости, но не находятся в контенте',
+            type: 'array',
+            of: [{ type: 'image' }],
         }),
     ],
-
-    preview: {
-        select: {
-            title: 'title',
-            previewImage: 'previewImage.image',
-            date: 'date',
-        },
-
-        prepare({ date, previewImage, title }) {
-            return {
-                media: previewImage,
-                title: `${title} ${date}`,
-            }
-        },
-    }
 })

@@ -1,65 +1,67 @@
 import { defineField, defineType } from "sanity"
 import { DocumentIcon } from '@sanity/icons'
-import imageAsset from "../objects/imageAsset"
-import contentBlocks from "../objects/contentBlock"
+import { DOCUMENT_TYPES, OBJECT_TYPES } from '../../constants'
 
 export default defineType({
-    name: 'kvantum',
-    type: 'document',
+    name: DOCUMENT_TYPES.KVANTUM,
     title: 'Квантумы',
+    type: 'document',
     icon: DocumentIcon,
     fields: [
         defineField({
             name: 'name',
-            type: 'string',
             title: 'Название квантума',
+            type: 'string',
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error('Поле не может быть пустым'),
         }),
 
         defineField({
             name: 'slug',
+            title: 'Человекочитаемая ссылка',
             type: 'slug',
-            title: 'человекочитаемая ссылка',
             options: {
                 source: 'name',
             },
             validation: (rule) => rule
                 .required()
-                .error("Поле обязательно для заполнения."),
+                .error('Поле не может быть пустым'),
         }),
 
         defineField({
             name: 'icon',
-            type: imageAsset.name,
             title: 'Иконка квантума',
+            type: 'image',
+            validation: (rule) => rule
+                .required()
+                .error('Поле не может быть пустым'),
         }),
 
         defineField({
             name: 'description',
-            type: contentBlocks.name,
             title: 'Описание квантума',
+            type: OBJECT_TYPES.PORTABLE_TEXT,
+            validation: (rule) => rule
+                .required()
+                .error("Поле не может быть пустым"),
         }),
 
         defineField ({
             name: 'topics',
-            type: 'array',
             title: 'Основные темы, рассматриваемые на направлении',
-            of: [{ type: 'string' }],
-        })
+            type: 'array',
+            of: [
+                {
+                    type: 'string',
+                    validation: (rule) => rule
+                        .required()
+                        .error('Поле не может быть пустым'),
+                },
+            ],
+            validation: (rule) => rule
+                .required()
+                .error('Необходимо указать хотя бы одну тему')
+        }),
     ],
-
-    preview: {
-        select: {
-            name: 'name',
-            icon: 'icon.image',
-        },
-        prepare({ icon, name }) {
-            return {
-                media: icon,
-                title: name,
-            }
-        },
-    }
 })
