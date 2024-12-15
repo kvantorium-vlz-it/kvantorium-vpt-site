@@ -56,6 +56,7 @@ export default defineNuxtConfig({
     sanity: {
         projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
         dataset: process.env.SANITY_STUDIO_DATASET!,
+        apiVersion: 'v2022-03-07',
     }
 
     // sanity: {
