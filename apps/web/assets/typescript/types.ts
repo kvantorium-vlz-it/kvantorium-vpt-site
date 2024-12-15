@@ -4,6 +4,7 @@ export interface Kvantum {
     topics: string[]
     icon: string,
     description: any[]
+    minimalAge: number
 }
 
 interface ImageWithAlternativeText {

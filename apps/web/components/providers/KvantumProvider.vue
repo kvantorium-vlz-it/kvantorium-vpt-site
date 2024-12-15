@@ -26,6 +26,10 @@ const query = groq`
         "icon": icon.asset->url,
         description,
         topics,
+        'minimalAge': math::min(*[
+            _type == 'kvantorium.curriculum'
+            && references(^._id)
+        ].minimalAge)
     }
 `
 
