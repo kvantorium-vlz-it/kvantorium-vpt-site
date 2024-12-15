@@ -30,3 +30,5 @@ export const CURRICULUM_LEVEL = {
     ADVANCED: 2,
     PROJECT: 3,
 } as const
+
+export const API_VERSION = "v2022-03-07"

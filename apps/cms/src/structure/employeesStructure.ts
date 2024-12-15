@@ -1,49 +1,51 @@
-import { StructureBuilder } from "sanity/structure";
+import { StructureBuilder } from "sanity/structure"
 import employee from '../schemas/documents/employee'
+import { API_VERSION, DOCUMENT_TYPES } from "../constants"
 
 export default (S: StructureBuilder) => S
     .listItem()
-    .id('employees-list-item')
     .title('Сотрудники')
     .icon(employee.icon)
+    .id('employees')
     .child(S
         .list()
-        .id('employees-groups-list')
         .title('Сотрудники')
+        .id('employees-groups')
         .items([
             S.listItem()
-                .id('all-employees-group')
                 .title('Все сотрудники')
                 .icon(employee.icon)
+                .id('all-group')
                 .child(S
-                    .documentTypeList(employee.name)
-                    .apiVersion("API_VERSION")
-                    .id('all-employees-list')
+                    .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
                     .title('Все сотрудники')
+                    .id('employees')
+                    .apiVersion(API_VERSION)
                 ),
 
             S.divider(),
 
             S.listItem()
-                .id('teacher-employees-group')
                 .title('Педагоги')
                 .icon(employee.icon)
+                .id('teacher-group')
                 .child(S
-                    .documentTypeList(employee.name)
-                    .apiVersion("API_VERSION")
-                    .id('teacher-employees-list')
+                    .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
                     .title('Педагоги')
+                    .id('employees')
+                    .apiVersion(API_VERSION)
                     .filter("isTeacher")
                 ),
+
             S.listItem()
-                .id('regular-employees-group')
                 .title('Сотрудники')
                 .icon(employee.icon)
+                .id('regular-group')
                 .child(S
-                    .documentTypeList(employee.name)
-                    .apiVersion("API_VERSION")
+                    .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
                     .title('Сотрудники')
-                    .id('regular-employees-list')
+                    .id('employees')
+                    .apiVersion(API_VERSION)
                     .filter("!isTeacher")
                 )
         ])
