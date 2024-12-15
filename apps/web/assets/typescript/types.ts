@@ -26,3 +26,13 @@ export interface News {
     content: any[]
     previewImage: ImageWithAlternativeText,
 }
+
+export interface Employee {
+    _id: string
+    surname: string
+    name: string
+    patronymic: string
+    description: string
+    isTeacher: boolean
+    imageURL: string
+}
