@@ -1,7 +1,10 @@
 <template>
     <div>
         <TheHero />
-        <NewsSection />
+
+        <NewsListProvider #="{ news }">
+            <NewsSection :news="news || []" />
+        </NewsListProvider>
 
         <KvantumsProvider #="{ kvantums }">
             <TheKvantumsSection :kvantums="kvantums" />
