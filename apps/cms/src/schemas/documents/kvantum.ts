@@ -4,8 +4,8 @@ import { DOCUMENT_TYPES, OBJECT_TYPES } from '../../constants'
 
 export default defineType({
     name: DOCUMENT_TYPES.KVANTUM,
-    type: 'document',
     title: 'Квантумы',
+    type: 'document',
     icon: DocumentIcon,
     fields: [
         defineField({
@@ -19,7 +19,7 @@ export default defineType({
 
         defineField({
             name: 'url',
-            title: 'человекочитаемая ссылка',
+            title: 'Человекочитаемая ссылка',
             type: 'slug',
             options: {
                 source: 'name',
@@ -42,6 +42,9 @@ export default defineType({
             name: 'description',
             title: 'Описание квантума',
             type: OBJECT_TYPES.PORTABLE_TEXT,
+            validation: (rule) => rule
+                .required()
+                .error("Поле не может быть пустым"),
         }),
 
         defineField ({
