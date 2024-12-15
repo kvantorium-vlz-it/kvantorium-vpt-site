@@ -1,8 +1,24 @@
 <script setup lang="ts">
 import type { News } from '~/assets/typescript/types'
 
+const props = defineProps<{
+    fromDate?: Date
+    tag?: string
+}>()
+
+const isFromDateFiltering = computed(() => typeof props.fromDate !== 'undefined')
+const isTagFiltering = computed(() => typeof props.tag !== 'undefined')
+
+const fromDateFilter = groq`publishDate > $fromDate`
+const tagFilter = groq`$tag in tags[]->name`
+
 const query = groq`
-    *[_type == 'kvantorium.news'] {
+    *[
+        _type == 'kvantorium.news' && (
+            ${isFromDateFiltering.value ? fromDateFilter : true}
+            && ${isTagFiltering.value ? tagFilter : true}
+        )
+    ] {
         publishDate,
         'tags': tags[]-> {
             _id,
@@ -23,9 +39,10 @@ const query = groq`
     }
 `
 
-const { data } = await useSanityQuery<News[]>(query)
-
-console.log(data)
+const { data } = await useSanityQuery<News[]>(query, {
+    fromDate: props.fromDate || new Date(),
+    tag: props.tag || ''
+})
 </script>
 
 <template>
