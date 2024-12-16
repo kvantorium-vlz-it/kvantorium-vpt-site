@@ -36,4 +36,22 @@ export interface Employee {
     description: string
     isTeacher: boolean
     imageURL: string
+    curriculaId: string[]
+}
+
+export interface Curriculum {
+    level: 1 | 2 | 3
+    _id: string
+    description: any[]
+    minimalAge: number
+    studentsInGroup: {
+        firstHalf: number
+        secondHalf: number
+    }
+    schedule: {
+        hours: number
+        count: number
+    }
+    teacherId: string
+    kvantumId: string
 }

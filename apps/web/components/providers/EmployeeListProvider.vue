@@ -10,6 +10,7 @@ const query = groq`
         description,
         isTeacher,
         'imageURL': image.asset -> url,
+        'curriculaId': *[_type == 'curriculum' && references(^._id)]._id,
     }
 `
 
