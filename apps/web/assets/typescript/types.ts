@@ -43,8 +43,10 @@ export interface Curriculum {
     level: 1 | 2 | 3
     _id: string
     description: any[]
+    name: string
     minimalAge: number
-    studentsInGroup: {
+    studentsInGroup: number
+    hoursPerYear: {
         firstHalf: number
         secondHalf: number
     }
