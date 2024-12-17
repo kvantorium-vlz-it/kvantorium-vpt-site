@@ -30,13 +30,13 @@ defineProps<{
             </ol>
 
             <div class="mt-2">
-                Возрастная категория: {{ 0 }}+
+                Возрастная категория: {{ kvantum.minimalAge }}+
             </div>
         </ShCardContent>
 
         <ShCardFooter>
             <ShButton class="flex items-center group/button" as-child>
-                <NuxtLink :to="`/kvantum/${kvantum.slug}`">
+                <NuxtLink :to="`/kvantums/${kvantum.slug}`">
                     <span>
                         Подробнее о квантуме
                     </span>

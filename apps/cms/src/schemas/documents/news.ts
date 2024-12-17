@@ -48,7 +48,7 @@ export default defineType({
         }),
 
         defineField({
-            name: 'date',
+            name: 'publishDate',
             title: 'Дата публикации',
             type: 'date',
             options: {

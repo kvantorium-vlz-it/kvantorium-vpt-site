@@ -1,11 +1,14 @@
 <template>
     <div>
         <TheHero />
-        <NewsSection />
 
-        <KvantumsProvider #="{ kvantums }">
+        <NewsListProvider #="{ news }" :count="6">
+            <NewsSection :news="news || []" />
+        </NewsListProvider>
+
+        <KvantumListProvider #="{ kvantums }">
             <TheKvantumsSection :kvantums="kvantums" />
-        </KvantumsProvider>
+        </KvantumListProvider>
 
         <TheMapSection />
     </div>

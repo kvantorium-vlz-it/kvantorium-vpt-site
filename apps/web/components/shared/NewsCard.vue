@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { ArrowUpRightIcon } from 'lucide-vue-next'
+import type { News } from '~/assets/typescript/types'
 
-withDefaults(defineProps<{
-    title: string
-    image: {
-        src: string
-        alt?: string
-    }
-    publishDate: Date
-    content: string
-    tags?: string[]
-}>(), {
-    tags: () => []
-})
+defineProps<{
+    news: News
+}>()
 
 const formatter = new Intl.DateTimeFormat('ru-RU', {
     day: '2-digit',
@@ -25,17 +17,17 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
     <ShCard class="overflow-hidden">
         <img
             class="w-full aspect-video object-cover"
-            :src="image.src"
-            :alt="image.alt"
+            :src="news.previewImage.src"
+            :alt="news.previewImage.alt"
         >
 
         <ShCardHeader>
             <ShCardTitle class="font-display leading-none tracking-tighter">
-                <span>{{ title }}</span>
+                <span>{{ news.title }}</span>
             </ShCardTitle>
 
             <div class="text-gray-500">
-                {{ formatter.format(publishDate) }}
+                {{ formatter.format(new Date(news.publishDate)) }}
             </div>
         </ShCardHeader>
 
@@ -44,22 +36,22 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
         <ShCardContent />
 
         <ShCardFooter class="items-start justify-between">
-            <ShCardDescription>
-                <ul class="flex flex-wrap gap-1">
-                    <li v-for="tag in tags">
-                        <ShBadge variant="outline">
-                            {{ tag }}
-                        </ShBadge>
-                    </li>
-                </ul>
-            </ShCardDescription>
+            <ul class="flex flex-wrap gap-1">
+                <li v-for="tag in news.tags">
+                    <ShBadge variant="outline">
+                        {{ tag.name }}
+                    </ShBadge>
+                </li>
+            </ul>
 
-            <ShButton class="group/news-card-button">
-                <span>
-                    Читать новость
-                </span>
+            <ShButton class="group/news-card-button" as-child>
+                <NuxtLink :to="`/news/${news.slug}`">
+                    <span>
+                        Читать новость
+                    </span>
 
-                <ArrowUpRightIcon class="group-hover/news-card-button:mr-2 transition-all group-hover/news-card-button:rotate-45" />
+                    <ArrowUpRightIcon class="group-hover/news-card-button:mr-2 transition-all group-hover/news-card-button:rotate-45" />
+                </NuxtLink>
             </ShButton>
         </ShCardFooter>
     </ShCard>
