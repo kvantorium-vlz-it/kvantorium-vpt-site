@@ -2,7 +2,7 @@
     <div>
         <TheHero />
 
-        <NewsListProvider #="{ news }">
+        <NewsListProvider #="{ news }" :count="6">
             <NewsSection :news="news || []" />
         </NewsListProvider>
 
