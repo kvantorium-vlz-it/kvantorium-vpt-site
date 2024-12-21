@@ -1,5 +1,5 @@
-import { defineType } from "sanity"
-import { OBJECT_TYPES } from "../../constants"
+import { defineField, defineType } from "sanity"
+import { DOCUMENT_TYPES, OBJECT_TYPES } from "../../constants"
 
 export default defineType({
     name: OBJECT_TYPES.PORTABLE_TEXT,
@@ -16,6 +16,14 @@ export default defineType({
                 { title: 'Заголовок 5', value: 'h5' },
                 { title: 'Заголовок 6', value: 'h6' },
             ],
+            marks: {
+                decorators: [
+                    { title: 'Жирный', value: 'strong' },
+                    { title: 'Курсив', value: 'em' },
+                    { title: 'Подчеркнутый', value: 'underline' },
+                ],
+            },
+            lists: [],
         },
         {
             type: 'image',
