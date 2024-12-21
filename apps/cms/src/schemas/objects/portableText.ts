@@ -17,5 +17,9 @@ export default defineType({
                 { title: 'Заголовок 6', value: 'h6' },
             ],
         },
+        {
+            type: 'image',
+            title: 'Изображение',
+        },
     ],
 })
