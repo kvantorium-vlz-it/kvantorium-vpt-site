@@ -104,6 +104,9 @@ export default defineType({
         {
             type: 'image',
             title: 'Изображение',
+            options: {
+                hotspot: true,
+            }
         },
     ],
 })
