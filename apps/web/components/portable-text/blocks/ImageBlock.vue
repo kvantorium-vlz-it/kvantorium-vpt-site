@@ -35,15 +35,14 @@ const crop = computed(() => ({
 
 const isCropped = computed(() => props.value.crop !== null)
 
-const croppedWidth = Math.floor(width * (1 - (crop.value.right + crop.value.left)))
-const croppedHeight = Math.floor(width * (1 - (crop.value.top + crop.value.bottom)))
-const left = Math.floor(width * crop.value.left)
-const top = Math.floor(height * crop.value.top)
+const croppedWidth = Math.ceil(width * (1 - (crop.value.right + crop.value.left)))
+const croppedHeight = Math.ceil(height * (1 - (crop.value.top + crop.value.bottom)))
+const left = Math.ceil(width * crop.value.left)
+const top = Math.ceil(height * crop.value.top)
 
-const url = (isCropped.value
-    ? urlFor(props.value._ref).rect(left, top, croppedWidth, croppedHeight)
-    : urlFor(props.value._ref)
-).url()
+const url = urlFor(props.value._ref)
+    .rect(left, top, croppedWidth, croppedHeight)
+    .url()
 </script>
 
 <template>
