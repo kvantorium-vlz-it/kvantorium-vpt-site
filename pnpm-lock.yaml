@@ -60,6 +60,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@sanity/asset-utils':
+        specifier: ^2.2.1
+        version: 2.2.1
+      '@sanity/image-url':
+        specifier: ^1.1.0
+        version: 1.1.0
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -97,6 +103,9 @@ importers:
       '@nuxtjs/tailwindcss':
         specifier: 6.12.2
         version: 6.12.2(magicast@0.3.5)(rollup@4.28.1)
+      '@portabletext/vue':
+        specifier: ^1.0.11
+        version: 1.0.11(vue@3.5.13(typescript@5.7.2))
       '@vueuse/core':
         specifier: ^12.0.0
         version: 12.0.0(typescript@5.7.2)
@@ -1454,6 +1463,11 @@ packages:
   '@portabletext/types@2.0.13':
     resolution: {integrity: sha512-5xk5MSyQU9CrDho3Rsguj38jhijhD36Mk8S6mZo3huv6PM+t4M/5kJN2KFIxgvt4ONpvOEs1pVIZAV0cL0Vi+Q==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
+
+  '@portabletext/vue@1.0.11':
+    resolution: {integrity: sha512-/KclMZwPOIinspuuTwidAJJ+shShNOJ2s9C8EKzfOVIIOHpyL9v0UC2TH0G8WSoSXxN7ob6DdRF6LrPyCm/QdQ==}
+    peerDependencies:
+      vue: ^3.3.4
 
   '@redocly/ajv@8.11.2':
     resolution: {integrity: sha512-io1JpnwtIcvojV7QKDUSIuMN/ikdOUd1ReEnUnMKGfDVridQZ31J0MmIuqwuRjWDZfmvr+Q0MqCcfHM2gTivOg==}
@@ -8511,6 +8525,12 @@ snapshots:
       '@portabletext/types': 2.0.13
 
   '@portabletext/types@2.0.13': {}
+
+  '@portabletext/vue@1.0.11(vue@3.5.13(typescript@5.7.2))':
+    dependencies:
+      '@portabletext/toolkit': 2.0.16
+      '@portabletext/types': 2.0.13
+      vue: 3.5.13(typescript@5.7.2)
 
   '@redocly/ajv@8.11.2':
     dependencies:

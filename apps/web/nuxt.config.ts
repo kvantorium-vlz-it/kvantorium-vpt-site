@@ -23,9 +23,14 @@ export default defineNuxtConfig({
     components: {
         dirs: [
             {
+                path: '~/components/portable-text',
+                pathPrefix: false,
+                prefix: 'Portable'
+            },
+            {
                 path: "~/components",
                 pathPrefix: false,
-                ignore: ['~/components/shadcn'],
+                ignore: ['~/components/shadcn', '~/components/shared/PortableText'],
             },
         ],
     },
@@ -44,6 +49,8 @@ export default defineNuxtConfig({
         config: {
             content: [
                 './components/**/*.{vue,ts}',
+                './pages/**/*.{vue,ts}',
+                './app.vue',
             ],
         },
         viewer: true,
