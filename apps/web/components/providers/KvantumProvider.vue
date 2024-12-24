@@ -24,7 +24,54 @@ const query = groq`
         name,
         _id,
         "icon": icon.asset->url,
-        description,
+        description[] {
+            ...,
+            _type == 'block' => {
+                ...,
+                markDefs[] {
+                    _type == 'link' => {
+                        _type,
+                        _key,
+                        isOpenNewTab,
+                        linkType == 0 => {
+                            linkType,
+                            external,
+                        },
+                        linkType == 1 => {
+                            linkType,
+                            'internal': internal-> {
+                                _type,
+                                'slug': slug.current,
+                                _id,
+                            }
+                        },
+                    },
+                },
+            },
+
+            _type == 'image' => {
+                _type,
+                _key,
+                '_ref': asset._ref,
+                'crop': crop {
+                    top,
+                    left,
+                    right,
+                    bottom,
+                },
+                ...asset-> {
+                    description,
+                    title,
+                    'alt': altText,
+                    'src': url,
+                    'dimensions': metadata.dimensions {
+                        width,
+                        height,
+                        aspectRatio,
+                    }
+                }
+            },
+        },
         topics,
         'minimalAge': math::min(*[
             _type == 'kvantorium.curriculum'
