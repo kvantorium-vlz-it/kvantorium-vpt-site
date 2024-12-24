@@ -1,5 +1,5 @@
 import { defineField, defineType } from "@sanity-typed/types"
-import { DOCUMENT_TYPES } from "../constants.js"
+import { DOCUMENT_TYPES } from "../../constants.js"
 
 const nameFieldSchema = defineField({
     name: 'name',

@@ -1,5 +1,5 @@
 import groq from "groq"
-import { DOCUMENT_TYPES } from "../constants.js"
+import { DOCUMENT_TYPES } from "../../constants.js"
 
 export const newsTagQueryFilterFragment = groq`_type == '${DOCUMENT_TYPES.NEWS_TAG}'`
 

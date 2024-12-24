@@ -1,6 +1,6 @@
 import groq from "groq"
-import { DOCUMENT_TYPES } from "../constants.js"
-import { imageQueryFieldsFragment, ImageQueryResult } from "./image.js"
+import { DOCUMENT_TYPES } from "../../constants.js"
+import { imageQueryFieldsFragment, ImageQueryResult } from "../common/image.js"
 
 export const employeeQueryFilterFragment = groq`_type == '${DOCUMENT_TYPES.EMPLOYEE}'`
 
