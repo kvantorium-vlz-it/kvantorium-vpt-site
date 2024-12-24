@@ -1,6 +1,6 @@
 import groq from "groq"
 
-const imageDimensionsFieldsQueryFragment = groq`
+const imageDimensionsQueryFieldsFragment = groq`
     width,
     height,
     aspectRatio,
@@ -12,12 +12,12 @@ type ImageDimensionsQueryResult = {
     aspectRatio: number
 }
 
-const imageAssetFieldsQueryFragment = groq`
+const imageAssetQueryFieldsFragment = groq`
     title,
     description,
     'alt': altText,
     'src': url,
-    'dimensions': metadata.dimensions { ${imageDimensionsFieldsQueryFragment} },
+    'dimensions': metadata.dimensions { ${imageDimensionsQueryFieldsFragment} },
 `
 
 type ImageAssetQueryResult = {
@@ -28,7 +28,7 @@ type ImageAssetQueryResult = {
     dimensions: ImageDimensionsQueryResult
 }
 
-const imageCropFieldsQueryFragment = groq`
+const imageCropQueryFieldsFragment = groq`
     top,
     left,
     right,
@@ -42,12 +42,12 @@ type ImageCropQueryResult = {
     right: number
 }
 
-export const imageFieldsQueryFragment = groq`
+export const imageQueryFieldsFragment = groq`
     _type,
     _key,
     '_ref': asset._ref,
-    'crop': crop { ${imageCropFieldsQueryFragment} },
-    ...asset-> { ${imageAssetFieldsQueryFragment} },
+    'crop': crop { ${imageCropQueryFieldsFragment} },
+    ...asset-> { ${imageAssetQueryFieldsFragment} },
 `
 
 export type ImageQueryResult = {
