@@ -8,11 +8,13 @@ export const employeeQueryFieldsFragment = groq`
     _id,
     _type,
     description,
-    image { ${imageQueryFieldsFragment} },
+    image {
+        ${imageQueryFieldsFragment},
+    },
     isTeacher,
     name,
     patronymic,
-    surname,
+    surname
 `
 
 export type EmployeeQueryResult = {

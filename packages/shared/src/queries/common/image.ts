@@ -3,7 +3,7 @@ import groq from "groq"
 const imageDimensionsQueryFieldsFragment = groq`
     width,
     height,
-    aspectRatio,
+    aspectRatio
 `
 
 type ImageDimensionsQueryResult = {
@@ -17,7 +17,9 @@ const imageAssetQueryFieldsFragment = groq`
     description,
     'alt': altText,
     'src': url,
-    'dimensions': metadata.dimensions { ${imageDimensionsQueryFieldsFragment} },
+    'dimensions': metadata.dimensions {
+        ${imageDimensionsQueryFieldsFragment},
+    }
 `
 
 type ImageAssetQueryResult = {
@@ -32,7 +34,7 @@ const imageCropQueryFieldsFragment = groq`
     top,
     left,
     right,
-    bottom,
+    bottom
 `
 
 type ImageCropQueryResult = {
@@ -46,8 +48,12 @@ export const imageQueryFieldsFragment = groq`
     _type,
     _key,
     '_ref': asset._ref,
-    'crop': crop { ${imageCropQueryFieldsFragment} },
-    ...asset-> { ${imageAssetQueryFieldsFragment} },
+    'crop': crop {
+        ${imageCropQueryFieldsFragment},
+    },
+    ...asset-> {
+        ${imageAssetQueryFieldsFragment},
+    }
 `
 
 export type ImageQueryResult = {

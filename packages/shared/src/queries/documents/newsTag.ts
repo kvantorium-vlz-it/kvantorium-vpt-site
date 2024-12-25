@@ -6,7 +6,7 @@ export const newsTagQueryFilterFragment = groq`_type == '${DOCUMENT_TYPES.NEWS_T
 export const newsTagQueryFieldsFragment = groq`
     _id,
     _type,
-    name,
+    name
 `
 
 export type NewsTagQueryResult = {
