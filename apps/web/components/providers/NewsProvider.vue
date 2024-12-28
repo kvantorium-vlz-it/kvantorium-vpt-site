@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { News } from '~/assets/typescript/types'
+import { type NewsQueryResult, newsQueryFilterFragment, newsQueryFieldsFragment } from '@kvantoriumvlz/shared/queries'
 
 interface Props {
     title?: string
@@ -15,34 +16,18 @@ const props = withDefaults(defineProps<Props>(), {
 
 const query = groq`
     *[
-        _type == 'kvantorium.news'
+        ${newsQueryFilterFragment}
         && (
             slug.current == $slug
             || _id == $id
             || title == $title
         )
     ] {
-        publishDate,
-        'tags': tags[]-> {
-            _id,
-            name,
-        },
-        'gallery': gallery[].asset -> {
-            'src': url,
-            'alt': altText,
-        },
-        title,
-        'slug': slug.current,
-        _id,
-        content,
-        'previewImage': previewImage.asset -> {
-            'src': url,
-            'alt': altText,
-        },
+        ${newsQueryFieldsFragment}
     }
 `
 
-const { data } = await useSanityQuery<News[]>(query, {
+const { data } = await useSanityQuery<NewsQueryResult[]>(query, {
     slug: props.slug,
     id: props.id,
     title: props.title,

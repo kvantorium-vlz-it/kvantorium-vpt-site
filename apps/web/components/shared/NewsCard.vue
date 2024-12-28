@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { NewsQueryResult } from '@kvantoriumvlz/shared';
 import { ArrowUpRightIcon } from 'lucide-vue-next'
 import type { News } from '~/assets/typescript/types'
 
 defineProps<{
-    news: News
+    news: NewsQueryResult
 }>()
 
 const formatter = new Intl.DateTimeFormat('ru-RU', {
@@ -18,7 +19,7 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
         <img
             class="w-full aspect-video object-cover"
             :src="news.previewImage.src"
-            :alt="news.previewImage.alt"
+            :alt="news.previewImage.alt ?? undefined"
         >
 
         <ShCardHeader>

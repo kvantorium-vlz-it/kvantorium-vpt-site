@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import type { Employee } from '~/assets/typescript/types'
+import { employeeQueryFieldsFragment, employeeQueryFilterFragment, type EmployeeQueryResult } from '@kvantoriumvlz/shared';
 
 const query = groq`
-    *[_type == 'kvantorium.employee'] {
-        _id,
-        surname,
-        name,
-        patronymic,
-        description,
-        isTeacher,
-        'imageURL': image.asset -> url,
+    *[${employeeQueryFilterFragment}] {
+        ${employeeQueryFieldsFragment}
         'curriculaId': *[_type == 'curriculum' && references(^._id)]._id,
     }
 `
 
-const { data } = useSanityQuery<Employee[]>(query)
+const { data } = useSanityQuery<EmployeeQueryResult[]>(query)
 </script>
 
 <template>

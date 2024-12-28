@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { newsQueryFieldsFragment, newsQueryFilterFragment, type NewsQueryResult } from '@kvantoriumvlz/shared/queries';
 import type { News } from '~/assets/typescript/types'
 import { dateToSanityDate } from '~/assets/typescript/utils'
 
@@ -27,34 +28,18 @@ const countFilter = groq`[$offset...$count + $offset]`
 
 const query = groq`
     *[
-        _type == 'kvantorium.news' && (
+        ${newsQueryFilterFragment} && (
             ${isFromDateFiltering.value ? fromDateFilter : true}
             && ${isToDateFiltering.value ? toDateFilter : true}
             && ${dateFiltering.value ? dateFilter : true}
             && ${isTagFiltering.value ? tagFilter : true}
         )
     ] | order(publishDate desc) ${isCountFiltering.value ? countFilter : ''} {
-        publishDate,
-        'tags': tags[]-> {
-            _id,
-            name,
-        },
-        'gallery': gallery[].asset -> {
-            'src': url,
-            'alt': altText,
-        },
-        title,
-        'slug': slug.current,
-        _id,
-        content,
-        'previewImage': previewImage.asset -> {
-            'src': url,
-            'alt': altText,
-        },
+        ${newsQueryFieldsFragment}
     }
 `
 
-const { data } = await useSanityQuery<News[]>(query, {
+const { data } = await useSanityQuery<NewsQueryResult[]>(query, {
     fromDate: dateToSanityDate(props.fromDate || new Date()),
     toDate: dateToSanityDate(props.toDate || new Date()),
     date: dateToSanityDate(props.date || new Date()),

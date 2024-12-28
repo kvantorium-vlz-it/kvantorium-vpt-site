@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { curriculumQueryFieldsFragment, curriculumQueryFilterFragment } from '@kvantoriumvlz/shared';
+
 const props = defineProps<{
     teacher?: string
     kvantum?: string
@@ -13,30 +15,21 @@ const isKvantumFiltering = computed(() => typeof props.kvantum !== 'undefined')
 const isLevelFiltering = computed(() => typeof props.level !== 'undefined')
 const isCountFiltering = computed(() => typeof props.count !== 'undefined')
 
-const teacherFilter = groq`teacher._ref == $teacherId`
-const kvantumFilter = groq`kvantum._ref == $kvantumId`
+const teacherFilter = groq`teacher._id == $teacherId`
+const kvantumFilter = groq`kvantum._id == $kvantumId`
 const levelFilter = groq`level == $level`
 const countFilter = groq`[$offset...$count + $offset]`
 
 const query = groq`
     *[
-        _type == 'kvantorium.curriculum'
+        ${curriculumQueryFilterFragment}
         && (
             ${isTeacherFiltering.value ? teacherFilter : true}
             && ${isKvantumFiltering.value ? kvantumFilter : true}
             && ${isLevelFiltering.value ? levelFilter : true}
         )
     ] ${isCountFiltering.value ? countFilter : ''} {
-        level,
-        _id,
-        description,
-        name,
-        minimalAge,
-        studentsInGroup,
-        hoursPerYear,
-        schedule,
-        'teacherId': teacher._ref,
-        'kvantumId': kvantum._ref,
+        ${curriculumQueryFieldsFragment}
     }
 `
 
