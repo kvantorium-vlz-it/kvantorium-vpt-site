@@ -16,7 +16,11 @@ export const kvantumQueryFieldsFragment = groq`
     description[] {
         ${portableTextQueryFieldsFragment},
     },
-    topics
+    topics,
+    'minimalAge': math::min(*[
+        _type == '${DOCUMENT_TYPES.CURRICULUM}'
+        && references(^._id)
+    ].minimalAge)
 `
 
 export type KvantumQueryResult = {
@@ -27,4 +31,5 @@ export type KvantumQueryResult = {
     icon: ImageQueryResult
     description: PortableTextQueryResult
     topics: string[]
+    minimalAge: number
 }
