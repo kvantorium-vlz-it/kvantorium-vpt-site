@@ -12,5 +12,5 @@ export const newsTagQueryFieldsFragment = groq`
 export type NewsTagQueryResult = {
     _id: string
     _type: typeof DOCUMENT_TYPES.NEWS_TAG
-    _name: string,
+    name: string,
 }
