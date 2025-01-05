@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from '@sanity-typed/types'
-import { DOCUMENT_TYPES, OBJECT_TYPES } from '../../constants.js'
+import { DOCUMENT_TYPES } from '@constants'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const nameFieldSchema = defineField({
     name: 'name',
@@ -34,7 +34,7 @@ const iconFieldSchema = defineField({
 const descriptionFieldSchema = defineField({
     name: 'description',
     title: 'Описание квантума',
-    type: OBJECT_TYPES.PORTABLE_TEXT,
+    type: DOCUMENT_TYPES.PORTABLE_TEXT,
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),
@@ -57,7 +57,7 @@ const topicsFieldSchema = defineField ({
         .error('Необходимо указать хотя бы одну тему')
 })
 
-export default defineType({
+export const kvantumSchema = defineType({
     name: DOCUMENT_TYPES.KVANTUM,
     title: 'Квантумы',
     type: 'document',

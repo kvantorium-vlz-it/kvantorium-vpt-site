@@ -1,5 +1,5 @@
-import { defineField, defineType } from "@sanity-typed/types"
-import { DOCUMENT_TYPES } from "../../constants.js"
+import { DOCUMENT_TYPES } from "@constants"
+import { defineField, defineType } from "sanity"
 
 const nameFieldSchema = defineField({
     name: 'name',
@@ -50,7 +50,7 @@ const imageFieldSchema = defineField({
         .error("Поле не может быть пустым"),
 })
 
-export default defineType({
+export const employeeSchema = defineType({
     name: DOCUMENT_TYPES.EMPLOYEE,
     title: 'Сотрудники',
     type: 'document',

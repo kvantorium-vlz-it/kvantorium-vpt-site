@@ -1,5 +1,5 @@
-import { defineField, defineType } from "@sanity-typed/types"
-import { DOCUMENT_TYPES } from "../../constants.js"
+import { DOCUMENT_TYPES } from "@constants"
+import { defineField, defineType } from "sanity"
 
 const nameFieldSchema = defineField({
     name: 'name',
@@ -7,7 +7,7 @@ const nameFieldSchema = defineField({
     type: 'string',
 })
 
-const newsTagSchema = defineType({
+export const newsTagSchema = defineType({
     name: DOCUMENT_TYPES.NEWS_TAG,
     title: 'Новостные теги',
     type: 'document',
@@ -15,5 +15,3 @@ const newsTagSchema = defineType({
         nameFieldSchema,
     ],
 })
-
-export default newsTagSchema

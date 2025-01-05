@@ -1,6 +1,6 @@
-import { defineArrayMember, defineType } from "@sanity-typed/types"
-import { OBJECT_TYPES } from "../../constants.js"
-import { linkAnnotation } from "./linkAnnotation.js"
+
+import { DOCUMENT_TYPES } from "@constants"
+import { defineArrayMember, defineType } from "sanity"
 
 const blockMember = defineArrayMember({
     type: 'block',
@@ -19,9 +19,9 @@ const blockMember = defineArrayMember({
             { title: 'Курсив', value: 'em' },
             { title: 'Подчеркнутый', value: 'underline' },
         ],
-        annotations: [
-            linkAnnotation,
-        ],
+        // annotations: [
+        //     linkAnnotation,
+        // ],
     },
     lists: [],
 })
@@ -34,8 +34,8 @@ const imageMember = defineArrayMember({
     },
 })
 
-export default defineType({
-    name: OBJECT_TYPES.PORTABLE_TEXT,
+export const portableTextSchema = defineType({
+    name: DOCUMENT_TYPES.PORTABLE_TEXT,
     type: 'array',
     of: [
         blockMember,

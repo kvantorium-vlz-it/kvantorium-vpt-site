@@ -1,6 +1,6 @@
-import { defineField, defineType } from "@sanity-typed/types"
-import { CURRICULUM_LEVEL, DOCUMENT_TYPES, OBJECT_TYPES } from "../../constants.js"
-import { getCurriculumLevelLabel } from "../../utils.js"
+import { CURRICULUM_LEVEL, DOCUMENT_TYPES } from "@constants"
+import { getCurriculumLevelLabel } from "@utils"
+import { defineField, defineType } from "sanity"
 import { upperFirst } from "scule"
 
 const nameFieldSchema = defineField({
@@ -38,7 +38,7 @@ const teacherFieldSchema = defineField({
 const descriptionFieldSchema = defineField({
     name: 'description',
     title: 'Описание программы',
-    type: OBJECT_TYPES.PORTABLE_TEXT,
+    type: DOCUMENT_TYPES.PORTABLE_TEXT,
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),
@@ -145,7 +145,7 @@ const studentsInGroupFieldSchema = defineField({
         .error('Значение не может быть отрицательным'),
 })
 
-export default defineType({
+export const curriculumSchema = defineType({
     name: DOCUMENT_TYPES.CURRICULUM,
     title: 'Учебные программы',
     type: 'document',

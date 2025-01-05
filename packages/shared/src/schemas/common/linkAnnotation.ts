@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField } from "@sanity-typed/types";
-import { DOCUMENT_TYPES, LINK_TYPE } from "../../constants.js";
+import { DOCUMENT_TYPES, LINK_TYPE } from "@constants"
+import { defineArrayMember, defineField } from "sanity"
 
 const linkTypeFieldSchema = defineField({
     name: 'linkType',

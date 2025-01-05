@@ -1,5 +1,5 @@
-import { defineArrayMember, defineField, defineType } from "@sanity-typed/types";
-import { DOCUMENT_TYPES, OBJECT_TYPES } from "../../constants.js";
+import { DOCUMENT_TYPES } from "@constants"
+import { defineArrayMember, defineField, defineType } from "sanity"
 
 const titleFieldSchema = defineField({
     name: 'title',
@@ -23,7 +23,7 @@ const previewImageFieldSchema = defineField({
 const contentFieldSchema = defineField({
     name: 'content',
     title: 'Контент',
-    type: OBJECT_TYPES.PORTABLE_TEXT,
+    type: DOCUMENT_TYPES.PORTABLE_TEXT,
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),
@@ -73,7 +73,7 @@ const galleryFieldSchema = defineField({
     of: [defineArrayMember({ type: 'image' })],
 })
 
-export default defineType({
+export const newsSchema = defineType({
     name: DOCUMENT_TYPES.NEWS,
     title: 'Новости',
     type: 'document',
