@@ -26,16 +26,17 @@
     "vue-router": "latest"
   },
   "dependencies": {
+    "@kvantoriumvlz/shared": "workspace:*",
     "@sanity/asset-utils": "^2.2.1",
     "@sanity/image-url": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-vue": "^8.5.1",
+    "groqd": "^1.0.0",
     "lucide-vue-next": "^0.468.0",
     "radix-vue": "^1.9.11",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vue-yandex-maps": "^2.1.4",
-    "@kvantoriumvlz/shared": "workspace:*"
+    "vue-yandex-maps": "^2.1.4"
   }
 }
