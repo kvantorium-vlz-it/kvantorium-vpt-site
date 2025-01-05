@@ -1,7 +1,58 @@
 {
   "name": "@kvantoriumvlz/shared",
   "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "files": ["./dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "import": "./dist/constants.js",
+      "require": "./dist/constants.cjs"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.cjs"
+    },
+    "./schemas": {
+      "types": "./dist/schemas/index.d.ts",
+      "import": "./dist/schemas/index.js",
+      "require": "./dist/schemas/index.cjs"
+    },
+    "./groq": {
+      "types": "./dist/groq/index.d.ts",
+      "import": "./dist/groq/index.js",
+      "require": "./dist/groq/index.cjs"
+    },
+    "./fragments": {
+      "types": "./dist/groq/fragments/index.d.ts",
+      "import": "./dist/groq/fragments/index.js",
+      "require": "./dist/groq/fragments/index.cjs"
+    },
+    "./sanity.types.ts": {
+      "import": "./dist/sanity.types.ts",
+      "types": "./dist/sanity.types.ts",
+      "require": "./dist/sanity.types.ts"
+    },
+    "./groqd.client.ts": {
+      "types": "./dist/groq/groqd.client.d.ts",
+      "import": "./dist/groq/groqd.client.js",
+      "require": "./dist/groq/groqd.client.cjs"
+    }
+  },
   "scripts": {
+    "build:lib": "tsup",
+    "build:schema": "pnpm run schema:prepare",
+    "build": "pnpm run build:schema && pnpm run build:lib",
+    "dev": "tsup --watch",
     "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.shared/schema.json\" --enforce-required-fields",
     "schema:generate": "sanity typegen generate",
     "schema:prepare": "pnpm run schema:extract && pnpm run schema:generate"

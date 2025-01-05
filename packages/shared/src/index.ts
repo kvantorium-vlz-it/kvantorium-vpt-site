@@ -1,5 +1,7 @@
-export * from './constants.js'
+export * from '@constants'
 
-export * from './schemas/index.js'
+export * from '@utils'
 
-export * from './queries/index.js'
+export * from '@groq'
+
+export * from '@schemas'
