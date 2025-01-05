@@ -1,4 +1,21 @@
-import { arrayToConstants } from "./utils.js"
+import { SnakeCase, snakeCase } from "scule"
+
+type ConstantsObject<
+    C extends ReadonlyArray<string>,
+    P extends string
+> = {
+    readonly [K in C[number] as Uppercase<SnakeCase<K>>]: `${P}.${K}`
+}
+
+const arrayToConstants = <
+    C extends ReadonlyArray<string>,
+    P extends string
+>(constants: C, prefix: P) => {
+    return constants.reduce((constants, constant) => ({
+        ...constants,
+        [snakeCase(constant).toUpperCase()]: `${prefix}.${constant}`
+    }), {}) as ConstantsObject<C, P>
+}
 
 const SCHEMA_PREFIX = 'kvantorium' as const
 
@@ -8,9 +25,6 @@ export const DOCUMENT_TYPES = arrayToConstants([
     'curriculum',
     'newsTag',
     'news',
-] as const, SCHEMA_PREFIX)
-
-export const OBJECT_TYPES = arrayToConstants([
     'portableText',
 ] as const, SCHEMA_PREFIX)
 
