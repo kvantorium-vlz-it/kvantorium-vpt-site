@@ -1,6 +1,11 @@
 {
   "name": "@kvantoriumvlz/shared",
   "version": "1.0.0",
+  "scripts": {
+    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.shared/schema.json\" --enforce-required-fields",
+    "schema:generate": "sanity typegen generate",
+    "schema:prepare": "pnpm run schema:extract && pnpm run schema:generate"
+  },
   "devDependencies": {
     "@dotenvx/dotenvx": "^1.32.0",
     "@sanity/client": "^6.24.1",
