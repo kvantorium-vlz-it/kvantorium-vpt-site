@@ -1,5 +1,5 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/groq/groqd.client.ts"
+import { q } from "@/query-builder/groqd.client.ts"
 import { InferFragmentType } from "groqd"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
 
@@ -29,7 +29,7 @@ export const curriculumFragment = q
         }),
         description: sub
             .field('description[]')
-            .raw<PortableTextResult[]>(portableTextProjection)
+            .raw<PortableTextResult[]>((`{${portableTextProjection}}`))
     }))
 
 export type CurriculumResult = InferFragmentType<typeof curriculumFragment>

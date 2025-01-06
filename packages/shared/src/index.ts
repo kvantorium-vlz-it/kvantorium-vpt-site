@@ -2,6 +2,6 @@ export * from '@constants'
 
 export * from '@utils'
 
-export * from '@groq'
+export * from '@query-builder'
 
 export * from '@schemas'

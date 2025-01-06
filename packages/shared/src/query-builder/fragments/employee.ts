@@ -1,5 +1,5 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/groq/groqd.client.ts"
+import { q } from "@/query-builder/groqd.client.ts"
 import { InferFragmentType } from "groqd"
 import { imageAssetFragment, imageCropFragment } from "./image.ts"
 

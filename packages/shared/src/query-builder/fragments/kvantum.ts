@@ -1,5 +1,5 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/groq/groqd.client.ts"
+import { q } from "@/query-builder/groqd.client.ts"
 import { InferFragmentType } from "groqd"
 import { imageAssetFragment, imageCropFragment } from "./image.ts"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
@@ -19,7 +19,7 @@ export const kvantumFragment = q
         })),
         description: sub
             .field('description[]')
-            .raw<PortableTextResult[]>(portableTextProjection)
+            .raw<PortableTextResult[]>(`{${portableTextProjection}}`)
     }))
 
 export type KvantumResult = InferFragmentType<typeof kvantumFragment>

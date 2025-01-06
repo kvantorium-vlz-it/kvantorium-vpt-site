@@ -1,41 +1,40 @@
 {
   "name": "@kvantoriumvlz/shared",
   "version": "1.0.0",
-  "type": "module",
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "files": ["./dist"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./constants": {
       "types": "./dist/constants.d.ts",
-      "import": "./dist/constants.js",
-      "require": "./dist/constants.cjs"
+      "import": "./dist/constants.mjs",
+      "require": "./dist/constants.js"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.cjs"
+      "import": "./dist/utils.mjs",
+      "require": "./dist/utils.js"
     },
     "./schemas": {
       "types": "./dist/schemas/index.d.ts",
-      "import": "./dist/schemas/index.js",
-      "require": "./dist/schemas/index.cjs"
+      "import": "./dist/schemas/index.mjs",
+      "require": "./dist/schemas/index.js"
     },
-    "./groq": {
-      "types": "./dist/groq/index.d.ts",
-      "import": "./dist/groq/index.js",
-      "require": "./dist/groq/index.cjs"
+    "./query-builder": {
+      "types": "./dist/query-builder/index.d.ts",
+      "import": "./dist/query-builder/index.mjs",
+      "require": "./dist/query-builder/index.js"
     },
     "./fragments": {
-      "types": "./dist/groq/fragments/index.d.ts",
-      "import": "./dist/groq/fragments/index.js",
-      "require": "./dist/groq/fragments/index.cjs"
+      "types": "./dist/query-builder/fragments/index.d.ts",
+      "import": "./dist/query-builder/fragments/index.mjs",
+      "require": "./dist/query-builder/fragments/index.js"
     },
     "./sanity.types.ts": {
       "import": "./dist/sanity.types.ts",
@@ -43,9 +42,9 @@
       "require": "./dist/sanity.types.ts"
     },
     "./groqd.client.ts": {
-      "types": "./dist/groq/groqd.client.d.ts",
-      "import": "./dist/groq/groqd.client.js",
-      "require": "./dist/groq/groqd.client.cjs"
+      "types": "./dist/query-builder/groqd.client.d.ts",
+      "import": "./dist/query-builder/groqd.client.mjs",
+      "require": "./dist/query-builder/groqd.client.js"
     }
   },
   "scripts": {

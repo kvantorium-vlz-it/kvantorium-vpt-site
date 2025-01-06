@@ -1,5 +1,5 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/groq/groqd.client.ts"
+import { q } from "@/query-builder/groqd.client.ts"
 import { imageAssetFragment, imageCropFragment } from "./image.ts"
 import { InferFragmentType } from "groqd"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
@@ -30,7 +30,7 @@ export const newsFragment = q
         })),
         content: sub
             .field('content[]')
-            .raw<PortableTextResult[]>(portableTextProjection),
+            .raw<PortableTextResult[]>((`{${portableTextProjection}}`)),
     }))
 
 export type NewsResult = InferFragmentType<typeof newsFragment>

@@ -1,4 +1,4 @@
-import { q } from "@/groq/groqd.client.ts"
+import { q } from "@/query-builder/groqd.client.ts"
 import { type InferFragmentType } from 'groqd'
 
 export const imageAssetFragment = q
