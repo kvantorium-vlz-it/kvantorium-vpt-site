@@ -1,41 +1,28 @@
 <script setup lang="ts">
-import type { KvantumQueryResult } from '@kvantoriumvlz/shared/queries'
-import {
-    kvantumQueryFieldsFragment,
-    kvantumQueryFilterFragment,
-} from '@kvantoriumvlz/shared/queries'
+import { createKvantumFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import type { InferResultItem } from 'groqd'
 
-const props =withDefaults(defineProps<{
+const props = defineProps<{
     id?: string
-    name?: string
     slug?: string
-}>(), {
-    id: '',
-    name: '',
-    slug: '',
-})
+}>()
 
-
-const query = groq`*[
-    ${kvantumQueryFilterFragment}
-    && (
-        slug.current == $slug
-        || name == $name
-        || _id == $id
+let builder = q
+    .star
+    .filterByType(DOCUMENT_TYPES.KVANTUM)
+    .filter(
+        (typeof props.id !== 'undefined' && `_id == ${props.id}`)
+        || (typeof props.slug !== 'undefined' && `slug.current == "${props.slug}"`)
+        || ''
     )
-] {
-    ${kvantumQueryFieldsFragment}
-}`
+    .project(createKvantumFragment(q))
+    .slice(0)
 
-const { data } = await useSanityQuery<KvantumQueryResult[]>(query, {
-    slug: props.slug,
-    name: props.name,
-    id: props.id,
-})
+type KvantumQueryResult = InferResultItem<typeof builder>
 
-console.log(data)
+const { data } = await useSanityQuery<KvantumQueryResult>(builder.query)
 </script>
 
 <template>
-    <slot :kvantum="data?.length > 0 ? data?.[0] : null"></slot>
+    <slot :kvantum="data"></slot>
 </template>

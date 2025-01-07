@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { employeeQueryFieldsFragment, employeeQueryFilterFragment, type EmployeeQueryResult } from '@kvantoriumvlz/shared';
+import { createEmployeeFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import type { InferResultType } from 'groqd'
 
-const query = groq`
-    *[${employeeQueryFilterFragment}] {
-        ${employeeQueryFieldsFragment}
-        'curriculaId': *[_type == 'curriculum' && references(^._id)]._id,
-    }
-`
+const builder = q
+    .star
+    .filterByType(DOCUMENT_TYPES.EMPLOYEE)
+    .project(createEmployeeFragment(q))
 
-const { data } = useSanityQuery<EmployeeQueryResult[]>(query)
+type EmployeeQueryResult = InferResultType<typeof builder>
+
+const { data } = useSanityQuery<EmployeeQueryResult[]>(builder.query)
 </script>
 
 <template>
