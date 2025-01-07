@@ -1,4 +1,3 @@
-import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { media } from 'sanity-plugin-media'
@@ -7,6 +6,16 @@ import schemas from './src/schemas'
 import structure from './src/structure'
 
 import { ruKZLocale } from '@sanity/locale-ru-kz'
+
+import {
+    curriculumSchema,
+    employeeSchema,
+    kvantumSchema,
+    newsSchema,
+    newsTagSchema,
+    portableTextSchema,
+} from '@kvantoriumvlz/shared/schemas'
+import { defineConfig } from 'sanity'
 
 export default defineConfig({
     name: 'default',
@@ -17,7 +26,7 @@ export default defineConfig({
 
     plugins: [
         structureTool({
-            structure: structure
+            // structure: structure
         }),
         visionTool(),
         media(),
@@ -25,6 +34,14 @@ export default defineConfig({
     ],
 
     schema: {
-        types: schemas
+        types: [
+            curriculumSchema,
+            employeeSchema,
+            kvantumSchema,
+            newsSchema,
+            newsTagSchema,
+            portableTextSchema,
+        ]
+        // types: schemas
     },
 })
