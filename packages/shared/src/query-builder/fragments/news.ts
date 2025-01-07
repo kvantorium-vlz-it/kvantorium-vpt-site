@@ -1,10 +1,10 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/query-builder/groqd.client.ts"
-import { imageAssetFragment, imageCropFragment } from "./image.ts"
 import { InferFragmentType } from "groqd"
+import { createFragment } from "@utils"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
+import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
 
-export const newsFragment = q
+export const createNewsFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.NEWS>()
     .project((sub) => ({
         _id: true,
@@ -14,8 +14,8 @@ export const newsFragment = q
         slug: sub.field('slug').field('current'),
         previewImage: sub.field('previewImage').project((sub) => ({
             _type: true,
-            asset: sub.field('asset').deref().project(imageAssetFragment),
-            crop: sub.field('crop').project(imageCropFragment),
+            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
+            crop: sub.field('crop').project(createImageCropFragment(q)),
         })),
         tags: sub.field('tags[]').deref().project({
             name: true,
@@ -25,12 +25,13 @@ export const newsFragment = q
         gallery: sub.field('gallery[]').project((sub) => ({
             _type: true,
             _key: true,
-            asset: sub.field('asset').deref().project(imageAssetFragment),
-            crop: sub.field('crop').project(imageCropFragment),
+            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
+            crop: sub.field('crop').project(createImageCropFragment(q)),
         })),
         content: sub
             .field('content[]')
             .raw<PortableTextResult[]>((`{${portableTextProjection}}`)),
     }))
+)
 
-export type NewsResult = InferFragmentType<typeof newsFragment>
+export type NewsResult = InferFragmentType<ReturnType<typeof createNewsFragment>>

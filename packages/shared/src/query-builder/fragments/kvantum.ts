@@ -1,10 +1,10 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/query-builder/groqd.client.ts"
+import { createFragment } from "@utils"
 import { InferFragmentType } from "groqd"
-import { imageAssetFragment, imageCropFragment } from "./image.ts"
+import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
 
-export const kvantumFragment = q
+export const createKvantumFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.KVANTUM>()
     .project((sub) => ({
         _id: true,
@@ -14,12 +14,13 @@ export const kvantumFragment = q
         topics: true,
         icon: sub.field('icon').project((sub) => ({
             _type: true,
-            asset: sub.field('asset').deref().project(imageAssetFragment),
-            crop: sub.field('crop').project(imageCropFragment),
+            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
+            crop: sub.field('crop').project(createImageCropFragment(q)),
         })),
         description: sub
             .field('description[]')
             .raw<PortableTextResult[]>(`{${portableTextProjection}}`)
     }))
+)
 
-export type KvantumResult = InferFragmentType<typeof kvantumFragment>
+export type KvantumResult = InferFragmentType<ReturnType<typeof createKvantumFragment>>

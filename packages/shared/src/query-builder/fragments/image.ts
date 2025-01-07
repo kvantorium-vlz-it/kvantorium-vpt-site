@@ -1,7 +1,7 @@
-import { q } from "@/query-builder/groqd.client.ts"
+import { createFragment } from "@utils"
 import { type InferFragmentType } from 'groqd'
 
-export const imageAssetFragment = q
+export const createImageAssetFragment = createFragment((q) => q
     .fragmentForType<'sanity.imageAsset'>()
     .project((sub) => ({
         alt: sub.field('altText'),
@@ -15,10 +15,11 @@ export const imageAssetFragment = q
             width: true,
         })
     }))
+)
 
-export type ImageAssetResult = InferFragmentType<typeof imageAssetFragment>
+export type ImageAssetResult = InferFragmentType<ReturnType<typeof createImageAssetFragment>>
 
-export const imageCropFragment = q
+export const createImageCropFragment = createFragment((q) =>q
     .fragmentForType<'sanity.imageCrop'>()
     .project({
         bottom: true,
@@ -26,5 +27,6 @@ export const imageCropFragment = q
         right: true,
         top: true,
     })
+)
 
-export type ImageCropResult = InferFragmentType<typeof imageCropFragment>
+export type ImageCropResult = InferFragmentType<ReturnType<typeof createImageCropFragment>>

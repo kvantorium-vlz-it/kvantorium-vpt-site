@@ -1,9 +1,9 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/query-builder/groqd.client.ts"
+import { createFragment } from "@utils"
 import { InferFragmentType } from "groqd"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
 
-export const curriculumFragment = q
+export const createCurriculumFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.CURRICULUM>()
     .project((sub) => ({
         _id: true,
@@ -31,5 +31,6 @@ export const curriculumFragment = q
             .field('description[]')
             .raw<PortableTextResult[]>((`{${portableTextProjection}}`))
     }))
+)
 
-export type CurriculumResult = InferFragmentType<typeof curriculumFragment>
+export type CurriculumResult = InferFragmentType<ReturnType<typeof createCurriculumFragment>>

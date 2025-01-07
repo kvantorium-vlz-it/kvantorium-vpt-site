@@ -1,9 +1,9 @@
 import { DOCUMENT_TYPES } from "@constants"
-import { q } from "@/query-builder/groqd.client.ts"
+import { createFragment } from "@utils"
 import { InferFragmentType } from "groqd"
-import { imageAssetFragment, imageCropFragment } from "./image.ts"
+import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
 
-export const employeeFragment = q
+export const createEmployeeFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.EMPLOYEE>()
     .project((sub) => ({
         _id: true,
@@ -15,9 +15,10 @@ export const employeeFragment = q
         isTeacher: true,
         image: sub.field('image').project((sub) => ({
             _type: true,
-            asset: sub.field('asset').deref().project(imageAssetFragment),
-            crop: sub.field('crop').project(imageCropFragment),
+            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
+            crop: sub.field('crop').project(createImageCropFragment(q)),
         })),
     }))
+)
 
-export type EmployeeResult = InferFragmentType<typeof employeeFragment>
+export type EmployeeResult = InferFragmentType<ReturnType<typeof createEmployeeFragment>>
