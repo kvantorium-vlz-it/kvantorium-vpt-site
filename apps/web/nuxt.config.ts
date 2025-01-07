@@ -7,12 +7,12 @@ export default defineNuxtConfig({
     },
 
     modules: [
-      '@vueuse/nuxt',
-      "@nuxtjs/color-mode",
-      "@nuxtjs/tailwindcss",
-      "shadcn-nuxt",
-      'vue-yandex-maps/nuxt',
-      '@nuxtjs/sanity',
+        '@vueuse/nuxt',
+        "@nuxtjs/color-mode",
+        "@nuxtjs/tailwindcss",
+        "shadcn-nuxt",
+        'vue-yandex-maps/nuxt',
+        '@nuxtjs/sanity',
     ],
 
     css: [
@@ -64,11 +64,10 @@ export default defineNuxtConfig({
         projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
         dataset: process.env.SANITY_STUDIO_DATASET!,
         apiVersion: 'v2022-03-07',
-    }
+    },
 
-    // sanity: {
-    //     projectId: process.env.NUXT_SANITY_PROJECT_ID,
-    //     dataset: process.env.SANITY_DATASET,
-    //     apiVersion: process.env.SANITY_API_VERSION,
-    // },
+    // Groqd resolving fix
+    alias: {
+        'groqd': '../node_modules/groqd/dist/index'
+    }
 })
