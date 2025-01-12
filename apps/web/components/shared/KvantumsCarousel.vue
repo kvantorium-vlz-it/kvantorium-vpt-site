@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { KvantumQueryResult } from '@kvantoriumvlz/shared/queries';
-import type { Kvantum } from '~/assets/typescript/types'
+import type { KvantumResult } from '@kvantoriumvlz/shared';
 import type { CarouselApi } from '~/components/shadcn/carousel'
 
 withDefaults(defineProps<{
-    kvantums: KvantumQueryResult[]
+    kvantums: KvantumResult[]
 }>(), {
     kvantums: () => [],
 })
