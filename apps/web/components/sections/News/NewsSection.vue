@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { NewsQueryResult } from '@kvantoriumvlz/shared';
 import { ArrowUpRightIcon } from 'lucide-vue-next'
 import type { News } from '~/assets/typescript/types'
 
 defineProps<{
-    news: News[]
+    news: NewsQueryResult[]
 }>()
 </script>
 

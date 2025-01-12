@@ -1,7 +1,7 @@
 import { StructureBuilder } from "sanity/structure"
-import { API_VERSION, CURRICULUM_LEVEL, DOCUMENT_TYPES } from "../constants"
+import { API_VERSION } from "../constants"
 import { upperFirst } from "scule"
-import { getCurriculumLevelLabel } from "../schemas/utils"
+import { CURRICULUM_LEVEL, DOCUMENT_TYPES, getCurriculumLevelLabel } from "@kvantoriumvlz/shared"
 
 export default (S: StructureBuilder) => S
     .listItem()

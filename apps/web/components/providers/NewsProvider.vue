@@ -1,54 +1,32 @@
 <script setup lang="ts">
-import type { News } from '~/assets/typescript/types'
+import { createNewsFragment, createNewsTagFragment, DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
+import type { InferResultType } from 'groqd';
+import { q } from '~/assets/typescript/groqd.client';
 
-interface Props {
-    title?: string
+const props = defineProps<{
     slug?: string
     id?: string
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-    id: '',
-    slug: '',
-    title: '',
-})
+let builder = q
+    .star
+    .filterByType(DOCUMENT_TYPES.NEWS)
+    .filter(
+        (typeof props.id !== 'undefined' && `_id == ${props.id}`)
+        || (typeof props.slug !== 'undefined' && `slug.current == ${props.slug}`)
+        || ''
+    )
+    .project((sub) => ({
+        ...createNewsFragment(q),
+        tags: sub.field('tags[]').deref().project(createNewsTagFragment(q))
+    }))
+    .slice(0)
 
-const query = groq`
-    *[
-        _type == 'kvantorium.news'
-        && (
-            slug.current == $slug
-            || _id == $id
-            || title == $title
-        )
-    ] {
-        publishDate,
-        'tags': tags[]-> {
-            _id,
-            name,
-        },
-        'gallery': gallery[].asset -> {
-            'src': url,
-            'alt': altText,
-        },
-        title,
-        'slug': slug.current,
-        _id,
-        content,
-        'previewImage': previewImage.asset -> {
-            'src': url,
-            'alt': altText,
-        },
-    }
-`
+type NewsQueryResult = InferResultType<typeof builder>
 
-const { data } = await useSanityQuery<News[]>(query, {
-    slug: props.slug,
-    id: props.id,
-    title: props.title,
-})
+const { data } = await useSanityQuery<NewsQueryResult>(builder.query)
 </script>
 
 <template>
-    <slot :news="data?.length > 0 ? data?.[0] : null"></slot>
+    <slot :news="data"></slot>
 </template>

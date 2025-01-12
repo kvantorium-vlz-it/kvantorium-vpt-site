@@ -7,13 +7,17 @@ import ImageBlock from './blocks/ImageBlock.vue'
 import NormalBlock from './blocks/NormalBlock.vue'
 import HeadingBlock from './blocks/HeadingBlock.vue'
 import LinkMark from './marks/LinkMark.vue'
+import { DOCUMENT_TYPES, type PortableTextResult } from '@kvantoriumvlz/shared'
 
 defineProps<{
-    blocks: any[]
+    blocks: PortableTextResult[]
 }>()
 </script>
 
 <template>
+    <div>
+
+    </div>
     <PortableText
         :value="blocks"
         :components="{
@@ -35,7 +39,7 @@ defineProps<{
                 em: EmMark,
                 strong: StrongMark,
                 underline: UnderlineMark,
-                link: LinkMark,
+                [`${DOCUMENT_TYPES.LINK}`]: LinkMark,
             },
         }"
         :on-missing-component="false"

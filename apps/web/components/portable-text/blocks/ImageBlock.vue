@@ -1,36 +1,18 @@
 <script setup lang="ts">
 import type { PortableTextComponentProps } from '@portabletext/vue'
 import imageUrlBuilder from '@sanity/image-url'
+import type { ImageAssetResult, ImageCropResult } from '@kvantoriumvlz/shared'
 import type { SanityClientLike } from '@sanity/image-url/lib/types/types'
 
 const urlFor = (image: string) => imageUrlBuilder(useSanity().config as SanityClientLike).image(image)
-
-interface ImageCrop {
-    top: number
-    left: number
-    bottom: number
-    right: number
-}
-
-interface ImageDimensions {
-    width: number
-    height: number
-    aspectRatio: number
-}
-
 const props = defineProps<PortableTextComponentProps<{
     _type: string
     _key: string
-    _ref: string
-    src: string
-    dimensions: ImageDimensions
-    crop: ImageCrop | null
-    description: string | null
-    title: string | null
-    alt: string | null
+    asset: ImageAssetResult
+    crop: ImageCropResult
 }>>()
 
-const { width, height } = props.value.dimensions
+const dimensions = props.value.asset.dimensions!
 
 const crop = computed(() => ({
     left: props.value.crop?.left || 0,
@@ -39,12 +21,12 @@ const crop = computed(() => ({
     bottom: props.value.crop?.bottom || 0,
 }))
 
-const croppedWidth = Math.ceil(width * (1 - (crop.value.right + crop.value.left)))
-const croppedHeight = Math.ceil(height * (1 - (crop.value.top + crop.value.bottom)))
-const left = Math.ceil(width * crop.value.left)
-const top = Math.ceil(height * crop.value.top)
+const croppedWidth = Math.ceil(dimensions.width! * (1 - (crop.value.right + crop.value.left)))
+const croppedHeight = Math.ceil(dimensions.height! * (1 - (crop.value.top + crop.value.bottom)))
+const left = Math.ceil(dimensions.width! * crop.value.left)
+const top = Math.ceil(dimensions.height! * crop.value.top)
 
-const url = urlFor(props.value._ref)
+const url = urlFor(props.value.asset._id)
     .rect(left, top, croppedWidth, croppedHeight)
     .url()
 </script>

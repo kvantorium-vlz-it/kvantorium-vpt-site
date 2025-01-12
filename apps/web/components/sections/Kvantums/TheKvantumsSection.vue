@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Kvantum } from '~/assets/typescript/types'
 import { TrendingUpIcon } from 'lucide-vue-next'
+import type { KvantumQueryResult } from '@kvantoriumvlz/shared/queries'
 
 withDefaults(defineProps<{
-    kvantums: Kvantum[]
+    kvantums: KvantumQueryResult[]
 }>(), {
     kvantums: () => [],
 })

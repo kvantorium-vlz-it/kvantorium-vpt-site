@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { KvantumResult } from '@kvantoriumvlz/shared';
 import { ArrowRightIcon } from 'lucide-vue-next'
 import type { Kvantum } from '~/assets/typescript/types'
 
 defineProps<{
-    kvantum: Kvantum
+    kvantum: KvantumResult
 }>()
 </script>
 
@@ -16,7 +17,7 @@ defineProps<{
                 </div>
                 <img
                     class="w-16 aspect-square object-cover"
-                    :src="kvantum.icon"
+                    :src="kvantum.icon.asset?.src!"
                     alt=""
                 >
             </ShCardTitle>
@@ -30,7 +31,7 @@ defineProps<{
             </ol>
 
             <div class="mt-2">
-                Возрастная категория: {{ kvantum.minimalAge }}+
+                Возрастная категория: {{  }}+
             </div>
         </ShCardContent>
 

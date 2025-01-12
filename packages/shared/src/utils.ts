@@ -1,67 +1,29 @@
-import { CURRICULUM_LEVEL } from './enums.js'
-import { CurriculumLevelKey } from './types.js'
+import { CURRICULUM_LEVEL } from "@constants"
+import { Fragment, GroqBuilderWithZod, InferFragmentType } from "groqd"
+import { GroqdSchemaConfig } from "./query-builder"
 
-export function capitalizeFirstLetter(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-}
-
-export function getCurriculumLevelLabel(level: CurriculumLevelKey) {
-    switch (level) {
-        case CURRICULUM_LEVEL.INTRODUCTORY:
-            return 'вводный'
-        case CURRICULUM_LEVEL.ADVANCED:
-            return 'углубленный'
-        case CURRICULUM_LEVEL.PROJECT:
-            return 'проектный'
-        default:
-            throw new RangeError("Unknown curriculum level.")
+export const getCurriculumLevelLabel = (
+    level: typeof CURRICULUM_LEVEL[keyof typeof CURRICULUM_LEVEL]
+) => {
+    if (level === CURRICULUM_LEVEL.INTRODUCTORY) {
+        return 'вводный'
+    } else if (level === CURRICULUM_LEVEL.ADVANCED) {
+        return 'углубленный'
+    } else {
+        return 'проектный'
     }
 }
 
-type RangeValueOptions = {
-    bound: number
-    strict?: boolean
-}
+type CreateFragmentFn<
+    TProjectionMap,
+    TFragmentInput,
+    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
+> = (q: GroqdBuilder) => Fragment<TProjectionMap, TFragmentInput>
 
-type RangeOptions = {
-    min?: RangeValueOptions
-    max: RangeValueOptions
-}
-
-function _transformRangeOptionsToStrict(options: RangeOptions) {
-    const {
-        bound: maxBound,
-        strict: maxStrict = true,
-    } = options.max
-
-    const {
-        bound: minBound = 0,
-        strict: minStrict = true,
-    } = options.min || {}
-
-    const max = maxStrict ? maxBound : maxBound - 1
-    const min = minStrict ? minBound : minBound + 1
-
-    return {
-        max,
-        min,
-    }
-}
-
-export function modulusLoop(
-    value: number,
-    options: RangeOptions,
-) {
-    const { max, min } = _transformRangeOptionsToStrict(options)
-
-    const length = max - min + 1
-    const mod = (value - min) % length
-
-    return min + (mod < 0 ? mod + length : mod)
-}
-
-export function clamp(value: number, options: RangeOptions) {
-    const { max, min } = _transformRangeOptionsToStrict(options)
-
-    return Math.max(Math.min(value, max), min)
-}
+export const createFragment = <
+    TProjectionMap,
+    TFragmentInput,
+    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
+>(
+    fn: CreateFragmentFn<TProjectionMap, TFragmentInput, GroqdBuilder>
+) => (q: GroqdBuilder) => fn(q)

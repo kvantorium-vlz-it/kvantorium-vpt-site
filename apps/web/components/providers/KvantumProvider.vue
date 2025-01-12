@@ -1,92 +1,28 @@
 <script setup lang="ts">
-import type { Kvantum } from '~/assets/typescript/types'
+import { createKvantumFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import type { InferResultItem } from 'groqd'
 
-const props =withDefaults(defineProps<{
+const props = defineProps<{
     id?: string
-    name?: string
     slug?: string
-}>(), {
-    id: '',
-    name: '',
-    slug: '',
-})
+}>()
 
-const query = groq`
-    *[
-        _type == 'kvantorium.kvantum'
-        && (
-            slug.current == $slug
-            || name == $name
-            || _id == $id
-        )
-    ] {
-        "slug": slug.current,
-        name,
-        _id,
-        "icon": icon.asset->url,
-        description[] {
-            ...,
-            _type == 'block' => {
-                ...,
-                markDefs[] {
-                    _type == 'link' => {
-                        _type,
-                        _key,
-                        isOpenNewTab,
-                        linkType == 0 => {
-                            linkType,
-                            external,
-                        },
-                        linkType == 1 => {
-                            linkType,
-                            'internal': internal-> {
-                                _type,
-                                'slug': slug.current,
-                                _id,
-                            }
-                        },
-                    },
-                },
-            },
+let builder = q
+    .star
+    .filterByType(DOCUMENT_TYPES.KVANTUM)
+    .filter(
+        (typeof props.id !== 'undefined' && `_id == ${props.id}`)
+        || (typeof props.slug !== 'undefined' && `slug.current == "${props.slug}"`)
+        || ''
+    )
+    .project(createKvantumFragment(q))
+    .slice(0)
 
-            _type == 'image' => {
-                _type,
-                _key,
-                '_ref': asset._ref,
-                'crop': crop {
-                    top,
-                    left,
-                    right,
-                    bottom,
-                },
-                ...asset-> {
-                    description,
-                    title,
-                    'alt': altText,
-                    'src': url,
-                    'dimensions': metadata.dimensions {
-                        width,
-                        height,
-                        aspectRatio,
-                    }
-                }
-            },
-        },
-        topics,
-        'minimalAge': math::min(*[
-            _type == 'kvantorium.curriculum'
-            && references(^._id)
-        ].minimalAge)
-    }
-`
+type KvantumQueryResult = InferResultItem<typeof builder>
 
-const { data } = await useSanityQuery<Kvantum[]>(query, {
-    slug: props.slug,
-    name: props.name,
-    id: props.id,
-})
+const { data } = await useSanityQuery<KvantumQueryResult>(builder.query)
 </script>
 
 <template>
-    <slot :kvantum="data?.length > 0 ? data?.[0] : null"></slot>
+    <slot :kvantum="data"></slot>
 </template>

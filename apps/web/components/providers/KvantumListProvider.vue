@@ -1,36 +1,26 @@
 <script setup lang="ts">
-import type { Kvantum } from '~/assets/typescript/types'
+import { createKvantumFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import type { InferResultType } from 'groqd'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     offset?: number
     count?: number
-}>()
-
-const isCountFiltering = computed(() => typeof props.count !== 'undefined')
-
-const countFilter = groq`[$offset...$count + $offset]`
-
-const query = groq`
-    *[_type == 'kvantorium.kvantum'] ${isCountFiltering.value ? countFilter : ''} {
-        "slug": slug.current,
-        name,
-        _id,
-        "icon": icon.asset->url,
-        description,
-        topics,
-        'minimalAge': math::min(*[
-            _type == 'kvantorium.curriculum'
-            && references(^._id)
-        ].minimalAge)
-    }
-`
-
-const {
-    data,
-} = await useSanityQuery<Kvantum[]>(query, {
-    count: props.count || 0,
-    offset: props.offset || 0,
+}>(), {
+    offset: 0,
 })
+
+let builder = q
+    .star
+    .filterByType(DOCUMENT_TYPES.KVANTUM)
+    .project(createKvantumFragment(q))
+
+builder = typeof props.count !== 'undefined'
+    ? builder.slice(props.offset, props.count + props.offset)
+    : builder
+
+type KvantumQueryResult = InferResultType<typeof builder>
+
+const { data } = await useSanityQuery<KvantumQueryResult>(builder.query)
 </script>
 
 <template>
