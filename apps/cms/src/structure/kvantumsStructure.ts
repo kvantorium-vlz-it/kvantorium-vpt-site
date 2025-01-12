@@ -1,6 +1,6 @@
 import { StructureBuilder } from "sanity/structure"
-import kvantum from "../schemas/documents/kvantum"
-import { API_VERSION, DOCUMENT_TYPES } from "../constants"
+import { API_VERSION } from "../constants"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 
 export default (S: StructureBuilder) => S
     .listItem()

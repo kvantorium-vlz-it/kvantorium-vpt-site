@@ -1,7 +1,7 @@
 import { StructureBuilder } from "sanity/structure";
 import { TagIcon } from '@sanity/icons'
-import newsTag from "../schemas/documents/newsTag";
 import { API_VERSION } from "../constants";
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared";
 
 export default (S: StructureBuilder) => S
     .listItem()
@@ -31,7 +31,7 @@ export default (S: StructureBuilder) => S
                 .icon(TagIcon)
                 .id('news-group')
                 .child(S
-                    .documentTypeList(newsTag.name)
+                    .documentTypeList(DOCUMENT_TYPES.NEWS_TAG)
                     .title('Новостные теги')
                     .id('tags')
                     .apiVersion(API_VERSION)

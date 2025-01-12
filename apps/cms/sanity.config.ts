@@ -2,7 +2,6 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { media } from 'sanity-plugin-media'
 
-import schemas from './src/schemas'
 import structure from './src/structure'
 
 import { ruKZLocale } from '@sanity/locale-ru-kz'
@@ -26,7 +25,7 @@ export default defineConfig({
 
     plugins: [
         structureTool({
-            // structure: structure
+            structure: structure
         }),
         visionTool(),
         media(),
@@ -41,7 +40,6 @@ export default defineConfig({
             newsSchema,
             newsTagSchema,
             portableTextSchema,
-        ]
-        // types: schemas
+        ],
     },
 })

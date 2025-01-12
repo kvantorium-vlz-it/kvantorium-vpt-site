@@ -1,6 +1,5 @@
 import { StructureBuilder } from "sanity/structure";
-import news from "../schemas/documents/news";
-import { DOCUMENT_TYPES } from "../constants";
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared";
 
 export default (S: StructureBuilder) => S
     .listItem()

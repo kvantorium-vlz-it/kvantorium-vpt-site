@@ -1,11 +1,10 @@
 import { StructureBuilder } from "sanity/structure"
-import employee from '../schemas/documents/employee'
-import { API_VERSION, DOCUMENT_TYPES } from "../constants"
+import { API_VERSION } from "../constants"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 
 export default (S: StructureBuilder) => S
     .listItem()
     .title('Сотрудники')
-    .icon(employee.icon)
     .id('employees')
     .child(S
         .list()
@@ -14,7 +13,6 @@ export default (S: StructureBuilder) => S
         .items([
             S.listItem()
                 .title('Все сотрудники')
-                .icon(employee.icon)
                 .id('all-group')
                 .child(S
                     .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
@@ -27,7 +25,6 @@ export default (S: StructureBuilder) => S
 
             S.listItem()
                 .title('Педагоги')
-                .icon(employee.icon)
                 .id('teacher-group')
                 .child(S
                     .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
@@ -39,7 +36,6 @@ export default (S: StructureBuilder) => S
 
             S.listItem()
                 .title('Сотрудники')
-                .icon(employee.icon)
                 .id('regular-group')
                 .child(S
                     .documentTypeList(DOCUMENT_TYPES.EMPLOYEE)
