@@ -1,6 +1,7 @@
 
 import { DOCUMENT_TYPES } from "@constants"
 import { defineArrayMember, defineType } from "sanity"
+import { linkAnnotation } from "./linkAnnotation"
 
 const blockMember = defineArrayMember({
     type: 'block',
@@ -19,9 +20,9 @@ const blockMember = defineArrayMember({
             { title: 'Курсив', value: 'em' },
             { title: 'Подчеркнутый', value: 'underline' },
         ],
-        // annotations: [
-        //     linkAnnotation,
-        // ],
+        annotations: [
+            linkAnnotation,
+        ],
     },
     lists: [],
 })

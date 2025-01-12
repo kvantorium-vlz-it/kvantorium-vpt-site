@@ -6,7 +6,6 @@ export const portableTextProjection = groq`
     _key,
     _type == 'block' => {
         _type,
-        level,
         children[] {
             marks,
             text,
@@ -14,9 +13,20 @@ export const portableTextProjection = groq`
             _key,
         },
         style,
-        markDefs {
+        'markDefs': markDefs[] {
             _type,
             _key,
+            isOpenNewTab,
+            'to': to[] {
+                _type == 'externalLink' => { url },
+                _type == 'internalLink' => {
+                    ...reference -> {
+                        _type,
+                        _id,
+                        'slug': slug.current,
+                    }
+                }
+            }[0]
         }
     },
     _type == 'image' => {
