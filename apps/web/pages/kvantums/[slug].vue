@@ -17,10 +17,10 @@ const slug = route.params.slug as string
                     </span>
                 </SectionHeading>
 
-                <div v-if="kvantum" class="grid grid-cols-[auto,minmax(auto,1fr)] gap-4">
+                <div v-if="kvantum" class="grid grid-cols-1 lg:grid-cols-[auto,minmax(auto,1fr)] gap-4">
                     <img
-                        class="block mx-auto max-w-64 w-full sticky top-32"
-                        :src="kvantum.icon.asset?.src!"
+                        class="block mx-auto max-w-64 w-full lg:sticky lg:top-32"
+                        :src="kvantum.icon?.asset?.src!"
                         :alt="`Логотип ${kvantum.name}`"
                     >
 
