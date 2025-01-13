@@ -51,8 +51,8 @@
     "build:lib": "tsup",
     "build:schema": "pnpm run schema:prepare",
     "build": "pnpm run build:schema && pnpm run build:lib",
-    "dev": "tsup --watch",
-    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.shared/schema.json\" --enforce-required-fields",
+    "dev": "pnpm run build:schema && tsup --watch",
+    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.shared/schema.json\"",
     "schema:generate": "sanity typegen generate",
     "schema:prepare": "pnpm run schema:extract && pnpm run schema:generate"
   },
