@@ -6,7 +6,7 @@ import {
     newsSchema,
     newsTagSchema,
     portableTextSchema,
-} from './src/schemas/index.ts'
+} from "./src"
 
 export default defineConfig({
     projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
@@ -16,9 +16,9 @@ export default defineConfig({
             portableTextSchema,
             newsTagSchema,
             employeeSchema,
-            kvantumSchema,
             curriculumSchema,
             newsSchema,
-        ]
+            kvantumSchema,
+        ],
     },
 })

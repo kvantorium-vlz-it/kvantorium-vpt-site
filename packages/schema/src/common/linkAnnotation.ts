@@ -1,5 +1,5 @@
-import { DOCUMENT_TYPES } from "@constants"
-import { defineArrayMember, defineField, defineType } from "sanity"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
+import { defineArrayMember, defineField } from "sanity"
 
 const isOpenNewTabFieldSchema = defineField({
     name: 'isOpenNewTab',

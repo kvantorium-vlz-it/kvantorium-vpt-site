@@ -1,5 +1,5 @@
 
-import { DOCUMENT_TYPES } from "@constants"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared/constants"
 import { defineArrayMember, defineType } from "sanity"
 import { linkAnnotation } from "./linkAnnotation"
 

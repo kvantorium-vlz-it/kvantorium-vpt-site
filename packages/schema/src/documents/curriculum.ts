@@ -1,5 +1,4 @@
-import { CURRICULUM_LEVEL, DOCUMENT_TYPES } from "@constants"
-import { getCurriculumLevelLabel } from "@utils"
+import { CURRICULUM_LEVEL, DOCUMENT_TYPES, getCurriculumLevelLabel } from "@kvantoriumvlz/shared"
 import { defineField, defineType } from "sanity"
 import { upperFirst } from "scule"
 
@@ -146,7 +145,7 @@ const studentsInGroupFieldSchema = defineField({
 })
 
 export const curriculumSchema = defineType({
-    name: DOCUMENT_TYPES.CURRICULUM,
+    name: 'kvantorium.curriculum',
     title: 'Учебные программы',
     type: 'document',
     fields: [

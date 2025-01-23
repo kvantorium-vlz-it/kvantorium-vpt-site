@@ -1,0 +1,35 @@
+{
+  "name": "@kvantoriumvlz/schema",
+  "scripts": {
+    "build": "tsup",
+    "schema": "mkdirp ./src/.schema && pnpm run schema:extract && pnpm run schema:generate",
+    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.schema/schema.json\"",
+    "schema:generate": "sanity typegen generate"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./sanity.types.ts": {
+      "import": "./dist/sanity.types.ts",
+      "types": "./dist/sanity.types.ts",
+      "require": "./dist/sanity.types.ts"
+    }
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^1.33.0",
+    "@sanity/client": "^6.24.1",
+    "mkdirp": "^3.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@kvantoriumvlz/shared": "workspace:*",
+    "groq": "^3.71.1",
+    "sanity": "^3.67.0",
+    "scule": "^1.3.0"
+  }
+}

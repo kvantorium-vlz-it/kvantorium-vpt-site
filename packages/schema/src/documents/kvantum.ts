@@ -1,4 +1,4 @@
-import { DOCUMENT_TYPES } from '@constants'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared/constants'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const nameFieldSchema = defineField({
