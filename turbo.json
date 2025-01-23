@@ -8,6 +8,23 @@
     "dev": {
       "env": [".env.development", ".env"],
       "cache": true
+    },
+    "@kvantoriumvlz/schema#build": {
+      "dependsOn": [
+        "@kvantoriumvlz/shared#build",
+        "@kvantoriumvlz/schema#schema"
+      ]
+    },
+    "@kvantoriumvlz/schema#schema": {
+      "dependsOn": [
+        "@kvantoriumvlz/shared#build"
+      ]
+    },
+    "@kvantoriumvlz/query#build": {
+      "dependsOn": [
+        "@kvantoriumvlz/shared#build",
+        "@kvantoriumvlz/schema#schema"
+      ]
     }
   }
 }
