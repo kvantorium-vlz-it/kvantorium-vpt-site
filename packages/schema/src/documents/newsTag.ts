@@ -5,6 +5,9 @@ const nameFieldSchema = defineField({
     name: 'name',
     title: 'Тег',
     type: 'string',
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
 export const newsTagSchema = defineType({

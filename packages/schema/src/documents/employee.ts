@@ -29,6 +29,10 @@ const descriptionFieldSchema = defineField({
     name: 'description',
     title: 'О сотруднике',
     type: 'text',
+    initialValue: '',
+    validation: (rule) => rule
+        .required()
+        .error("Поле не может быть пустым"),
 })
 
 const isTeacherFieldSchema = defineField({
@@ -47,6 +51,7 @@ const imageFieldSchema = defineField({
     type: 'image',
     validation: (rule) => rule
         .assetRequired()
+        .required()
         .error("Поле не может быть пустым"),
 })
 

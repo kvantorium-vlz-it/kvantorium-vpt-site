@@ -27,6 +27,7 @@ const iconFieldSchema = defineField({
     title: 'Иконка квантума',
     type: 'image',
     validation: (rule) => rule
+        .assetRequired()
         .required()
         .error('Поле не может быть пустым'),
 })
@@ -35,6 +36,7 @@ const descriptionFieldSchema = defineField({
     name: 'description',
     title: 'Описание квантума',
     type: DOCUMENT_TYPES.PORTABLE_TEXT,
+    initialValue: [],
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),
@@ -52,8 +54,11 @@ const topicsFieldSchema = defineField ({
                 .error('Поле не может быть пустым'),
         }),
     ],
+    initialValue: [],
     validation: (rule) => rule
         .required()
+        .error('Поле не можеть быть пустым')
+        .min(1)
         .error('Необходимо указать хотя бы одну тему')
 })
 

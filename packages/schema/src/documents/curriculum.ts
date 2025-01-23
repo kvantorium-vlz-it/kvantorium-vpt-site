@@ -38,6 +38,7 @@ const descriptionFieldSchema = defineField({
     name: 'description',
     title: 'Описание программы',
     type: DOCUMENT_TYPES.PORTABLE_TEXT,
+    initialValue: [],
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),

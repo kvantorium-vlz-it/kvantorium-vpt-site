@@ -6,21 +6,30 @@ const isOpenNewTabFieldSchema = defineField({
     type: 'boolean',
     title: 'Открывать в новой вкладке',
     initialValue: true,
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
 const externalLinkUrlFieldSchema = defineField({
     name: 'url',
     title: 'URL-адрес ресурса',
     type: 'url',
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
-const externalLinkSchema = defineArrayMember({
+const externalLinkSchema = defineField({
     name: DOCUMENT_TYPES.EXTERNAL_LINK,
     title: 'Ссылка на внешний ресурс',
     type: 'object',
     fields: [
         externalLinkUrlFieldSchema,
     ],
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
 const internalLinkReferenceFieldSchema = defineField({
@@ -31,6 +40,9 @@ const internalLinkReferenceFieldSchema = defineField({
         { type: DOCUMENT_TYPES.KVANTUM },
         { type: DOCUMENT_TYPES.NEWS },
     ],
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
 const internalLinkSchema = defineField({
@@ -40,6 +52,9 @@ const internalLinkSchema = defineField({
     fields: [
         internalLinkReferenceFieldSchema,
     ],
+    validation: (rule) => rule
+        .required()
+        .error('Поле не может быть пустым'),
 })
 
 const toFieldSchema = defineField({
@@ -50,7 +65,9 @@ const toFieldSchema = defineField({
         internalLinkSchema,
         externalLinkSchema,
     ],
-    validation: (rule) => rule.length(1),
+    validation: (rule) => rule
+        .length(1)
+        .error('Можно ссылаться только на один ресурс'),
 })
 
 export const linkAnnotation = defineArrayMember({
@@ -61,5 +78,4 @@ export const linkAnnotation = defineArrayMember({
         toFieldSchema,
         isOpenNewTabFieldSchema,
     ],
-    validation: (rule) => rule.required(),
 })

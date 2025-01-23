@@ -17,6 +17,7 @@ const previewImageFieldSchema = defineField({
     type: 'image',
     validation: (rule) => rule
         .assetRequired()
+        .required()
         .error("Поле не может быть пустым"),
 })
 
@@ -24,6 +25,7 @@ const contentFieldSchema = defineField({
     name: 'content',
     title: 'Контент',
     type: DOCUMENT_TYPES.PORTABLE_TEXT,
+    initialValue: [],
     validation: (rule) => rule
         .required()
         .error("Поле не может быть пустым"),
@@ -49,6 +51,9 @@ const publishDateFieldSchema = defineField({
         dateFormat: 'DD-MM-YYYY',
     },
     initialValue: () => new Date().toISOString().slice(0, 10),
+    validation: (rule) => rule
+        .required()
+        .error("Поле не может быть пустым"),
 })
 
 const tagsFieldSchema = defineField({
@@ -63,6 +68,12 @@ const tagsFieldSchema = defineField({
             ],
         })
     ],
+    initialValue: [],
+    validation: (rule) => rule
+        .required()
+        .error("Поле не может быть пустым")
+        .unique()
+        .error('Теги не могут повторяться'),
 })
 
 const galleryFieldSchema = defineField({
@@ -71,6 +82,10 @@ const galleryFieldSchema = defineField({
     description: 'Изображения, которые относятся к новости, но не находятся в контенте',
     type: 'array',
     of: [defineArrayMember({ type: 'image' })],
+    initialValue: [],
+    validation: (rule) => rule
+        .required()
+        .error("Поле не может быть пустым"),
 })
 
 export const newsSchema = defineType({

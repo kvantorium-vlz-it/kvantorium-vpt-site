@@ -6,19 +6,19 @@ import { linkAnnotation } from "./linkAnnotation"
 const blockMember = defineArrayMember({
     type: 'block',
     styles: [
-        { title: 'Обычный', value: 'normal' },
-        { title: 'Заголовок 1', value: 'h1' },
-        { title: 'Заголовок 2', value: 'h2' },
-        { title: 'Заголовок 3', value: 'h3' },
-        { title: 'Заголовок 4', value: 'h4' },
-        { title: 'Заголовок 5', value: 'h5' },
-        { title: 'Заголовок 6', value: 'h6' },
+        { title: 'Обычный', value: 'normal' } as const,
+        { title: 'Заголовок 1', value: 'h1' } as const,
+        { title: 'Заголовок 2', value: 'h2' } as const,
+        { title: 'Заголовок 3', value: 'h3' } as const,
+        { title: 'Заголовок 4', value: 'h4' } as const,
+        { title: 'Заголовок 5', value: 'h5' } as const,
+        { title: 'Заголовок 6', value: 'h6' } as const,
     ],
     marks: {
         decorators: [
-            { title: 'Жирный', value: 'strong' },
-            { title: 'Курсив', value: 'em' },
-            { title: 'Подчеркнутый', value: 'underline' },
+            { title: 'Жирный', value: 'strong' } as const,
+            { title: 'Курсив', value: 'em' } as const,
+            { title: 'Подчеркнутый', value: 'underline' } as const,
         ],
         annotations: [
             linkAnnotation,
