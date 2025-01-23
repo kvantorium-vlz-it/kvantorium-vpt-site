@@ -23,12 +23,8 @@
       "@/*": ["./*"],
       "@constants": ["./constants.ts"],
       "@utils": ["./utils.ts"],
-      "@schemas": ["./schemas/index.ts"],
-      "@query-builder": ["./query-builder/index.ts"],
-      "@queries": ["./query-builder/queries/index.ts"],
-      "@fragments": ["./query-builder/fragments/index.ts"],
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/.shared/sanity.types.ts"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

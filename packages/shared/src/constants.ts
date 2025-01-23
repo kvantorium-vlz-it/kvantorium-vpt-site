@@ -1,35 +1,18 @@
-import { SnakeCase, snakeCase } from "scule"
-
-type ConstantsObject<
-    C extends ReadonlyArray<string>,
-    P extends string
-> = {
-    readonly [K in C[number] as Uppercase<SnakeCase<K>>]: `${P}.${K}`
-}
-
-const arrayToConstants = <
-    C extends ReadonlyArray<string>,
-    P extends string
->(constants: C, prefix: P) => {
-    return constants.reduce((constants, constant) => ({
-        ...constants,
-        [snakeCase(constant).toUpperCase()]: `${prefix}.${constant}`
-    }), {}) as ConstantsObject<C, P>
-}
+import { constantsFromArray } from "./utils"
 
 const SCHEMA_PREFIX = 'kvantorium' as const
 
-export const DOCUMENT_TYPES = arrayToConstants([
-    'kvantum',
-    'employee',
-    'curriculum',
-    'newsTag',
-    'news',
+export const DOCUMENT_TYPES = constantsFromArray([
     'portableText',
     'link',
     'internalLink',
     'externalLink',
-] as const, SCHEMA_PREFIX)
+    'newsTag',
+    'employee',
+    'kvantum',
+    'curriculum',
+    'news',
+] as const, [SCHEMA_PREFIX] as const)
 
 export const CURRICULUM_LEVEL = {
     INTRODUCTORY: 0,
