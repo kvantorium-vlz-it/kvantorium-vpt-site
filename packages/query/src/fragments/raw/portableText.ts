@@ -1,11 +1,8 @@
 import groq from "groq"
 import type * as SanityTypes from '@kvantoriumvlz/schema/sanity.types.ts'
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
-import { q } from "@/groqd.client"
 
-type D = Extract<NonNullable<NonNullable<Extract<SanityTypes.KvantoriumPortableText[number], { _type: 'block' }>['markDefs']>[number]['to']>[number], { _type: 'kvantorium.externalLink' }>
-
-export const portableTextProjection = groq`
+export const portableTextRawFragment = groq`
     _key,
     _type == 'block' => {
         _type,
@@ -21,10 +18,10 @@ export const portableTextProjection = groq`
             _key,
             isOpenNewTab,
             'to': to[] {
-                _type == 'externalLink' => { url },
-                _type == 'internalLink' => {
+                _type == ${DOCUMENT_TYPES.EXTERNAL_LINK} => { url },
+                _type == ${DOCUMENT_TYPES.INTERNAL_LINK} => {
                     ...reference -> {
-                        _type,
+                        '_toType': _type,
                         _id,
                         'slug': slug.current,
                     }
@@ -56,9 +53,18 @@ export const portableTextProjection = groq`
     },
 `
 
-export type PortableTextResult = NonNullable<SanityTypes.PortableTextQueryResult[number]['description']>[number]
+type _PortableText = SanityTypes.PortableTextQueryResult[number]['description'][number]
+type _PortableTextBlock = Extract<_PortableText, { _type: 'block' }>
+type _PortableTextImage = Extract<_PortableText, { _type: 'image' }>
 
-export type PortableBlock = Extract<PortableTextResult, { _type: 'block' }>
-export type PortableImage = Extract<PortableTextResult, { _type: 'image' }>
+type _PortableTextMarkDefs = NonNullable<_PortableTextBlock['markDefs']>[number]
+type _LinkMarkDef = Extract<_PortableTextMarkDefs, { _type: typeof DOCUMENT_TYPES.LINK }>
 
-type MarkDefs = NonNullable<PortableBlock['markDefs']>[number]
+type _InternalLinkMarkDefTo = Extract<_LinkMarkDef['to'], { _type: typeof DOCUMENT_TYPES.INTERNAL_LINK }>
+type _ExternalLinkMarkDefTo = Extract<_LinkMarkDef['to'], { _type: typeof DOCUMENT_TYPES.EXTERNAL_LINK }>
+
+type PortableTextMarkDef = Omit<_LinkMarkDef, 'to'> & { to: _InternalLinkMarkDefTo | _ExternalLinkMarkDefTo }
+
+export type PortableTextFragment =
+    |(Omit<_PortableTextBlock, 'markDefs'> & { markDefs: Array<PortableTextMarkDef> })
+    | _PortableTextImage

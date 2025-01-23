@@ -26,11 +26,12 @@ const portableTextQuery = groq`*[_type == 'kvantorium.kvantum'] {
                     _type == 'kvantorium.externalLink' => { url },
                     _type == 'kvantorium.internalLink' => {
                         ...reference -> {
-                            _type,
+                            '_toType': _type,
                             _id,
                             'slug': slug.current,
                         }
-                    }
+                    },
+                    _type,
                 }[0]
             }
         },

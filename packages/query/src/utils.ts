@@ -1,16 +1,18 @@
-import { Fragment, GroqBuilderWithZod } from "groqd"
+import { Fragment, GroqBuilderWithZod, GroqBuilder, InferFragmentType } from "groqd"
 import { GroqdSchemaConfig } from "./groqd.client"
 
-type CreateFragmentFn<
+type Builder = GroqBuilderWithZod<GroqdSchemaConfig>
+
+type CreateFragmentFactoryFn<
     TProjectionMap,
     TFragmentInput,
-    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
+    GroqdBuilder extends Builder = GroqBuilderWithZod<GroqdSchemaConfig>
 > = (q: GroqdBuilder) => Fragment<TProjectionMap, TFragmentInput>
 
-export const createFragment = <
+export const createFragmentFactory = <
     TProjectionMap,
     TFragmentInput,
-    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
+    GroqdBuilder extends Builder = GroqBuilderWithZod<GroqdSchemaConfig>
 >(
-    fn: CreateFragmentFn<TProjectionMap, TFragmentInput, GroqdBuilder>
+    fn: CreateFragmentFactoryFn<TProjectionMap, TFragmentInput, GroqdBuilder>
 ) => (q: GroqdBuilder) => fn(q)

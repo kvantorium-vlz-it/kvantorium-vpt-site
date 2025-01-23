@@ -1,9 +1,9 @@
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
-import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
-import { createFragment } from "@/utils.ts"
+import { portableTextRawFragment, PortableTextFragment } from "./raw/portableText.ts"
+import { createFragmentFactory } from "@/utils.ts"
 
-export const createCurriculumFragment = createFragment((q) => q
+export const curriculumFragmentFactory = createFragmentFactory((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.CURRICULUM>()
     .project((sub) => ({
         _id: true,
@@ -29,8 +29,8 @@ export const createCurriculumFragment = createFragment((q) => q
         }),
         description: sub
             .field('description[]')
-            .raw<PortableTextResult[]>((`{${portableTextProjection}}`))
+            .raw<PortableTextFragment[]>((`{${portableTextRawFragment}}`))
     }))
 )
 
-export type CurriculumResult = InferFragmentType<ReturnType<typeof createCurriculumFragment>>
+export type CurriculumFragment = InferFragmentType<ReturnType<typeof curriculumFragmentFactory>>

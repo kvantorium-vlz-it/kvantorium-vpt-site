@@ -1,10 +1,10 @@
+import { createFragmentFactory } from "@/utils"
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
-import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
-import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
-import { createFragment } from "@/utils.ts"
+import { imageAssetFragmentFactory, imageCropFragmentFactory } from "./image"
+import { PortableTextFragment, portableTextRawFragment } from "./raw/portableText"
 
-export const createNewsFragment = createFragment((q) => q
+export const newsFragmentFactory = createFragmentFactory((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.NEWS>()
     .project((sub) => ({
         _id: true,
@@ -14,8 +14,8 @@ export const createNewsFragment = createFragment((q) => q
         slug: sub.field('slug').field('current'),
         previewImage: sub.field('previewImage').project((sub) => ({
             _type: true,
-            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
-            crop: sub.field('crop').project(createImageCropFragment(q)),
+            asset: sub.field('asset').deref().project(imageAssetFragmentFactory(q)),
+            crop: sub.field('crop').project(imageCropFragmentFactory(q)),
         })),
         tags: sub.field('tags[]').deref().project({
             name: true,
@@ -25,13 +25,13 @@ export const createNewsFragment = createFragment((q) => q
         gallery: sub.field('gallery[]').project((sub) => ({
             _type: true,
             _key: true,
-            asset: sub.field('asset').deref().project(createImageAssetFragment(q)),
-            crop: sub.field('crop').project(createImageCropFragment(q)),
+            asset: sub.field('asset').deref().project(imageAssetFragmentFactory(q)),
+            crop: sub.field('crop').project(imageCropFragmentFactory(q)),
         })),
         content: sub
             .field('content[]')
-            .raw<PortableTextResult[]>((`{${portableTextProjection}}`)),
+            .raw<PortableTextFragment[]>((`{${portableTextRawFragment}}`)),
     }))
 )
 
-export type NewsResult = InferFragmentType<ReturnType<typeof createNewsFragment>>
+export type NewsFragment = InferFragmentType<ReturnType<typeof newsFragmentFactory>>

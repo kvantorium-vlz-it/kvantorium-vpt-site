@@ -1,8 +1,8 @@
-import { createFragment } from "@/utils"
+import { createFragmentFactory } from "@/utils"
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
-import { GroqBuilderWithZod, InferFragmentType } from "groqd"
+import { InferFragmentType } from "groqd"
 
-export const createNewsTagFragment = createFragment((q) => q
+export const newsTagFragmentFactory = createFragmentFactory((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.NEWS_TAG>()
     .project({
         _id: true,
@@ -11,4 +11,4 @@ export const createNewsTagFragment = createFragment((q) => q
     })
 )
 
-export type NewsTagResult = InferFragmentType<ReturnType<typeof createNewsTagFragment>>
+export type NewsTagFragment = InferFragmentType<ReturnType<typeof newsTagFragmentFactory>>

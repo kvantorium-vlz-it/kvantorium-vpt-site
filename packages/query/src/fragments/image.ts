@@ -1,7 +1,7 @@
-import { createFragment } from '@/utils'
+import { createFragmentFactory } from '@/utils'
 import { type InferFragmentType } from 'groqd'
 
-export const createImageAssetFragment = createFragment((q) => q
+export const imageAssetFragmentFactory = createFragmentFactory((q) => q
     .fragmentForType<'sanity.imageAsset'>()
     .project((sub) => ({
         alt: sub.field('altText'),
@@ -17,9 +17,9 @@ export const createImageAssetFragment = createFragment((q) => q
     }))
 )
 
-export type ImageAssetResult = InferFragmentType<ReturnType<typeof createImageAssetFragment>>
+export type ImageAssetFragment = InferFragmentType<ReturnType<typeof imageAssetFragmentFactory>>
 
-export const createImageCropFragment = createFragment((q) =>q
+export const imageCropFragmentFactory = createFragmentFactory((q) =>q
     .fragmentForType<'sanity.imageCrop'>()
     .project({
         bottom: true,
@@ -29,4 +29,4 @@ export const createImageCropFragment = createFragment((q) =>q
     })
 )
 
-export type ImageCropResult = InferFragmentType<ReturnType<typeof createImageCropFragment>>
+export type ImageCropFragment = InferFragmentType<ReturnType<typeof imageCropFragmentFactory>>
