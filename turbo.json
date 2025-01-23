@@ -9,6 +9,16 @@
       "env": [".env.development", ".env"],
       "cache": true
     },
+    "@kvantoriumvlz/web#build": {
+      "dependsOn": [
+        "@kvantoriumvlz/query#build"
+      ]
+    },
+    "@kvantoriumvlz/cms": {
+      "dependsOn": [
+        "@kvantoriumvlz/schema#build"
+      ]
+    },
     "@kvantoriumvlz/schema#build": {
       "dependsOn": [
         "@kvantoriumvlz/shared#build",
