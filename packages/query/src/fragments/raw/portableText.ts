@@ -1,7 +1,10 @@
 import groq from "groq"
-import * as SanityTypes from '@/.shared/sanity.types.ts'
+import type * as SanityTypes from '@kvantoriumvlz/schema/sanity.types.ts'
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
+import { q } from "@/groqd.client"
 
-// @sanity-typegen-ignore
+type D = Extract<NonNullable<NonNullable<Extract<SanityTypes.KvantoriumPortableText[number], { _type: 'block' }>['markDefs']>[number]['to']>[number], { _type: 'kvantorium.externalLink' }>
+
 export const portableTextProjection = groq`
     _key,
     _type == 'block' => {
@@ -54,3 +57,8 @@ export const portableTextProjection = groq`
 `
 
 export type PortableTextResult = NonNullable<SanityTypes.PortableTextQueryResult[number]['description']>[number]
+
+export type PortableBlock = Extract<PortableTextResult, { _type: 'block' }>
+export type PortableImage = Extract<PortableTextResult, { _type: 'image' }>
+
+type MarkDefs = NonNullable<PortableBlock['markDefs']>[number]

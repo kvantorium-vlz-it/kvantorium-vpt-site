@@ -1,4 +1,4 @@
-import { createFragment } from "@utils"
+import { createFragment } from '@/utils'
 import { type InferFragmentType } from 'groqd'
 
 export const createImageAssetFragment = createFragment((q) => q

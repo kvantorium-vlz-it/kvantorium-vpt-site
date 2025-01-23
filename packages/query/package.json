@@ -1,0 +1,33 @@
+{
+  "name": "@kvantoriumvlz/query",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsup"
+  },
+  "exports": {
+    "./query-builder": {
+      "types": "./dist/query-builder/index.d.ts",
+      "import": "./dist/query-builder/index.mjs",
+      "require": "./dist/query-builder/index.js"
+    },
+    "./fragments": {
+      "types": "./dist/query-builder/fragments/index.d.ts",
+      "import": "./dist/query-builder/fragments/index.mjs",
+      "require": "./dist/query-builder/fragments/index.js"
+    },
+    "./groqd.client.ts": {
+      "types": "./dist/query-builder/groqd.client.d.ts",
+      "import": "./dist/query-builder/groqd.client.mjs",
+      "require": "./dist/query-builder/groqd.client.js"
+    }
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "@kvantoriumvlz/schema": "workspace:*"
+  },
+  "dependencies": {
+    "groqd": "^1.0.1",
+    "@kvantoriumvlz/shared": "workspace:*"
+  }
+}

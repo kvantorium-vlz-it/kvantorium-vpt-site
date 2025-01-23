@@ -1,7 +1,7 @@
-import { DOCUMENT_TYPES } from "@constants"
-import { createFragment } from "@utils"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
 import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
+import { createFragment } from "@/utils.ts"
 
 export const createEmployeeFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.EMPLOYEE>()

@@ -1,8 +1,8 @@
-import { DOCUMENT_TYPES } from "@constants"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
-import { createFragment } from "@utils"
 import { portableTextProjection, PortableTextResult } from "./raw/portableText.ts"
 import { createImageAssetFragment, createImageCropFragment } from "./image.ts"
+import { createFragment } from "@/utils.ts"
 
 export const createNewsFragment = createFragment((q) => q
     .fragmentForType<typeof DOCUMENT_TYPES.NEWS>()

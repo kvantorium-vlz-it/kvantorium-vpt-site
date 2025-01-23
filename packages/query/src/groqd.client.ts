@@ -1,5 +1,5 @@
 import { createGroqBuilderWithZod } from 'groqd'
-import type * as SanityTypes  from '@/.shared/sanity.types.ts'
+import * as SanityTypes from '@kvantoriumvlz/schema/sanity.types.ts'
 
 export type GroqdSchemaConfig = {
     schemaTypes: SanityTypes.AllSanitySchemaTypes
@@ -7,3 +7,5 @@ export type GroqdSchemaConfig = {
 }
 
 export const q = createGroqBuilderWithZod<GroqdSchemaConfig>()
+
+export type { SanityTypes }

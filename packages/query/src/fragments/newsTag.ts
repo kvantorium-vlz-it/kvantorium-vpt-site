@@ -1,5 +1,5 @@
-import { DOCUMENT_TYPES } from "@constants"
-import { createFragment } from "@utils"
+import { createFragment } from "@/utils"
+import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { GroqBuilderWithZod, InferFragmentType } from "groqd"
 
 export const createNewsTagFragment = createFragment((q) => q
