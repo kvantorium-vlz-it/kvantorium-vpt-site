@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import type { Kvantum } from '~/assets/typescript/types'
 import { TrendingUpIcon } from 'lucide-vue-next'
-import type { KvantumQueryResult } from '@kvantoriumvlz/shared/queries'
+import { q } from '~/assets/typescript/groqd.client'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
+import { kvantumFragmentFactory } from '@kvantoriumvlz/query'
 
-withDefaults(defineProps<{
-    kvantums: KvantumQueryResult[]
-}>(), {
-    kvantums: () => [],
-})
+const { query } = q
+    .star
+    .filterByType(DOCUMENT_TYPES.KVANTUM)
+    .project(kvantumFragmentFactory(q))
+
+const { data: kvantums } = useSanityQuery<Kvantum[]>(query)
 </script>
 
 <template>
@@ -17,7 +20,10 @@ withDefaults(defineProps<{
                 Квантумы
             </SectionHeading>
 
-            <KvantumsCarousel :kvantums="kvantums">
+            <KvantumsCarousel
+                v-if="kvantums"
+                :kvantums="kvantums"
+            >
                 <template #before-slides>
                     <ShCarouselItem class="basis-full lg:basis-1/3">
                         <ShCard class="flex flex-col justify-end items-end from-blue-800 to-blue-600 bg-gradient-to-br text-white h-full">
