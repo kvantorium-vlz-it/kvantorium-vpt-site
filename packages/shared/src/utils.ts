@@ -1,6 +1,4 @@
 import { CURRICULUM_LEVEL } from "@constants"
-import { Fragment, GroqBuilderWithZod, InferFragmentType } from "groqd"
-import { GroqdSchemaConfig } from "./query-builder"
 
 export const getCurriculumLevelLabel = (
     level: typeof CURRICULUM_LEVEL[keyof typeof CURRICULUM_LEVEL]
@@ -14,16 +12,36 @@ export const getCurriculumLevelLabel = (
     }
 }
 
-type CreateFragmentFn<
-    TProjectionMap,
-    TFragmentInput,
-    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
-> = (q: GroqdBuilder) => Fragment<TProjectionMap, TFragmentInput>
+// Bug:Break import on @kvantoriumvlz/cms
 
-export const createFragment = <
-    TProjectionMap,
-    TFragmentInput,
-    GroqdBuilder extends GroqBuilderWithZod<GroqdSchemaConfig> = GroqBuilderWithZod<GroqdSchemaConfig>
->(
-    fn: CreateFragmentFn<TProjectionMap, TFragmentInput, GroqdBuilder>
-) => (q: GroqdBuilder) => fn(q)
+// export const constantsFromArray = <
+//     C extends ReadonlyArray<string>,
+//     P extends ReadonlyArray<string> = [],
+//     S extends string = '.'
+// >(constants: C, prefixes?: P, separator?: S) => {
+//     const joinedPrefixes = (prefixes || []).join(separator || '.')
+//     const isPrefixesDefined = (prefixes || []).length > 0
+
+//     return constants.reduce(
+//         (constants, constant) => ({
+//             ...constants,
+//             [snakeCase(constant).toUpperCase()]: (isPrefixesDefined
+//                 ? `${joinedPrefixes}${separator || '.'}${constant}`
+//                 : constant
+//             )
+//         }),
+//         {}
+//     ) as ConstantsFromArray<C, P, S>
+// }
+
+// export type ConstantsFromArray<
+//     C extends ReadonlyArray<string>,
+//     P extends ReadonlyArray<string>,
+//     S extends string = '.'
+// > = {
+//     [K in C[number] as Uppercase<SnakeCase<K>>]: (
+//         JoinByCase<P, S> extends ""
+//             ? K
+//             : `${JoinByCase<P, S>}${S}${K}`
+//     )
+// }

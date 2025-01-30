@@ -1,35 +1,16 @@
-import { SnakeCase, snakeCase } from "scule"
-
-type ConstantsObject<
-    C extends ReadonlyArray<string>,
-    P extends string
-> = {
-    readonly [K in C[number] as Uppercase<SnakeCase<K>>]: `${P}.${K}`
-}
-
-const arrayToConstants = <
-    C extends ReadonlyArray<string>,
-    P extends string
->(constants: C, prefix: P) => {
-    return constants.reduce((constants, constant) => ({
-        ...constants,
-        [snakeCase(constant).toUpperCase()]: `${prefix}.${constant}`
-    }), {}) as ConstantsObject<C, P>
-}
-
 const SCHEMA_PREFIX = 'kvantorium' as const
 
-export const DOCUMENT_TYPES = arrayToConstants([
-    'kvantum',
-    'employee',
-    'curriculum',
-    'newsTag',
-    'news',
-    'portableText',
-    'link',
-    'internalLink',
-    'externalLink',
-] as const, SCHEMA_PREFIX)
+export const DOCUMENT_TYPES = {
+    PORTABLE_TEXT: `${SCHEMA_PREFIX}.portableText`,
+    LINK: `${SCHEMA_PREFIX}.link`,
+    INTERNAL_LINK: `${SCHEMA_PREFIX}.internalLink`,
+    EXTERNAL_LINK: `${SCHEMA_PREFIX}.externalLink`,
+    NEWS_TAG: `${SCHEMA_PREFIX}.newsTag`,
+    EMPLOYEE: `${SCHEMA_PREFIX}.employee`,
+    KVANTUM: `${SCHEMA_PREFIX}.kvantum`,
+    CURRICULUM: `${SCHEMA_PREFIX}.curriculum`,
+    NEWS: `${SCHEMA_PREFIX}.news`,
+} as const
 
 export const CURRICULUM_LEVEL = {
     INTRODUCTORY: 0,

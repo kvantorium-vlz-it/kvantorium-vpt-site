@@ -2,10 +2,10 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig((options) => ({
     entry: [
-        './src/constants.ts',
-        './src/utils.ts',
         './src/index.ts',
+        './src/groqd.client.ts'
     ],
+    publicDir: "./src/.schema",
     dts: true,
     minify: !!!options.watch,
     outDir: 'dist',

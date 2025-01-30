@@ -2,10 +2,9 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig((options) => ({
     entry: [
-        './src/constants.ts',
-        './src/utils.ts',
         './src/index.ts',
     ],
+    publicDir: "./src/.schema",
     dts: true,
     minify: !!!options.watch,
     outDir: 'dist',

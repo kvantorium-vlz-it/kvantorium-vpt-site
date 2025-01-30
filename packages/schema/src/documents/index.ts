@@ -1,0 +1,5 @@
+export * from './newsTag'
+export * from './employee'
+export * from './kvantum'
+export * from './news'
+export * from './curriculum'

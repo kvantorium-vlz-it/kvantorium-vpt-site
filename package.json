@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "build:packages": "turbo run build --filter=\"./packages/*\""
   },
   "devDependencies": {
     "turbo": "^2.1.2"

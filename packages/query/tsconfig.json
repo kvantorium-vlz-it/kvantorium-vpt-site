@@ -21,8 +21,6 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["./*"],
-      "@constants": ["./constants.ts"],
-      "@utils": ["./utils.ts"],
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

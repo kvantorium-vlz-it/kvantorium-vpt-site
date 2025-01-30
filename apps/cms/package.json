@@ -1,5 +1,5 @@
 {
-  "name": "@kvantorium-vpt-site/cms",
+  "name": "@kvantoriumvlz/cms",
   "private": true,
   "version": "3.0.0",
   "main": "package.json",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@formkit/tempo": "^0.1.2",
     "@kvantoriumvlz/shared": "workspace:*",
+    "@kvantoriumvlz/schema": "workspace:*",
     "@sanity/locale-ru-kz": "^1.1.13",
     "@sanity/vision": "^3.67.0",
     "react": "^18.3.1",
