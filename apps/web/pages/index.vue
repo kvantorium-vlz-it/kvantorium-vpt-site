@@ -2,13 +2,15 @@
     <div>
         <TheHero />
 
-        <NewsListProvider #="{ news }" :count="6">
-            <NewsSection :news="news || []" />
-        </NewsListProvider>
+        <InfoSection />
 
-        <KvantumListProvider #="{ kvantums }">
-            <TheKvantumsSection :kvantums="kvantums" />
-        </KvantumListProvider>
+        <CurriculaSection />
+
+        <TheKvantumsSection />
+
+        <NewsSection />
+
+        <TheFaqSection />
 
         <TheMapSection />
     </div>
