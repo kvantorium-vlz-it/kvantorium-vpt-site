@@ -1,59 +1,11 @@
-export interface Kvantum {
-    name: string
-    slug: string
-    topics: string[]
-    icon: string,
-    description: any[]
-    minimalAge: number
-}
+import type { CurriculumFragment, EmployeeFragment, KvantumFragment, NewsFragment, NewsTagFragment } from "@kvantoriumvlz/query"
 
-interface ImageWithAlternativeText {
-    src: string
-    alt: string
-}
+export type Kvantum = KvantumFragment
 
-interface NewsTag {
-    _id: string
-    name: string
-}
+export type Curriculum = CurriculumFragment
 
-export interface News {
-    publishDate: string
-    tags: NewsTag[]
-    gallery: ImageWithAlternativeText[]
-    title: string
-    slug: string
-    _id: string
-    content: any[]
-    previewImage: ImageWithAlternativeText,
-}
+export type News = NewsFragment
 
-export interface Employee {
-    _id: string
-    surname: string
-    name: string
-    patronymic: string
-    description: string
-    isTeacher: boolean
-    imageURL: string
-    curriculaId: string[]
-}
+export type Employee = EmployeeFragment
 
-export interface Curriculum {
-    level: 1 | 2 | 3
-    _id: string
-    description: any[]
-    name: string
-    minimalAge: number
-    studentsInGroup: number
-    hoursPerYear: {
-        firstHalf: number
-        secondHalf: number
-    }
-    schedule: {
-        hours: number
-        count: number
-    }
-    teacherId: string
-    kvantumId: string
-}
+export type NewsTag = NewsTagFragment
