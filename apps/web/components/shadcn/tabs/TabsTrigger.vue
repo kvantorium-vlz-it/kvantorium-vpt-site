@@ -22,7 +22,7 @@ const forwardedProps = useForwardProps(delegatedProps)
             props.class,
         )"
     >
-        <span class="truncate">
+        <span>
             <slot />
         </span>
     </TabsTrigger>
