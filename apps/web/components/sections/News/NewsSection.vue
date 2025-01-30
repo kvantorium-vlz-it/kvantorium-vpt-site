@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import type { NewsQueryResult } from '@kvantoriumvlz/shared';
+import { newsFragmentFactory } from '@kvantoriumvlz/query'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import { ArrowUpRightIcon } from 'lucide-vue-next'
+import { q } from '~/assets/typescript/groqd.client'
 import type { News } from '~/assets/typescript/types'
 
-defineProps<{
-    news: NewsQueryResult[]
-}>()
+const { query } = q
+    .star
+    .filterByType(DOCUMENT_TYPES.NEWS)
+    .project(newsFragmentFactory(q))
+    .slice(0, 6)
+
+const { data: news } = useSanityQuery<News[]>(query)
 </script>
 
 <template>
