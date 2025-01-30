@@ -5,6 +5,11 @@
     "build": "tsup"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
     "./query-builder": {
       "types": "./dist/query-builder/index.d.ts",
       "import": "./dist/query-builder/index.mjs",
