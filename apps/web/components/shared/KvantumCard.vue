@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { KvantumResult } from '@kvantoriumvlz/shared';
 import { ArrowRightIcon } from 'lucide-vue-next'
 import type { Kvantum } from '~/assets/typescript/types'
 
 defineProps<{
-    kvantum: KvantumResult
+    kvantum: Kvantum
 }>()
 </script>
 
@@ -17,7 +16,7 @@ defineProps<{
                 </div>
                 <img
                     class="w-16 aspect-square object-cover"
-                    :src="kvantum.icon.asset?.src!"
+                    :src="kvantum.icon.asset.src!"
                     alt=""
                 >
             </ShCardTitle>

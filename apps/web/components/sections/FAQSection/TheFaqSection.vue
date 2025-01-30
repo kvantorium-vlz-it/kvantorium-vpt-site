@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils';
+
 </script>
 
 <template>
@@ -27,25 +28,40 @@ import { cn } from '../../lib/utils'
                 Часто задаваемые вопросы
             </SectionHeading>
 
-            <div class="mx-auto max-w-[600px]">
-                <FaqAccordion>
-                    <FaqAccordionItem title="Это бесплатно" value="item-1">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, nisi.
-                    </FaqAccordionItem>
+            <ShTabs default-value="payment" class="grid max-w-[800px] mx-auto grid-cols-12 gap-2">
+                <ShTabsList class="flex flex-col items-stretch col-span-3 justify-start bg-transparent">
+                    <ShTabsTrigger value="payment" class="text-wrap text-left">
+                        Сколько стоит обучение
+                    </ShTabsTrigger>
 
-                    <FaqAccordionItem title="Это бесплатно" value="item-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, nisi.
-                    </FaqAccordionItem>
+                    <ShTabsTrigger value="1">
+                        ...
+                    </ShTabsTrigger>
 
-                    <FaqAccordionItem title="Это бесплатно" value="item-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, nisi.
-                    </FaqAccordionItem>
+                    <ShTabsTrigger value="2">
+                        ...
+                    </ShTabsTrigger>
 
-                    <FaqAccordionItem title="Это бесплатно" value="item-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, nisi.
-                    </FaqAccordionItem>
-                </FaqAccordion>
-            </div>
+                    <ShTabsTrigger value="3">
+                        ...
+                    </ShTabsTrigger>
+                </ShTabsList>
+
+                <div class="col-span-9 bg-slate-100 rounded-md px-4 py-2">
+                    <ShTabsContent value="payment">
+                        ...
+                    </ShTabsContent>
+                    <ShTabsContent value="1">
+                        ...
+                    </ShTabsContent>
+                    <ShTabsContent value="2">
+                        ...
+                    </ShTabsContent>
+                    <ShTabsContent value="3">
+                        ...
+                    </ShTabsContent>
+                </div>
+            </ShTabs>
         </SectionContainer>
     </Section>
 </template>
