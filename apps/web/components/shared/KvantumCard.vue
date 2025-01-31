@@ -30,7 +30,7 @@ defineProps<{
             </ol>
 
             <div class="mt-2">
-                Возрастная категория: {{  }}+
+                Возрастная категория: {{ kvantum.minimalAge || 12 }}+
             </div>
         </ShCardContent>
 

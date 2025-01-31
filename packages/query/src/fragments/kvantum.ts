@@ -19,7 +19,15 @@ export const kvantumFragmentFactory = createFragmentFactory((q) => q
         })),
         description: sub
             .field('description[]')
-            .raw<PortableTextFragment[]>(`{${portableTextRawFragment}}`)
+            .raw<PortableTextFragment[]>(`{${portableTextRawFragment}}`),
+        'minimalAge': sub
+            .star
+            .filterByType(DOCUMENT_TYPES.CURRICULUM)
+            .filter('references(^._id)')
+            .order('minimalAge asc')
+            .slice(0)
+            .project((sub) => ({ minimalAge: true }))
+            .field('minimalAge')
     }))
 )
 
