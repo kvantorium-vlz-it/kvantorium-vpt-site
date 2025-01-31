@@ -7,10 +7,11 @@ import ImageBlock from './blocks/ImageBlock.vue'
 import NormalBlock from './blocks/NormalBlock.vue'
 import HeadingBlock from './blocks/HeadingBlock.vue'
 import LinkMark from './marks/LinkMark.vue'
-import { DOCUMENT_TYPES, type PortableTextResult } from '@kvantoriumvlz/shared'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
+import type { PortableTextFragment } from '@kvantoriumvlz/query'
 
 defineProps<{
-    blocks: PortableTextResult[]
+    blocks: PortableTextFragment[]
 }>()
 </script>
 

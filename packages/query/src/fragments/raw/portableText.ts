@@ -18,14 +18,15 @@ export const portableTextRawFragment = groq`
             _key,
             isOpenNewTab,
             'to': to[] {
-                _type == ${DOCUMENT_TYPES.EXTERNAL_LINK} => { url },
-                _type == ${DOCUMENT_TYPES.INTERNAL_LINK} => {
+                _type == '${DOCUMENT_TYPES.EXTERNAL_LINK}' => { url },
+                _type == '${DOCUMENT_TYPES.INTERNAL_LINK}' => {
                     ...reference -> {
                         '_toType': _type,
                         _id,
                         'slug': slug.current,
                     }
-                }
+                },
+                _type,
             }[0]
         }
     },
@@ -63,7 +64,7 @@ type _LinkMarkDef = Extract<_PortableTextMarkDefs, { _type: typeof DOCUMENT_TYPE
 type _InternalLinkMarkDefTo = Extract<_LinkMarkDef['to'], { _type: typeof DOCUMENT_TYPES.INTERNAL_LINK }>
 type _ExternalLinkMarkDefTo = Extract<_LinkMarkDef['to'], { _type: typeof DOCUMENT_TYPES.EXTERNAL_LINK }>
 
-type PortableTextMarkDef = Omit<_LinkMarkDef, 'to'> & { to: _InternalLinkMarkDefTo | _ExternalLinkMarkDefTo }
+export type PortableTextMarkDef = Omit<_LinkMarkDef, 'to'> & { to: _InternalLinkMarkDefTo | _ExternalLinkMarkDefTo }
 
 export type PortableTextFragment =
     |(Omit<_PortableTextBlock, 'markDefs'> & { markDefs: Array<PortableTextMarkDef> })
