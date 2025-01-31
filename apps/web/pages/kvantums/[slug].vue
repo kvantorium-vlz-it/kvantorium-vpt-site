@@ -16,6 +16,13 @@ const query = q
     .slice(0)
 
 const { data: kvantum } = await useSanityQuery<Kvantum>(query.query)
+
+const allKvantumsQuery = q
+    .star
+    .filterByType(DOCUMENT_TYPES.KVANTUM)
+    .project(kvantumFragmentFactory(q))
+
+const { data: allKvantums } = await useSanityQuery<Kvantum[]>(allKvantumsQuery.query)
 </script>
 
 <template>
@@ -41,6 +48,17 @@ const { data: kvantum } = await useSanityQuery<Kvantum>(query.query)
                     <PortableBlocks :blocks="kvantum.description" />
                 </div>
             </div>
+        </SectionContainer>
+    </Section>
+
+    <Section>
+        <SectionContainer>
+            <SectionHeading>
+                Все квантумы
+            </SectionHeading>
+
+            <KvantumsCarousel :kvantums="allKvantums || []" />
+
         </SectionContainer>
     </Section>
 </template>
