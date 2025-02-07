@@ -32,6 +32,12 @@ const hoursPerYear = computed(() => {
 
         <ShCardContent>
             <p>
+                Квантум:
+                <span class="font-bold">
+                    {{ curriculum.kvantum.name }}
+                </span>
+            </p>
+            <p>
                 Уровень программы:
                 <span class="font-bold">
                     {{ getCurriculumLevelLabel(curriculum.level) }}
@@ -50,5 +56,12 @@ const hoursPerYear = computed(() => {
                 </span>
             </p>
         </ShCardContent>
+        <ShCardFooter>
+            <ShButton as-child>
+                <NuxtLink :to="`/curricula/${curriculum._id}`">
+                    Подробнее
+                </NuxtLink>
+            </ShButton>
+        </ShCardFooter>
     </ShCard>
 </template>
