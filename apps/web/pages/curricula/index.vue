@@ -65,9 +65,9 @@ const visibleCount = ref(6)
             <form
                 @submit.prevent="() => {}"
                 @reset.prevent="clearFilter"
-                class="mb-4"
+                class="mb-8"
             >
-                <h2 class="text-2xl font-bold">Фильтры</h2>
+                <h2 class="text-2xl font-bold mb-2">Фильтры</h2>
 
                 <div class=" flex gap-2">
                     <select
