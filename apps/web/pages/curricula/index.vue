@@ -51,6 +51,8 @@ const clearFilter = () => {
     selectedLevel.value = undefined
     selectedKvantum.value = undefined
 }
+
+const visibleCount = ref(6)
 </script>
 
 <template>
@@ -112,11 +114,23 @@ const clearFilter = () => {
             </form>
 
             <ul
-                class="grid grid-cols-3 gap-2"
+                class="grid grid-cols-6 gap-2"
                 v-if="visibleCurricula.length > 0"
             >
-                <li v-for="curriculum in visibleCurricula">
+                <li
+                    class="col-span-2"
+                    v-for="curriculum in visibleCurricula.slice(0, visibleCount)"
+                >
                     <CurriculumCard :curriculum="curriculum" />
+                </li>
+
+                <li class="col-span-6">
+                    <ShButton
+                        class="w-full"
+                        @click="() => visibleCount += 6"
+                    >
+                        Показать больше
+                    </ShButton>
                 </li>
             </ul>
 
