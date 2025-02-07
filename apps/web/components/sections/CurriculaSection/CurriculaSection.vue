@@ -56,15 +56,23 @@ const visibleCount = ref(6)
 
             <ul
                 v-if="(curricula || []).length > 0"
-                class="grid grid-cols-3 gap-2 grid-flow-row"
+                class="grid grid-cols-6 gap-2 grid-flow-row"
             >
-                <li v-for="curriculum in curricula?.slice(0, visibleCount)">
+                <li class="col-span-2" v-for="curriculum in curricula?.slice(0, visibleCount)">
                     <CurriculumCard :curriculum="curriculum!" />
                 </li>
 
-                <li class="col-span-3" @click="() => visibleCount += 6">
-                    <ShButton class="w-full">
+                <li class="col-span-3">
+                    <ShButton class="w-full"  @click="() => visibleCount += 6">
                         Показать больше
+                    </ShButton>
+                </li>
+
+                <li class="col-span-3">
+                    <ShButton class="w-full" as-child variant="outline">
+                        <NuxtLink to="/curricula/">
+                            Ко всем программам
+                        </NuxtLink>
                     </ShButton>
                 </li>
             </ul>
