@@ -20,7 +20,7 @@ import { FileTextIcon, UserRoundIcon, ImageIcon } from 'lucide-vue-next'
 
                     <HeaderNavigationContentLink
                         as="li"
-                        to="/documents"
+                        to="/team/"
                         class="hover:bg-slate-200"
                     >
                         <UserRoundIcon :size="16" />
