@@ -24,21 +24,21 @@ const config: Partial<Config> = {
 
         colors: {
             black: {
-                DEFAULT: 'var(--black)',
+                DEFAULT: 'hsl(var(--black))',
             },
             white: {
-                DEFAULT: 'var(--white)',
+                DEFAULT: 'hsl(var(--white))',
             },
             gray: {
-                light: 'var(--gray-light)',
-                DEFAULT: 'var(--gray)',
-                dark: 'var(--gray)',
+                light: 'hsl(var(--gray-light))',
+                DEFAULT: 'hsl(var(--gray))',
+                dark: 'hsl(var(--gray))',
             },
             blue: {
-                light: 'var(--blue-light)',
-                DEFAULT: 'var(--blue)',
-                dark: 'var(--blue)',
-                muted: 'var(--blue-muted)',
+                light: 'hsl(var(--blue-light))',
+                DEFAULT: 'hsl(var(--blue))',
+                dark: 'hsl(var(--blue))',
+                muted: 'hsl(var(--blue-muted))',
             },
         },
 
