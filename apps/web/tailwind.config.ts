@@ -22,6 +22,26 @@ const config: Partial<Config> = {
             'display': ['BankGothic', ...defaultTheme.fontFamily.serif],
         },
 
+        colors: {
+            black: {
+                DEFAULT: 'var(--black)',
+            },
+            white: {
+                DEFAULT: 'var(--white)',
+            },
+            gray: {
+                light: 'var(--gray-light)',
+                DEFAULT: 'var(--gray)',
+                dark: 'var(--gray)',
+            },
+            blue: {
+                light: 'var(--blue-light)',
+                DEFAULT: 'var(--blue)',
+                dark: 'var(--blue)',
+                muted: 'var(--blue-muted)',
+            },
+        },
+
         extend: {
             backgroundImage: {
                 'hero-image': "url('/hero-background-alpha.png')",
@@ -29,39 +49,95 @@ const config: Partial<Config> = {
             },
 
             colors: {
-                border: "hsl(var(--border))",
-                input: "hsl(var(--input))",
-                ring: "hsl(var(--ring))",
-                background: "hsl(var(--background))",
-                foreground: "hsl(var(--foreground))",
-                primary: {
-                    DEFAULT: "hsl(var(--primary))",
-                    foreground: "hsl(var(--primary-foreground))",
-                },
-                secondary: {
-                    DEFAULT: "hsl(var(--secondary))",
-                    foreground: "hsl(var(--secondary-foreground))",
-                },
-                destructive: {
-                    DEFAULT: "hsl(var(--destructive))",
-                    foreground: "hsl(var(--destructive-foreground))",
-                },
+                /* Default background color of <body />...etc */
+                background: "hsl(var(--white))",
+                foreground: "hsl(var(--blue-dark))",
+
+                /* Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch /> */
                 muted: {
-                    DEFAULT: "hsl(var(--muted))",
-                    foreground: "hsl(var(--muted-foreground))",
+                    DEFAULT: "hsl(var(--gray-light))",
+                    foreground: "hsl(var(--gray-dark))",
                 },
-                accent: {
-                    DEFAULT: "hsl(var(--accent))",
-                    foreground: "hsl(var(--accent-foreground))",
-                },
-                popover: {
-                    DEFAULT: "hsl(var(--popover))",
-                    foreground: "hsl(var(--popover-foreground))",
-                },
+
+                /* Background color for <Card /> */
                 card: {
-                    DEFAULT: "hsl(var(--card))",
-                    foreground: "hsl(var(--card-foreground))",
+                    DEFAULT: "hsl(var(--white))",
+                    foreground: "hsl(var(--blue-dark))",
                 },
+
+                /* Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover /> */
+                popover: {
+                    DEFAULT: "hsl(var(--white))",
+                    foreground: "hsl(var(--blue-dark))",
+                },
+
+                /* Default border color */
+                border: "hsl(var(--gray))",
+
+                /* Border color for inputs such as <Input />, <Select />, <Textarea /> */
+                input: "hsl(var(--gray))",
+
+                /* Primary colors for <Button /> */
+                primary: {
+                    DEFAULT: "hsl(var(--blue))",
+                    foreground: "hsl(var(--white))",
+                },
+
+                /* Secondary colors for <Button /> */
+                secondary: {
+                    DEFAULT: "hsl(var(--blue-light))",
+                    foreground: "hsl(var(--white))",
+                },
+
+                /* Used for accents such as hover effects on <DropdownMenuItem>, <SelectItem>...etc */
+                accent: {
+                    DEFAULT: "hsl(var(--blue-light))",
+                    foreground: "hsl(var(--white))",
+                },
+
+                /* Used for destructive actions such as <Button variant="destructive"> */
+                destructive: {
+                    DEFAULT: "hsl(var(--red))",
+                    foreground: "hsl(var(--white))",
+                },
+
+                /* Used for focus ring */
+                ring: "hsl(var(--gray))",
+
+
+                // border: "hsl(var(--border))",
+                // input: "hsl(var(--input))",
+                // ring: "hsl(var(--ring))",
+                // background: "hsl(var(--background))",
+                // foreground: "hsl(var(--foreground))",
+                // primary: {
+                //     DEFAULT: "hsl(var(--p rimary))",
+                //     foreground: "hsl(var(--primary-foreground))",
+                // },
+                // secondary: {
+                //     DEFAULT: "hsl(var(--secondary))",
+                //     foreground: "hsl(var(--secondary-foreground))",
+                // },
+                // destructive: {
+                //     DEFAULT: "hsl(var(--destructive))",
+                //     foreground: "hsl(var(--destructive-foreground))",
+                // },
+                // muted: {
+                //     DEFAULT: "hsl(var(--muted))",
+                //     foreground: "hsl(var(--muted-foreground))",
+                // },
+                // accent: {
+                //     DEFAULT: "hsl(var(--accent))",
+                //     foreground: "hsl(var(--accent-foreground))",
+                // },
+                // popover: {
+                //     DEFAULT: "hsl(var(--popover))",
+                //     foreground: "hsl(var(--popover-foreground))",
+                // },
+                // card: {
+                //     DEFAULT: "hsl(var(--card))",
+                //     foreground: "hsl(var(--card-foreground))",
+                // },
             },
 
             borderRadius: {
