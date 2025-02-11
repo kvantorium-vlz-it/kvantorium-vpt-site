@@ -18,6 +18,7 @@ const config: Partial<Config> = {
         },
 
         fontFamily: {
+            serif: ['"Exo 2"', ...defaultTheme.fontFamily.serif],
             'body': ['circe', ...defaultTheme.fontFamily.sans],
             'display': ['BankGothic', ...defaultTheme.fontFamily.serif],
         },
