@@ -10,11 +10,16 @@ const config: Partial<Config> = {
             center: true,
             padding: {
                 DEFAULT: "1rem",
-                lg: '1.5rem',
+                tablet: '1.5rem',
+                laptop: '2rem',
+                desktop: '2rem',
             },
+            },
+
             screens: {
-                "2xl": "1400px",
-            },
+            tablet: '768px',
+            laptop: '1024px',
+            desktop: '1440px',
         },
 
         fontFamily: {
