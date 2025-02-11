@@ -16,9 +16,9 @@ const config: Partial<Config> = {
                 laptop: '2rem',
                 desktop: '2rem',
             },
-            },
+        },
 
-            screens: {
+        screens: {
             tablet: '768px',
             laptop: '1024px',
             desktop: '1440px',
