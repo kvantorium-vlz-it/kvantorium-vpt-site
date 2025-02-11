@@ -7,12 +7,13 @@ export default defineNuxtConfig({
     },
 
     modules: [
-        '@vueuse/nuxt',
-        "@nuxtjs/color-mode",
-        "@nuxtjs/tailwindcss",
-        "shadcn-nuxt",
-        'vue-yandex-maps/nuxt',
-        '@nuxtjs/sanity',
+      '@vueuse/nuxt',
+      "@nuxtjs/color-mode",
+      "@nuxtjs/tailwindcss",
+      "shadcn-nuxt",
+      'vue-yandex-maps/nuxt',
+      '@nuxtjs/sanity',
+      '@nuxtjs/google-fonts'
     ],
 
     css: [
@@ -54,6 +55,15 @@ export default defineNuxtConfig({
             ],
         },
         viewer: true,
+    },
+
+    googleFonts: {
+        families: {
+            'Exo 2': {
+                wght: [400, 700],
+                subsets: ['cyrillic', 'cyrillic-ext', 'latin', 'latin-ext']
+            }
+        }
     },
 
     yandexMaps: {
