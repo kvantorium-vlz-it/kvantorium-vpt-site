@@ -4,7 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
 
 const typographyVariants = cva(
-    'font-serif',
+    'font-serif -tracking-[0.05ch]',
     {
         variants: {
             variant: {
