@@ -13,6 +13,7 @@ export default defineNuxtConfig({
         "shadcn-nuxt",
         'vue-yandex-maps/nuxt',
         '@nuxtjs/sanity',
+        '@nuxtjs/google-fonts'
     ],
 
     css: [
@@ -56,6 +57,12 @@ export default defineNuxtConfig({
         viewer: true,
     },
 
+    googleFonts: {
+        families: {
+            'Exo 2': [400, 700]
+        }
+    },
+
     yandexMaps: {
         apikey: process.env.YANDEX_MAPS_API_KEY,
     },
@@ -69,5 +76,7 @@ export default defineNuxtConfig({
     // Groqd resolving fix
     alias: {
         'groqd': '../node_modules/groqd/dist/index'
-    }
+    },
+
+    compatibilityDate: '2025-02-11'
 })
