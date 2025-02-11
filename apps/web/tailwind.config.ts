@@ -65,7 +65,7 @@ const config: Partial<Config> = {
             gray: {
                 light: 'hsl(var(--gray-light))',
                 DEFAULT: 'hsl(var(--gray))',
-                dark: 'hsl(var(--gray))',
+                dark: 'hsl(var(--gray-dark))',
             },
             blue: {
                 light: 'hsl(var(--blue-light))',
