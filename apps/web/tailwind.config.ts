@@ -2,6 +2,8 @@ import type { Config } from "tailwindcss"
 import animate from "tailwindcss-animate"
 import defaultTheme from 'tailwindcss/defaultTheme'
 
+const defaultFontFamily = ['"Exo 2"', ...defaultTheme.fontFamily.serif]
+
 const config: Partial<Config> = {
     darkMode: ["class"],
     safelist: ["dark"],
@@ -23,9 +25,34 @@ const config: Partial<Config> = {
         },
 
         fontFamily: {
-            serif: ['"Exo 2"', ...defaultTheme.fontFamily.serif],
+            DEFAULT: defaultFontFamily,
+
+            serif: defaultFontFamily,
             'body': ['circe', ...defaultTheme.fontFamily.sans],
             'display': ['BankGothic', ...defaultTheme.fontFamily.serif],
+        },
+
+        fontSize: {
+            'body-extra-small': '0.875rem',
+            'body-small': '1rem',
+            'body': '1.25rem',
+            'heading-6': '1.25rem',
+            'heading-5': '1.5rem',
+            'heading-4': '2rem',
+            'heading-3': '2.5rem',
+            'heading-2': '3rem',
+            'heading-1': '4rem',
+        },
+
+        fontWeight: {
+            regular: '400',
+            bold: '700',
+        },
+
+        lineHeight: {
+            body: '175%',
+            heading: '150%',
+            input: '120%',
         },
 
         colors: {
