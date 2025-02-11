@@ -56,6 +56,7 @@ const config: Partial<Config> = {
         },
 
         colors: {
+            transparent: 'transparent',
             black: {
                 DEFAULT: 'hsl(var(--black))',
             },
