@@ -1,31 +1,44 @@
+<script setup lang="ts">
+</script>
+
 <template>
     <div>
-        <h2 class="font-display text-white uppercase text-4xl">
-            Навигация
-        </h2>
+        <HeroNavigationHeading class="text-center laptop:text-left">
+            навигация
+        </HeroNavigationHeading>
 
-        <ShNavigationMenu orientation="vertical" class="mt-2">
-            <ShNavigationMenuList class="flex-col items-start gap-0.5">
-                <HeroSiteNavigationItem>
-                    Информация
-                </HeroSiteNavigationItem>
+        <HeroNavigationMenu class="mx-auto laptop:mx-0">
+            <HeroNavigationList class="flex-col justify-center laptop:items-start gap-2">
+                <HeroNavigationItem>
+                    <NavigationLink to="/about/">
+                        Информация
+                    </NavigationLink>
+                </HeroNavigationItem>
 
-                <HeroSiteNavigationItem>
-                    Квантумы
-                </HeroSiteNavigationItem>
+                <HeroNavigationItem>
+                    <NavigationLink to="/kvantums/">
+                        Квантумы
+                    </NavigationLink>
+                </HeroNavigationItem>
 
-                <HeroSiteNavigationItem>
-                    новости
-                </HeroSiteNavigationItem>
+                <HeroNavigationItem>
+                    <NavigationLink to="/news/">
+                        Новости
+                    </NavigationLink>
+                </HeroNavigationItem>
 
-                <HeroSiteNavigationItem>
-                    часто задаваемые вопросы
-                </HeroSiteNavigationItem>
+                <HeroNavigationItem>
+                    <NavigationLink to="/#faq">
+                        Часто задаваемые вопросы
+                    </NavigationLink>
+                </HeroNavigationItem>
 
-                <HeroSiteNavigationItem>
-                    мы на карте
-                </HeroSiteNavigationItem>
-            </ShNavigationMenuList>
-        </ShNavigationMenu>
+                <HeroNavigationItem>
+                    <NavigationLink to="/#map">
+                        Мы на карте
+                    </NavigationLink>
+                </HeroNavigationItem>
+            </HeroNavigationList>
+        </HeroNavigationMenu>
     </div>
 </template>

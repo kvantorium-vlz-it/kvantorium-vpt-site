@@ -53,18 +53,18 @@ onMounted(() => {
                 after:bg-hero-noice after:mix-blend-overlay after:pointer-events-none
             "
         >
-            <HeroTitle class="mt-20 xl:mt-28" />
+            <HeroTitle class="mt-10 laptop:mt-12" />
 
-            <HeroAddress class="mt-8" />
+            <HeroAddress class="mt-2 laptop:mt-4" />
 
-            <div class="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] mt-16">
-                <HeroSiteNavigation />
+            <div class="grid gap-2 grid-cols-1 laptop:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] mt-8">
+                <HeroSiteNavigation class="laptop:col-start-1" />
 
-                <div class="w-72 aspect-square flex justify-center items-center">
+                <div class="w-72 aspect-square justify-center items-center hidden laptop:flex">
                     <HeroButton to="/" />
                 </div>
 
-                <HeroKvantumsNavigation class="justify-self-end" />
+                <HeroKvantumsNavigation class="laptop:col-start-3" />
             </div>
         </div>
     </div>

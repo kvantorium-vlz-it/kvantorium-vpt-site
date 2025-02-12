@@ -2,6 +2,7 @@
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
 import { q } from '~/assets/typescript/groqd.client';
 import type { InferResultItem } from 'groqd'
+import type { Kvantum } from '~/assets/typescript/types';
 
 const queryBuilder = q
     .star
@@ -19,18 +20,19 @@ const { data: kvantums } = useSanityQuery<QueryResult[]>(queryBuilder.query)
 
 <template>
     <div>
-        <h2 class="font-display text-white uppercase text-4xl w-fit ml-auto">
-            Направления
-        </h2>
+        <HeroNavigationHeading class="text-center laptop:text-right">
+            направления
+        </HeroNavigationHeading>
 
-        <ShNavigationMenu class="mt-2">
-            <ShNavigationMenuList class="justify-end flex-wrap gap-x-2 gap-y-1">
-                <HeroKvantumsNavigationItem
-                    v-for="kvantum in kvantums"
-                    :curriculum="kvantum.name"
-                    :to="`/kvantum/${kvantum.slug}/`"
-                />
-            </ShNavigationMenuList>
-        </ShNavigationMenu>
+        <HeroNavigationMenu class="mx-auto laptop:mx-0">
+            <HeroNavigationList class="flex-row flex-wrap laptop:justify-end gap-x-2 gap-y-1">
+                <HeroNavigationItem v-for="kvantum in kvantums">
+                    <NavigationBadgeLink :to="`/kvantums/${kvantum.slug}/`">
+                        {{ kvantum.name }}
+                    </NavigationBadgeLink>
+                    <!-- <HeroKvantumNavigationItem :kvantum="kvantum"/> -->
+                </HeroNavigationItem>
+            </HeroNavigationList>
+        </HeroNavigationMenu>
     </div>
 </template>
