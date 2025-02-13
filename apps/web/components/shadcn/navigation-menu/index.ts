@@ -11,13 +11,14 @@ export const navigationMenuTriggerStyle = cva(
     `
     group
     transition-colors
-    inline-flex items-center justify-center
-    w-max px-4 py-1 rounded-3xl
-    font-light text-sm font-body
-    bg-background
-    hover:bg-accent hover:text-accent-foreground
-    focus:bg-accent focus:text-accent-foreground focus:outline-none
-    data-[state=open]:bg-accent/50 data-[active]:bg-accent/50
+    inline-flex items-center justify-center gap-1
+    font-light text-lg text-white font-body leading-input
     disabled:opacity-50 disabled:pointer-events-none
+    hover:text-gray-light focus:text-gray-light data-[state=open]:text-gray-light
     `,
 )
+
+// hover:bg-gray-light/15 hover:text-accent-foreground
+// focus:bg-gray-light/15 focus:text-accent-foreground
+// data-[state=open]:bg-gray-light/15 data-[active]:bg-gray-light/15
+// focus:outline-none
