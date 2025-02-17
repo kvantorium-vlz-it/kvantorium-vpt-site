@@ -1,7 +1,5 @@
 <template>
-    <ShButton
-        class="rounded-3xl"
-    >
+    <ShButton variant="gradient">
         Записаться
     </ShButton>
 </template>

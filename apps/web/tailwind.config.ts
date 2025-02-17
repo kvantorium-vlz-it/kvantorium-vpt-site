@@ -33,26 +33,34 @@ const config: Partial<Config> = {
         },
 
         fontSize: {
-            'body-extra-small': '0.875rem',
-            'body-small': '1rem',
-            'body': '1.25rem',
-            'heading-6': '1.25rem',
-            'heading-5': '1.5rem',
-            'heading-4': '2rem',
-            'heading-3': '2.5rem',
-            'heading-2': '3rem',
-            'heading-1': '4rem',
+            'sm': '0.875rem',
+            'base': '1rem',
+            'md': '1.125rem',
+            'lg': '1.25rem',
+            'xl': '1.5rem',
+            '1xl': '1.5rem',
+            '2xl': '2rem',
+            '3xl': '2.5rem',
+            '4xl': '3rem',
+            '5xl': '4rem',
         },
 
         fontWeight: {
             regular: '400',
+            medium: '500',
+            semibold: '600',
             bold: '700',
         },
 
         lineHeight: {
-            body: '175%',
-            heading: '150%',
+            body: '160%',
+            heading: '170%',
             input: '120%',
+        },
+
+        letterSpacing: {
+            tight: '0.05em',
+            base: '0.02em',
         },
 
         colors: {

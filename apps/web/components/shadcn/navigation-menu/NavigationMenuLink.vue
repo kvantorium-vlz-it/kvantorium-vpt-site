@@ -1,19 +1,50 @@
-<script setup lang="ts">
-import {
-  NavigationMenuLink,
-  type NavigationMenuLinkEmits,
-  type NavigationMenuLinkProps,
-  useForwardPropsEmits,
-} from 'radix-vue'
+<script lang="ts">
+import type { NavigationMenuLinkEmits, NavigationMenuLinkProps } from 'radix-vue'
+import type { BaseLinkProps } from '~/components/shared/Navigation/BaseLink.vue'
+import { NavigationMenuLink } from 'radix-vue'
+import { useForwardPropsEmits } from 'radix-vue'
 
-const props = defineProps<NavigationMenuLinkProps>()
+interface ShadcnNavigationMenuLinkBaseProps {
+    size?: BaseLinkProps['size']
+    color?: BaseLinkProps['color']
+    class?: BaseLinkProps['class']
+    to?: BaseLinkProps['to']
+}
+
+export interface ShadcnNavigationMenuLinkProps
+extends
+    NavigationMenuLinkProps,
+    ShadcnNavigationMenuLinkBaseProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<ShadcnNavigationMenuLinkProps>()
 const emits = defineEmits<NavigationMenuLinkEmits>()
 
-const forwarded = useForwardPropsEmits(props, emits)
+const delegatedProps = computed(() => {
+    const { class: _, size, color, to, ...delegated } = props
+
+    return delegated
+})
+
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-    <NavigationMenuLink v-bind="forwarded">
-        <slot />
-    </NavigationMenuLink>
+    <BaseLink
+        :color="color"
+        :size="size"
+        :to="to"
+        as-child
+    >
+        <NavigationMenuLink
+            v-bind="forwarded"
+            as-child
+        >
+            <NuxtLink>
+                <slot />
+            </NuxtLink>
+        </NavigationMenuLink>
+    </BaseLink>
 </template>
