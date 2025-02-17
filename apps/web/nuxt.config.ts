@@ -59,7 +59,7 @@ export default defineNuxtConfig({
 
     googleFonts: {
         families: {
-            'Exo 2': [400, 700]
+            'Exo 2': [400, 500, 600, 700]
         }
     },
 
