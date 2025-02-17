@@ -1,7 +1,15 @@
-<script setup lang="ts">
-import { NavigationMenuItem, type NavigationMenuItemProps } from 'radix-vue'
+<script lang="ts">
+import type { NavigationMenuItemProps } from 'radix-vue'
+import { NavigationMenuItem } from 'radix-vue'
 
-const props = defineProps<NavigationMenuItemProps>()
+export interface ShadcnNavigationMenuItemProps
+extends
+    NavigationMenuItemProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<ShadcnNavigationMenuItemProps>()
 </script>
 
 <template>

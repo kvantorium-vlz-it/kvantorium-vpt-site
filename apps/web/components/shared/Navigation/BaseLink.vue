@@ -1,10 +1,23 @@
 <script lang="ts">
-import { cva, type VariantProps } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
 import type { NuxtLinkProps } from '#app'
 import type { HTMLAttributes } from 'vue'
+import type { PrimitiveProps } from 'radix-vue'
+import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
-import { Primitive, type PrimitiveProps } from 'radix-vue'
+import { Primitive } from 'radix-vue'
 import { NuxtLink } from '#components'
+
+type BaseLinkVariants = VariantProps<typeof baseLinkVariants>
+
+export interface BaseLinkProps {
+    to?: NuxtLinkProps['to']
+    asChild?: PrimitiveProps['asChild']
+    variant?: BaseLinkVariants['variant']
+    size?: BaseLinkVariants['size']
+    color?: BaseLinkVariants['color']
+    class?: HTMLAttributes['class']
+}
 
 const baseLinkVariants = cva(
     `
@@ -64,18 +77,6 @@ const baseLinkVariants = cva(
         ]
     },
 )
-
-type BaseLinkVariants = VariantProps<typeof baseLinkVariants>
-
-export type BaseLinkProps = {
-    to?: NuxtLinkProps['to']
-    asChild?: PrimitiveProps['asChild']
-    variant?: BaseLinkVariants['variant']
-    size?: BaseLinkVariants['size']
-    color?: BaseLinkVariants['color']
-    class?: HTMLAttributes['class']
-}
-
 </script>
 
 <script setup lang="ts">

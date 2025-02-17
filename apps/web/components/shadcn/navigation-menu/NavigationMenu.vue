@@ -1,16 +1,26 @@
-<script setup lang="ts">
+<script lang="ts">
+import type { HTMLAttributes } from 'vue'
+import type {
+    NavigationMenuRootEmits,
+    NavigationMenuRootProps,
+} from 'radix-vue'
+import { NavigationMenuRoot, useForwardPropsEmits } from 'radix-vue'
 import { cn } from '@/lib/utils'
-import {
-    NavigationMenuRoot,
-    type NavigationMenuRootEmits,
-    type NavigationMenuRootProps,
-    useForwardPropsEmits,
-    } from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
 import NavigationMenuViewport from './NavigationMenuViewport.vue'
 
-const props = defineProps<NavigationMenuRootProps & { class?: HTMLAttributes['class'] }>()
+interface ShadcnNavigationMenuBaseProps {
+    class?: HTMLAttributes['class']
+}
 
+export interface ShadcnNavigationMenuProps
+extends
+    NavigationMenuRootProps,
+    ShadcnNavigationMenuBaseProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<ShadcnNavigationMenuProps>()
 const emits = defineEmits<NavigationMenuRootEmits>()
 
 const delegatedProps = computed(() => {
@@ -25,7 +35,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 <template>
     <NavigationMenuRoot
         v-bind="forwarded"
-        :class="cn('relative z-10 flex max-w-max flex-1 items-center justify-center', props.class)"
+        :class="cn(
+            'relative z-10 flex max-w-max flex-1 items-center justify-center',
+            props.class
+        )"
     >
         <slot />
         <NavigationMenuViewport />

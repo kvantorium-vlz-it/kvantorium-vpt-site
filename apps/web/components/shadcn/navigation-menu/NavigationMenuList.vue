@@ -1,9 +1,22 @@
-<script setup lang="ts">
+<script lang="ts">
+import type { HTMLAttributes } from 'vue'
+import type { NavigationMenuListProps } from 'radix-vue'
+import { NavigationMenuList,  useForwardProps } from 'radix-vue'
 import { cn } from '@/lib/utils'
-import { NavigationMenuList, type NavigationMenuListProps, useForwardProps } from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
 
-const props = defineProps<NavigationMenuListProps & { class?: HTMLAttributes['class'] }>()
+interface ShadcnNavigationMenuListBaseProps {
+    class?: HTMLAttributes['class']
+}
+
+export interface ShadcnNavigationMenuListProps
+extends
+    NavigationMenuListProps,
+    ShadcnNavigationMenuListBaseProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<ShadcnNavigationMenuListProps>()
 
 const delegatedProps = computed(() => {
     const { class: _, ...delegated } = props

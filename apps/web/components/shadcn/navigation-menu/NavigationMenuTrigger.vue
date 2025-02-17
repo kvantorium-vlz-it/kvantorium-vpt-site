@@ -1,21 +1,26 @@
 <script lang="ts">
-import { cn } from '@/lib/utils'
-import { ChevronDownIcon } from 'lucide-vue-next'
-import { NavigationMenuTrigger, useForwardProps } from 'radix-vue'
 import type { NavigationMenuTriggerProps } from 'radix-vue'
 import type { HTMLAttributes } from 'vue'
 import type { BaseLinkProps } from '~/components/shared/Navigation/BaseLink.vue'
+import { NavigationMenuTrigger, useForwardProps } from 'radix-vue'
+import { cn } from '@/lib/utils'
+import { ChevronDownIcon } from 'lucide-vue-next'
 
-export type ShNavigationMenuTriggerProps = NavigationMenuTriggerProps & {
+interface ShadcnNavigationMenuTriggerBaseProps {
     class?: HTMLAttributes['class']
     color?: BaseLinkProps['color']
     size?: BaseLinkProps['size']
 }
 
+export interface ShadcnNavigationMenuTriggerProps
+extends
+    NavigationMenuTriggerProps,
+    ShadcnNavigationMenuTriggerBaseProps
+{}
 </script>
 
 <script setup lang="ts">
-const props = defineProps<ShNavigationMenuTriggerProps>()
+const props = defineProps<ShadcnNavigationMenuTriggerProps>()
 
 const delegatedProps = computed(() => {
     const { class: _, size, color, ...delegated } = props

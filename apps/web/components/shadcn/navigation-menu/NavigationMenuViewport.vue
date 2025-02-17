@@ -1,13 +1,22 @@
-<script setup lang="ts">
+<script lang="ts">
+import type { HTMLAttributes } from 'vue'
+import type { NavigationMenuViewportProps } from 'radix-vue'
+import { NavigationMenuViewport, useForwardProps } from 'radix-vue'
 import { cn } from '@/lib/utils'
-import {
-  NavigationMenuViewport,
-  type NavigationMenuViewportProps,
-  useForwardProps,
-} from 'radix-vue'
-import { computed, type HTMLAttributes } from 'vue'
 
-const props = defineProps<NavigationMenuViewportProps & { class?: HTMLAttributes['class'] }>()
+interface ShadcnNavigationMenuViewportBaseProps {
+    class?: HTMLAttributes['class']
+}
+
+export interface ShadcnNavigationMenuViewportProps
+extends
+    NavigationMenuViewportProps,
+    ShadcnNavigationMenuViewportBaseProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = defineProps<ShadcnNavigationMenuViewportProps>()
 
 const delegatedProps = computed(() => {
     const { class: _, ...delegated } = props
@@ -24,8 +33,8 @@ const forwardedProps = useForwardProps(delegatedProps)
             v-bind="forwardedProps"
             :class="
                 cn(
-                'origin-top-center relative mt-1.5 h-[--radix-navigation-menu-viewport-height] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[--radix-navigation-menu-viewport-width]',
-                props.class,
+                    'origin-top-center relative mt-1.5 h-[--radix-navigation-menu-viewport-height] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[--radix-navigation-menu-viewport-width]',
+                    props.class,
                 )
             "
         />
