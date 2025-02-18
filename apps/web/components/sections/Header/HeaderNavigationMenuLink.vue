@@ -1,13 +1,12 @@
 <script lang="ts">
-import type {
-    ShadcnNavigationMenuLinkProps
-} from '~/components/shadcn/navigation-menu/NavigationMenuLink.vue'
 import { ArrowUpRightIcon } from 'lucide-vue-next'
+import type { BaseLinkProps } from '~/components/shared/Navigation/BaseLink.vue'
 
 export interface HeaderNavigationMenuLinkProps {
-    size?: ShadcnNavigationMenuLinkProps['size']
-    color?: ShadcnNavigationMenuLinkProps['color']
-    to?: ShadcnNavigationMenuLinkProps['to']
+    size?: BaseLinkProps['size']
+    theme?: BaseLinkProps['theme']
+    to?: BaseLinkProps['to']
+    class?: BaseLinkProps['class']
 }
 </script>
 
@@ -16,15 +15,17 @@ defineProps<HeaderNavigationMenuLinkProps>()
 </script>
 
 <template>
-    <ShNavigationMenuLink
-        :size="size"
-        :color="color"
-        :to="to"
-    >
-        <slot></slot>
+    <ShNavigationMenuLink as-child>
+        <BaseLink
+            variant="default"
+            :theme="theme"
+            :size="size"
+            :class="class"
+            :to="to"
+        >
+            <slot></slot>
 
-        <ArrowUpRightIcon
-            class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
-        />
+            <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+        </BaseLink>
     </ShNavigationMenuLink>
 </template>
