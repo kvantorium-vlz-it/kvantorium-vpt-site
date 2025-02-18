@@ -25,9 +25,9 @@ export const badgeVariants = cva(
                 outline: 'border-gray',
             },
             size: {
-                small: 'px-1.5 py-0 text-sm font-medium',
-                default: 'px-2.5 py-0.5 text-base font-medium',
-                big: 'px-6 py-1 text-md font-semibold',
+                small: 'px-1.5 py-0 text-sm font-medium [&>svg]:size-3 gap-1',
+                default: 'px-2.5 py-0.5 text-base font-medium [&>svg]:size-4 gap-1.5',
+                big: 'px-6 py-1 text-md font-semibold [&>svg]:size-5 gap-2',
             }
         },
         compoundVariants: [
