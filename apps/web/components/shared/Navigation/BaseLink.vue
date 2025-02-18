@@ -8,44 +8,44 @@ import { cn } from '@/lib/utils'
 import { Primitive } from 'radix-vue'
 import { NuxtLink } from '#components'
 
-type BaseLinkVariants = VariantProps<typeof baseLinkVariants>
+export type BaseLinkVariants = VariantProps<typeof baseLinkVariants>
 
 export interface BaseLinkProps {
     to?: NuxtLinkProps['to']
     asChild?: PrimitiveProps['asChild']
     variant?: BaseLinkVariants['variant']
     size?: BaseLinkVariants['size']
-    color?: BaseLinkVariants['color']
+    theme?: BaseLinkVariants['theme']
     class?: HTMLAttributes['class']
 }
 
-const baseLinkVariants = cva(
+export const baseLinkVariants = cva(
     `
     font-serif leading-input -tracking-base font-medium
     inline-flex items-center gap-1 justify-center
-    group/link [&>svg]:transition-transform transition-all
+    group/link [&_svg]:transition-transform transition-all
     cursor-pointer disabled:cursor-default
     `,
     {
         variants: {
-            color: {
-                white: 'text-white hover:text-white/80 focus:text-white/80 data-[state=open]:text-white/80',
-                black: 'text-foreground hover:text-foreground/80 focus:text-foreground/80 data-[state=open]:text-foreground/80',
+            theme: {
+                light: 'text-white hover:text-white/80 focus:text-white/80 data-[state=open]:text-white/80 data-[active]:text-white/80',
+                dark: 'text-foreground hover:text-foreground/80 focus:text-foreground/80 data-[state=open]:text-foreground/80 data-[active]:text-foreground/80',
             },
             variant: {
-                link: '',
+                default: '',
                 outline: 'rounded-full',
             },
             size: {
-                small: 'text-md [&>svg]:size-4',
-                default: 'text-lg [&>svg]:size-5',
-                big: 'text-xl [&>svg]:size-6',
+                small: 'text-base [&_svg]:size-3.5',
+                default: 'text-md [&_svg]:size-4',
+                big: 'text-lg [&_svg]:size-5',
             },
         },
         defaultVariants: {
             size: 'default',
-            variant: 'link',
-            color: 'black',
+            variant: 'default',
+            theme: 'dark',
         },
         compoundVariants: [
             {
@@ -66,13 +66,13 @@ const baseLinkVariants = cva(
 
             {
                 variant: 'outline',
-                color: 'white',
-                class: 'hover:bg-gray-light/20',
+                theme: 'light',
+                class: 'hover:bg-gray-light/20 focus:bg-gray-light/20 data-[state=open]:bg-gray-light/20 data-[active]:bg-gray-light/20',
             },
             {
                 variant: 'outline',
-                color: 'black',
-                class: 'hover:bg-blue-dark/10',
+                theme: 'dark',
+                class: 'hover:bg-blue-dark/10 focus:bg-blue-dark/10 data-[state=open]:bg-blue-dark/10 data-[active]:bg-blue-dark/10',
             }
         ]
     },
@@ -90,7 +90,7 @@ const props = withDefaults(defineProps<BaseLinkProps>(), {
         :to="to"
         :as="NuxtLink"
         :as-child="asChild"
-        :class="cn(baseLinkVariants({ variant, size, color }), props.class)"
+        :class="cn(baseLinkVariants({ variant, size, theme }), props.class)"
     >
         <slot></slot>
     </Primitive>

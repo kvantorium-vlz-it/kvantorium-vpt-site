@@ -1,11 +1,9 @@
 <script lang="ts">
-import type {
-    ShadcnNavigationMenuTriggerProps
-} from '~/components/shadcn/navigation-menu/NavigationMenuTrigger.vue'
+import type { BaseLinkProps } from '~/components/shared/Navigation/BaseLink.vue'
 
 export interface HeaderNavigationMenuTriggerProps {
-    color?: ShadcnNavigationMenuTriggerProps['color']
-    size?: ShadcnNavigationMenuTriggerProps['size']
+    theme?: BaseLinkProps['theme']
+    size?: BaseLinkProps['size']
 }
 </script>
 
@@ -14,10 +12,14 @@ defineProps<HeaderNavigationMenuTriggerProps>()
 </script>
 
 <template>
-    <ShNavigationMenuTrigger
-        :color="color"
+    <BaseLink
+        variant="outline"
+        :theme="theme"
         :size="size"
+        as-child
     >
-        <slot></slot>
-    </ShNavigationMenuTrigger>
+        <ShNavigationMenuTrigger>
+            <slot></slot>
+        </ShNavigationMenuTrigger>
+    </BaseLink>
 </template>

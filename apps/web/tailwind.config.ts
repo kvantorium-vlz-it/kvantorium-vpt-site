@@ -79,7 +79,7 @@ const config: Partial<Config> = {
             blue: {
                 light: 'hsl(var(--blue-light))',
                 DEFAULT: 'hsl(var(--blue))',
-                dark: 'hsl(var(--blue))',
+                dark: 'hsl(var(--blue-dark))',
                 muted: 'hsl(var(--blue-muted))',
             },
         },
