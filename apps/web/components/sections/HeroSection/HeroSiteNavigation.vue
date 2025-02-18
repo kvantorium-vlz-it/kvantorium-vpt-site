@@ -8,37 +8,37 @@
         </HeroNavigationHeading>
 
         <HeroNavigationMenu class="mx-auto laptop:mx-0">
-            <HeroNavigationList class="flex-col justify-center laptop:items-start gap-2">
-                <HeroNavigationItem>
-                    <NavigationLink to="/about/">
+            <ShNavigationMenuList class="flex-col justify-center laptop:items-start gap-2">
+                <ShNavigationMenuItem>
+                    <HeroSiteNavigationMenuLink to="/about/">
                         Информация
-                    </NavigationLink>
-                </HeroNavigationItem>
+                    </HeroSiteNavigationMenuLink>
+                </ShNavigationMenuItem>
 
-                <HeroNavigationItem>
-                    <NavigationLink to="/kvantums/">
+                <ShNavigationMenuItem>
+                    <HeroSiteNavigationMenuLink to="/kvantums/">
                         Квантумы
-                    </NavigationLink>
-                </HeroNavigationItem>
+                    </HeroSiteNavigationMenuLink>
+                </ShNavigationMenuItem>
 
-                <HeroNavigationItem>
-                    <NavigationLink to="/news/">
+                <ShNavigationMenuItem>
+                    <HeroSiteNavigationMenuLink to="/news/">
                         Новости
-                    </NavigationLink>
-                </HeroNavigationItem>
+                    </HeroSiteNavigationMenuLink>
+                </ShNavigationMenuItem>
 
-                <HeroNavigationItem>
-                    <NavigationLink to="/#faq">
+                <ShNavigationMenuItem>
+                    <HeroSiteNavigationMenuLink to="/#faq">
                         Часто задаваемые вопросы
-                    </NavigationLink>
-                </HeroNavigationItem>
+                    </HeroSiteNavigationMenuLink>
+                </ShNavigationMenuItem>
 
-                <HeroNavigationItem>
-                    <NavigationLink to="/#map">
+                <ShNavigationMenuItem>
+                    <HeroSiteNavigationMenuLink to="/#map">
                         Мы на карте
-                    </NavigationLink>
-                </HeroNavigationItem>
-            </HeroNavigationList>
+                    </HeroSiteNavigationMenuLink>
+                </ShNavigationMenuItem>
+            </ShNavigationMenuList>
         </HeroNavigationMenu>
     </div>
 </template>

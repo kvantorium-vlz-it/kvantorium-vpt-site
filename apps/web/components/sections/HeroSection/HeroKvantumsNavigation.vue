@@ -25,14 +25,13 @@ const { data: kvantums } = useSanityQuery<QueryResult[]>(queryBuilder.query)
         </HeroNavigationHeading>
 
         <HeroNavigationMenu class="mx-auto laptop:mx-0">
-            <HeroNavigationList class="flex-row flex-wrap laptop:justify-end gap-x-2 gap-y-1">
-                <HeroNavigationItem v-for="kvantum in kvantums">
-                    <NavigationBadgeLink :to="`/kvantums/${kvantum.slug}/`">
+            <ShNavigationMenuList class="flex-row flex-wrap laptop:justify-end gap-x-2 gap-y-1">
+                <ShNavigationMenuItem v-for="kvantum in kvantums">
+                    <HeroKvantumsNavigationMenuLink :to="`/kvantums/${kvantum.slug}/`">
                         {{ kvantum.name }}
-                    </NavigationBadgeLink>
-                    <!-- <HeroKvantumNavigationItem :kvantum="kvantum"/> -->
-                </HeroNavigationItem>
-            </HeroNavigationList>
+                    </HeroKvantumsNavigationMenuLink>
+                </ShNavigationMenuItem>
+            </ShNavigationMenuList>
         </HeroNavigationMenu>
     </div>
 </template>
