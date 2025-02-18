@@ -37,9 +37,9 @@ export const baseLinkVariants = cva(
                 outline: 'rounded-full',
             },
             size: {
-                small: 'text-sm [&_svg]:size-3',
-                default: 'text-base [&_svg]:size-3.5',
-                big: 'text-md [&_svg]:size-4',
+                small: 'text-base [&_svg]:size-3.5',
+                default: 'text-md [&_svg]:size-4',
+                big: 'text-lg [&_svg]:size-5',
             },
         },
         defaultVariants: {
