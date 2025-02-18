@@ -1,17 +1,96 @@
-<script setup lang="ts">
+<script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PrimitiveProps } from 'radix-vue'
+import type { VariantProps } from 'class-variance-authority'
+import { Primitive } from 'radix-vue'
 import { cn } from '@/lib/utils'
-import { Primitive, type PrimitiveProps } from 'radix-vue'
-import { type ButtonVariants, buttonVariants } from '.'
+import { cva } from 'class-variance-authority'
 
-interface Props extends PrimitiveProps {
-    variant?: ButtonVariants['variant']
-    size?: ButtonVariants['size']
+export const buttonVariants = cva(
+    `
+    inline-flex items-center justify-center
+    whitespace-nowrap
+    font-serif leading-input -tracking-base
+    transition-colors
+    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
+    disabled:pointer-events-none disabled:opacity-50
+    [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:transition-transform
+    `,
+    {
+        variants: {
+            theme: {
+                light: '',
+                dark: '',
+            },
+            variant: {
+                default:
+                    'bg-primary text-primary-foreground shadow hover:bg-primary/90',
+                ghost:
+                    'hover:bg-accent hover:text-accent-foreground',
+                gradient:
+                    'bg-gradient-to-br from-primary to-accent text-background shadow hover:from-primary/85 hover:to-accent/85',
+                outline:
+                    'border border-input bg-transparent shadow-sm hover:bg-gray-light/10 hover:border-accent',
+                secondary:
+                    'bg-secondary text-secondary-foreground shadow hover:bg-secondary/80',
+                link:
+                    'text-accent hover:text-primary underline-offset-4 hover:underline',
+            },
+            rounding: {
+                rounded: 'rounded-full',
+                square: 'rounded-lg',
+            },
+            size: {
+                small: 'px-4 py-1.5 text-base [&_svg]:size-4 gap-1.5',
+                default: 'px-6 py-2 text-md [&_svg]:size-5 gap-2',
+                big: 'px-8 py-2.5 text-lg [&_svg]:size-6 gap-2.5',
+            },
+        },
+        compoundVariants: [
+            {
+                theme: 'light',
+                variant: 'ghost',
+                class: 'text-white',
+            },
+            {
+                theme: 'light',
+                variant: 'outline',
+                class: 'text-white',
+            },
+            {
+                theme: 'light',
+                variant: 'link',
+                class: 'text-white hover:text-secondary',
+            },
+        ],
+        defaultVariants: {
+            variant: 'default',
+            size: 'default',
+            rounding: 'rounded',
+            theme: 'dark',
+        },
+    },
+)
+
+export type ButtonVariants = VariantProps<typeof buttonVariants>
+
+interface ShadcnButtonBaseProps {
     rounding?: ButtonVariants['rounding']
+    variant?: ButtonVariants['variant']
+    theme?: ButtonVariants['theme']
+    size?: ButtonVariants['size']
     class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {
+export interface ShadcnButtonProps
+extends
+    PrimitiveProps,
+    ShadcnButtonBaseProps
+{}
+</script>
+
+<script setup lang="ts">
+const props = withDefaults(defineProps<ShadcnButtonProps>(), {
     as: 'button',
 })
 </script>
@@ -20,7 +99,7 @@ const props = withDefaults(defineProps<Props>(), {
     <Primitive
         :as="as"
         :as-child="asChild"
-        :class="cn(buttonVariants({ variant, size, rounding }), props.class)"
+        :class="cn(buttonVariants({ variant, size, rounding, theme }), props.class)"
     >
         <slot />
     </Primitive>
