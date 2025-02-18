@@ -17,7 +17,7 @@ import { MapPinIcon } from 'lucide-vue-next'
                 href="geo:48.786934,44.772160"
                 class="flex justify-center items-baseline gap-2"
             >
-                <MapPinIcon class="size-3 tablet:size-5 laptop:size-6 desktop:size-6" />
+                <MapPinIcon class="!size-3 tablet:!size-5 laptop:!size-6 desktop:!size-6" />
 
                 <span
                     class="
