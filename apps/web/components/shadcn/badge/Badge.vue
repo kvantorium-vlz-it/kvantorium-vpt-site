@@ -8,8 +8,9 @@ export const badgeVariants = cva(
     `
     inline-flex items-center
     rounded-full border
-    font-serif
+    font-serif leading-input -tracking-base
     transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2
+    [&_svg]:pointer-events-none [&_svg]:shrink-0
     `,
     {
         variants: {
@@ -25,9 +26,9 @@ export const badgeVariants = cva(
                 outline: 'border-gray',
             },
             size: {
-                small: 'px-1.5 py-0 text-sm font-medium [&>svg]:size-3 gap-1',
-                default: 'px-2.5 py-0.5 text-base font-medium [&>svg]:size-4 gap-1.5',
-                big: 'px-6 py-1 text-md font-semibold [&>svg]:size-5 gap-2',
+                small: 'px-1.5 py-0.5 text-sm font-medium [&>svg]:size-3 gap-1',
+                default: 'px-2.5 py-1 text-base font-medium [&>svg]:size-4 gap-1.5',
+                big: 'px-6 py-1.5 text-md font-semibold [&>svg]:size-5 gap-2',
             }
         },
         compoundVariants: [
@@ -39,13 +40,13 @@ export const badgeVariants = cva(
             {
                 theme: 'dark',
                 variant: 'outline',
-                class: 'text-gray-dark hover:bg-gray-dark/10'
-            }
+                class: 'text-gray-dark hover:bg-gray-dark/10',
+            },
         ],
         defaultVariants: {
             variant: 'default',
             size: 'default',
-            theme: 'dark'
+            theme: 'dark',
         },
     },
 )
