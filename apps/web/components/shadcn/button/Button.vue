@@ -26,24 +26,22 @@ export const buttonVariants = cva(
                 default:
                     'bg-primary text-primary-foreground shadow hover:bg-primary/90',
                 ghost:
-                    'hover:bg-accent hover:text-accent-foreground',
+                    'text-blue-dark hover:bg-accent hover:text-accent-foreground',
                 gradient:
                     'bg-gradient-to-br from-primary to-accent text-background shadow hover:from-primary/85 hover:to-accent/85',
                 outline:
                     'border border-input bg-transparent shadow-sm hover:bg-gray-light/10 hover:border-accent',
                 secondary:
                     'bg-secondary text-secondary-foreground shadow hover:bg-secondary/80',
-                link:
-                    'text-accent hover:text-primary underline-offset-4 hover:underline',
             },
             rounding: {
                 rounded: 'rounded-full',
                 square: 'rounded-lg',
             },
             size: {
-                small: 'px-4 py-1.5 text-base [&_svg]:size-4 gap-1.5',
-                default: 'px-6 py-2 text-md [&_svg]:size-5 gap-2',
-                big: 'px-8 py-2.5 text-lg [&_svg]:size-6 gap-2.5',
+                small: 'px-4 py-1.5 text-sm font-medium [&_svg]:size-4 gap-1.5',
+                default: 'px-6 py-2 text-base font-medium [&_svg]:size-5 gap-2',
+                big: 'px-8 py-2.5 text-md font-medium [&_svg]:size-6 gap-2.5',
             },
         },
         compoundVariants: [
@@ -56,11 +54,6 @@ export const buttonVariants = cva(
                 theme: 'light',
                 variant: 'outline',
                 class: 'text-white',
-            },
-            {
-                theme: 'light',
-                variant: 'link',
-                class: 'text-white hover:text-secondary',
             },
         ],
         defaultVariants: {
