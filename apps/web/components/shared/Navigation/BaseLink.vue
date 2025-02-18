@@ -23,23 +23,23 @@ export const baseLinkVariants = cva(
     `
     font-serif leading-input -tracking-base font-medium
     inline-flex items-center gap-1 justify-center
-    group/link [&>svg]:transition-transform transition-all
-    cursor-pointer disabled:cursor-default [&_svg]:transition-transform
+    group/link [&_svg]:transition-transform transition-all
+    cursor-pointer disabled:cursor-default
     `,
     {
         variants: {
             theme: {
-                light: 'text-white hover:text-white/80 focus:text-white/80 data-[state=open]:text-white/80',
-                dark: 'text-foreground hover:text-foreground/80 focus:text-foreground/80 data-[state=open]:text-foreground/80',
+                light: 'text-white hover:text-white/80 focus:text-white/80 data-[state=open]:text-white/80 data-[active]:text-white/80',
+                dark: 'text-foreground hover:text-foreground/80 focus:text-foreground/80 data-[state=open]:text-foreground/80 data-[active]:text-foreground/80',
             },
             variant: {
                 default: '',
                 outline: 'rounded-full',
             },
             size: {
-                small: 'text-base [&>svg]:size-4',
-                default: 'text-md [&>svg]:size-5',
-                big: 'text-lg [&>svg]:size-6',
+                small: 'text-sm [&_svg]:size-3',
+                default: 'text-base [&_svg]:size-3.5',
+                big: 'text-md [&_svg]:size-4',
             },
         },
         defaultVariants: {
@@ -67,12 +67,12 @@ export const baseLinkVariants = cva(
             {
                 variant: 'outline',
                 theme: 'light',
-                class: 'hover:bg-gray-light/20',
+                class: 'hover:bg-gray-light/20 focus:bg-gray-light/20 data-[state=open]:bg-gray-light/20 data-[active]:bg-gray-light/20',
             },
             {
                 variant: 'outline',
                 theme: 'dark',
-                class: 'hover:bg-blue-dark/10',
+                class: 'hover:bg-blue-dark/10 focus:bg-blue-dark/10 data-[state=open]:bg-blue-dark/10 data-[active]:bg-blue-dark/10',
             }
         ]
     },
