@@ -15,6 +15,7 @@ export default defineNuxtConfig({
         '@nuxtjs/sanity',
         '@nuxtjs/google-fonts',
         'motion-v/nuxt',
+        '@vueuse/motion/nuxt',
     ],
 
     css: [
