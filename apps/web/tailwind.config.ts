@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss"
 import animate from "tailwindcss-animate"
 import defaultTheme from 'tailwindcss/defaultTheme'
+import { setupInspiraUI } from "@inspira-ui/plugins";
 
 const defaultFontFamily = ['"Exo 2"', ...defaultTheme.fontFamily.serif]
 
@@ -215,7 +216,7 @@ const config: Partial<Config> = {
             },
         }
     },
-    plugins: [animate],
+    plugins: [animate, setupInspiraUI],
 }
 
 export default config
