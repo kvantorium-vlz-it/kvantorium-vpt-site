@@ -13,7 +13,8 @@ export default defineNuxtConfig({
         "shadcn-nuxt",
         'vue-yandex-maps/nuxt',
         '@nuxtjs/sanity',
-        '@nuxtjs/google-fonts'
+        '@nuxtjs/google-fonts',
+        'motion-v/nuxt',
     ],
 
     css: [
