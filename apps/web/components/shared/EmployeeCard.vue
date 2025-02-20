@@ -10,8 +10,14 @@ const fullName = computed(() => `${props.employee.surname} ${props.employee.name
 
 <template>
     <ShCard>
+        <img
+            :src="employee.image.asset.src!"
+            alt=""
+            class="aspect-square w-full object-cover rounded-lg"
+        >
+
         <ShCardHeader>
-            <ShCardTitle>
+            <ShCardTitle class="-tracking-tight leading-input">
                 {{ fullName }}
             </ShCardTitle>
 
@@ -19,13 +25,5 @@ const fullName = computed(() => `${props.employee.surname} ${props.employee.name
                 {{ employee.description }}
             </ShCardDescription>
         </ShCardHeader>
-
-        <ShCardContent>
-            <img
-                :src="employee.image.asset.src!"
-                alt=""
-                class="aspect-square object-cover rounded-lg"
-            >
-        </ShCardContent>
     </ShCard>
 </template>
