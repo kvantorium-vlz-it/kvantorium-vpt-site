@@ -1,10 +1,32 @@
-<script setup lang="ts">
-import { getCurriculumLevelLabel } from '@kvantoriumvlz/shared';
-import type { Curriculum } from '~/assets/typescript/types'
+<script lang="ts">
+import { getCurriculumLevelLabel } from '@kvantoriumvlz/shared'
+import type { Curriculum as _Curriculum } from '~/assets/typescript/types'
+import { ArrowUpRightIcon } from 'lucide-vue-next'
 
-const props = defineProps<{
+interface Kvantum {
+    name: string
+    slug: string
+    icon: string
+    _id: string
+}
+
+interface Curriculum {
+    name: string
+    hoursPerYear: _Curriculum['hoursPerYear']
+    level: _Curriculum['level']
+    minimalAge: _Curriculum['minimalAge']
+    _id: _Curriculum['_id']
+    kvantum: Kvantum
+}
+
+interface CurriculumCardProps {
     curriculum: Curriculum
-}>()
+}
+</script>
+
+
+<script setup lang="ts">
+const props = defineProps<CurriculumCardProps>()
 
 const hoursPerYear = computed(() => {
     const {
@@ -17,49 +39,79 @@ const hoursPerYear = computed(() => {
 </script>
 
 <template>
-    <ShCard class="aspect-square flex flex-col">
-        <ShCardHeader class="flex-1 flex flex-col justify-between">
-            <ShCardDescription>
-                <ShBadge>
-                    Учебная программа
-                </ShBadge>
-            </ShCardDescription>
+    <ShCard class="relative overflow-hidden isolate group bg-white">
+        <ShCardHeader>
+            <ShBadge class="w-fit" size="small" variant="outline">
+                Учебная программа
+            </ShBadge>
 
-            <ShCardTitle>
+            <ShCardTitle class="font-serif font-bold -tracking-tight leading-input">
                 {{ curriculum.name }}
             </ShCardTitle>
         </ShCardHeader>
 
-        <ShCardContent>
-            <p>
-                Квантум:
-                <span class="font-bold">
-                    {{ curriculum.kvantum.name }}
-                </span>
-            </p>
-            <p>
-                Уровень программы:
-                <span class="font-bold">
-                    {{ getCurriculumLevelLabel(curriculum.level) }}
-                </span>
-            </p>
-            <p>
-                Продолжительность:
-                <span class="font-bold">
-                    {{ hoursPerYear }} акад.ч.
-                </span>
-            </p>
-            <p>
-                Возраст:
-                <span class="font-bold">
-                    {{ curriculum.minimalAge }}+
-                </span>
-            </p>
+        <img
+            class="size-64 absolute -bottom-24 -right-24 -z-10 group-hover:-translate-x-8 group-hover:-translate-y-8 transition-all"
+            :src="curriculum.kvantum.icon"
+            alt=""
+        >
+
+        <ShCardContent class="font-serif -tracking-tight" >
+            <ul class="">
+                <li>
+                    <span class="text-gray-dark">
+                        Квантум:
+                    </span>
+                    <span class="font-bold text-primary">
+                        <NuxtLink
+                            :to="`/kvantums/${curriculum.kvantum.slug}/`"
+                            class="group/link inline-flex gap-1 items-center"
+                        >
+                            <span>
+                                {{ curriculum.kvantum.name }}
+                            </span>
+
+                            <ArrowUpRightIcon class="size-4 group-hover/link:translate-x-0.5 transition-all group-hover/link:-translate-y-0.5" />
+                        </NuxtLink>
+                    </span>
+                </li>
+                <li>
+                    <span class="text-gray-dark">
+                        Уровень программы:
+                    </span>
+                    <span class="font-bold text-primary">
+                        {{ getCurriculumLevelLabel(curriculum.level) }}
+                    </span>
+                </li>
+                <li>
+                    <span class="text-gray-dark">
+                        Продолжительность:
+                    </span>
+                    <span class="font-bold text-primary">
+                        {{ hoursPerYear }} акад.ч.
+                    </span>
+                </li>
+                <li>
+                    <span class="text-gray-dark">
+                        Возраст:
+                    </span>
+                    <span class="font-bold text-primary">
+                        {{ curriculum.minimalAge }}+
+                    </span>
+                </li>
+            </ul>
         </ShCardContent>
+
         <ShCardFooter>
-            <ShButton as-child>
-                <NuxtLink :to="`/curricula/${curriculum._id}`">
+            <ShButton
+                as-child
+                variant="secondary"
+                class="group/button"
+                size="small"
+            >
+                <NuxtLink :to="`/curricula/${curriculum._id}/`">
                     Подробнее
+                    <ArrowUpRightIcon class="group-hover/button:translate-x-1 group-hover/button:-translate-y-1" />
                 </NuxtLink>
             </ShButton>
         </ShCardFooter>

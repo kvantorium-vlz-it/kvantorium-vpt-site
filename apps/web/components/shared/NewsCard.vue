@@ -14,45 +14,45 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
 </script>
 
 <template>
-    <ShCard class="overflow-hidden">
+    <ShCard class="overflow-hidden relative group">
         <img
-            class="w-full aspect-video object-cover"
             :src="news.previewImage.asset.src!"
-            :alt="news.previewImage.asset.src ?? undefined"
+            class="aspect-video object-cover w-full max-w-full"
         >
 
-        <ShCardHeader>
-            <ShCardTitle class="font-display leading-none tracking-tighter">
-                <span>{{ news.title }}</span>
+        <ShBadge variant="secondary" theme="light" size="small" class="absolute top-6 right-6">
+            {{ formatter.format(new Date(news.publishDate)) }}
+        </ShBadge>
+
+        <ShCardHeader class="pb-6 pt-3">
+            <ShCardTitle class="font-bold leading-heading -tracking-tight group-hover:-translate-y-1 transition-all">
+                {{ news.title }}
             </ShCardTitle>
 
-            <div class="text-gray-500">
-                {{ formatter.format(new Date(news.publishDate!)) }}
-            </div>
+            <ul class="flex gap-1 flex-wrap">
+                <li v-for="tag in news.tags">
+                    <ShBadge variant="outline" size="small">
+                        #{{ tag.name }}
+                    </ShBadge>
+                </li>
+            </ul>
         </ShCardHeader>
 
         <hr>
 
-        <ShCardContent />
+        <ShCardContent class="pt-6">
+            <ShButton
+                variant="secondary"
+                size="small"
+                class="group/button"
+                as-child
+            >
+                <NuxtLink :to="`/news/${news.slug}/`">
+                    Читать полностью
 
-        <ShCardFooter class="items-start justify-between">
-            <ul class="flex flex-wrap gap-1">
-                <li v-for="tag in news.tags">
-                    <ShBadge variant="outline">
-                        {{ tag.name }}
-                    </ShBadge>
-                </li>
-            </ul>
-
-            <ShButton class="group/news-card-button" as-child>
-                <NuxtLink :to="`/news/${news.slug}`">
-                    <span>
-                        Читать новость
-                    </span>
-
-                    <ArrowUpRightIcon class="group-hover/news-card-button:mr-2 transition-all group-hover/news-card-button:rotate-45" />
+                    <ArrowUpRightIcon class="size-4 group-hover/button:translate-x-0.5 transition-all group-hover/button:-translate-y-0.5" />
                 </NuxtLink>
             </ShButton>
-        </ShCardFooter>
+        </ShCardContent>
     </ShCard>
 </template>

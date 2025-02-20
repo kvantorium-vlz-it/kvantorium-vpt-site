@@ -21,19 +21,19 @@ const { data: news } = useSanityQuery<News[]>(query)
                 Новости
             </SectionHeading>
 
-            <ul class="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-3 mb-6">
+            <ul class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-x-4 gap-y-3 mb-6">
                 <li v-for="newsItem in news">
                     <NewsCard :news="newsItem"/>
                 </li>
             </ul>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-3">
-                <ShButton class="lg:col-start-3">
+            <ShButton class="w-full" as-child>
+                <NuxtLink to="/news/">
                     <span>Ко всем новостям</span>
 
                     <ArrowUpRightIcon />
-                </ShButton>
-            </div>
+                </NuxtLink>
+            </ShButton>
         </SectionContainer>
     </Section>
 </template>

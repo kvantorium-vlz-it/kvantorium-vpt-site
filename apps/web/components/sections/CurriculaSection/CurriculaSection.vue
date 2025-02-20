@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
 import { q } from '~/assets/typescript/groqd.client';
-import { curriculumFragmentFactory, type KvantumFragment, kvantumFragmentFactory } from '@kvantoriumvlz/query'
+import { curriculumFragmentFactory, imageAssetFragmentFactory, type KvantumFragment, kvantumFragmentFactory } from '@kvantoriumvlz/query'
 import type { Curriculum } from '~/assets/typescript/types';
+import type { InferResultItem } from 'groqd'
 
 const selectedKvantumId = ref<string | null>(null)
 
@@ -10,7 +11,10 @@ const curriculaQuery = computed(() => {
     const builder = q
         .star
         .filterByType(DOCUMENT_TYPES.CURRICULUM)
-        .project(curriculumFragmentFactory(q))
+        .project((sub) => ({
+            ...curriculumFragmentFactory(q),
+            kvantum: sub.field('kvantum').deref().project(kvantumFragmentFactory(q))
+        }))
 
     if (selectedKvantumId.value !== null) {
         return builder.filter(`kvantum._id == '${selectedKvantumId.value}'`)
@@ -19,8 +23,10 @@ const curriculaQuery = computed(() => {
     return builder
 })
 
+type CurriculaQueryResult = InferResultItem<typeof curriculaQuery.value>
+
 const curricula = computedAsync(async () => {
-    const { data } = await useSanityQuery<Curriculum[]>(curriculaQuery.value.query)
+    const { data } = await useSanityQuery<CurriculaQueryResult[]>(curriculaQuery.value.query)
 
     return data.value
 })
@@ -56,19 +62,33 @@ const visibleCount = ref(6)
 
             <ul
                 v-if="(curricula || []).length > 0"
-                class="grid grid-cols-6 gap-2 grid-flow-row"
+                class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-6 gap-2 grid-flow-row"
             >
-                <li class="col-span-2" v-for="curriculum in curricula?.slice(0, visibleCount)">
-                    <CurriculumCard :curriculum="curriculum!" />
+                <li class="desktop:col-span-2" v-for="curriculum in curricula?.slice(0, visibleCount)">
+                    <CurriculumCard
+                        :curriculum="{
+                            _id: curriculum._id,
+                            name: curriculum.name,
+                            hoursPerYear: curriculum.hoursPerYear,
+                            level: curriculum.level,
+                            minimalAge: curriculum.minimalAge,
+                            kvantum: {
+                                _id: curriculum.kvantum._id,
+                                icon: curriculum.kvantum.icon.asset.src!,
+                                name: curriculum.kvantum.name,
+                                slug: curriculum.kvantum.slug,
+                            }
+                        }"
+                    />
                 </li>
 
-                <li class="col-span-3">
+                <li class="desktop:col-span-3">
                     <ShButton class="w-full"  @click="() => visibleCount += 6">
                         Показать больше
                     </ShButton>
                 </li>
 
-                <li class="col-span-3">
+                <li class="desktop:col-span-3">
                     <ShButton class="w-full" as-child variant="outline">
                         <NuxtLink to="/curricula/">
                             Ко всем программам
