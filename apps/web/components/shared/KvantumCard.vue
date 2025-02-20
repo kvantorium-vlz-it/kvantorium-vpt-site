@@ -35,7 +35,7 @@ defineProps<{
             </ul>
 
             <p>
-                Возрастная категория: <span class="text-secondary font-bold">12+</span>
+                Возрастная категория: <span class="text-secondary font-bold">{{ kvantum.minimalAge || 12 }}+</span>
             </p>
         </ShCardContent>
 
