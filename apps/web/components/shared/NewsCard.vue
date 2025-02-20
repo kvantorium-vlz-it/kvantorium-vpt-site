@@ -14,7 +14,6 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
 </script>
 
 <template>
-<template>
     <ShCard class="overflow-hidden relative group">
         <img
             :src="news.previewImage.asset.src!"
@@ -56,5 +55,4 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
             </ShButton>
         </ShCardContent>
     </ShCard>
-</template>
 </template>
