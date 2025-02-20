@@ -19,7 +19,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
                 <ShNavigationMenuContent>
                     <ShNavigationMenu>
-                        <ShNavigationMenuList class="px-5 py-2 flex-col items-start">
+                        <ShNavigationMenuList class="px-4 py-3 flex-col items-start gap-2">
                             <ShNavigationMenuItem>
                                 <HeaderNavigationMenuLink
                                     to="/team/"
@@ -61,6 +61,39 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
             </ShNavigationMenuItem>
 
             <ShNavigationMenuItem>
+                <HeaderNavigationMenuTrigger
+                    size="default"
+                    :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
+                >
+                    Обучение
+                </HeaderNavigationMenuTrigger>
+
+                <ShNavigationMenuContent>
+                    <ShNavigationMenu>
+                        <ShNavigationMenuList class="px-4 py-3 flex-col items-start gap-2">
+                            <ShNavigationMenuItem>
+                                <HeaderNavigationMenuLink
+                                    to="/kvantums/"
+                                    size="small"
+                                >
+                                    Направления
+                                </HeaderNavigationMenuLink>
+                            </ShNavigationMenuItem>
+
+                            <ShNavigationMenuItem>
+                                <HeaderNavigationMenuLink
+                                    to="/curricula/"
+                                    size="small"
+                                >
+                                    Учебные программы
+                                </HeaderNavigationMenuLink>
+                            </ShNavigationMenuItem>
+                        </ShNavigationMenuList>
+                    </ShNavigationMenu>
+                </ShNavigationMenuContent>
+            </ShNavigationMenuItem>
+
+            <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
                     to="/news/"
                     :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
@@ -68,17 +101,6 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
                     size="default"
                 >
                     Новости
-                </HeaderNavigationMenuLink>
-            </ShNavigationMenuItem>
-
-            <ShNavigationMenuItem>
-                <HeaderNavigationMenuLink
-                    to="/kvantums/"
-                    :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
-                    class="px-3 py-1.5"
-                    size="default"
-                >
-                    Направления
                 </HeaderNavigationMenuLink>
             </ShNavigationMenuItem>
 
