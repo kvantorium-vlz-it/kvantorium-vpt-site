@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRightIcon } from 'lucide-vue-next'
+import { ArrowUpRightIcon } from 'lucide-vue-next';
 import type { Kvantum } from '~/assets/typescript/types'
 
 defineProps<{
@@ -8,40 +8,43 @@ defineProps<{
 </script>
 
 <template>
-    <ShCard>
+    <ShCard class="group flex flex-col">
         <ShCardHeader>
-            <ShCardTitle class="flex items-center justify-between">
-                <div class="font-display text-2xl leading-[0.75] tracking-tighter font-bold">
+            <ShBadge class="w-fit" variant="outline" size="small">
+                Направление
+            </ShBadge>
+
+            <ShCardTitle class="group-hover:ml-2 transition-all font-serif font-bold leading-input -tracking-tight text-2xl flex justify-between gap-2">
+                <span>
                     {{ kvantum.name }}
-                </div>
+                </span>
+
                 <img
-                    class="w-16 aspect-square object-cover"
+                    class="size-14"
                     :src="kvantum.icon.asset.src!"
                     alt=""
                 >
             </ShCardTitle>
         </ShCardHeader>
 
-        <ShCardContent>
-            <ol class="list-decimal list-inside">
+        <ShCardContent class="flex-1">
+            <ul class="list-decimal pl-[1.5ch] leading-input mb-2">
                 <li v-for="topic in kvantum.topics">
                     {{ topic }}
                 </li>
-            </ol>
+            </ul>
 
-            <div class="mt-2">
-                Возрастная категория: {{ kvantum.minimalAge || 12 }}+
-            </div>
+            <p>
+                Возрастная категория: <span class="text-secondary font-bold">12+</span>
+            </p>
         </ShCardContent>
 
         <ShCardFooter>
-            <ShButton class="flex items-center group/button" as-child>
-                <NuxtLink :to="`/kvantums/${kvantum.slug}`">
-                    <span>
-                        Подробнее о квантуме
-                    </span>
+            <ShButton as-child variant="secondary" class="group/button">
+                <NuxtLink :to="`/kvantums/${kvantum.slug}/`">
+                    Подробнее
 
-                    <ArrowRightIcon class="group-hover/button:ml-2 transition-all" />
+                    <ArrowUpRightIcon class="size-4 group-hover/button:translate-x-0.5 transition-all group-hover/button:-translate-y-0.5" />
                 </NuxtLink>
             </ShButton>
         </ShCardFooter>
