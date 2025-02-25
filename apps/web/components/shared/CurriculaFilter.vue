@@ -18,6 +18,10 @@ import { CURRICULUM_LEVEL, getCurriculumLevelLabel } from '@kvantoriumvlz/shared
 
 const props = defineProps<CurriculaFilterProps<T>>()
 
+const emit = defineEmits<{
+    (e: 'reset'): void
+}>()
+
 const [selectedKvantum] = defineModel<CurriculaFilterKvantum | undefined, "selectedKvantum", string | undefined, string | undefined>('selectedKvantum', {
     get(kvantum) {
         if (typeof kvantum === 'undefined') {
@@ -55,6 +59,7 @@ const [selectedLevel] = defineModel<number | undefined, 'selectedLevel', string 
 const reset = () => {
     selectedKvantum.value = undefined
     selectedLevel.value = undefined
+    emit('reset')
 }
 </script>
 

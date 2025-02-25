@@ -1,44 +1,27 @@
-<script setup lang="ts">
-import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import { curriculumFragmentFactory, imageAssetFragmentFactory, type KvantumFragment, kvantumFragmentFactory } from '@kvantoriumvlz/query'
-import type { Curriculum } from '~/assets/typescript/types';
-import type { InferResultItem } from 'groqd'
-
-const selectedKvantumId = ref<string | null>(null)
-
-const curriculaQuery = computed(() => {
-    const builder = q
-        .star
-        .filterByType(DOCUMENT_TYPES.CURRICULUM)
-        .project((sub) => ({
-            ...curriculumFragmentFactory(q),
-            kvantum: sub.field('kvantum').deref().project(kvantumFragmentFactory(q))
-        }))
-
-    if (selectedKvantumId.value !== null) {
-        return builder.filter(`kvantum._id == '${selectedKvantumId.value}'`)
-    }
-
-    return builder
-})
-
-type CurriculaQueryResult = InferResultItem<typeof curriculaQuery.value>
-
-const curricula = computedAsync(async () => {
-    const { data } = await useSanityQuery<CurriculaQueryResult[]>(curriculaQuery.value.query)
-
-    return data.value
-})
-
+<script lang="ts">
 const kvantumsQuery = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(kvantumFragmentFactory(q))
+    .project((sub) => ({
+        _id: true,
+        _type: true,
+        slug: sub.field('slug.current'),
+        name: true,
+    }))
 
-const { data: kvantumData } = await useSanityQuery<KvantumFragment[]>(kvantumsQuery.query)
+type Kvantum = InferResultItem<typeof kvantumsQuery>
+</script>
 
-const visibleCount = ref(6)
+<script setup lang="ts">
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
+import { q } from '~/assets/typescript/groqd.client';
+import type { Curriculum } from '~/assets/typescript/types';
+import type { InferResultItem } from 'groqd'
+
+const selectedKvantum = ref<Kvantum | undefined>()
+const selectedLevel = ref<Curriculum['level'] | undefined>()
+
+const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
 </script>
 
 <template>
@@ -46,27 +29,23 @@ const visibleCount = ref(6)
         <SectionHeading>
             Учебные программы
         </SectionHeading>
-        <SectionContainer>
-            <ul class="flex gap-2 mb-8">
-                <li v-for="kvantum in kvantumData">
-                    <ShBadge
-                        class="text-lg"
-                        :variant="selectedKvantumId === kvantum._id ? 'default' : 'outline'"
-                    >
-                        <button @click="() => selectedKvantumId = kvantum._id">
-                            {{ kvantum.name }}
-                        </button>
-                    </ShBadge>
-                </li>
-            </ul>
 
-            <ul
-                v-if="(curricula || []).length > 0"
-                class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-6 gap-2 grid-flow-row"
+        <SectionContainer>
+            <CurriculaFilter
+                class="grid grid-cols-3 gap-2 mb-4"
+                :kvantums="kvantums!"
+                v-model:selectedKvantum="selectedKvantum"
+                v-model:selected-level="selectedLevel"
+            />
+
+            <CurriculumListProvider
+                #="{ curricula, loadMoreCurricula }"
+                :kvantum="selectedKvantum"
+                :level="selectedLevel"
             >
-                <li class="desktop:col-span-2" v-for="curriculum in curricula?.slice(0, visibleCount)">
-                    <CurriculumCard
-                        :curriculum="{
+                <template v-if="curricula && curricula?.length > 0">
+                    <CurriculaList
+                        :curricula="curricula.map((curriculum) => ({
                             _id: curriculum._id,
                             name: curriculum.name,
                             hoursPerYear: curriculum.hoursPerYear,
@@ -74,31 +53,36 @@ const visibleCount = ref(6)
                             minimalAge: curriculum.minimalAge,
                             kvantum: {
                                 _id: curriculum.kvantum._id,
+                                _type: curriculum.kvantum._type,
                                 icon: curriculum.kvantum.icon.asset.src!,
                                 name: curriculum.kvantum.name,
                                 slug: curriculum.kvantum.slug,
-                            }
-                        }"
-                    />
-                </li>
+                            },
+                            type: curriculum._type,
+                        }))"
+                    >
+                    </CurriculaList>
 
-                <li class="desktop:col-span-3">
-                    <ShButton class="w-full"  @click="() => visibleCount += 6">
-                        Показать больше
-                    </ShButton>
-                </li>
+                    <div class="grid grid-cols-3 gap-2 mt-4">
+                        <ShButton variant="outline" as-child>
+                            <NuxtLink to="/curricula/">
+                                Ко всем учебным программам
+                            </NuxtLink>
+                        </ShButton>
 
-                <li class="desktop:col-span-3">
-                    <ShButton class="w-full" as-child variant="outline">
-                        <NuxtLink to="/curricula/">
-                            Ко всем программам
-                        </NuxtLink>
-                    </ShButton>
-                </li>
-            </ul>
-            <div class="font-bold font-display text-4xl text-center" v-else>
-                Учебные программы не найдены
-            </div>
+                        <ShButton
+                            variant="secondary"
+                            @click="loadMoreCurricula"
+                        >
+                            Показать больше
+                        </ShButton>
+                    </div>
+                </template>
+
+                <div class="font-bold font-serif text-4xl text-center" v-else>
+                    Учебные программы не найдены
+                </div>
+            </CurriculumListProvider>
         </SectionContainer>
     </Section>
 </template>
