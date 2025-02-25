@@ -31,18 +31,19 @@ const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
         </SectionHeading>
 
         <SectionContainer>
-            <CurriculaFilter
-                class="grid grid-cols-3 gap-2 mb-4"
-                :kvantums="kvantums!"
-                v-model:selectedKvantum="selectedKvantum"
-                v-model:selected-level="selectedLevel"
-            />
-
             <CurriculumListProvider
-                #="{ curricula, loadMoreCurricula }"
+                #="{ curricula, loadMoreCurricula, reset }"
                 :kvantum="selectedKvantum"
                 :level="selectedLevel"
             >
+                <CurriculaFilter
+                    class="grid grid-cols-3 gap-2 mb-4"
+                    :kvantums="kvantums!"
+                    v-model:selectedKvantum="selectedKvantum"
+                    v-model:selected-level="selectedLevel"
+                    @reset="reset"
+                />
+
                 <template v-if="curricula && curricula?.length > 0">
                     <CurriculaList
                         :curricula="curricula.map((curriculum) => ({
@@ -63,7 +64,7 @@ const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
                     >
                     </CurriculaList>
 
-                    <div class="grid grid-cols-3 gap-2 mt-4">
+                    <div class="grid grid-cols-2 gap-2 mt-4">
                         <ShButton variant="outline" as-child>
                             <NuxtLink to="/curricula/">
                                 Ко всем учебным программам
