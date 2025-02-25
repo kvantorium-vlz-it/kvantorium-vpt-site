@@ -10,20 +10,14 @@ const props = withDefaults(defineProps<PrimitiveProps>(), {
 <template>
     <Primitive
         :="props"
-        :class="cn([
-            `font-display antialiased
-            text-2xl lg:text-6xl
-            uppercase text-center leading-[0.75] tracking-tight
-            mb-4 lg:mb-12`,
-            $style.heading,
-        ])"
+        :class="cn(
+            `
+            font-serif font-semibold text-5xl
+            text-center leading-heading -tracking-tight
+            mb-6
+            `
+        )"
     >
         <slot></slot>
     </Primitive>
 </template>
-
-<style module>
-.heading {
-    -webkit-text-stroke-width: 0.03em;
-}
-</style>
