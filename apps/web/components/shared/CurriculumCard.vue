@@ -1,32 +1,37 @@
 <script lang="ts">
 import { getCurriculumLevelLabel } from '@kvantoriumvlz/shared'
-import type { Curriculum as _Curriculum } from '~/assets/typescript/types'
+import type {
+    Curriculum as _Curriculum,
+    Kvantum as _Kvantum,
+} from '~/assets/typescript/types'
 import { ArrowUpRightIcon } from 'lucide-vue-next'
 
-interface Kvantum {
+export interface CurriculumKvantum {
+    _id: _Kvantum['_id']
+    _type: _Kvantum['_type']
     name: string
     slug: string
     icon: string
-    _id: string
 }
 
-interface Curriculum {
-    name: string
-    hoursPerYear: _Curriculum['hoursPerYear']
-    level: _Curriculum['level']
-    minimalAge: _Curriculum['minimalAge']
+export interface Curriculum {
     _id: _Curriculum['_id']
-    kvantum: Kvantum
+    type: _Curriculum['_type']
+    name: string
+    level: _Curriculum['level']
+    minimalAge: number
+    hoursPerYear: _Curriculum['hoursPerYear']
+    kvantum: CurriculumKvantum
 }
 
-interface CurriculumCardProps {
-    curriculum: Curriculum
+export interface CurriculumCardProps<T extends Curriculum = Curriculum> {
+    curriculum: T
 }
 </script>
 
 
-<script setup lang="ts">
-const props = defineProps<CurriculumCardProps>()
+<script setup lang="ts" generic="T extends Curriculum = Curriculum">
+const props = defineProps<CurriculumCardProps<T>>()
 
 const hoursPerYear = computed(() => {
     const {
@@ -39,7 +44,7 @@ const hoursPerYear = computed(() => {
 </script>
 
 <template>
-    <ShCard class="relative overflow-hidden isolate group bg-white">
+    <ShCard class="relative overflow-hidden isolate group bg-white flex flex-col">
         <ShCardHeader>
             <ShBadge class="w-fit" size="small" variant="outline">
                 Учебная программа
@@ -56,7 +61,7 @@ const hoursPerYear = computed(() => {
             alt=""
         >
 
-        <ShCardContent class="font-serif -tracking-tight" >
+        <ShCardContent class="font-serif -tracking-tight flex-1" >
             <ul class="">
                 <li>
                     <span class="text-gray-dark">

@@ -11,7 +11,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
                 `
                 fixed z-50 top-0 left-0 right-0
                 py-3 after:absolute after:top-0 after:left-0 after:right-0 after:bg-white
-                isolate after:-z-10 after:transition-all
+                isolate after:-z-10 after:transition-all after:shadow
                 `,
                 isHeaderMustHaveBackground ? 'after:bottom-0' : 'after:bottom-full'
             )
