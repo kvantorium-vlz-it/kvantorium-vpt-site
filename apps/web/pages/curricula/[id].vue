@@ -100,6 +100,41 @@ const { data: curriculum } = useSanityQuery<Curriculum>(curriculumQueryBuilder.q
             <SectionContainer v-else>
                 Учебная программа не найдена
             </SectionContainer>
+
+        </Section>
+        <Section>
+            <SectionContainer>
+                <SectionHeading>
+                    Другие учебные программы
+                </SectionHeading>
+
+                <CurriculumListProvider
+                    #="{ curricula }"
+                    :fetch-per-page="3"
+                >
+                    <div class="grid grid-cols-3 gap-2">
+                        <CurriculumCard
+                            v-for="curriculum in curricula.map((curriculum) => ({
+                                _id: curriculum._id,
+                                _type: curriculum._type,
+                                hoursPerYear: curriculum.hoursPerYear,
+                                kvantum: {
+                                    _id: curriculum.kvantum._id,
+                                    _type: curriculum.kvantum._type,
+                                    icon: curriculum.kvantum.icon.asset.src!,
+                                    name: curriculum.kvantum.name,
+                                    slug: curriculum.kvantum.slug,
+                                },
+                                level: curriculum.level,
+                                minimalAge: curriculum.minimalAge,
+                                name: curriculum.name,
+                                type: curriculum._type,
+                            }))"
+                            :curriculum="curriculum"
+                        />
+                    </div>
+                </CurriculumListProvider>
+            </SectionContainer>
         </Section>
     </div>
 </template>
