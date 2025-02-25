@@ -31,17 +31,17 @@ const level = computed(() => props.level)
 const page = ref(0)
 const curricula = shallowRef<_Curriculum[]>([])
 
-watch([kvantum, level], async () => {
-    page.value = 0
-    curricula.value = await fetchCurricula()
-})
-
 const fetchCurricula = async () => {
     const {
         data
     } = await useSanityQuery<_Curriculum[]>(curriculaQueryBuilder.value.query)
 
     return data.value ?? []
+}
+
+const reset = async () => {
+    page.value = 0
+    curricula.value = await fetchCurricula()
 }
 
 const loadCurricula = async () => {
@@ -78,6 +78,7 @@ const curriculaQueryBuilder = computed(() => {
 type _Curriculum = InferResultItem<typeof curriculaQueryBuilder.value>
 
 await loadCurricula()
+watch([kvantum, level], reset)
 </script>
 
 <template>
@@ -85,5 +86,6 @@ await loadCurricula()
         :curricula
         :loadCurricula
         :loadMoreCurricula
+        :reset
     />
 </template>
