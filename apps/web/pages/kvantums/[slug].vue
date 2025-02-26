@@ -44,7 +44,7 @@ const { data: allKvantums } = await useSanityQuery<Kvantum[]>(allKvantumsQuery.q
                     :alt="`Логотип ${kvantum.name}`"
                 >
 
-                <div class="mt-4 mx-auto">
+                <div class="mt-4 mx-auto w-full">
                     <PortableBlocks :blocks="kvantum.description" />
                 </div>
             </div>
