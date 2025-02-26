@@ -1,7 +1,7 @@
 <!-- TODO: bind to CMS -->
 
 <template>
-    <Section class="from-secondary to-primary bg-gradient-to-br rounded-2xl">
+    <Section id="faq" class="from-secondary to-primary bg-gradient-to-br rounded-2xl">
         <SectionContainer>
             <SectionHeading class="text-white">
                 Часто задаваемые вопросы

@@ -106,7 +106,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
             <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
-                    to="/#contacts"
+                    :to="{ hash: '#contacts' }"
                     :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
                     class="px-3 py-1.5"
                     size="default"

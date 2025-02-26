@@ -28,13 +28,13 @@
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <HeroSiteNavigationMenuLink to="/#faq">
+                    <HeroSiteNavigationMenuLink :to="{ path: '/', hash: '#faq' }">
                         Часто задаваемые вопросы
                     </HeroSiteNavigationMenuLink>
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <HeroSiteNavigationMenuLink to="/#map">
+                    <HeroSiteNavigationMenuLink :to="{ path: '/', hash: '#map' }">
                         Мы на карте
                     </HeroSiteNavigationMenuLink>
                 </ShNavigationMenuItem>

@@ -34,7 +34,7 @@ const location = ref({
 </script>
 
 <template>
-    <Section>
+    <Section id="map">
         <SectionContainer>
             <SectionHeading>
                 Мы на карте

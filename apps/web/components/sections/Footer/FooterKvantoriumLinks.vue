@@ -3,7 +3,7 @@ import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-vue-next'
 </script>
 
 <template>
-    <div>
+    <div id="contacts">
         <h1 class="font-serif text-2xl leading-heading -tracking-tight font-medium">
             Кванториум
         </h1>
