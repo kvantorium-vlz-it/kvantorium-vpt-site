@@ -20,9 +20,9 @@ const { data: kvantums } = await useSanityQuery<Kvantum[]>(query.query)
                     Квантумы
                 </SectionHeading>
 
-                <ul class="grid grid-cols-1 gap-2 lg:grid-cols-3">
-                    <li v-for="kvantum in kvantums" :key="kvantum._id">
-                        <KvantumCard :kvantum="kvantum" />
+                <ul class="grid grid-cols-1 gap-2 desktop:grid-cols-3">
+                    <li v-for="kvantum in kvantums" :key="kvantum._id" class="h-full">
+                        <KvantumCard :kvantum="kvantum" class="h-full" />
                     </li>
                 </ul>
             </SectionContainer>
