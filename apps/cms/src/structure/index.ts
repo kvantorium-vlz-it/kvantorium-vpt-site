@@ -4,6 +4,7 @@ import kvantumsStructure from "./kvantumsStructure";
 import curriculaStructure from "./curriculaStructure";
 import newsStructure from "./newsStructure";
 import tagsStructure from "./tagsStructure";
+import settingsStructure from "./settingsStructure";
 
 export default (S: StructureBuilder) =>
     S
@@ -18,5 +19,6 @@ export default (S: StructureBuilder) =>
 
             S.divider(),
 
-            tagsStructure(S)
+            tagsStructure(S),
+            settingsStructure(S),
         ])
