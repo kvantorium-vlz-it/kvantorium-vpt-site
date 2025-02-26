@@ -19,7 +19,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
     >
         <div class="container grid grid-cols-12 items-center content-center justify-center gap-6">
             <NuxtLink
-                :to="{ hash: '#top' }"
+                :to="{ path: '/', }"
                 class="group bg-white p-2 rounded-full w-10 aspect-square col-span-2"
             >
                 <KvantoriumLogo class="group-hover:rotate-[360deg] transition-transform ease-in-out duration-300" />

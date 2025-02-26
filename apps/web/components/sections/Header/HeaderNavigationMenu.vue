@@ -31,7 +31,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
                             <ShNavigationMenuItem>
                                 <HeaderNavigationMenuLink
-                                    to="/about/"
+                                    :to="{ path: '/about/', hash: '#about' }"
                                     size="small"
                                 >
                                     Об организации
@@ -40,21 +40,21 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
                             <ShNavigationMenuItem>
                                 <HeaderNavigationMenuLink
-                                    to="/documents/"
+                                    :to="{ path: '/about/', hash: '#documents' }"
                                     size="small"
                                 >
                                     Документы
                                 </HeaderNavigationMenuLink>
                             </ShNavigationMenuItem>
 
-                            <ShNavigationMenuItem>
+                            <!-- <ShNavigationMenuItem>
                                 <HeaderNavigationMenuLink
                                     to="/media/"
                                     size="small"
                                 >
                                     Медиа
                                 </HeaderNavigationMenuLink>
-                            </ShNavigationMenuItem>
+                            </ShNavigationMenuItem> -->
                         </ShNavigationMenuList>
                     </ShNavigationMenu>
                 </ShNavigationMenuContent>
@@ -93,14 +93,14 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
                 </ShNavigationMenuContent>
             </ShNavigationMenuItem>
 
-            <ShNavigationMenuItem>
+            <!-- <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
                     to="/"
                     :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
                 >
                     Главная
                 </HeaderNavigationMenuLink>
-            </ShNavigationMenuItem>
+            </ShNavigationMenuItem> -->
 
             <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
