@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { curriculumFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES, getCurriculumLevelLabel } from '@kvantoriumvlz/shared';
+import { ArrowUpRightIcon } from 'lucide-vue-next';
 import { q } from '~/assets/typescript/groqd.client';
 import type { Curriculum } from '~/assets/typescript/types';
 
@@ -42,7 +43,16 @@ const { data: curriculum } = useSanityQuery<Curriculum>(curriculumQueryBuilder.q
                                     Квантум
                                 </ShTableHead>
                                 <ShTableCell>
-                                    {{ curriculum.kvantum.name }}
+                                    <NuxtLink
+                                        :to="`/kvantums/${curriculum.kvantum.slug}`"
+                                        class="text-blue-light font-bold group items-center inline-flex gap-1"
+                                    >
+                                        {{ curriculum.kvantum.name }}
+
+                                        <ArrowUpRightIcon
+                                            class="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all size-4"
+                                        />
+                                    </NuxtLink>
                                 </ShTableCell>
                             </ShTableRow>
 

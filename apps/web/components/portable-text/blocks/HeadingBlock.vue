@@ -10,12 +10,12 @@ defineOptions({
 })
 
 const fontSizeMapping = {
-    'h1': 'text-6xl',
-    'h2': 'text-5xl',
-    'h3': 'text-4xl',
-    'h4': 'text-3xl',
-    'h5': 'text-2xl',
-    'h6': 'text-1xl',
+    'h1': 'text-5xl',
+    'h2': 'text-4xl',
+    'h3': 'text-3xl',
+    'h4': 'text-2xl',
+    'h5': 'text-1xl',
+    'h6': 'text-lg',
 }
 
 const fontSize = computed(() => (
@@ -28,7 +28,7 @@ const fontSize = computed(() => (
     <component
         :is="value.style"
         :class="[
-            'font-display uppercase leading-none font-bold tracking-tight antialiased text-',
+            'font-serif leading-heading uppercase font-bold -tracking-tight antialiased',
             fontSize
         ]"
     >
