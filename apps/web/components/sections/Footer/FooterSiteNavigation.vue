@@ -1,36 +1,43 @@
 <script setup lang="ts">
 import { ArrowUpRightIcon } from 'lucide-vue-next'
-
-const navigation = [
-    { label: 'Главная', to: '/' },
-    { label: 'О нас', to: '/about/' },
-    { label: 'Новости', to: '/news/' },
-    { label: 'Направления', to: '/kvantums/' },
-]
 </script>
 
 <template>
-    <section>
-        <h2 class="font-display text-3xl mb-2 tracking-tighter leading-none">
+    <div>
+        <h1 class="font-serif text-2xl leading-heading -tracking-tight font-medium">
             Навигация
-        </h2>
+        </h1>
 
-        <ul class="flex flex-col gap-y-0.5">
-            <li v-for="link in navigation">
-                <NuxtLink
-                    class="grid grid-cols-[auto,minmax(auto,1fr)] gap-2 items-center group/footer-link hover:pl-2 transition-all"
-                    :to="link.to"
-                >
-                    <ArrowUpRightIcon
-                        class="group-hover/footer-link:rotate-45 transition-all"
-                        :size="16"
-                    />
+        <ShNavigationMenu>
+            <ShNavigationMenuList class="flex-col items-start">
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        Главная
+                        <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                    </BaseLink>
+                </ShNavigationMenuItem>
 
-                    <span>
-                        {{ link.label }}
-                    </span>
-                </NuxtLink>
-            </li>
-        </ul>
-    </section>
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        О нас
+                        <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                    </BaseLink>
+                </ShNavigationMenuItem>
+
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        Новости
+                        <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                    </BaseLink>
+                </ShNavigationMenuItem>
+
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        Направления
+                        <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                    </BaseLink>
+                </ShNavigationMenuItem>
+            </ShNavigationMenuList>
+        </ShNavigationMenu>
+    </div>
 </template>
