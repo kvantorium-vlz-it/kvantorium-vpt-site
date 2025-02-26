@@ -25,6 +25,6 @@ provide('isHeaderMustHaveBackground', isHeaderMustHaveBackground)
 
         <NuxtPage />
 
-        <!-- <TheFooter /> -->
+        <TheFooter />
     </div>
 </template>
