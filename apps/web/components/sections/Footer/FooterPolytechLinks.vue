@@ -11,7 +11,11 @@ import { MailIcon, GlobeIcon } from 'lucide-vue-next'
         <ShNavigationMenu>
             <ShNavigationMenuList class="flex-col items-start">
                 <ShNavigationMenuItem>
-                    <BaseLink to="mailto:kvantoriumvlz@volpt.com" variant="default" theme="light">
+                    <BaseLink
+                        to="mailto:kvantoriumvlz@volpt.com"
+                        variant="default"
+                        theme="light"
+                    >
                         <MailIcon />
 
                         volpt@volganet.ru
@@ -19,7 +23,12 @@ import { MailIcon, GlobeIcon } from 'lucide-vue-next'
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink
+                        to="https://volpt.ru/"
+                        variant="default"
+                        theme="light"
+                        external
+                    >
                         <GlobeIcon />
 
                         volpt.ru
