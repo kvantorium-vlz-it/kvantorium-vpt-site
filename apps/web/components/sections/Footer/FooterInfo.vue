@@ -1,26 +1,21 @@
 <template>
-    <section>
-        <header class="grid grid-cols-[auto,minmax(auto,1fr)] gap-2 items-center mb-4">
-            <div class="bg-white w-16 p-3.5 rounded-full">
-                <KvantoriumLogo />
-            </div>
+    <div>
+        <h1 class="flex items-center gap-2">
+            <NuxtLink class="shrink-0 size-16 bg-white rounded-full p-4 inline-flex">
+                <KvantoriumLogo class="w-full" />
+            </NuxtLink>
 
-            <h2 class="font-display leading-none tracking-tight text-lg">
+            <span class="text-lg leading-input font-serif -tracking-tight">
                 детский технопарк "кванториум "волжский политех"
-            </h2>
-        </header>
+            </span>
+        </h1>
 
-        <div>
-            <p class="whitespace-break-spaces text-balance mb-2">
-                Детский технопарк «Кванториум» - это новая форма дополнительного образования, которая реализует научно-технический интерес детей. Это место интеллектуальной смелости и комфортные условия формирования изобретательского мышления.
-            </p>
+        <p class="font-serif text-sm leading-base -tracking-tight mt-4">
+            Детский технопарк «Кванториум» - это новая форма дополнительного образования, которая реализует научно-технический интерес детей. Это место интеллектуальной смелости и комфортные условия формирования изобретательского мышления.
+        </p>
 
-            <ShButton
-                variant="ghost"
-                class="w-full border-2 border-white"
-            >
-                Записаться
-            </ShButton>
-        </div>
-    </section>
+        <ShButton variant="outline" class="w-full mt-4" size="small">
+            Записаться
+        </ShButton>
+    </div>
 </template>

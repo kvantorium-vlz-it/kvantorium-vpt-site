@@ -20,11 +20,11 @@ provide('isHeaderMustHaveBackground', isHeaderMustHaveBackground)
 </script>
 
 <template>
-    <div>
+    <div class="scroll-smooth">
         <TheHeader ref="header" />
 
-        <NuxtPage />
+        <NuxtPage id="top" />
 
-        <!-- <TheFooter /> -->
+        <TheFooter />
     </div>
 </template>

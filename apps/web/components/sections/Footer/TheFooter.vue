@@ -1,25 +1,23 @@
-<script setup lang="ts">
-import FooterCopyright from './FooterCopyright.vue'
-import FooterInfo from './FooterInfo.vue'
-import FooterSiteNavigation from './FooterSiteNavigation.vue'
-import FooterKvantoriumLinks from './FooterKvantoriumLinks.vue'
-import FooterPolytechLinks from './FooterPolytechLinks.vue'
-</script>
+<!-- TODO: add socials -->
 
 <template>
     <Section>
         <SectionContainer full-width>
-            <div class="bg-gradient-to-br from-blue-900 to-blue-600 text-white rounded-xl p-8 lg:py-16 lg:px-16 lg:pb-8 relative isolate after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-hero-noice after:-z-10 after:opacity-25 after:pointer-events-none">
-                <div class="grid grid-cols-1 grid-flow-row lg:grid-rows-2 lg:grid-cols-4 gap-y-8 lg:gap-2">
-                    <FooterInfo class="lg:col-start-1 lg:row-start-1 lg:row-span-2" />
-                    <FooterSiteNavigation class="lg:col-start-3" />
-                    <FooterKvantoriumLinks class="lg:col-start-4" />
-                    <FooterPolytechLinks class="lg:col-start-4" />
-                </div>
+            <div
+                class="from-primary to-blue-dark bg-gradient-to-br text-white p-12 rounded-2xl w-full grid grid-cols-4 gap-x-4 gap-y-6"
+            >
 
-                <hr class="my-8">
+                <FooterInfo class="col-start-1 row-span-2" />
 
-                <FooterCopyright />
+                <FooterSiteNavigation class="col-start-3 row-span-1" />
+
+                <FooterKvantoriumLinks class="col-start-4 row-span-1" />
+
+                <FooterPolytechLinks class="col-start-4 row-span-1" />
+
+                <hr class="col-span-4">
+
+                <FooterCopyright class="col-span-4" />
             </div>
         </SectionContainer>
     </Section>

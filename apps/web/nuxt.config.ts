@@ -65,6 +65,12 @@ export default defineNuxtConfig({
         }
     },
 
+    router: {
+        options: {
+            scrollBehaviorType: 'smooth'
+        }
+    },
+
     yandexMaps: {
         apikey: process.env.YANDEX_MAPS_API_KEY,
     },

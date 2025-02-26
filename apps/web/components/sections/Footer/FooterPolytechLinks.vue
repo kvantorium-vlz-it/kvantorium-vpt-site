@@ -1,33 +1,31 @@
 <script setup lang="ts">
 import { MailIcon, GlobeIcon } from 'lucide-vue-next'
-
-const links = [
-    { label: 'volpt@volganet.ru', to: 'mailto:volpt@volganet.ru', icon: MailIcon },
-    { label: 'volpt.ru', to: 'https://volpt.ru', icon: GlobeIcon },
-]
 </script>
 
 <template>
-    <section>
-        <h2 class="font-display text-3xl mb-2 tracking-tighter leading-none">
+    <div>
+        <h1 class="font-serif text-2xl leading-heading -tracking-tight font-medium">
             Техникум
-        </h2>
+        </h1>
 
-        <ul class="flex flex-col gap-y-0.5">
-            <li v-for="link in links">
-                <NuxtLink
-                    class="grid grid-cols-[auto,minmax(auto,1fr)] gap-2 items-center group/footer-kvantorium-links hover:pl-2 transition-all"
-                    :to="link.to"
-                >
-                    <component
-                        :is="link.icon"
-                        :size="16"
-                        class="group-hover/footer-kvantorium-links:mb-1 transition-all"
-                    />
+        <ShNavigationMenu>
+            <ShNavigationMenuList class="flex-col items-start">
+                <ShNavigationMenuItem>
+                    <BaseLink to="mailto:kvantoriumvlz@volpt.com" variant="default" theme="light">
+                        <MailIcon />
 
-                    <span>{{ link.label }}</span>
-                </NuxtLink>
-            </li>
-        </ul>
-    </section>
+                        volpt@volganet.ru
+                    </BaseLink>
+                </ShNavigationMenuItem>
+
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        <GlobeIcon />
+
+                        volpt.ru
+                    </BaseLink>
+                </ShNavigationMenuItem>
+            </ShNavigationMenuList>
+        </ShNavigationMenu>
+    </div>
 </template>

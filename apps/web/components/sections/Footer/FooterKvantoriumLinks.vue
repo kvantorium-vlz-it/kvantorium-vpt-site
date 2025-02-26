@@ -1,34 +1,39 @@
 <script setup lang="ts">
 import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-vue-next'
-
-const links = [
-    { label: 'kvantoriumvlz@volpt.com', to: 'mailto:kvantoriumvlz@volpt.com', icon: MailIcon },
-    { label: '8(902)383-50-24', to: 'tel:89023835024', icon: PhoneIcon },
-    { label: 'Волжский ул. Машиностроителей, 15, 404121', to: 'geo:48.786934,44.772160', icon: MapPinIcon },
-]
 </script>
 
 <template>
-    <section>
-        <h2 class="font-display text-3xl mb-2 tracking-tighter leading-none">
+    <div id="contacts">
+        <h1 class="font-serif text-2xl leading-heading -tracking-tight font-medium">
             Кванториум
-        </h2>
+        </h1>
 
-        <ul class="flex flex-col gap-y-0.5">
-            <li v-for="link in links">
-                <NuxtLink
-                    class="grid grid-cols-[auto,minmax(auto,1fr)] gap-2 items-center group/footer-kvantorium-links hover:pl-2 transition-all"
-                    :to="link.to"
-                >
-                    <component
-                        :is="link.icon"
-                        :size="16"
-                        class="group-hover/footer-kvantorium-links:mb-1 transition-all"
-                    />
+        <ShNavigationMenu>
+            <ShNavigationMenuList class="flex-col items-start">
+                <ShNavigationMenuItem>
+                    <BaseLink to="mailto:kvantoriumvlz@volpt.com" variant="default" theme="light">
+                        <MailIcon />
 
-                    <span>{{ link.label }}</span>
-                </NuxtLink>
-            </li>
-        </ul>
-    </section>
+                        kvantoriumvlz@volpt.com
+                    </BaseLink>
+                </ShNavigationMenuItem>
+
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        <PhoneIcon />
+
+                        8(902)383-50-24
+                    </BaseLink>
+                </ShNavigationMenuItem>
+
+                <ShNavigationMenuItem>
+                    <BaseLink variant="default" theme="light">
+                        <MapPinIcon />
+
+                        Волжский ул. Машиностроителей, 15, 404121
+                    </BaseLink>
+                </ShNavigationMenuItem>
+            </ShNavigationMenuList>
+        </ShNavigationMenu>
+    </div>
 </template>

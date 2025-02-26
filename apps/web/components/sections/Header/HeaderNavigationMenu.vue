@@ -95,6 +95,15 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
             <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
+                    to="/"
+                    :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
+                >
+                    Главная
+                </HeaderNavigationMenuLink>
+            </ShNavigationMenuItem>
+
+            <ShNavigationMenuItem>
+                <HeaderNavigationMenuLink
                     to="/news/"
                     :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
                     class="px-3 py-1.5"
@@ -106,7 +115,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
 
             <ShNavigationMenuItem>
                 <HeaderNavigationMenuLink
-                    to="/#contacts"
+                    :to="{ hash: '#contacts' }"
                     :theme="isHeaderMustHaveBackground ? 'dark' : 'light'"
                     class="px-3 py-1.5"
                     size="default"
