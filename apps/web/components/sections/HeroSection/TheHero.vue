@@ -29,12 +29,11 @@ const { y } = useWindowScroll()
 const { height } = useElementSize(hero)
 
 const scrollPercentage = computed(() => Math.min(y.value / (height.value), 1))
-
-const margin = ref(0 + 'px')
+const rounding = ref(0 + 'px')
 
 onMounted(() => {
     watch(scrollPercentage, () => {
-        margin.value = scrollPercentage.value * 16 + 'px'
+        rounding.value = scrollPercentage.value * 64 + 'px'
     })
 })
 </script>
@@ -43,7 +42,7 @@ onMounted(() => {
     <div
         class="overflow-hidden"
         ref="hero"
-        :style="{ marginInline: margin, borderRadius: margin }"
+        :style="{ borderBottomRightRadius: rounding, borderBottomLeftRadius: rounding }"
     >
         <div
             class="
