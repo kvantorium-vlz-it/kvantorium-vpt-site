@@ -14,8 +14,14 @@
             Детский технопарк «Кванториум» - это новая форма дополнительного образования, которая реализует научно-технический интерес детей. Это место интеллектуальной смелости и комфортные условия формирования изобретательского мышления.
         </p>
 
-        <ShButton variant="outline" class="w-full mt-4" size="small">
-            Записаться
-        </ShButton>
+        <ShDialog>
+            <ShDialogTrigger as-child>
+                <ShButton variant="outline" class="w-full mt-4" size="small">
+                    Записаться
+                </ShButton>
+            </ShDialogTrigger>
+
+            <EnrollModalContent />
+        </ShDialog>
     </div>
 </template>

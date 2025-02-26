@@ -32,9 +32,7 @@ const isHeaderMustHaveBackground = inject('isHeaderMustHaveBackground', true)
                     <HeaderButton class="col-span-2 w-full" />
                 </ShDialogTrigger>
 
-                <ShDialogContent>
-                    <HeaderModal />
-                </ShDialogContent>
+                <EnrollModalContent />
             </ShDialog>
         </div>
     </header>
