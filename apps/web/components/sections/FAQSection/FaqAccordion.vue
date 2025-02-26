@@ -1,5 +1,9 @@
 <template>
-    <ShAccordion type="single" collapsible>
+    <ShAccordion
+        default-value="none"
+        class="text-white"
+        collapsible
+    >
         <slot></slot>
     </ShAccordion>
 </template>

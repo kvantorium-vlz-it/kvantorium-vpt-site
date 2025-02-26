@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { ChevronDownIcon } from 'lucide-vue-next'
-import { VisuallyHidden } from 'radix-vue';
-
 defineProps<{
     title: string
     value: string
@@ -9,14 +6,14 @@ defineProps<{
 </script>
 
 <template>
-    <ShAccordionItem :value="value">
-        <ShAccordionTrigger class="justify-end relative">
-            <span class="absolute left-1/2 -translate-x-1/2">
-                {{ title }}
-            </span>
+    <ShAccordionItem
+        :value="value"
+        class="text-xl leading-heading [&_svg]:size-8"
+    >
+        <ShAccordionTrigger>
+            {{ title }}
         </ShAccordionTrigger>
-
-        <ShAccordionContent class="text-center">
+        <ShAccordionContent class="text-base">
             <slot></slot>
         </ShAccordionContent>
     </ShAccordionItem>
