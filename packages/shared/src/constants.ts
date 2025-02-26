@@ -10,6 +10,7 @@ export const DOCUMENT_TYPES = {
     KVANTUM: `${SCHEMA_PREFIX}.kvantum`,
     CURRICULUM: `${SCHEMA_PREFIX}.curriculum`,
     NEWS: `${SCHEMA_PREFIX}.news`,
+    SETTINGS: `${SCHEMA_PREFIX}.settings`,
 } as const
 
 export const CURRICULUM_LEVEL = {
