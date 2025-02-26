@@ -11,28 +11,44 @@ import { ArrowUpRightIcon } from 'lucide-vue-next'
         <ShNavigationMenu>
             <ShNavigationMenuList class="flex-col items-start">
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink
+                        variant="default"
+                        theme="light"
+                        to="/"
+                    >
                         Главная
                         <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </BaseLink>
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink
+                        variant="default"
+                        theme="light"
+                        :to="{ path: '/about/', hash: '#about' }"
+                    >
                         О нас
                         <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </BaseLink>
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink
+                        variant="default"
+                        theme="light"
+                        to="/news/"
+                    >
                         Новости
                         <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </BaseLink>
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink
+                        variant="default"
+                        theme="light"
+                        to="/kvantums/"
+                    >
                         Направления
                         <ArrowUpRightIcon class="group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
                     </BaseLink>

@@ -19,7 +19,7 @@ import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-vue-next'
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink to="tel:89023835024" variant="default" theme="light">
                         <PhoneIcon />
 
                         8(902)383-50-24
@@ -27,7 +27,7 @@ import { MailIcon, PhoneIcon, MapPinIcon } from 'lucide-vue-next'
                 </ShNavigationMenuItem>
 
                 <ShNavigationMenuItem>
-                    <BaseLink variant="default" theme="light">
+                    <BaseLink to="geo:48.786934,44.772160" variant="default" theme="light">
                         <MapPinIcon />
 
                         Волжский ул. Машиностроителей, 15, 404121

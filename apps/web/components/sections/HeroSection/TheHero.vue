@@ -63,7 +63,7 @@ onMounted(() => {
                     <HeroSiteNavigation class="laptop:col-start-1" />
 
                     <div class="w-72 aspect-square justify-center items-center hidden laptop:flex">
-                        <HeroButton to="/" />
+                        <HeroButton :to="{ path: '/', hash: '#curricula' }" />
                     </div>
 
                     <HeroKvantumsNavigation class="laptop:col-start-3" />

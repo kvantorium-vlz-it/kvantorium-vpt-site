@@ -4,7 +4,7 @@
 
         <InfoSection />
 
-        <CurriculaSection />
+        <CurriculaSection id="curricula" />
 
         <TheKvantumsSection />
 
