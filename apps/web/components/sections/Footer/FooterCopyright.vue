@@ -3,15 +3,11 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-    <div class="text-center font-display text-md leading-tight tracking-tighter">
-        <span>
-            детский технопарк "кванториум "волжский политех"
-        </span>
-
-        <br>
-
-        <span>
+    <div>
+        <div class="text-center mx-auto">
+            детский технопарк “кванториум “волжский политех”
+            <br>
             {{ currentYear }}
-        </span>
+        </div>
     </div>
 </template>
