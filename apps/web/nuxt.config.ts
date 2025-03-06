@@ -1,5 +1,7 @@
 import process from 'process'
 
+const isDev = process.env.NODE_ENV === 'development'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: {
@@ -72,18 +74,18 @@ export default defineNuxtConfig({
     },
 
     yandexMaps: {
-        apikey: process.env.YANDEX_MAPS_API_KEY,
+        apikey: process.env.NUXT_YANDEX_MAPS_API_KEY,
     },
 
     sanity: {
-        projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-        dataset: process.env.SANITY_STUDIO_DATASET!,
+        projectId: process.env.NUXT_SANITY_STUDIO_PROJECT_ID!,
+        dataset: process.env.NUXT_SANITY_STUDIO_DATASET!,
         apiVersion: 'v2022-03-07',
     },
 
     // Groqd resolving fix
     alias: {
-        'groqd': '../node_modules/groqd/dist/index'
+        'groqd': isDev ? '../node_modules/groqd/dist/index' : 'groqd'
     },
 
     compatibilityDate: '2025-02-11'

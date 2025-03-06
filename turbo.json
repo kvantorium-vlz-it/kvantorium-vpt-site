@@ -1,12 +1,16 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "ui": "tui",
+  "globalEnv": [
+    "SANITY_STUDIO_PROJECT_ID",
+    "SANITY_STUDIO_DATASET",
+    "SANITY_STUDIO_PREVIEW_URL",
+    "SANITY_API_VERSION"
+  ],
   "tasks": {
     "build": {
-      "env": [".env.production", ".env"]
     },
     "dev": {
-      "env": [".env.development", ".env"],
       "cache": true
     },
     "@kvantoriumvlz/web#build": {
@@ -14,8 +18,9 @@
         "@kvantoriumvlz/query#build"
       ]
     },
-    "@kvantoriumvlz/cms": {
+    "@kvantoriumvlz/cms#build": {
       "dependsOn": [
+        "@kvantoriumvlz/shared#build",
         "@kvantoriumvlz/schema#build"
       ]
     },

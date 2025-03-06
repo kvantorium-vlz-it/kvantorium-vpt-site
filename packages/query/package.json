@@ -32,7 +32,7 @@
     "@kvantoriumvlz/schema": "workspace:*"
   },
   "dependencies": {
-    "groqd": "^1.0.1",
-    "@kvantoriumvlz/shared": "workspace:*"
+    "@kvantoriumvlz/shared": "workspace:*",
+    "groqd": "1.0.1"
   }
 }

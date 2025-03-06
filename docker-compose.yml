@@ -1,0 +1,53 @@
+services:
+  web:
+    container_name: "kvantoriumvlz-web"
+    build:
+      args:
+        - SANITY_STUDIO_PROJECT_ID=${SANITY_STUDIO_PROJECT_ID:?error}
+        - SANITY_STUDIO_DATASET=${SANITY_STUDIO_DATASET:?error}
+        - SANITY_API_VERSION=${SANITY_API_VERSION:?error}
+        - YANDEX_MAPS_API_KEY=${YANDEX_MAPS_API_KEY:?error}
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ".env"
+    restart: always
+    networks:
+      - "kvantorium"
+      - "reverse-proxy"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`kvantoriumvlz.ru`)"
+      - "traefik.http.routers.web.entrypoints=websecure"
+      - "traefik.http.routers.web.tls.certresolver=letsencrypt"
+
+  cms:
+    container_name: "kvantoriumvlz-cms"
+    build:
+      args:
+        - SANITY_STUDIO_PROJECT_ID=${SANITY_STUDIO_PROJECT_ID:?error}
+        - SANITY_STUDIO_DATASET=${SANITY_STUDIO_DATASET:?error}
+        - SANITY_API_VERSION=${SANITY_API_VERSION:?error}
+        - SANITY_STUDIO_PREVIEW_URL=${SANITY_STUDIO_PREVIEW_URL:?error}
+      context: .
+      dockerfile: ./apps/cms/Dockerfile
+    ports:
+      - "3333:3333"
+    env_file:
+      - ".env"
+    restart: always
+    networks:
+      - "kvantorium"
+      - "reverse-proxy"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cms.rule=Host(`admin.kvantoriumvlz.ru`)"
+      - "traefik.http.routers.cms.entrypoints=websecure"
+      - "traefik.http.routers.cms.tls.certresolver=letsencrypt"
+
+networks:
+  kvantorium: {}
+  reverse-proxy:
+    external: true
