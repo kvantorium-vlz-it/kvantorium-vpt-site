@@ -5,7 +5,11 @@ const props = defineProps<{
     employee: Employee
 }>()
 
-const fullName = computed(() => `${props.employee.surname} ${props.employee.name} ${props.employee.patronymic}`)
+const fullName = computed(() => {
+    return props.employee.patronymic
+        ? `${props.employee.surname} ${props.employee.name} ${props.employee.patronymic}`
+        : `${props.employee.surname} ${props.employee.name}`
+})
 </script>
 
 <template>
