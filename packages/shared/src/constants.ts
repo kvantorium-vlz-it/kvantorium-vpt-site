@@ -18,3 +18,11 @@ export const CURRICULUM_LEVEL = {
     ADVANCED: 1,
     PROJECT: 2,
 } as const
+
+export const CONTACT_LINK_TYPE = {
+    EMAIL: 'email',
+    WEBSITE: 'website',
+    GEOLOCATION: 'geolocation',
+    PHONE: 'phone',
+    OTHER: 'other',
+} as const

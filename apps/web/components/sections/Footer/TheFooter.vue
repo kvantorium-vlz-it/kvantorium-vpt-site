@@ -1,5 +1,24 @@
 <!-- TODO: add socials -->
 
+<script setup lang="ts">
+import { CONTACT_LINK_TYPE, DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
+import { q } from '~/assets/typescript/groqd.client';
+import type { InferResultItem } from 'groqd'
+
+const aboutQuery = q
+    .star
+    .filterByType(DOCUMENT_TYPES.SETTINGS)
+    .project({
+        collegeContacts: true,
+        kvantoriumContacts: true,
+    })
+    .slice(0)
+
+type Settings = InferResultItem<typeof aboutQuery>
+
+const { data } = useSanityQuery<Settings>(aboutQuery.query)
+</script>
+
 <template>
     <Section>
         <SectionContainer full-width>
@@ -11,9 +30,25 @@
 
                 <FooterSiteNavigation class="col-start-3 row-span-1" />
 
-                <FooterKvantoriumLinks class="col-start-4 row-span-1" />
+                <FooterContactList
+                    heading="Кванториум"
+                    class="col-start-4 row-span-1"
+                    :links="data?.kvantoriumContacts?.map((link) => ({
+                        link: link.link,
+                        linkType: link.linkType,
+                        title: link.title
+                    }))"
+                />
 
-                <FooterPolytechLinks class="col-start-4 row-span-1" />
+                <FooterContactList
+                    heading="Техникум"
+                    class="col-start-4 row-span-1"
+                    :links="data?.collegeContacts?.map((link) => ({
+                        link: link.link,
+                        linkType: link.linkType,
+                        title: link.title
+                    }))"
+                />
 
                 <hr class="col-span-4">
 
