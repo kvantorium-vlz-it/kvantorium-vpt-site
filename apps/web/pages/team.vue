@@ -22,7 +22,7 @@ const { data: employees } = await useSanityQuery<Employee[]>(employeesQueryBuild
 
             <ul class="grid grid-cols-3 gap-2">
                 <li v-for="employee in employees">
-                    <EmployeeCard :employee />
+                    <EmployeeCard :employee class="h-full" />
                 </li>
             </ul>
         </SectionContainer>
