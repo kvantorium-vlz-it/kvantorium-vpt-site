@@ -60,8 +60,8 @@ export const employeeSchema = defineType({
     title: 'Сотрудники',
     type: 'document',
     fields: [
-        nameFieldSchema,
         surnameFieldSchema,
+        nameFieldSchema,
         patronymicFieldSchema,
         descriptionFieldSchema,
         isTeacherFieldSchema,
