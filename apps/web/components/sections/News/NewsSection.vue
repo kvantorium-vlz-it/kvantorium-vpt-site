@@ -23,7 +23,7 @@ const { data: news } = useSanityQuery<News[]>(query)
 
             <ul class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-x-4 gap-y-3 mb-6">
                 <li v-for="newsItem in news">
-                    <NewsCard :news="newsItem"/>
+                    <NewsCard :news="newsItem" class="h-full"/>
                 </li>
             </ul>
 
