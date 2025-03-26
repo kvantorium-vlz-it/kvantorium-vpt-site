@@ -33,7 +33,7 @@ watchOnce(api, (api) => {
         #="{ canScrollNext, canScrollPrev }"
         @init-api="setApi"
     >
-        <ShCarouselContent>
+        <ShCarouselContent class="py-0.5">
             <slot name="before-slides"></slot>
 
             <ShCarouselItem
