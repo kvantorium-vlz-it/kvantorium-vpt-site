@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { newsFragmentFactory } from '@kvantoriumvlz/query';
-import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { News } from '~/assets/typescript/types';
+import { newsFragmentFactory } from '@kvantoriumvlz/query'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
+import { q } from '~/assets/typescript/groqd.client'
+import type { News } from '~/assets/typescript/types'
 
 const newsQuery = q
     .star
@@ -20,9 +20,9 @@ const { data: news } = await useSanityQuery<News[]>(newsQuery.query)
                 Новости
             </SectionHeading>
 
-            <ul class="grid grid-cols-3 gap-2">
+            <ul class="grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-3 gap-2">
                 <li v-for="singleNews in news">
-                    <NewsCard :news="singleNews" />
+                    <NewsCard :news="singleNews" class="h-full" />
                 </li>
             </ul>
         </SectionContainer>
