@@ -37,7 +37,7 @@ watchOnce(api, (api) => {
             <slot name="before-slides"></slot>
 
             <ShCarouselItem
-                class="basis-full desktop:basis-1/3"
+                class="basis-full laptop:basis-1/2 desktop:basis-1/3"
                 v-for="kvantum in kvantums"
             >
                 <KvantumCard :kvantum="kvantum" class="h-full" />
@@ -48,7 +48,7 @@ watchOnce(api, (api) => {
 
         <div class="grid desktop:grid-cols-3 mt-6 gap-y-2">
             <KvantumsCarouselMenu
-                class="desktop:col-start-2 "
+                class="desktop:col-start-2"
                 :can-scroll-prev
                 :can-scroll-next
                 :progress
