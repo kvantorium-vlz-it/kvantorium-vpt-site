@@ -23,16 +23,16 @@ const { data } = useSanityQuery<Settings>(aboutQuery.query)
     <Section>
         <SectionContainer full-width>
             <div
-                class="from-primary to-blue-dark bg-gradient-to-br text-white p-12 rounded-2xl w-full grid grid-cols-4 gap-x-4 gap-y-6"
+                class="from-primary to-blue-dark bg-gradient-to-br text-white p-12 rounded-2xl w-full grid grid-cols-1 laptop:grid-cols-4 gap-x-4 gap-y-6"
             >
 
-                <FooterInfo class="col-start-1 row-span-2" />
+                <FooterInfo class="laptop:col-start-1 laptop:row-span-2" />
 
-                <FooterSiteNavigation class="col-start-3 row-span-1" />
+                <FooterSiteNavigation class="laptop:col-start-3 laptop:row-span-1" />
 
                 <FooterContactList
                     heading="Кванториум"
-                    class="col-start-4 row-span-1"
+                    class="laptop:col-start-4 laptop:row-span-1"
                     :links="data?.kvantoriumContacts?.map((link) => ({
                         link: link.link,
                         linkType: link.linkType,
@@ -42,7 +42,7 @@ const { data } = useSanityQuery<Settings>(aboutQuery.query)
 
                 <FooterContactList
                     heading="Техникум"
-                    class="col-start-4 row-span-1"
+                    class="laptop:col-start-4 laptop:row-span-1"
                     :links="data?.collegeContacts?.map((link) => ({
                         link: link.link,
                         linkType: link.linkType,
@@ -50,9 +50,9 @@ const { data } = useSanityQuery<Settings>(aboutQuery.query)
                     }))"
                 />
 
-                <hr class="col-span-4">
+                <hr class="laptop:col-span-4">
 
-                <FooterCopyright class="col-span-4" />
+                <FooterCopyright class="laptop:col-span-4" />
             </div>
         </SectionContainer>
     </Section>
