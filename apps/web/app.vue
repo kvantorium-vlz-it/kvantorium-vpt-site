@@ -21,10 +21,13 @@ provide('isHeaderMustHaveBackground', isHeaderMustHaveBackground)
 
 <template>
     <div class="scroll-smooth">
-        <TheHeader ref="header" />
+        <ShSidebarProvider>
+                <HeaderMobileNavigation />
+            <TheHeader ref="header" />
+        </ShSidebarProvider>
 
         <NuxtPage id="top" />
 
-        <TheFooter />
+        <TheFooter id="contacts" />
     </div>
 </template>
