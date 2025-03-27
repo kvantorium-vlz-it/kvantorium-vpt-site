@@ -29,7 +29,7 @@ const data = [
         </SectionHeading>
 
         <SectionContainer>
-            <div class="max-w-[100ch] mx-auto">
+            <div class="max-w-[100ch] mx-auto overflow-x-hidden">
 
             <Timeline :items="data" >
                 <template

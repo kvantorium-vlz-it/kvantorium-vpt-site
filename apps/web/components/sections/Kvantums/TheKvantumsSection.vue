@@ -25,7 +25,7 @@ const { data: kvantums } = useSanityQuery<Kvantum[]>(query)
                 :kvantums="kvantums"
             >
                 <template #before-slides>
-                    <ShCarouselItem class="basis-full desktop:basis-1/3">
+                    <ShCarouselItem class="basis-full laptop:basis-1/2 desktop:basis-1/3">
                         <ShCard class="flex flex-col justify-end items-end from-primary to-secondary bg-gradient-to-br text-white h-full">
                             <ShCardHeader>
                                 <TrendingUpIcon :size="56" />

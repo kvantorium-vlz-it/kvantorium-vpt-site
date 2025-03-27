@@ -29,7 +29,7 @@ const selectedKvantum = ref()
                 #="{ curricula, reset, loadMoreCurricula }"
             >
                 <CurriculaFilter
-                    class="grid grid-cols-3 gap-2 mb-2"
+                    class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-2 mb-2"
                     :kvantums="kvantums"
                     v-model:selected-level="selectedLevel"
                     v-model:selected-kvantum="selectedKvantum"

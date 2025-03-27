@@ -100,6 +100,7 @@ const reset = () => {
         <ShButton
             variant="secondary"
             rounding="square"
+            class="tablet:col-span-2 desktop:col-span-1"
             @click="reset"
         >
             Сброс

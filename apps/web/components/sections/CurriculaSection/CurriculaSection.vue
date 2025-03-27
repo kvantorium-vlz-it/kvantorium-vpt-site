@@ -64,7 +64,7 @@ const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
                     >
                     </CurriculaList>
 
-                    <div class="grid grid-cols-2 gap-2 mt-4">
+                    <div class="grid grid-cols-1 laptop:grid-cols-2 gap-2 mt-4">
                         <ShButton variant="outline" as-child>
                             <NuxtLink to="/curricula/">
                                 Ко всем учебным программам
