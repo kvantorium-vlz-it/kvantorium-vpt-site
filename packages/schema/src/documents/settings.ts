@@ -1,4 +1,5 @@
-import { DOCUMENT_TYPES, CONTACT_LINK_TYPE } from '@kvantoriumvlz/shared'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
+import { linkSchema } from '../common/link'
 import { defineArrayMember, defineField, defineType } from "sanity"
 
 const aboutFieldSchema = defineField({
@@ -42,56 +43,12 @@ const documentsFieldSchema = defineField({
     ],
 })
 
-const contactLink = defineArrayMember({
-    name: 'contactLink',
-    type: 'object',
-    title: 'Контакт',
-    fields: [
-        defineField({
-            name: 'linkType',
-            type: 'string',
-            title: 'Тип ссылки',
-            options: {
-                list: [
-                    { title: 'Ссылка на сайт', value: CONTACT_LINK_TYPE.WEBSITE },
-                    { title: 'Почта', value: CONTACT_LINK_TYPE.EMAIL },
-                    { title: 'Местоположение', value: CONTACT_LINK_TYPE.GEOLOCATION },
-                    { title: 'Телефон', value: CONTACT_LINK_TYPE.PHONE },
-                    { title: 'Другое', value: CONTACT_LINK_TYPE.OTHER },
-                ],
-            },
-            validation: (rule) => rule
-                .required()
-                .error('Поле не может быть пустым')
-        }),
-        defineField({
-            name: 'link',
-            type: 'url',
-            validation: (rule) => rule
-                .required()
-                .error('Поле не может быть пустым')
-                .uri({
-                    allowRelative: true,
-                    scheme: ['http', 'https', 'mailto', 'tel', 'geo'],
-                })
-                .error('Неверная ссылка'),
-        }),
-        defineField({
-            name: 'title',
-            type: 'string',
-            validation: (rule) => rule
-                .required()
-                .error('Поле не может быть пустым')
-        }),
-    ],
-})
-
 const kvantoriumContactsFieldSchema = defineField({
     name: 'kvantoriumContacts',
     title: 'Контакты ДТ "Кванториум "Волжский Политех"',
     type: 'array',
     of: [
-        contactLink,
+        linkSchema,
     ]
 })
 
@@ -100,7 +57,7 @@ const polytechСontactsFieldSchema = defineField({
     title: 'Контакты "ВПТ',
     type: 'array',
     of: [
-        contactLink,
+        linkSchema,
     ]
 })
 

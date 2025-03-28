@@ -104,7 +104,7 @@ const otherValueFieldSchema = defineField({
     validation: (rule) => rule.custom(valueValidationFactory(LINK_TYPE.OTHER)),
 })
 
-export const linkType = defineArrayMember({
+export const linkSchema = defineArrayMember({
     name: 'linkType',
     type: 'object',
     fields: [
