@@ -7,16 +7,16 @@ const props = defineProps<PortableTextMarkComponentProps<PortableTextMarkDef>>()
 
 const link = computed(() => {
     if (typeof props.value?.to === 'undefined' || props.value.to === null) {
-        return ''
+        return undefined
     }
 
-    if (props.value.to._type === DOCUMENT_TYPES.EXTERNAL_LINK) {
-        return props.value.to.url
+    if (typeof props.value.to === 'string') {
+        return props.value.to
     }
 
-    if (props.value.to._toType === DOCUMENT_TYPES.KVANTUM) {
+    if (props.value.to._type === DOCUMENT_TYPES.KVANTUM) {
         return `/kvantums/${props.value.to.slug}`
-    } else if (props.value.to._toType === DOCUMENT_TYPES.NEWS) {
+    } else if (props.value.to._type === DOCUMENT_TYPES.NEWS) {
         return `/news/${props.value.to.slug}`
     }
 
@@ -27,8 +27,8 @@ const link = computed(() => {
 <template>
     <NuxtLink
         :to="link"
-        :target="value?.isOpenNewTab ? '_blank' : '_self'"
-        class="text-blue-800 hover:underline"
+        :target="value?.isOpenNewWindow ? '_blank' : '_self'"
+        class="text-secondary hover:underline"
     >
         <slot></slot>
     </NuxtLink>
