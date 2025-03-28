@@ -53,7 +53,6 @@ const labelFieldSchema = defineField({
     name: 'label',
     title: 'Подпись ссылки',
     type: 'string',
-    validation: (rule) => rule.required().error('Поле не может быть пустым'),
 })
 
 const internalValueFieldSchema = defineField({
@@ -106,7 +105,7 @@ const otherValueFieldSchema = defineField({
 })
 
 export const linkSchema = defineArrayMember({
-    name: 'link',
+    name: DOCUMENT_TYPES.LINK,
     type: 'object',
     fields: [
         linkTypeFieldSchema,
