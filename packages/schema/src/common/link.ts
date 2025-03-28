@@ -43,6 +43,7 @@ const linkTypeFieldSchema = defineField({
 const isOpenNewTabFieldSchema = defineField({
     name: 'isOpenNewWindow',
     type: 'boolean',
+    title: 'Открывать в новом окне',
     initialValue: false,
     hidden: ({ parent }) => parent.linkType === LINK_TYPE.INTERNAL,
     validation: (rule) => rule.required().error('Поле не может быть пустым'),
@@ -105,7 +106,7 @@ const otherValueFieldSchema = defineField({
 })
 
 export const linkSchema = defineArrayMember({
-    name: 'linkType',
+    name: 'link',
     type: 'object',
     fields: [
         linkTypeFieldSchema,
