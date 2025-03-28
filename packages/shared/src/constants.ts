@@ -26,3 +26,12 @@ export const CONTACT_LINK_TYPE = {
     PHONE: 'phone',
     OTHER: 'other',
 } as const
+
+export const LINK_TYPE = {
+    INTERNAL: 'internalType',
+    WEBSITE: 'websiteType',
+    PHONE: 'phoneType',
+    EMAIL: 'emailType',
+    GEOLOCATION: 'geolocationType',
+    OTHER: 'otherType',
+} as const
