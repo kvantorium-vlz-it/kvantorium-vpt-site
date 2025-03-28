@@ -1,7 +1,7 @@
 <!-- TODO: add socials -->
 
 <script setup lang="ts">
-import { CONTACT_LINK_TYPE, DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
 import { q } from '~/assets/typescript/groqd.client';
 import type { InferResultItem } from 'groqd'
 
@@ -34,9 +34,9 @@ const { data } = useSanityQuery<Settings>(aboutQuery.query)
                     heading="Кванториум"
                     class="laptop:col-start-4 laptop:row-span-1"
                     :links="data?.kvantoriumContacts?.map((link) => ({
-                        link: link.link,
+                        link: link.websiteValue || link.emailValue || link.phoneValue || link.geolocationValue || link.otherValue || '',
                         linkType: link.linkType,
-                        title: link.title
+                        label: link.label,
                     }))"
                 />
 
@@ -44,9 +44,9 @@ const { data } = useSanityQuery<Settings>(aboutQuery.query)
                     heading="Техникум"
                     class="laptop:col-start-4 laptop:row-span-1"
                     :links="data?.collegeContacts?.map((link) => ({
-                        link: link.link,
+                        link: link.websiteValue || link.emailValue || link.phoneValue || link.geolocationValue || link.otherValue || '',
                         linkType: link.linkType,
-                        title: link.title
+                        label: link.label,
                     }))"
                 />
 

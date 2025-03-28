@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { CONTACT_LINK_TYPE } from '@kvantoriumvlz/shared';
+import { LINK_TYPE } from '@kvantoriumvlz/shared';
 import { MailIcon, GlobeIcon, MapPinIcon, PhoneIcon, ArrowUpRightIcon } from 'lucide-vue-next'
 
 interface Props {
     links?: {
-        linkType: typeof CONTACT_LINK_TYPE[keyof typeof CONTACT_LINK_TYPE]
-        title: string
+        linkType: typeof LINK_TYPE[keyof typeof LINK_TYPE]
+        label?: string
         link: string
     }[]
     heading: string
@@ -31,13 +31,13 @@ withDefaults(defineProps<Props>(), {
                         theme="light"
                         target="_blank"
                     >
-                        <MailIcon v-if="link.linkType === CONTACT_LINK_TYPE.EMAIL" />
-                        <MapPinIcon v-else-if="link.linkType === CONTACT_LINK_TYPE.GEOLOCATION" />
-                        <GlobeIcon v-else-if="link.linkType === CONTACT_LINK_TYPE.WEBSITE" />
-                        <PhoneIcon v-else-if="link.linkType === CONTACT_LINK_TYPE.PHONE" />
-                        <ArrowUpRightIcon v-else-if="link.linkType === CONTACT_LINK_TYPE.OTHER" />
+                        <MailIcon v-if="link.linkType === LINK_TYPE.EMAIL" />
+                        <MapPinIcon v-else-if="link.linkType === LINK_TYPE.GEOLOCATION" />
+                        <GlobeIcon v-else-if="link.linkType === LINK_TYPE.WEBSITE" />
+                        <PhoneIcon v-else-if="link.linkType === LINK_TYPE.PHONE" />
+                        <ArrowUpRightIcon v-else />
 
-                        {{ link.title }}
+                        {{ link.label || link.link }}
                     </BaseLink>
                 </ShNavigationMenuItem>
             </ShNavigationMenuList>
