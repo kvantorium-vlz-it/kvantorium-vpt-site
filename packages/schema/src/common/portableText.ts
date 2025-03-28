@@ -1,7 +1,7 @@
 
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared/constants"
 import { defineArrayMember, defineType } from "sanity"
-import { linkAnnotation } from "./linkAnnotation"
+import { linkSchema } from './link'
 
 const blockMember = defineArrayMember({
     type: 'block',
@@ -21,7 +21,7 @@ const blockMember = defineArrayMember({
             { title: 'Подчеркнутый', value: 'underline' } as const,
         ],
         annotations: [
-            linkAnnotation,
+            linkSchema,
         ],
     },
     lists: [],
