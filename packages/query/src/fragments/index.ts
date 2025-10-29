@@ -15,3 +15,5 @@ export * from './curriculum.ts'
 export * from './news.ts'
 
 export * from './settings.ts'
+
+export * from './events.ts'

@@ -1,4 +1,4 @@
-import type { CurriculumFragment, EmployeeFragment, KvantumFragment, NewsFragment, NewsTagFragment } from "@kvantoriumvlz/query"
+import type { CurriculumFragment, EmployeeFragment, EventFragment, KvantumFragment, NewsFragment, NewsTagFragment } from "@kvantoriumvlz/query"
 
 export type Kvantum = KvantumFragment
 
@@ -9,3 +9,5 @@ export type News = NewsFragment
 export type Employee = EmployeeFragment
 
 export type NewsTag = NewsTagFragment
+
+export type EventItem = EventFragment
