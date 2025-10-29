@@ -8,6 +8,8 @@
 
         <TheKvantumsSection />
 
+        <EventsSection />
+
         <NewsSection />
 
         <TheFaqSection />
