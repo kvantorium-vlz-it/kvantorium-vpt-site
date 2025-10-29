@@ -14,6 +14,7 @@ import {
     newsTagSchema,
     portableTextSchema,
     settingsSchema,
+    eventsSchema,
 } from '@kvantoriumvlz/schema'
 import { defineConfig } from 'sanity'
 
@@ -42,6 +43,7 @@ export default defineConfig({
             newsTagSchema,
             portableTextSchema,
             settingsSchema,
+            eventsSchema
         ],
     },
 })
