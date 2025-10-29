@@ -11,6 +11,7 @@ export const DOCUMENT_TYPES = {
     CURRICULUM: `${SCHEMA_PREFIX}.curriculum`,
     NEWS: `${SCHEMA_PREFIX}.news`,
     SETTINGS: `${SCHEMA_PREFIX}.settings`,
+    EVENTS: `${SCHEMA_PREFIX}.events`,
 } as const
 
 export const CURRICULUM_LEVEL = {
