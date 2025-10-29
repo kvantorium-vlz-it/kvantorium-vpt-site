@@ -7,6 +7,7 @@ import {
     newsTagSchema,
     portableTextSchema,
     settingsSchema,
+    eventsSchema,
 } from "./src"
 
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
             newsSchema,
             kvantumSchema,
             settingsSchema,
+            eventsSchema,
         ],
     },
 })
