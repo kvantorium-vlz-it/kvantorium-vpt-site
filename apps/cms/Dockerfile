@@ -8,9 +8,10 @@ FROM node:20-slim AS base
     ENV PNPM_HOME="/pnpm"
     ENV PATH="$PNPM_HOME:$PATH"
 
-    RUN npm i -g corepack
-    RUN corepack enable pnpm
-    RUN corepack use pnpm
+    RUN corepack enable
+    # RUN npm i -g corepack
+    # RUN corepack enable pnpm
+    # RUN corepack use pnpm
 
     RUN pnpm i -g turbo
     RUN pnpm i -g tsx
