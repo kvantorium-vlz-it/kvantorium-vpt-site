@@ -3,8 +3,9 @@ import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
 import { imageAssetFragmentFactory, imageCropFragmentFactory } from "./image"
 import { PortableTextFragment, portableTextRawFragment } from "./raw/portableText"
+import { Builder } from "@/groqd.client"
 
-export const newsFragmentFactory = createFragmentFactory((q) => q
+export const newsFragmentFactory = (q: Builder) => q
     .fragmentForType<typeof DOCUMENT_TYPES.NEWS>()
     .project((sub) => ({
         _id: true,
@@ -32,6 +33,5 @@ export const newsFragmentFactory = createFragmentFactory((q) => q
             .field('content[]')
             .raw<PortableTextFragment[]>((`{${portableTextRawFragment}}`)),
     }))
-)
 
 export type NewsFragment = InferFragmentType<ReturnType<typeof newsFragmentFactory>>

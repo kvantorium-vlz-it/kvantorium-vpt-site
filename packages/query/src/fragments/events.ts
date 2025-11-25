@@ -1,12 +1,10 @@
-import { createFragmentFactory } from "@/utils";
 import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared";
 import { imageAssetFragmentFactory, imageCropFragmentFactory } from "./image";
-import { portableTextRawFragment } from "./raw/portableText";
-import { PortableTextFragment } from "../../dist";
+import { PortableTextFragment, portableTextRawFragment } from "./raw/portableText";
 import { InferFragmentType } from "groqd";
+import { Builder, q } from "@/groqd.client";
 
-
-export const eventFragmentFactory = createFragmentFactory((q) => q
+export const eventFragmentFactory = (q: Builder) => q
     .fragmentForType<typeof DOCUMENT_TYPES.EVENTS>()
     .project((sub) => ({
         _id: true,
@@ -31,6 +29,5 @@ export const eventFragmentFactory = createFragmentFactory((q) => q
             }))
         }))
     }))
-)
 
-export type EventFragment = InferFragmentType<ReturnType<typeof eventFragmentFactory>>
+export type EventFragment = InferFragmentType<typeof eventFragmentFactory>
