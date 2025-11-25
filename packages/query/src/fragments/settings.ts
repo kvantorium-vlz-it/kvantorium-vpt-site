@@ -3,8 +3,9 @@ import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
 import { PortableTextFragment, portableTextRawFragment } from "./raw/portableText"
 import { fileAssetFragmentFactory } from "./file"
+import { Builder } from "@/groqd.client"
 
-export const settingsFragmentFactory = createFragmentFactory((q) => q
+export const settingsFragmentFactory = (q: Builder) => q
     .fragmentForType<typeof DOCUMENT_TYPES.SETTINGS>()
     .project((sub) => ({
         about: sub
@@ -18,6 +19,5 @@ export const settingsFragmentFactory = createFragmentFactory((q) => q
             label: true,
         }))
     }))
-)
 
 export type SettingsFragment = InferFragmentType<ReturnType<typeof settingsFragmentFactory>>

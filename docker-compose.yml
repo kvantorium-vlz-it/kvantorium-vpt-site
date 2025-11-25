@@ -16,7 +16,7 @@ services:
     restart: always
     networks:
       - "kvantorium"
-      - "reverse-proxy"
+      # - "reverse-proxy"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web.rule=Host(`kvantoriumvlz.ru`)"
@@ -40,7 +40,7 @@ services:
     restart: always
     networks:
       - "kvantorium"
-      - "reverse-proxy"
+      # - "reverse-proxy"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.cms.rule=Host(`admin.kvantoriumvlz.ru`)"
@@ -49,5 +49,5 @@ services:
 
 networks:
   kvantorium: {}
-  reverse-proxy:
-    external: true
+  # reverse-proxy:
+  #   external: true

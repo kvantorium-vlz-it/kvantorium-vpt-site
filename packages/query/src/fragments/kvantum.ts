@@ -3,8 +3,9 @@ import { DOCUMENT_TYPES } from "@kvantoriumvlz/shared"
 import { InferFragmentType } from "groqd"
 import { imageAssetFragmentFactory, imageCropFragmentFactory } from "./image"
 import { PortableTextFragment, portableTextRawFragment } from "./raw/portableText"
+import { Builder, q } from "@/groqd.client"
 
-export const kvantumFragmentFactory = createFragmentFactory((q) => q
+export const kvantumFragmentFactory = (q: Builder) => q
     .fragmentForType<typeof DOCUMENT_TYPES.KVANTUM>()
     .project((sub) => ({
         _id: true,
@@ -29,6 +30,5 @@ export const kvantumFragmentFactory = createFragmentFactory((q) => q
             .project((sub) => ({ minimalAge: true }))
             .field('minimalAge')
     }))
-)
 
 export type KvantumFragment = InferFragmentType<ReturnType<typeof kvantumFragmentFactory>>
