@@ -85,7 +85,7 @@ export default defineNuxtConfig({
 
     // Groqd resolving fix
     alias: {
-        'groqd': isDev ? '../node_modules/groqd/dist/index' : 'groqd'
+        'groqd': isDev ? './node_modules/groqd/dist/index' : 'groqd'
     },
 
     compatibilityDate: '2025-02-11'
