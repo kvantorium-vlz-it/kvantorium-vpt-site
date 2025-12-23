@@ -9,7 +9,7 @@
     "build:packages": "turbo run build --filter=\"./packages/*\""
   },
   "devDependencies": {
-    "turbo": "^2.1.2"
+    "turbo": "^2.7.1"
   },
   "engines": {
     "node": ">=v16.18.1"
