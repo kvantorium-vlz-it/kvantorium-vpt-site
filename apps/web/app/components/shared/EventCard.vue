@@ -10,7 +10,7 @@ defineProps<{
 <template>
     <ShCard class="overflow-hidden">
         <div class="aspect-video">
-            <img :src="event.previewImage!.asset!.src!" alt="">
+            <img :src="event.previewImage?.asset?.src!" alt="">
         </div>
 
         <ShCardHeader class="z-10">

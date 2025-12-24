@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { curriculumFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES, getCurriculumLevelLabel } from '@kvantoriumvlz/shared';
 import { ArrowUpRightIcon } from 'lucide-vue-next';
-import { q } from '~/assets/typescript/groqd.client';
-import type { Curriculum } from '~/assets/typescript/types';
+import { curriculumProjection, q, type CurriculumProjection } from '#shared/sanity';
 
 const router = useRoute()
 const id = router.params.id as string
 
 const curriculumQueryBuilder = q
     .star
+    .parameters<{ id: string }>()
     .filterByType(DOCUMENT_TYPES.CURRICULUM)
-    .filter(`_id == "${id}"`)
-    .project(curriculumFragmentFactory(q))
+    .filterBy('_id == $id')
+    .project(curriculumProjection)
     .slice(0)
 
-const { data: curriculum } = useSanityQuery<Curriculum>(curriculumQueryBuilder.query)
+const { data: curriculum } = useSanityQuery<CurriculumProjection>(curriculumQueryBuilder.query, { id: id })
 </script>
 
 <template>

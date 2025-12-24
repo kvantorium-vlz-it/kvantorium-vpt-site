@@ -3,7 +3,7 @@
   "scripts": {
     "build": "tsup",
     "schema": "mkdirp ./src/.schema && pnpm run schema:extract && pnpm run schema:generate",
-    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./src/.schema/schema.json\" --enforce-required-fields",
+    "schema:extract": "dotenvx run -- sanity schema extract --path=\"./dist/sanity.schema.json\" --enforce-required-fields",
     "schema:generate": "sanity typegen generate"
   },
   "exports": {

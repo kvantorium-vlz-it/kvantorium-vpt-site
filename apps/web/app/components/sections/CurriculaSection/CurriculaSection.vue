@@ -14,12 +14,11 @@ type Kvantum = InferResultItem<typeof kvantumsQuery>
 
 <script setup lang="ts">
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { Curriculum } from '~/assets/typescript/types';
 import type { InferResultItem } from 'groqd'
+import { q, type CurriculumProjection } from '#shared/sanity';
 
 const selectedKvantum = ref<Kvantum | undefined>()
-const selectedLevel = ref<Curriculum['level'] | undefined>()
+const selectedLevel = ref<CurriculumProjection['level'] | undefined>()
 
 const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
 </script>
@@ -55,7 +54,7 @@ const { data: kvantums } = await useSanityQuery<Kvantum[]>(kvantumsQuery.query)
                             kvantum: {
                                 _id: curriculum.kvantum._id,
                                 _type: curriculum.kvantum._type,
-                                icon: curriculum.kvantum.icon.asset.src!,
+                                icon: curriculum.kvantum.icon?.asset?.src!,
                                 name: curriculum.kvantum.name,
                                 slug: curriculum.kvantum.slug,
                             },

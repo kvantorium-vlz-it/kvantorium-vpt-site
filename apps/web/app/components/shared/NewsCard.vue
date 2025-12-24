@@ -16,7 +16,7 @@ const formatter = new Intl.DateTimeFormat('ru-RU', {
 <template>
     <ShCard class="overflow-hidden relative group">
         <img
-            :src="news.previewImage.asset.src!"
+            :src="news.previewImage?.asset?.src!"
             class="aspect-video object-cover w-full max-w-full"
         >
 

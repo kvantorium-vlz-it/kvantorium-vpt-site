@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { createKvantumFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import type { InferResultType } from 'groqd'
+import { q, kvantumProjection } from '#shared/sanity'
 
 const props = withDefaults(defineProps<{
     offset?: number
@@ -12,7 +13,7 @@ const props = withDefaults(defineProps<{
 let builder = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(createKvantumFragment(q))
+    .project(kvantumProjection)
 
 builder = typeof props.count !== 'undefined'
     ? builder.slice(props.offset, props.count + props.offset)

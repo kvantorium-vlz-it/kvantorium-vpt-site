@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { eventFragmentFactory, q } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { EventItem } from '~/assets/typescript/types';
+import { eventsProjection, q, type EventsProjection } from '#shared/sanity';
 
 const route = useRoute()
 
@@ -9,12 +8,13 @@ const slug = route.params.slug as string
 
 const query = q
     .star
+    .parameters<{ slug: string }>()
     .filterByType(DOCUMENT_TYPES.EVENTS)
-    .filterBy(`slug.current == "${slug}"`)
-    .project(eventFragmentFactory(q))
+    .filterBy(`slug.current == $slug`)
+    .project(eventsProjection)
     .slice(0)
 
-const { data: event } = await useSanityQuery<EventItem>(query.query)
+const { data: event } = await useSanityQuery<EventsProjection>(query.query, { slug: slug })
 
 const images = computed(() => {
     if (!event.value) {

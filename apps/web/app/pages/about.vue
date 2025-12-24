@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { settingsFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client'
-import type { InferResultItem } from 'groqd'
 import { FileIcon } from 'lucide-vue-next';
+import { q, settingsProjection, type SettingsProjection } from '#shared/sanity';
 
 const aboutQuery = q
     .star
     .filterByType(DOCUMENT_TYPES.SETTINGS)
-    .project(settingsFragmentFactory(q))
+    .project(settingsProjection)
     .slice(0)
 
-type Settings = InferResultItem<typeof aboutQuery>
-
-const { data } = useSanityQuery<Settings>(aboutQuery.query)
+const { data } = useSanityQuery<SettingsProjection>(aboutQuery.query)
 </script>
 
 <template>

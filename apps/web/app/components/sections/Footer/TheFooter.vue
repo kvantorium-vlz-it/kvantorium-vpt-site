@@ -2,8 +2,8 @@
 
 <script setup lang="ts">
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
 import type { InferResultItem } from 'groqd'
+import { q } from '#shared/sanity';
 
 const aboutQuery = q
     .star

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { kvantumFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { Kvantum } from '~/assets/typescript/types';
+import type { InferResultItem } from 'groqd';
+import { kvantumProjection, q, type KvantumProjection } from '#shared/sanity';
 
 const route = useRoute()
 
@@ -10,19 +9,20 @@ const slug = route.params.slug as string
 
 const query = q
     .star
+    .parameters<{ slug: string }>()
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .filterBy(`slug.current == "${slug}"`)
-    .project(kvantumFragmentFactory(q))
+    .filterBy(`slug.current == $slug`)
+    .project(kvantumProjection)
     .slice(0)
 
-const { data: kvantum } = await useSanityQuery<Kvantum>(query.query)
+const { data: kvantum } = await useSanityQuery<KvantumProjection>(query.query, { slug })
 
 const allKvantumsQuery = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(kvantumFragmentFactory(q))
+    .project(kvantumProjection)
 
-const { data: allKvantums } = await useSanityQuery<Kvantum[]>(allKvantumsQuery.query)
+const { data: allKvantums } = await useSanityQuery<Array<KvantumProjection>>(allKvantumsQuery.query)
 </script>
 
 <template>
@@ -70,7 +70,7 @@ const { data: allKvantums } = await useSanityQuery<Kvantum[]>(allKvantumsQuery.q
                             kvantum: {
                                 _id: curriculum.kvantum._id,
                                 _type: curriculum.kvantum._type,
-                                icon: curriculum.kvantum.icon.asset.src!,
+                                icon: curriculum.kvantum.icon?.asset?.src!,
                                 name: curriculum.kvantum.name,
                                 slug: curriculum.kvantum.slug,
                             },

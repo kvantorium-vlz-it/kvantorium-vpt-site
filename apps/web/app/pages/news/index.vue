@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { newsFragmentFactory } from '@kvantoriumvlz/query'
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
-import { q } from '~/assets/typescript/groqd.client'
-import type { News } from '~/assets/typescript/types'
+import { newsProjection, q, type NewsProjection } from '#shared';
 
 const newsQuery = q
     .star
     .filterByType(DOCUMENT_TYPES.NEWS)
-    .project(newsFragmentFactory(q))
+    .project(newsProjection)
     .order('publishDate desc')
+    .slice(0)
 
-const { data: news } = await useSanityQuery<News[]>(newsQuery.query)
+const { data: news } = await useSanityQuery<Array<NewsProjection>>(newsQuery.query)
 </script>
 
 <template>

@@ -21,7 +21,7 @@ defineProps<{
 
                 <img
                     class="size-14"
-                    :src="kvantum.icon.asset.src!"
+                    :src="kvantum.icon?.asset?.src!"
                     alt=""
                 >
             </ShCardTitle>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
+import { q } from '#shared/sanity';
 import type { InferResultItem } from 'groqd'
-import type { Kvantum } from '~/assets/typescript/types';
 
 const queryBuilder = q
     .star
