@@ -1,15 +1,14 @@
 <script lang="ts">
-import { eventFragmentFactory, q } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import type { EventItem } from '~/assets/typescript/types';
+import { q, eventsProjection, type EventsProjection } from '#shared/sanity';
 
 const eventsQuery = q
     .star.filterByType(DOCUMENT_TYPES.EVENTS)
-    .project(eventFragmentFactory(q))
+    .project(eventsProjection)
 </script>
 
 <script setup lang="ts">
-const { data: events } = await useSanityQuery<EventItem[]>(eventsQuery.query)
+const { data: events } = await useSanityQuery<EventsProjection[]>(eventsQuery.query)
 </script>
 
 <template>

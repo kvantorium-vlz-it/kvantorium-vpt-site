@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import type { Kvantum } from '~/assets/typescript/types'
 import { TrendingUpIcon } from 'lucide-vue-next'
-import { q } from '~/assets/typescript/groqd.client'
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
-import { kvantumFragmentFactory } from '@kvantoriumvlz/query'
+import { kvantumProjection, q, type KvantumProjection } from '#shared/sanity';
 
 const { query } = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(kvantumFragmentFactory(q))
+    .project(kvantumProjection)
 
-const { data: kvantums } = useSanityQuery<Kvantum[]>(query)
+const { data: kvantums } = useSanityQuery<KvantumProjection[]>(query)
 </script>
 
 <template>

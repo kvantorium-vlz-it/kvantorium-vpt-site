@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { newsFragmentFactory } from '@kvantoriumvlz/query'
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import { ArrowUpRightIcon } from 'lucide-vue-next'
-import { q } from '~/assets/typescript/groqd.client'
-import type { News } from '~/assets/typescript/types'
+import { newsProjection, q, type NewsTagProjection } from '#shared/sanity';
 
 const { query } = q
     .star
     .filterByType(DOCUMENT_TYPES.NEWS)
-    .project(newsFragmentFactory(q))
+    .project(newsProjection)
     .slice(0, 6)
 
-const { data: news } = useSanityQuery<News[]>(query)
+const { data: news } = useSanityQuery<NewsTagProjection[]>(query)
 </script>
 
 <template>
