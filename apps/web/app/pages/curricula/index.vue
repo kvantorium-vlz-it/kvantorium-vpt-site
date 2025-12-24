@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { kvantumFragmentFactory } from '@kvantoriumvlz/query'
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import type { InferResultType } from 'groqd'
-import { q } from '~/assets/typescript/groqd.client'
+import { kvantumProjection, q, type KvantumProjection } from '#shared/sanity'
 
 const kvantumsQuery = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(kvantumFragmentFactory(q))
+    .project(kvantumProjection)
 
-const { data: kvantums } = useSanityQuery<InferResultType<typeof kvantumsQuery>>(kvantumsQuery.query)
+const { data: kvantums } = useSanityQuery<Array<KvantumProjection>>(kvantumsQuery.query)
 
 const selectedLevel = ref()
 const selectedKvantum = ref()
@@ -44,7 +43,7 @@ const selectedKvantum = ref()
                             kvantum: {
                                 _id: curriculum.kvantum._id,
                                 _type: curriculum.kvantum._type,
-                                icon: curriculum.kvantum.icon.asset.src!,
+                                icon: curriculum.kvantum.icon?.asset?.src!,
                                 name: curriculum.kvantum.name,
                                 slug: curriculum.kvantum.slug,
                             },

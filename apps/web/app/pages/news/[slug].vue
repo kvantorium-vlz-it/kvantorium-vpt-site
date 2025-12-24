@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { newsFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { News } from '~/assets/typescript/types';
+import { newsProjection, q, type NewsProjection } from '#shared/sanity';
 
 const route = useRoute()
 
@@ -10,23 +8,23 @@ const slug = route.params.slug as string
 
 const newsQuery = q
     .star
+    .parameters<{ slug: string }>()
     .filterByType(DOCUMENT_TYPES.NEWS)
-    .filter(`slug.current == "${slug}"`)
-    .project(newsFragmentFactory(q))
+    .filterBy('slug.current != $slug')
+    .project(newsProjection)
     .slice(0)
 
-const { data: news } = await useSanityQuery<News>(newsQuery.query)
+const { data: news } = await useSanityQuery<NewsProjection>(newsQuery.query, { slug })
 </script>
 
 <template>
     <div v-if="news">
         <Section>
             <SectionContainer>
-                <img
+                <SanityImage
                     class="object-cover h-96 w-full rounded-t-lg"
-                    :src="news.previewImage.asset.src!"
-                    :alt="news.previewImage.asset.alt ?? undefined"
-                >
+                    :asset-id="news.previewImage.assetId!"
+                />
 
                 <SectionHeading>
                     {{ news.title }}

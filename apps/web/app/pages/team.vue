@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { employeeFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { Employee } from '~/assets/typescript/types';
+import { employeeProjection, q, type EmployeeProjection } from '#shared/sanity';
 
 const employeesQueryBuilder = q
     .star
     .filterByType(DOCUMENT_TYPES.EMPLOYEE)
-    .project(employeeFragmentFactory(q))
+    .project(employeeProjection)
     .order('surname asc')
 
-const { data: employees } = await useSanityQuery<Employee[]>(employeesQueryBuilder.query)
+const { data: employees } = await useSanityQuery<Array<EmployeeProjection>>(employeesQueryBuilder.query)
 </script>
 
 <template>

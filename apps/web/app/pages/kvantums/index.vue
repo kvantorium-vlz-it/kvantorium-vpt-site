@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { kvantumFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
-import { q } from '~/assets/typescript/groqd.client';
-import type { Kvantum } from '~/assets/typescript/types';
+import { kvantumProjection, q } from '#shared/sanity';
+import type { InferResultItem } from 'groqd';
 
 const query = q
     .star
     .filterByType(DOCUMENT_TYPES.KVANTUM)
-    .project(kvantumFragmentFactory(q))
+    .project(kvantumProjection)
 
-const { data: kvantums } = await useSanityQuery<Kvantum[]>(query.query)
+const { data: kvantums } = await useSanityQuery<InferResultItem<typeof query>[]>(query.query)
 </script>
 
 <template>
