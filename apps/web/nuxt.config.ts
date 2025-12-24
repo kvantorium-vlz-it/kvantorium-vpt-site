@@ -83,10 +83,10 @@ export default defineNuxtConfig({
         apiVersion: 'v2022-03-07',
     },
 
-    // Groqd resolving fix
-    alias: {
-        'groqd': isDev ? './node_modules/groqd/dist/index' : 'groqd'
-    },
+    // // Groqd resolving fix
+    // alias: {
+    //     'groqd': isDev ? '../../node_modules/groqd/dist/index.js' : 'groqd'
+    // },
 
     compatibilityDate: '2025-02-11'
 })
