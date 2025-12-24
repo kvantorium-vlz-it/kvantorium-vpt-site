@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { createNewsFragment, createNewsTagFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared';
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
 import type { InferResultType } from 'groqd'
+import { q, newsProjection, newsTagProjection } from '#shared/sanity';
 
 const props = withDefaults(defineProps<{
     count?: number
@@ -13,8 +14,8 @@ let builder = q
     .star
     .filterByType(DOCUMENT_TYPES.NEWS)
     .project((sub) => ({
-        ...createNewsFragment(q),
-        tags: sub.field('tags[]').deref().project(createNewsTagFragment(q))
+        ...newsProjection,
+        tags: sub.field('tags[]').deref().project(newsTagProjection)
     }))
 
 builder = typeof props.count !== 'undefined'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { createNewsFragment, createNewsTagFragment, DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared';
 import type { InferResultType } from 'groqd';
-import { q } from '~/assets/typescript/groqd.client';
+import { newsProjection, newsTagProjection, q } from '#shared/sanity';
 
 const props = defineProps<{
     slug?: string
@@ -17,8 +17,8 @@ let builder = q
         || ''
     )
     .project((sub) => ({
-        ...createNewsFragment(q),
-        tags: sub.field('tags[]').deref().project(createNewsTagFragment(q))
+        ...newsProjection,
+        tags: sub.field('tags[]').deref().project(newsTagProjection)
     }))
     .slice(0)
 

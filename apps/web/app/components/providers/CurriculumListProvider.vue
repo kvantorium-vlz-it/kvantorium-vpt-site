@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Curriculum, Kvantum as _Kvantum } from '~/assets/typescript/types'
+import type { CurriculumProjection, KvantumProjection as _Kvantum } from '#shared/sanity'
 
 interface Kvantum {
     _type: _Kvantum['_type']
@@ -10,17 +10,16 @@ interface Kvantum {
 interface CurriculumListProviderProps<T extends Kvantum = Kvantum> {
     fetchPerPage?: number
     kvantum?: T
-    level?: Curriculum['level']
+    level?: CurriculumProjection['level']
 }
 
 const DEFAULT_PER_PAGE = 6;
 </script>
 
 <script setup lang="ts" generic="T extends Kvantum = Kvantum">
-import { curriculumFragmentFactory, kvantumFragmentFactory } from '@kvantoriumvlz/query';
 import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import type { InferResultItem } from 'groqd';
-import { q } from '~/assets/typescript/groqd.client'
+import { q, curriculumProjection, kvantumProjection } from '#shared/sanity'
 
 const props = withDefaults(defineProps<CurriculumListProviderProps<T>>(), {
     fetchPerPage: DEFAULT_PER_PAGE,
@@ -60,8 +59,8 @@ const curriculaQueryBuilder = computed(() => {
         .star
         .filterByType(DOCUMENT_TYPES.CURRICULUM)
         .project((sub) => ({
-            ...curriculumFragmentFactory(q),
-            kvantum: sub.field('kvantum').deref().project(kvantumFragmentFactory(q))
+            ...curriculumProjection,
+            kvantum: sub.field('kvantum').deref().project(kvantumProjection)
         }))
 
     if (typeof kvantum.value !== 'undefined') {

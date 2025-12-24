@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { createKvantumFragment, DOCUMENT_TYPES, q } from '@kvantoriumvlz/shared'
+import { DOCUMENT_TYPES } from '@kvantoriumvlz/shared'
 import type { InferResultItem } from 'groqd'
+import { q, kvantumProjection } from '#shared/sanity'
 
 const props = defineProps<{
     id?: string
@@ -15,7 +16,7 @@ let builder = q
         || (typeof props.slug !== 'undefined' && `slug.current == "${props.slug}"`)
         || ''
     )
-    .project(createKvantumFragment(q))
+    .project(kvantumProjection)
     .slice(0)
 
 type KvantumQueryResult = InferResultItem<typeof builder>
